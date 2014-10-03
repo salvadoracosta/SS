@@ -15,7 +15,7 @@ exports.incert = function(req, res) {
   var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'admin'
+    password : 'nancy'
   });
 
   connection.connect(function(err) {
@@ -38,9 +38,9 @@ exports.incert = function(req, res) {
       institucion :  input.institucion
     };
     var query = connection.query('INSERT INTO usuario SET ?', data, function(err, result) {
-
+    console.log(query);
     if(err) {
-      //throw err; debug
+      throw err; debug
       return res.send(409);
       connection.end();
     }else{
