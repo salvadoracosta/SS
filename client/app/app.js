@@ -67,16 +67,16 @@ var app = angular.module('app', [
             .state('layout', {
                 abstract: true,
                 url: '/layout',
-                templateUrl: 'tpl/layout.html'
+                templateUrl: 'app/layout/layout.html'
             })
             .state('app', {
                 abstract: true,
                 url: '/app',
-                templateUrl: 'tpl/app.html'
+                templateUrl: 'app/home/app.html'
             })
             .state('app.dashboard-v1', {
                 url: '/',
-                templateUrl: 'tpl/app_dashboard_v1.html'
+                templateUrl: 'app/home/dashboard.html'
             })
             
     }

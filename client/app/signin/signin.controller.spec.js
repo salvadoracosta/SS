@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: SigninCtrl', function () {
+describe('Controller: SigninCtrl', function() {
 
   // load the controller's module
   beforeEach(module('bootstrapAngularAdminWebAppApp'));
@@ -8,14 +8,14 @@ describe('Controller: SigninCtrl', function () {
   var SigninCtrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function($controller, $rootScope) {
     scope = $rootScope.$new();
     SigninCtrl = $controller('SigninCtrl', {
       $scope: scope
     });
   }));
 
-  it('should ...', function () {
+  it('should ...', function() {
     expect(1).toEqual(1);
   });
 });

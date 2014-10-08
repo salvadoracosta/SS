@@ -12,7 +12,7 @@ angular.module('app.controllers', ['pascalprecht.translate', 'ngCookies'])
 
       // config
       $scope.app = {
-        name: 'Nabucodonosor',
+        name: 'Nabu',
         version: '0.1 init',
         // for chart colors
         color: {
@@ -55,7 +55,7 @@ angular.module('app.controllers', ['pascalprecht.translate', 'ngCookies'])
 
       // angular translate
       $scope.lang = { isopen: false };
-      $scope.langs = {en:'English', de_DE:'German', it_IT:'Italian'};
+      $scope.langs = {en:'English', de_DE:'German', it_IT:'Italian', es:'Español'};
       $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
       $scope.setLang = function(langKey, $event) {
         // set the current lang
