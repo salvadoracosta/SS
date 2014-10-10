@@ -78,6 +78,11 @@ var app = angular.module('app', [
                 url: '/',
                 templateUrl: 'app/home/dashboard.html'
             })
+            .state('app.proyecto', {
+                url: '/proyecto',
+                templateUrl: 'app/proyecto/proyecto.html',
+                controller: 'ProyectoCtrl'
+            })
             
     }
   ]
