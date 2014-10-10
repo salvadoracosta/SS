@@ -5,5 +5,6 @@ node_js:
 before_script:
   - npm install -g bower grunt-cli
   - npm install bcrypt
-  - bower install
+  - npm install mysql
+  - bower install 
 services: mongodb
