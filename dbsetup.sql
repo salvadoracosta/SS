@@ -1,4 +1,5 @@
 CREATE DATABASE `ss` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE ss;
 CREATE TABLE `usuario` (
   `idusuario` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
