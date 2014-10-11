@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('app.controllers', ['pascalprecht.translate', 'ngCookies'])
+angular.module('app.controllers', ['ngCookies'])
   .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
     function(              $scope,   $translate,   $localStorage,   $window ) {
       // add 'ie' classes to html

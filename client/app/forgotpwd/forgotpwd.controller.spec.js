@@ -3,7 +3,7 @@
 describe('Controller: ForgotpwdCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('bootstrapAngularAdminWebAppApp'));
+  beforeEach(module('app.controllers'));
 
   var ForgotpwdCtrl, scope;
 
