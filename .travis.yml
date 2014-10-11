@@ -1,10 +1,14 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.11'
+- '0.10'
+- '0.11'
 services: mysql
 before_script:
-  - mysql < ./dbsetup.sql
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('admin') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-  - npm install -g bower grunt-cli
-  - bower install 
+- mysql < ./dbsetup.sql
+- echo "USE mysql;\nUPDATE user SET password=PASSWORD('admin') WHERE user='root';\nFLUSH
+  PRIVILEGES;\n" | mysql -u root
+- npm install -g bower grunt-cli
+- bower install
+deploy:
+  api_key:
+    secure: ZUOGsKbP5JiQXDp5jkf0AKFGMJ6ojhrrm5tnYAS/3do/i14Rrw79zVTJAgIq4aWYlYj8xhV9IaZW3ZPmJUMIVl0qMVLxQA8ISU699kzd65viZUOllRH2Loy2PNUD9aEOJkv7dX9+DeZwAu0boEy5D7Asx+nctHEyIfgPoz1itrU=
