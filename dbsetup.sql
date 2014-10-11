@@ -1,6 +1,4 @@
-mysql $* <<EOF
-DROP DATABASE IF EXISTS ss;
-CREATE DATABASE ss;
+CREATE DATABASE `ss` /*!40100 DEFAULT CHARACTER SET utf8 */;
 CREATE TABLE `usuario` (
   `idusuario` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
@@ -12,6 +10,4 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
   UNIQUE KEY `correo_UNIQUE` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
-EOF
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
