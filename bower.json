@@ -44,6 +44,7 @@
     "bootstrap": "~3.2.0",
     "angular": "~1.2.24",
     "angular-animate": "~1.2.24",
+    "angular-mocks": "*",
     "angular-cookies": "~1.2.24",
     "angular-translate": "~2.2.0",
     "angular-ui-router": "~0.2.11",
