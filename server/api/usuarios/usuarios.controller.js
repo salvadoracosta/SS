@@ -4,8 +4,41 @@ var _ = require('lodash');
 var bcrypt = require('bcrypt');
 // Get list of usuarioss, unused
 exports.index = function(req, res) {
-  res.json([]);
+
+  var mysql      = require('mysql');
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'admin'
+  });
+
+  connection.connect(function(err) {
+    if (err) {
+      console.error('error connecting: ' + err.stack);
+      return;
+    }
+      //console.log('connected as id ' + connection.threadId);
+  });
+
+  connection.query("use ss");
+
+  var query = connection.query('SELECT * FROM usuario', function(err, result){
+    if(err) {
+      throw err; debug
+      return res.send(409);
+      connection.end();
+    }else{
+      res.json(result);
+      //console.log( 'success' );
+      connection.end();
+    }
+  }
+
+  // res.json([]);
+
 };
+
+
 
 exports.incert = function(req, res) {
 
