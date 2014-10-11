@@ -3,9 +3,8 @@ node_js:
   - '0.10'
   - '0.11'
 before_script:
+  - mysql -e 'create database ss;'
   - npm install -g bower grunt-cli
   - npm install bcrypt
   - npm install mysql
   - bower install 
-before_script:
-  - mysql -e 'create database ss;'
