@@ -7,4 +7,5 @@ before_script:
   - npm install bcrypt
   - npm install mysql
   - bower install 
-services: mongodb
+before_script:
+  - mysql -e 'create database ss;'
