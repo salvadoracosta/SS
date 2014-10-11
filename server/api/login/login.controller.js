@@ -25,7 +25,7 @@ exports.checkLogIn = function(req, res) {
       console.error('error connecting: ' + err.stack);
       return;
     }
-    console.log('connected as id ' + connection.threadId);
+     //console.log('connected as id ' + connection.threadId);
   });
 
   var data = {
