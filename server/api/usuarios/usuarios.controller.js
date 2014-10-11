@@ -33,7 +33,7 @@ exports.index = function(req, res) {
         //console.log( 'success' );
         connection.end();
       }
-    }
+    });
 
     // res.json([]);
 
