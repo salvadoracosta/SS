@@ -1,0 +1,17 @@
+mysql $* <<EOF
+DROP DATABASE IF EXISTS ss;
+CREATE DATABASE ss;
+CREATE TABLE `usuario` (
+  `idusuario` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `correo` varchar(45) NOT NULL,
+  `hash` varchar(60) NOT NULL,
+  `salt` varchar(45) DEFAULT NULL,
+  `telefono` varchar(45) DEFAULT NULL,
+  `institucion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idusuario`),
+  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
+  UNIQUE KEY `correo_UNIQUE` (`correo`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+EOF

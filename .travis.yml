@@ -3,8 +3,8 @@ node_js:
   - '0.10'
   - '0.11'
 before_script:
-  - mysql -e 'create database ss;'
-  - mysql -e "CREATE TABLE `usuario` (`idusuario` int(10) unsigned NOT NULL AUTO_INCREMENT,`nombre` varchar(45) NOT NULL,`correo` varchar(45) NOT NULL, `hash` varchar(60) NOT NULL,`salt` varchar(45) DEFAULT NULL,`telefono` varchar(45) DEFAULT NULL,`institucion` varchar(45) DEFAULT NULL,PRIMARY KEY (`idusuario`),UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),UNIQUE KEY `correo_UNIQUE` (`correo`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8";
+  - "./dbsetup -h127.0.0.1 -utravis"
+  - make
   - echo "USE mysql;\nUPDATE user SET password=PASSWORD('admin') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - npm install -g bower grunt-cli
   - bower install 
