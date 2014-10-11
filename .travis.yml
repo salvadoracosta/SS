@@ -4,7 +4,7 @@ node_js:
   - '0.11'
 services: mysql
 before_script:
-  - mysql < /dbsetup.sql
+  - mysql < ./dbsetup.sql
   - echo "USE mysql;\nUPDATE user SET password=PASSWORD('admin') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - npm install -g bower grunt-cli
   - bower install 
