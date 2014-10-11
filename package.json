@@ -16,7 +16,8 @@
     "ejs": "~0.8.4",
     "composable-middleware": "^0.3.0",
     "bcrypt": "*",
-    "mysql": "*"
+    "mysql": "*",
+    "angular-mocks": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
