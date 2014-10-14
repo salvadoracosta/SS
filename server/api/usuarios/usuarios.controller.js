@@ -20,7 +20,7 @@ exports.index = function(req, res) {
     //console.log('connected as id ' + connection.threadId);
   });
 
-  connection.query("use ss");
+  connection.query("use mydb");
 
   var query = connection.query('SELECT * FROM usuario', function(err, result) {
       if (err) {
@@ -60,16 +60,16 @@ exports.index = function(req, res) {
       console.log('connected as id ' + connection.threadId);
     });
 
-    connection.query("use ss");
+    connection.query("use mydb");
     console.log(input);
     bcrypt.hash(input.password, 8, function(err, hash) {
       console.log(hash);
       var data = {
-        nombre: input.nombre,
-        correo: input.correo,
-        hash: hash,
-        telefono: input.telefono,
-        institucion: input.institucion
+        per_nombre: input.nombre,
+        per_correo: input.correo,
+        per_hash: hash,
+        per_telefono: input.telefono,
+        per_institucion: input.institucion
       };
       var query = connection.query('INSERT INTO usuario SET ?', data, function(err, result) {
         console.log(query);

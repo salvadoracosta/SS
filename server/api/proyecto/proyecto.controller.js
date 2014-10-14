@@ -26,7 +26,7 @@ exports.registro = function(req, res) {
 		console.log('connected as id ' + connection.threadId);
 	});
 
-	connection.query("use ss");
+	connection.query("use mydb");
 	console.log(input);
 
 	var data = {

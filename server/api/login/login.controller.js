@@ -33,9 +33,9 @@ exports.checkLogIn = function(req, res) {
     password     : input.password,
   };
   
-    connection.query("use ss");
+    connection.query("use mydb");
     console.log(input);
-    var queryString = 'SELECT * FROM usuario WHERE correo =' + connection.escape(data.correo) ;
+    var queryString = 'SELECT * FROM usuario WHERE per_correo =' + connection.escape(data.correo) ;
     var query = connection.query(queryString, function(err, result) {
 
 		if(err) {
@@ -45,8 +45,8 @@ exports.checkLogIn = function(req, res) {
 		}else{
 			//sin error en la consulta, ahora verficamos si existe alguien con ese correo
 	      	if(result[0]){
-	      		console.log(result[0].hash);
-		    	bcrypt.compare(data.password, result[0].hash, function(err, answer) {
+	      		console.log(result[0].per_hash);
+		    	bcrypt.compare(data.password, result[0].per_hash, function(err, answer) {
 				   if(answer){
 				   		res.json([{
 				          msj : 'success',

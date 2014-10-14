@@ -16,7 +16,8 @@ var app = angular.module('app', [
     'app.filters',
     'app.services',
     'app.directives',
-    'app.controllers'
+    'app.controllers',
+    'toaster'
   ])
 .run(
   [          '$rootScope', '$state', '$stateParams',
@@ -78,10 +79,11 @@ var app = angular.module('app', [
                 url: '/',
                 templateUrl: 'app/home/dashboard.html'
             })
-            .state('app.proyecto', {
-                url: '/proyecto',
+            .state('app.proyectos', {
+                url: '/proyectos',
                 templateUrl: 'app/proyecto/proyecto.html',
                 controller: 'ProyectoCtrl'
+                
             })
             
     }

@@ -3,12 +3,23 @@
 /* Controllers */
 
 angular.module('app.controllers', ['ngCookies'])
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', 
+    function(              $scope,   $translate,   $localStorage,   $window ,toaster) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
+
+      console.log(toaster);
+    $scope.toaster = {
+        type: 'success',
+        title: 'Title',
+        text: 'Message'
+    };
+    $scope.pop = function(){
+        toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+        console.log("pop");
+    };
 
       // config
       $scope.app = {
