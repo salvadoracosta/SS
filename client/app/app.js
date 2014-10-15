@@ -82,8 +82,12 @@ var app = angular.module('app', [
             .state('app.proyectos', {
                 url: '/proyectos',
                 templateUrl: 'app/proyecto/proyecto.html',
-                controller: 'ProyectoCtrl'
-                
+                controller: 'ProyectoCtrl',
+                resolve: {
+                    listaproyectos: function(proyectosFactory) {
+                        return proyectosFactory.getListaProyectos();
+                    }
+                }
             })
             
     }
