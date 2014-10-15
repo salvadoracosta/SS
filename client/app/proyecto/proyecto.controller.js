@@ -70,6 +70,10 @@ angular.module('app.controllers')
       $scope.form.$setPristine();
       $scope.registro = false;
     }
+    $scope.notshowEdit = function () {
+      $scope.formEdit.$setPristine();
+      $scope.editando = false;
+    }
 
     $scope.borrar = function (proyecto) {
       console.log(proyecto);
