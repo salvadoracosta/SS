@@ -18,7 +18,7 @@
 
 <div class ="row">
   <div class="col-sm-12">
-  <div class="panel panel-default" ng-show="!registro">
+  <div class="panel panel-default" ng-show="!registro && !editando">
     <div class="panel-heading">
       Lista Proyectos
     </div>
@@ -51,7 +51,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="proyecto in listaproyectos">
             <td>
               <div class="btn-group dropdown">
                 <button class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -59,16 +59,16 @@
                   <span class="caret"></span>
                 </button>
               <ul class="dropdown-menu">
-                <li><a href=""><i class="icon-wrench"></i> Editar</a></li>
-                <li><a href=""><i class="icon-close"></i> Borrar</a></li>
+                <li><a href="" ng-click="editar(proyecto)"><i class="icon-wrench" ></i> Editar</a></li>
+                <li><a href="" ng-click="borrar(proyecto)"><i class="icon-close" ></i> Borrar</a></li>
                 <li class="divider"></li>
                 <li><a href=""><i class="icon-users"></i> Colaboradores</a></li>
               </ul>
              </div>
             </td>
-            <td>Idrawfast</td>
-            <td>4c</td>
-            <td>Jul 25, 2013</td>
+            <td>{{ proyecto.pro_nombre }}</td>
+            <td>{{ proyecto.pro_sigla }}</td>
+            <td>{{ proyecto.pro_modulos }}</td>
             <td>
               
             </td>
@@ -87,20 +87,20 @@
         <div class="panel panel-default" ng-show="registro">
           <div class="panel-heading font-bold">Registro de Proyecto</div>
           <div class="panel-body">
-            <form class="bs-example form-horizontal ng-pristine ng-valid" name="form">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
-                <label class="col-lg-2 control-label">Nombre</label>
+                <label class="col-lg-2 control-label ">Nombre</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Mi proyecto">
+                  <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Mi proyecto" required>
                   
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label">Sigla</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1">
-                  <span class="error" ng-show="form.siglas.$error.required">
-                Required!</span>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
+                  <span class="error" ng-show="form.siglas.$error.maxlength">
+                Las siglas del proyecto solo pueden ser a lo mas dos caracteres!</span>
                 </div>
               </div>
               <div class="form-group">
@@ -108,21 +108,21 @@
                <div class="col-lg-10">
                 <div class="radio">
                   <label class="i-checks">
-                    <input type="radio" name="modulos" ng-model="modulos" value="1">
+                    <input type="radio" name="modulos" ng-model="modulos" value="1" required>
                     <i></i>
                     1
                   </label>
                 </div>
                 <div class="radio">
                   <label class="i-checks">
-                    <input type="radio" name="modulos" ng-model="modulos" value="2">
+                    <input type="radio" name="modulos" ng-model="modulos" value="2" required>
                     <i></i>
                     2
                   </label>
                 </div>
                  <div class="radio">
                   <label class="i-checks">
-                    <input type="radio" name="modulos" ng-model="modulos" value="3">
+                    <input type="radio" name="modulos" ng-model="modulos" value="3" required>
                     <i></i>
                     3
                   </label>
@@ -131,8 +131,67 @@
               </div>
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button type="submit" class="btn btn-sm btn-success" ng-click="addProyecto()">Registrar</button>
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="addProyecto()" ng-disabled='form.$invalid'>Registrar</button>
                    <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
+                </div>
+                
+              </div>
+              
+               
+             
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="editando">
+          <div class="panel-heading font-bold">Editar Proyecto</div>
+          <div class="panel-body">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Nombre</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="proyectofocus.pro_nombre" placeholder="Ejem. Mi proyecto" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">Sigla</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="proyectofocus.pro_sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
+                  <span class="error" ng-show="form.siglas.$error.maxlength">
+                Las siglas del proyecto solo pueden ser a lo mas dos caracteres!</span>
+                </div>
+              </div>
+              <div class="form-group">
+               <label class="col-lg-2 control-label">Número de módulos</label>
+               <div class="col-lg-10">
+                <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" name="modulos" ng-model="proyectofocus.pro_modulos" value="1" required>
+                    <i></i>
+                    1
+                  </label>
+                </div>
+                <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" name="modulos" ng-model="proyectofocus.pro_modulos" value="2" required>
+                    <i></i>
+                    2
+                  </label>
+                </div>
+                 <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" name="modulos" ng-model="proyectofocus.pro_modulos" value="3" required>
+                    <i></i>
+                    3
+                  </label>
+                </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="editProyecto()" ng-disabled='form2.$invalid'>Editar</button>
+                   <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
                 </div>
                 
               </div>
