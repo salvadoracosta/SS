@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('ProyectoCtrl', function ($scope,$http,toaster,$state, listaproyectos, proyectosFactory) {
+  .controller('ProyectoCtrl', function ($scope,$http,toaster, listaproyectos, proyectosFactory) {
     console.log(toaster);
     console.log(listaproyectos);
     console.log(proyectosFactory);
@@ -27,7 +27,7 @@ angular.module('app.controllers')
     */
 
     /*
-    Funcion para registrar a un usuario
+    Funcion para registrar a un proyecto
     */
     $scope.addProyecto = function() {
       $http.post('/api/proyectos', { nombre: $scope.nombre , sigla : $scope.sigla , modulos : $scope.modulos}).success(function(data, status) {
