@@ -9,7 +9,7 @@ exports.index = function(req, res) {
   var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'nancy'
+    password: 'admin'
   });
 
   connection.connect(function(err) {
@@ -24,7 +24,7 @@ exports.index = function(req, res) {
 
   var query = connection.query('SELECT * FROM usuario', function(err, result) {
       if (err) {
-       // throw err;
+        throw err;
         debug
         return res.send(409);
         connection.end();
@@ -49,7 +49,7 @@ exports.index = function(req, res) {
     var connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: 'nancy'
+      password: 'admin'
     });
 
     connection.connect(function(err) {

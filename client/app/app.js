@@ -89,11 +89,6 @@ var app = angular.module('app', [
                     }
                 }
             })
-            .state('app.subsistemas',{
-                url:'/subsistemas',
-                controller: 'SubsistemaCtrl',
-                templateUrl: 'app/subsistema/subsistema.html'
-            })
             
     }
   ]
