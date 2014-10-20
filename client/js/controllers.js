@@ -23,7 +23,7 @@ angular.module('app.controllers', ['ngCookies'])
 
       // config
       $scope.app = {
-        name: 'Nabu',
+        name: 'SiAs',
         version: '0.1 init',
         // for chart colors
         color: {
