@@ -9,7 +9,7 @@ exports.index = function(req, res) {
   var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'nancy'
+    password: 'admin'
   });
 
   connection.connect(function(err) {

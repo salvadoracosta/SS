@@ -21,7 +21,7 @@ exports.index = function(req, res) {
 
 	  connection.query("use mydb");
 
-	  var query = connection.query('SELECT * FROM proyecto', function(err, result) {
+	  var query = connection.query('SELECT * FROM variable', function(err, result) {
 	      if (err) {
 	        throw err;
 	        debug
@@ -41,14 +41,14 @@ exports.delete = function(req, res) {
 
 	//var input = JSON.parse(JSON.stringify(req.body));
 	var data = {
-    pro_id    : req.params.id
+    var_id    : req.params.id
   	};
   	console.log(data);
 	  var mysql = require('mysql');
 	  var connection = mysql.createConnection({
 	    host: 'localhost',
 	    user: 'root',
-	    password: 'nancy'
+	    password: 'admin'
 	  });
 
 	  connection.connect(function(err) {
@@ -60,7 +60,7 @@ exports.delete = function(req, res) {
 	  });
 
 	  connection.query("use mydb");
-	  var queryString = 'DELETE FROM proyecto WHERE pro_id =' + connection.escape(data.pro_id) ;
+	  var queryString = 'DELETE FROM variable WHERE var_id =' + connection.escape(data.var_id) ;
 	  var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;
@@ -69,7 +69,7 @@ exports.delete = function(req, res) {
 	        connection.end();
 	      } else {
 	        res.json([{
-				          msj : 'El proyecto fue eliminado sin problemas',
+				          msj : 'La variable fue eliminada sin problemas',
 				        }]);
 	        //console.log( 'success' );
 	        connection.end();
@@ -87,7 +87,7 @@ exports.registro = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'nancy'
+		password: 'admin'
 	});
 
 	connection.connect(function(err) {
@@ -102,11 +102,12 @@ exports.registro = function(req, res) {
 	console.log(input);
 
 	var data = {
-		pro_nombre: input.nombre,
-		pro_sigla: input.sigla,
-		pro_modulos: input.modulos
+		var_nombre: input.nombre,
+		var_sigla: input.sigla,
+		var_descripcion: input.descripcion,
+		var_comentario: input.comentario
 	};
-	var query = connection.query('INSERT INTO proyecto SET ?', data, function(err, result) {
+	var query = connection.query('INSERT INTO variable SET ?', data, function(err, result) {
 
 			if (err) {
 				//throw err; debug
@@ -114,7 +115,7 @@ exports.registro = function(req, res) {
 				connection.end();
 			} else {
 				res.json([{
-					msj: 'Registro del proyecto exitoso',
+					msj: 'Registro de la variable exitoso',
 				}]);
 				console.log('success');
 				connection.end();
@@ -133,7 +134,7 @@ exports.update = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'nancy'
+		password: 'admin'
 	});
 
 	connection.connect(function(err) {
@@ -148,12 +149,13 @@ exports.update = function(req, res) {
 	console.log(input);
 
 	var data = {
-		pro_id: req.params.id,
-		pro_nombre: input.nombre,
-		pro_sigla: input.sigla,
-		pro_modulos: input.modulos
+		var_nombre: input.nombre,
+		var_sigla: input.sigla,
+		var_descripcion: input.descripcion,
+		var_comentario: input.comentario
 	};
-	var queryString = 'UPDATE proyecto SET pro_nombre = '+connection.escape(data.pro_nombre)+', pro_sigla= '+connection.escape(data.pro_sigla)+', pro_modulos= '+connection.escape(data.pro_modulos)+' WHERE pro_id=' + connection.escape(data.pro_id) ;
+
+	var queryString = 'UPDATE variable SET var_nombre = '+connection.escape(data.var_nombre)+', var_sigla= '+connection.escape(data.var_sigla)+', var_descripcion= '+connection.escape(data.var_descripcion)+', var_comentario= '+connection.escape(data.var_comentario)+' WHERE var_id=' + connection.escape(data.var_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;
@@ -163,7 +165,7 @@ exports.update = function(req, res) {
 	      } else {
 	      	console.log(queryString);
 	        res.json([{
-				          msj : 'El proyecto fue editado exitosamente',
+				          msj : 'La variable fue editada exitosamente',
 				        }]);
 	        //console.log( 'success' );
 	        connection.end();
