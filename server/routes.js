@@ -12,6 +12,7 @@ module.exports = function(app) {
   app.use('/api/subsistemas', require('./api/subsistema'));
   app.use('/api/proyectos', require('./api/proyecto'));
   app.use('/api/login', require('./api/login'));
+  app.use('/api/variables', require('./api/variable'));
   app.use('/api/usuarios', require('./api/usuarios'));
   app.use('/api/things', require('./api/thing'));
   

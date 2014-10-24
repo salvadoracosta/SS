@@ -110,7 +110,7 @@ exports.registro = function(req, res) {
 	var query = connection.query('INSERT INTO variable SET ?', data, function(err, result) {
 
 			if (err) {
-				//throw err; debug
+				throw err; debug
 				return res.send(500);
 				connection.end();
 			} else {

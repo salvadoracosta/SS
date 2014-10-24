@@ -25,3 +25,23 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('variablesFactory', ['$http', function($http) {
+    console.log('Factory');
+    var listavariables;
+    
+   var sdo = {
+    getListaVariables: function () {
+        var promise = $http.get('/api/variables').success(function(data, status) {
+                
+                listavariables = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
