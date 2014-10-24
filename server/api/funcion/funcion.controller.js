@@ -8,7 +8,7 @@ exports.index = function(req, res) {
 	  var connection = mysql.createConnection({
 	    host: 'localhost',
 	    user: 'root',
-	    password: 'admin'
+	    password: 'nancy'
 	  });
 
 	  connection.connect(function(err) {
@@ -48,7 +48,7 @@ exports.delete = function(req, res) {
 	  var connection = mysql.createConnection({
 	    host: 'localhost',
 	    user: 'root',
-	    password: 'admin'
+	    password: 'nancy'
 	  });
 
 	  connection.connect(function(err) {
@@ -87,7 +87,7 @@ exports.registro = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'admin'
+		password: 'nancy'
 	});
 
 	connection.connect(function(err) {
@@ -139,7 +139,7 @@ exports.update = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'admin'
+		password: 'nancy'
 	});
 
 	connection.connect(function(err) {

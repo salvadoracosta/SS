@@ -116,9 +116,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Subcategoria` (
   `sub_id` INT NOT NULL AUTO_INCREMENT,
-  `sub_var1` INT NULL,
-  `sub_var2` INT NULL,
-  `sub_var3` INT NULL,
   `sub_nombre` VARCHAR(45) NULL,
   `sub_sigla` VARCHAR(45) NULL,
   `sub_valor` INT NULL,

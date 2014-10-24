@@ -51,7 +51,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="proyecto in listaproyectos">
+          <tr ng-repeat="subsistema in listasubsistemas">
             <td>
               <div class="btn-group dropdown">
                 <button class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -59,10 +59,8 @@
                   <span class="caret"></span>
                 </button>
               <ul class="dropdown-menu">
-                <li><a href="" ng-click="editar(proyecto)"><i class="icon-wrench" ></i> Editar</a></li>
-                <li><a href="" ng-click="borrar(proyecto)"><i class="icon-close" ></i> Borrar</a></li>
-                <li class="divider"></li>
-                <li><a href=""><i class="icon-users"></i> Colaboradores</a></li>
+                <li><a href="" ng-click="editar(subsistema)"><i class="icon-wrench" ></i> Editar</a></li>
+                <li><a href="" ng-click="borrar(subsistema)"><i class="icon-close" ></i> Borrar</a></li>
               </ul>
              </div>
             </td>
@@ -117,6 +115,44 @@
                 
               </div>
 
+            </form>
+          </div>
+        </div>
+                <div class="panel panel-default" ng-show="editando">
+          <div class="panel-heading font-bold">Editar Subsistema</div>
+          <div class="panel-body">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Nombre</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="subsistemafocus.sub_nombre" placeholder="Ejem. Mi subsistema" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">Sigla</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
+                  <span class="error" ng-show="form.siglas.$error.maxlength">
+                Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
+                </div>
+              </div>
+              <div class="form-group">
+               <label class="col-lg-2 control-label">Número de módulos</label>
+               <div class="col-lg-10">
+                    <input name="modulos" ng-model="subsistemafocus.sub_valor" value="1" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="editSubsistema()" ng-disabled='form2.$invalid'>Editar</button>
+                   <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
+                </div>
+                
+              </div>
+              
+               
+             
             </form>
           </div>
         </div>

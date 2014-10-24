@@ -92,7 +92,12 @@ var app = angular.module('app', [
             .state('app.subsistemas',{
                 url:'/subsistemas',
                 controller: 'SubsistemaCtrl',
-                templateUrl: 'app/subsistema/subsistema.html'
+                templateUrl: 'app/subsistema/subsistema.html',
+                resolve: {
+                    listasubsistemas: function(subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemas();
+                    }
+                }
             })
             .state('app.funciones',{
                 url:'/funciones',
@@ -111,6 +116,16 @@ var app = angular.module('app', [
                 resolve: {
                     listavariables: function(variablesFactory) {
                         return variablesFactory.getListaVariables();
+                    }
+                }
+            })
+            .state('app.modulos',{
+                url:'/modulos',
+                controller: 'ModulosCtrl',
+                templateUrl: 'app/modulo/modulo.html',
+                resolve: {
+                    listaModulos: function(modulosFactory) {
+                        return modulosFactory.getListaModulos();
                     }
                 }
             })
