@@ -45,3 +45,23 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('funcionesFactory', ['$http', function($http) {
+    console.log('Factory');
+    var listafunciones;
+    
+   var sdo = {
+    getListaFunciones: function () {
+        var promise = $http.get('/api/funciones').success(function(data, status) {
+                
+                listafunciones = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])

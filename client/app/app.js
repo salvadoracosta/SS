@@ -94,6 +94,16 @@ var app = angular.module('app', [
                 controller: 'SubsistemaCtrl',
                 templateUrl: 'app/subsistema/subsistema.html'
             })
+            .state('app.funciones',{
+                url:'/funciones',
+                controller: 'FuncionesCtrl',
+                templateUrl: 'app/funcion/funcion.html',
+                resolve: {
+                    listafunciones: function(funcionesFactory) {
+                        return funcionesFactory.getListaFunciones();
+                    }
+                }
+            })
             .state('app.variables',{
                 url:'/variables',
                 controller: 'VariableCtrl',

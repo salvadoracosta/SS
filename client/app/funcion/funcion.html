@@ -1,0 +1,262 @@
+<div class="bg-light lter b-b wrapper-md">
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+      <div class="row">
+        <div class="col-sm-3 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">Funciones</h1>
+          <small class="text-muted">Lista de funciones, Registrar, Editar y Eliminar</small>
+        </div>
+        <div class="col-sm-9 col-xs-12">
+          <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nueva Funcion</button>
+        </div>
+        
+      </div>
+    </div>
+<div class ="wrapper-md ng-scope" ng-scope="FuncionesCtrl">
+
+<div class ="col" >
+
+
+<div class ="row">
+  <div class="col-sm-12">
+  <div class="panel panel-default" ng-show="!registro && !editando">
+    <div class="panel-heading">
+      Lista Funciones
+    </div>
+    <div class="row wrapper">
+      <div class="col-sm-3 m-b-xs">
+              <div class="input-group">
+          <input type="text" class="input-sm form-control" placeholder="Buscar">
+          <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button">Ir!</button>
+          </span>
+        </div>          
+      </div>
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-5">
+        
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th style="width:20px;">
+              
+            </th>
+            <th>v1</th>
+            <th>v2</th>
+            <th>v3</th>
+            <th>v4</th>
+            <th>v5</th>
+            <th>v6</th>
+            <th>v7</th>
+            <th>v8</th>
+            <th>v9</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="funcion in listafunciones">
+            <td>
+              <div class="btn-group dropdown">
+                <button class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-arrow-right"> </i>
+                  <span class="caret"></span>
+                </button>
+              <ul class="dropdown-menu">
+                <li><a href="" ng-click="editar(funcion)"><i class="icon-wrench" ></i> Editar</a></li>
+                <li><a href="" ng-click="borrar(funcion)"><i class="icon-close" ></i> Borrar</a></li>
+              </ul>
+             </div>
+            </td>
+            <td>{{ funcion.fun_val1 }}</td>
+            <td>{{ funcion.fun_val2 }}</td>
+            <td>{{ funcion.fun_val3 }}</td>
+            <td>{{ funcion.fun_val4 }}</td>
+            <td>{{ funcion.fun_val5 }}</td>
+            <td>{{ funcion.fun_val6 }}</td>
+            <td>{{ funcion.fun_val7 }}</td>
+            <td>{{ funcion.fun_val8 }}</td>
+            <td>{{ funcion.fun_val9 }}</td>
+            <td>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="panel-footer">
+      <div class="row">
+        
+        
+        
+      </div>
+    </footer>
+  </div>
+        <div class="panel panel-default" ng-show="registro">
+          <div class="panel-heading font-bold">Registro de Funcion</div>
+          <div class="panel-body">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 1</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v1" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 2</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v2" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 3</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v3" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 4</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v4" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 5</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v5" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 6</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v6" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 7</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v7" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 8</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v8" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 9</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="v9" required>
+                  
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="addFuncion()" ng-disabled='form.$invalid'>Registrar</button>
+                   <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
+                </div>
+                
+              </div>
+              
+               
+             
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="editando">
+          <div class="panel-heading font-bold">Editar Funcion</div>
+          <div class="panel-body">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 1</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val1" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 2</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val2" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 3</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val3" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 4</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val4" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 5</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val5" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 6</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val6" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 7</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val7" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 8</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val8" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label ">Valor 9</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="funcionfocus.fun_val9" required>
+                  
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="editFuncion()" ng-disabled='form2.$invalid'>Editar</button>
+                   <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
+                </div>
+                
+              </div>
+              
+               
+             
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
