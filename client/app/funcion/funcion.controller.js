@@ -17,7 +17,7 @@ angular.module('app.controllers')
     
     $scope.addFuncion = function() {
       console.log($scope);
-      $http.post('/api/funciones', { v1: $scope.v1 , v2: $scope.v2 , v3: $scope.v3, v4: $scope.v4,v5: $scope.v5,v6: $scope.v6,v7: $scope.v7,v8: $scope.v8,v9: $scope.v9}).success(function(data, status) {
+      $http.post('/api/funciones', { tipo: $scope.tipoFuncion, v1: $scope.v1 , v2: $scope.v2 , v3: $scope.v3, v4: $scope.v4,v5: $scope.v5,v6: $scope.v6,v7: $scope.v7,v8: $scope.v8,v9: $scope.v9, com1: $scope.com1 , com2: $scope.com2 , com3: $scope.com3, com4: $scope.com4,com5: $scope.com5,com6: $scope.com6,com7: $scope.com7,com8: $scope.com8,com9: $scope.com9}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -51,6 +51,23 @@ angular.module('app.controllers')
 
     $scope.showregistro = function () {
       $scope.registro = true;
+    }
+
+    $scope.getTipo = function (tipo) {
+      console.log(tipo);
+      switch(tipo) {
+          case 0:
+              return 'Pesimista';
+              break;
+          case 1:
+               return 'Lineal';
+              break;
+          case 2:
+               return 'Optimista';
+              break;    
+          default:
+               return 'No Definida';
+      }
     }
 
     $scope.notshowregistro = function () {
@@ -106,7 +123,7 @@ angular.module('app.controllers')
     }
 
     $scope.editFuncion = function() {
-      $http.put('/api/funciones/'+$scope.funcionfocus.fun_id, { v1: $scope.funcionfocus.fun_val1 , v2: $scope.funcionfocus.fun_val2 , v3: $scope.funcionfocus.fun_val3, v4: $scope.funcionfocus.fun_val4,v5: $scope.funcionfocus.fun_val5,v6: $scope.funcionfocus.fun_val6,v7: $scope.funcionfocus.fun_val7,v8: $scope.funcionfocus.fun_val8,v9: $scope.funcionfocus.fun_val9}).success(function(data, status) {
+      $http.put('/api/funciones/'+$scope.funcionfocus.fun_id, { tipo: $scope.funcionfocus.fun_tipo, v1: $scope.funcionfocus.fun_val1 , v2: $scope.funcionfocus.fun_val2 , v3: $scope.funcionfocus.fun_val3, v4: $scope.funcionfocus.fun_val4,v5: $scope.funcionfocus.fun_val5,v6: $scope.funcionfocus.fun_val6,v7: $scope.funcionfocus.fun_val7,v8: $scope.funcionfocus.fun_val8,v9: $scope.funcionfocus.fun_val9, com1: $scope.funcionfocus.fun_com1 , com2: $scope.funcionfocus.fun_com2 , com3: $scope.funcionfocus.fun_com3, com4: $scope.funcionfocus.fun_com4,com5: $scope.funcionfocus.fun_com5,com6: $scope.funcionfocus.fun_com6,com7: $scope.funcionfocus.fun_com7,com8: $scope.funcionfocus.fun_com8,com9: $scope.funcionfocus.fun_com9}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);

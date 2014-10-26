@@ -8,7 +8,7 @@ exports.index = function(req, res) {
 	  var connection = mysql.createConnection({
 	    host: 'localhost',
 	    user: 'root',
-	    password: 'nancy'
+	    password: 'admin'
 	  });
 
 	  connection.connect(function(err) {
@@ -48,7 +48,7 @@ exports.delete = function(req, res) {
 	  var connection = mysql.createConnection({
 	    host: 'localhost',
 	    user: 'root',
-	    password: 'nancy'
+	    password: 'admin'
 	  });
 
 	  connection.connect(function(err) {
@@ -87,7 +87,7 @@ exports.registro = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'nancy'
+		password: 'admin'
 	});
 
 	connection.connect(function(err) {
@@ -102,6 +102,7 @@ exports.registro = function(req, res) {
 	console.log(input);
 
 	var data = {
+		fun_tipo: input.tipo,
 		fun_val1: input.v1,
 		fun_val2: input.v2,
 		fun_val3: input.v3,
@@ -110,7 +111,16 @@ exports.registro = function(req, res) {
 		fun_val6: input.v6,
 		fun_val7: input.v7,
 		fun_val8: input.v8,
-		fun_val9: input.v9
+		fun_val9: input.v9,
+		fun_com1: input.com1,
+		fun_com2: input.com2,
+		fun_com3: input.com3,
+		fun_com4: input.com4,
+		fun_com5: input.com5,
+		fun_com6: input.com6,
+		fun_com7: input.com7,
+		fun_com8: input.com8,
+		fun_com9: input.com9
 	};
 	var query = connection.query('INSERT INTO funcion SET ?', data, function(err, result) {
 
@@ -139,7 +149,7 @@ exports.update = function(req, res) {
 	var connection = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
-		password: 'nancy'
+		password: 'admin'
 	});
 
 	connection.connect(function(err) {
@@ -155,6 +165,7 @@ exports.update = function(req, res) {
 
 	var data = {
 		fun_id: req.params.id,
+		fun_tipo: input.tipo,
 		fun_val1: input.v1,
 		fun_val2: input.v2,
 		fun_val3: input.v3,
@@ -163,11 +174,19 @@ exports.update = function(req, res) {
 		fun_val6: input.v6,
 		fun_val7: input.v7,
 		fun_val8: input.v8,
-		fun_val9: input.v9
-		
+		fun_val9: input.v9,
+		fun_com1: input.com1,
+		fun_com2: input.com2,
+		fun_com3: input.com3,
+		fun_com4: input.com4,
+		fun_com5: input.com5,
+		fun_com6: input.com6,
+		fun_com7: input.com7,
+		fun_com8: input.com8,
+		fun_com9: input.com9
 	};
 
-	var queryString = 'UPDATE funcion SET fun_val1 = '+connection.escape(data.fun_val1)+', fun_val2= '+connection.escape(data.fun_val2)+', fun_val3= '+connection.escape(data.fun_val3)+', fun_val4= '+connection.escape(data.fun_val4)+', fun_val5= '+connection.escape(data.fun_val5)+', fun_val6= '+connection.escape(data.fun_val6)+', fun_val7= '+connection.escape(data.fun_val7)+', fun_val8= '+connection.escape(data.fun_val8)+', fun_val9= '+connection.escape(data.fun_val9)+' WHERE fun_id=' + connection.escape(data.fun_id) ;
+	var queryString = 'UPDATE funcion SET fun_tipo ='+connection.escape(data.fun_tipo)+', fun_val1 = '+connection.escape(data.fun_val1)+', fun_val2= '+connection.escape(data.fun_val2)+', fun_val3= '+connection.escape(data.fun_val3)+', fun_val4= '+connection.escape(data.fun_val4)+', fun_val5= '+connection.escape(data.fun_val5)+', fun_val6= '+connection.escape(data.fun_val6)+', fun_val7= '+connection.escape(data.fun_val7)+', fun_val8= '+connection.escape(data.fun_val8)+', fun_val9= '+connection.escape(data.fun_val9)+', fun_com1= '+connection.escape(data.fun_com1)+', fun_com2= '+connection.escape(data.fun_com2)+', fun_com3= '+connection.escape(data.fun_com3)+', fun_com4= '+connection.escape(data.fun_com4)+', fun_com5= '+connection.escape(data.fun_com5)+', fun_com6= '+connection.escape(data.fun_com6)+', fun_com7= '+connection.escape(data.fun_com7)+', fun_com8= '+connection.escape(data.fun_com8)+', fun_com9= '+connection.escape(data.fun_com9)+' WHERE fun_id=' + connection.escape(data.fun_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

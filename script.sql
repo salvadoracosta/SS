@@ -44,15 +44,25 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Funcion` (
   `fun_id` INT NOT NULL AUTO_INCREMENT,
+  `fun_tipo` INT NULL,
   `fun_val1` DOUBLE NULL,
+  `fun_com1` VARCHAR(120) NULL,
   `fun_val2` DOUBLE NULL,
+  `fun_com2` VARCHAR(120) NULL,
   `fun_val3` DOUBLE NULL,
+  `fun_com3` VARCHAR(120) NULL,
   `fun_val4` DOUBLE NULL,
+  `fun_com4` VARCHAR(120) NULL,
   `fun_val5` DOUBLE NULL,
+  `fun_com5` VARCHAR(120) NULL,
   `fun_val6` DOUBLE NULL,
+  `fun_com6` VARCHAR(120) NULL,
   `fun_val7` DOUBLE NULL,
+  `fun_com7` VARCHAR(120) NULL,
   `fun_val8` DOUBLE NULL,
+  `fun_com8` VARCHAR(120) NULL,
   `fun_val9` DOUBLE NULL,
+  `fun_com9` VARCHAR(120) NULL,
   PRIMARY KEY (`fun_id`))
 ENGINE = InnoDB;
 
