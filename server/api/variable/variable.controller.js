@@ -104,8 +104,8 @@ exports.registro = function(req, res) {
 	var data = {
 		var_nombre: input.nombre,
 		var_sigla: input.sigla,
-		var_descripcion: input.descripcion,
-		var_comentario: input.comentario
+		var_descripcioncorta: input.descripcioncorta,
+		var_descripcionlarga: input.descripcionlarga
 	};
 	var query = connection.query('INSERT INTO variable SET ?', data, function(err, result) {
 
@@ -149,13 +149,14 @@ exports.update = function(req, res) {
 	console.log(input);
 
 	var data = {
+		var_id: req.params.id,
 		var_nombre: input.nombre,
 		var_sigla: input.sigla,
-		var_descripcion: input.descripcion,
-		var_comentario: input.comentario
+		var_descripcioncorta: input.descripcioncorta,
+		var_descripcionlarga: input.descripcionlarga
 	};
 
-	var queryString = 'UPDATE variable SET var_nombre = '+connection.escape(data.var_nombre)+', var_sigla= '+connection.escape(data.var_sigla)+', var_descripcion= '+connection.escape(data.var_descripcion)+', var_comentario= '+connection.escape(data.var_comentario)+' WHERE var_id=' + connection.escape(data.var_id) ;
+	var queryString = 'UPDATE variable SET var_nombre = '+connection.escape(data.var_nombre)+', var_sigla= '+connection.escape(data.var_sigla)+', var_descripcioncorta= '+connection.escape(data.var_descripcioncorta)+', var_descripcionlarga= '+connection.escape(data.var_descripcionlarga)+' WHERE var_id=' + connection.escape(data.var_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

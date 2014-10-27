@@ -33,7 +33,7 @@ angular.module('app.controllers')
     */
     $scope.addVariable = function() {
       console.log($scope);
-      $http.post('/api/variables', { nombre: $scope.nombre , sigla : $scope.sigla , descripcion : $scope.descripcion, comentario : $scope.comentario}).success(function(data, status) {
+      $http.post('/api/variables', { nombre: $scope.nombre , sigla : $scope.sigla , descripcioncorta : $scope.descripcioncorta, descripcionlarga : $scope.descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -66,6 +66,7 @@ angular.module('app.controllers')
     };
 
     $scope.showregistro = function () {
+      $scope.editando = false;
       $scope.registro = true;
     }
 
@@ -122,7 +123,7 @@ angular.module('app.controllers')
     }
 
     $scope.editVariable = function() {
-      $http.put('/api/variables/'+$scope.variablefocus.var_id, { nombre: $scope.variablefocus.var_nombre , sigla : $scope.variablefocus.var_sigla , descripcion : $scope.variablefocus.var_descripcion, comentario : $scope.variablefocus.var_comentario}).success(function(data, status) {
+      $http.put('/api/variables/'+$scope.variablefocus.var_id, { nombre: $scope.variablefocus.var_nombre , sigla : $scope.variablefocus.var_sigla , descripcioncorta : $scope.variablefocus.var_descripcioncorta, descripcionlarga : $scope.variablefocus.var_descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
