@@ -121,10 +121,10 @@ var app = angular.module('app', [
             })
             .state('app.modulos',{
                 url:'/modulos',
-                controller: 'ModulosCtrl',
+                controller: 'ModuloCtrl',
                 templateUrl: 'app/modulo/modulo.html',
                 resolve: {
-                    listaModulos: function(modulosFactory) {
+                    listamodulos: function(modulosFactory) {
                         return modulosFactory.getListaModulos();
                     }
                 }

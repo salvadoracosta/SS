@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('ModuloCtrl', function ($scope,$http,toaster, listamdulos, modulosFactory) {
+  .controller('ModuloCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory) {
     console.log(toaster);
-    console.log(listamdulos);
+    console.log(listamodulos);
     console.log(modulosFactory);
-    $scope.listamdulos = listamdulos.data;
+    $scope.listamodulos = listamodulos.data;
     $scope.registro = false;
     $scope.toaster = {
         type: 'success',
@@ -29,15 +29,15 @@ angular.module('app.controllers')
     /*
     Funcion para registrar un modulo
     */
-    $scope.addProyecto = function() {
-      $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, paso3 : $scope.paso3}).success(function(data, status) {
+    $scope.addModulo = function() {
+      $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, peso3 : $scope.peso3,nombre: $scope.nombre, sigla:$scope.sigla }).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
           
           $scope.authError = '';
           $scope.authSuccess = data[0].msj;
-          $scope.toaster.title = "Modulo creado";
+          $scope.toaster.title = "Módulo creado";
           $scope.toaster.text = data[0].msj;
           $scope.toaster.type = "success"
           //$scope.nombre ='';
@@ -53,7 +53,7 @@ angular.module('app.controllers')
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo registrar el nuevo modulo, posiblemente es porblema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo registrar el nuevo módulo, posiblemente es porblema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';
@@ -108,7 +108,7 @@ angular.module('app.controllers')
     $scope.reloadModulos = function() {
       modulosFactory.getListaModulos().then(function(response) {
         console.log(response);
-        $scope.listamdulos = response.data;
+        $scope.listamodulos = response.data;
       })
     }
 
@@ -119,7 +119,7 @@ angular.module('app.controllers')
     }
 
     $scope.editModulo = function() {
-      $http.put('/api/modulos/'+$scope.modulofocus.mod_id, { var1: $scope.modulofocus.mod_var1 , var2 : $scope.modulofocus.mod_sigla , modulos : $scope.modulofocus.mod_modulos}).success(function(data, status) {
+      $http.put('/api/modulos/'+$scope.modulofocus.mod_id, { var1: $scope.modulofocus.mod_var1 , var2 : $scope.modulofocus.mod_var2, var3 :$scope.modulofocus.mod_var3, peso:$scope.modulofocus.mod_peso, peso2:$scope.modulofocus.mod_peso2, peso3:$scope.modulofocus.mod_peso3, nombre:$scope.modulofocus.mod_nombre, sigla:$scope.modulofocus.mod_sigla}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -142,7 +142,7 @@ angular.module('app.controllers')
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo editar el modulo, posiblemente es porblema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo editar el modulo, posiblemente es problema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';

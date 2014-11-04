@@ -142,7 +142,7 @@ angular.module('app.controllers')
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo editar el proyecto, posiblemente es porblema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo editar el proyecto, posiblemente es problema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';

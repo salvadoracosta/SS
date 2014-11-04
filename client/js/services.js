@@ -93,7 +93,7 @@ angular.module('app.services', [])
     getListaModulos: function () {
         var promise = $http.get('/api/modulos').success(function(data, status) {
                 
-                listasubsistemas = data;
+                listamodulos = data;
                 //console.log(listavariables);
             }).
             error(function(data, status, headers, config) {
