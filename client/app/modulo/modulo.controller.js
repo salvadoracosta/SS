@@ -75,6 +75,54 @@ angular.module('app.controllers')
     angular.element("#slider3").on('slideStop', function(data){
       updateModel3(data.value);
     });
+    $scope.modulofocus = {};
+    $scope.modulofocus.mod_peso =0.3;
+    $scope.modulofocus.mod_peso2 =0.3;
+    $scope.modulofocus.mod_peso3 =0.3;
+    
+    var updateModelFocus = function(val){
+      console.log(val);
+      $scope.$apply(function(){
+        $scope.modulofocus.mod_peso = val;
+        $scope.modulofocus.mod_peso2 = (1-val)/2;
+        $scope.modulofocus.mod_peso3 = (1-val)/2;
+        angular.element("#slider2Focus").slider('setValue',$scope.modulofocus.mod_peso2);
+        angular.element("#slider3Focus").slider('setValue',$scope.modulofocus.mod_peso3);
+      });
+    };
+    var updateModelFocus2 = function(val){
+      $scope.$apply(function(){
+        $scope.modulofocus.mod_peso2 = val;
+        $scope.modulofocus.mod_peso = (1-val)/2;
+        $scope.modulofocus.mod_peso3 = (1-val)/2;
+        angular.element("#sliderFocus").slider('setValue',$scope.modulofocus.mod_peso);
+        angular.element("#slider3Focus").slider('setValue',$scope.modulofocus.mod_peso3);
+        
+      });
+    };
+    var updateModelFocus3 = function(val){
+      $scope.$apply(function(){
+        $scope.modulofocus.mod_peso3 = val;
+        
+        $scope.modulofocus.mod_peso = (1-val)/2;
+        $scope.modulofocus.mod_peso2 = (1-val)/2;
+        angular.element("#sliderFocus").slider('setValue',$scope.modulofocus.mod_peso);
+        angular.element("#slider2Focus").slider('setValue',$scope.modulofocus.mod_peso2);
+
+        
+      });
+    };
+    angular.element("#sliderFocus").on('slideStop', function(data){
+      updateModelFocus(data.value);
+      //console.log(angular.element("#slider2").slider('setValue',0.8));
+     
+    });
+    angular.element("#slider2Focus").on('slideStop', function(data){
+      updateModelFocus2(data.value);
+    });
+    angular.element("#slider3Focus").on('slideStop', function(data){
+      updateModelFocus3(data.value);
+    });
 
     $scope.addModulo = function() {
        console.log($scope);
@@ -165,6 +213,7 @@ angular.module('app.controllers')
       $scope.modulofocus = modulo;
       $scope.editando = true;
       console.log($scope.modulofocus);
+
     }
 
     $scope.editModulo = function() {
