@@ -103,7 +103,6 @@ exports.registro = function(req, res) {
 
 	var data = {
 		pro_nombre: input.nombre,
-		pro_sigla: input.sigla,
 		pro_modulos: input.modulos
 	};
 	var query = connection.query('INSERT INTO proyecto SET ?', data, function(err, result) {
@@ -150,10 +149,9 @@ exports.update = function(req, res) {
 	var data = {
 		pro_id: req.params.id,
 		pro_nombre: input.nombre,
-		pro_sigla: input.sigla,
 		pro_modulos: input.modulos
 	};
-	var queryString = 'UPDATE proyecto SET pro_nombre = '+connection.escape(data.pro_nombre)+', pro_sigla= '+connection.escape(data.pro_sigla)+', pro_modulos= '+connection.escape(data.pro_modulos)+' WHERE pro_id=' + connection.escape(data.pro_id) ;
+	var queryString = 'UPDATE proyecto SET pro_nombre = '+connection.escape(data.pro_nombre)+', pro_modulos= '+connection.escape(data.pro_modulos)+' WHERE pro_id=' + connection.escape(data.pro_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

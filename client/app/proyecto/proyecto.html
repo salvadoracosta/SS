@@ -45,8 +45,7 @@
               
             </th>
             <th>Nombre</th>
-            <th>Sigla</th>
-            <th>Numero de modulos</th>
+            <th>Número de módulos</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -67,7 +66,6 @@
              </div>
             </td>
             <td>{{ proyecto.pro_nombre }}</td>
-            <td>{{ proyecto.pro_sigla }}</td>
             <td>{{ proyecto.pro_modulos }}</td>
             <td>
               
@@ -93,14 +91,6 @@
                 <div class="col-lg-10">
                   <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Mi proyecto" required>
                   
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-2 control-label">Sigla</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
-                  <span class="error" ng-show="form.siglas.$error.maxlength">
-                Las siglas del proyecto solo pueden ser a lo mas dos caracteres!</span>
                 </div>
               </div>
               <div class="form-group">
@@ -152,14 +142,6 @@
                 <div class="col-lg-10">
                   <input type="text" class="form-control" ng-model="proyectofocus.pro_nombre" placeholder="Ejem. Mi proyecto" required>
                   
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-2 control-label">Sigla</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="proyectofocus.pro_sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
-                  <span class="error" ng-show="form.siglas.$error.maxlength">
-                Las siglas del proyecto solo pueden ser a lo mas dos caracteres!</span>
                 </div>
               </div>
               <div class="form-group">
