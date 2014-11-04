@@ -29,11 +29,60 @@ angular.module('app.controllers')
     /*
     Funcion para registrar un modulo
     */
+    $scope.peso =0.3;
+    $scope.peso2 =0.3;
+    $scope.peso3 =0.3;
+    var updateModel = function(val){
+      console.log(val);
+      $scope.$apply(function(){
+        $scope.peso = val;
+        $scope.peso2 = (1-val)/2;
+        $scope.peso3 = (1-val)/2;
+        angular.element("#slider2").slider('setValue',$scope.peso2);
+        angular.element("#slider3").slider('setValue',$scope.peso3);
+      });
+    };
+    var updateModel2 = function(val){
+      $scope.$apply(function(){
+        $scope.peso2 = val;
+        $scope.peso = (1-val)/2;
+        $scope.peso3 = (1-val)/2;
+        angular.element("#slider").slider('setValue',$scope.peso);
+        angular.element("#slider3").slider('setValue',$scope.peso3);
+        
+      });
+    };
+    var updateModel3 = function(val){
+      $scope.$apply(function(){
+        $scope.peso3 = val;
+        
+        $scope.peso = (1-val)/2;
+        $scope.peso2 = (1-val)/2;
+        angular.element("#slider").slider('setValue',$scope.peso);
+        angular.element("#slider2").slider('setValue',$scope.peso2);
+
+        
+      });
+    };
+    angular.element("#slider").on('slideStop', function(data){
+      updateModel(data.value);
+      //console.log(angular.element("#slider2").slider('setValue',0.8));
+     
+    });
+    angular.element("#slider2").on('slideStop', function(data){
+      updateModel2(data.value);
+    });
+    angular.element("#slider3").on('slideStop', function(data){
+      updateModel3(data.value);
+    });
+
     $scope.addModulo = function() {
+       console.log($scope);
+          console.log($scope.peso);
       $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, peso3 : $scope.peso3,nombre: $scope.nombre, sigla:$scope.sigla }).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
-          console.log($scope);
+
           
           $scope.authError = '';
           $scope.authSuccess = data[0].msj;

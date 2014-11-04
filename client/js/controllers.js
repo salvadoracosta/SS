@@ -390,6 +390,7 @@ angular.module('app.controllers', ['ngCookies'])
     };
     angular.element("#slider").on('slideStop', function(data){
       updateModel(data.value);
+      
     });
 
     $scope.select2Number = [
