@@ -36,7 +36,9 @@ angular.module('app.controllers')
           $scope.toaster.type = "success"
          
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);  
-          
+          console.log('pop');
+          $scope.reloadSubsistemas();
+          $scope.registro = false;
         }).
         error(function(data, status, headers, config) {
           $scope.status = status;
