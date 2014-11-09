@@ -127,7 +127,7 @@ angular.module('app.controllers')
     $scope.addModulo = function() {
        console.log($scope);
           console.log($scope.peso);
-      $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, peso3 : $scope.peso3,nombre: $scope.nombre, sigla:$scope.sigla }).success(function(data, status) {
+      $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, peso3 : $scope.peso3,nombre: $scope.nombre, descripcioncorta:$scope.descripcioncorta , sigla:$scope.sigla , descripcionlarga:$scope.descripcionlarga }).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
 
@@ -217,7 +217,7 @@ angular.module('app.controllers')
     }
 
     $scope.editModulo = function() {
-      $http.put('/api/modulos/'+$scope.modulofocus.mod_id, { var1: $scope.modulofocus.mod_var1 , var2 : $scope.modulofocus.mod_var2, var3 :$scope.modulofocus.mod_var3, peso:$scope.modulofocus.mod_peso, peso2:$scope.modulofocus.mod_peso2, peso3:$scope.modulofocus.mod_peso3, nombre:$scope.modulofocus.mod_nombre, sigla:$scope.modulofocus.mod_sigla}).success(function(data, status) {
+      $http.put('/api/modulos/'+$scope.modulofocus.mod_id, { var1: $scope.modulofocus.mod_var1 , var2 : $scope.modulofocus.mod_var2, var3 :$scope.modulofocus.mod_var3, peso:$scope.modulofocus.mod_peso, peso2:$scope.modulofocus.mod_peso2, peso3:$scope.modulofocus.mod_peso3, nombre:$scope.modulofocus.mod_nombre, sigla:$scope.modulofocus.mod_sigla, descripcioncorta:$scope.modulofocus.mod_descripcioncorta, descripcionlarga:$scope.modulofocus.mod_descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);

@@ -58,7 +58,9 @@ exports.registro = function(req, res) {
 	var data = {
 		sub_nombre: input.nombre,
 		sub_sigla: input.sigla,
-		sub_valor: input.valor
+		sub_valor: input.valor,
+		sub_descripcioncorta: input.descripcioncorta,
+		sub_descripcionlarga: input.descripcionlarga
 	};
 	var query = connection.query('INSERT INTO subsistema SET ?', data, function(err, result) {
 
@@ -147,9 +149,11 @@ exports.update = function(req, res) {
 		sub_id: req.params.id,
 		sub_nombre: input.nombre,
 		sub_sigla: input.sigla,
-		sub_valor: input.valor
+		sub_valor: input.valor,
+		sub_descripcioncorta: input.descripcioncorta,
+		sub_descripcionlarga: input.descripcionlarga
 	};
-	var queryString = 'UPDATE subsistema SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+' WHERE sub_id=' + connection.escape(data.sub_id) ;
+	var queryString = 'UPDATE subsistema SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+', sub_descripcioncorta= '+connection.escape(data.sub_descripcioncorta)+', sub_descripcionlarga= '+connection.escape(data.sub_descripcionlarga)+' WHERE sub_id=' + connection.escape(data.sub_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

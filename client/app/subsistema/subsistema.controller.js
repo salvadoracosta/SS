@@ -27,7 +27,7 @@ angular.module('app.controllers')
     }
 
  $scope.addSubsistema = function() {
-      $http.post('/api/subsistemas', { nombre: $scope.nombre , sigla : $scope.sigla , valor : $scope.valor}).success(function(data, status) {
+      $http.post('/api/subsistemas', { nombre: $scope.nombre , sigla : $scope.sigla , valor : $scope.valor, descripcioncorta : $scope.descripcioncorta, descripcionlarga : $scope.descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -96,7 +96,7 @@ angular.module('app.controllers')
     }
 
     $scope.editSubsistema = function() {
-      $http.put('/api/subsistemas/'+$scope.subsistemafocus.sub_id, { nombre: $scope.subsistemafocus.sub_nombre , sigla : $scope.subsistemafocus.sub_sigla ,valor: $scope.subsistemafocus.sub_valor}).success(function(data, status) {
+      $http.put('/api/subsistemas/'+$scope.subsistemafocus.sub_id, { nombre: $scope.subsistemafocus.sub_nombre , sigla : $scope.subsistemafocus.sub_sigla ,valor: $scope.subsistemafocus.sub_valor,descripcioncorta: $scope.subsistemafocus.sub_descripcioncorta,descripcionlarga: $scope.subsistemafocus.sub_descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
