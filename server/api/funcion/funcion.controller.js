@@ -102,7 +102,8 @@ exports.registro = function(req, res) {
 	console.log(input);
 
 	var data = {
-		fun_tipo: input.tipo,
+		fun_nombre: input.nombre,
+		fun_comentario:input.comentario,
 		fun_val1: input.v1,
 		fun_val2: input.v2,
 		fun_val3: input.v3,
@@ -111,16 +112,7 @@ exports.registro = function(req, res) {
 		fun_val6: input.v6,
 		fun_val7: input.v7,
 		fun_val8: input.v8,
-		fun_val9: input.v9,
-		fun_com1: input.com1,
-		fun_com2: input.com2,
-		fun_com3: input.com3,
-		fun_com4: input.com4,
-		fun_com5: input.com5,
-		fun_com6: input.com6,
-		fun_com7: input.com7,
-		fun_com8: input.com8,
-		fun_com9: input.com9
+		fun_val9: input.v9
 	};
 	var query = connection.query('INSERT INTO funcion SET ?', data, function(err, result) {
 

@@ -36,30 +36,39 @@ angular.module('app.controllers')
       console.log(val);
       $scope.$apply(function(){
         $scope.peso = val;
+        console.log($scope.slider);
         $scope.peso2 = (1-val)/2;
         $scope.peso3 = (1-val)/2;
         angular.element("#slider2").slider('setValue',$scope.peso2);
         angular.element("#slider3").slider('setValue',$scope.peso3);
+        //angular.element("#slider2").slider('setMax',1-val);
       });
     };
     var updateModel2 = function(val){
       $scope.$apply(function(){
+       var max = 1- $scope.peso;
         $scope.peso2 = val;
-        $scope.peso = (1-val)/2;
-        $scope.peso3 = (1-val)/2;
-        angular.element("#slider").slider('setValue',$scope.peso);
+       // $scope.peso = (1-val)/2;
+        if($scope.peso + $scope.peso2 <=1){
+        $scope.peso3 = (1-val-$scope.peso)/2;
         angular.element("#slider3").slider('setValue',$scope.peso3);
+        }else{
+          $scope.peso2 = max;
+          $scope.peso3 = 0;
+          angular.element("#slider2").slider('setValue',$scope.peso2);
+          angular.element("#slider3").slider('setValue',$scope.peso3);
+       }
         
       });
     };
     var updateModel3 = function(val){
       $scope.$apply(function(){
-        $scope.peso3 = val;
+        $scope.peso3 = 1-$scope.peso -$scope.peso2;
         
-        $scope.peso = (1-val)/2;
-        $scope.peso2 = (1-val)/2;
-        angular.element("#slider").slider('setValue',$scope.peso);
-        angular.element("#slider2").slider('setValue',$scope.peso2);
+    //  $scope.peso = (1-val)/2;
+    //  $scope.peso2 = (1-val)/2;
+    //  angular.element("#slider").slider('setValue',$scope.peso);
+        angular.element("#slider3").slider('setValue',$scope.peso3);
 
         
       });
