@@ -96,6 +96,9 @@ var app = angular.module('app', [
                 resolve: {
                     listasubsistemas: function(subsistemasFactory) {
                         return subsistemasFactory.getListaSubsistemas();
+                    },
+                    listamodulos: function(modulosFactory) {
+                        return modulosFactory.getListaModulos();
                     }
                 }
             })
