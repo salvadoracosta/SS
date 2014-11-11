@@ -126,6 +126,9 @@ var app = angular.module('app', [
                 resolve: {
                     listamodulos: function(modulosFactory) {
                         return modulosFactory.getListaModulos();
+                    },
+                     listavariables: function(variablesFactory) {
+                        return variablesFactory.getListaVariables();
                     }
                 }
             })

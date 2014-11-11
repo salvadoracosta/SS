@@ -72,7 +72,7 @@
             <td>{{ modulo.mod_nombre }}</td>
             <td>{{ modulo.mod_sigla }}</td>
             <td>{{ modulo.mod_var1 }}</td>
-            <td>{{ modulo.mod_var1 }}</td>
+            <td>{{ modulo.mod_var2 }}</td>
             <td>{{ modulo.mod_var3 }}</td>
             <td>{{ modulo.mod_peso }}</td>
             <td>{{ modulo.mod_peso2 }}</td>
@@ -111,27 +111,16 @@
                 Las siglas del módulo solo pueden ser a lo mas dos caracteres!</span>
                 </div>
               </div>
-             <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 1 </label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="var1" placeholder="Var1" required>
-                  
-                </div>
-              </div>
               <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 2</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="var2" placeholder="Var2" required>
-                  
+                  <label class="col-sm-2 control-label">Variables</label>
+                  <div class="col-sm-10">
+                    <select ui-jq="chosen" ui-options="{max_selected_options: 3}" data-placeholder="..." multiple id="chosen1">
+                      <option ng-repeat="variable in listavariables" value="{{variable.var_id}}">{{variable.var_nombre}}</option>
+                      
+                    </select>
+                  </div>
                 </div>
-              </div>
-                 <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 3</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="var3" placeholder="Var3" required>
-                  
-                </div>
-              </div>
+                 
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
                 <div class="col-lg-10">
@@ -203,46 +192,11 @@
                       </div>
                 </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 1</label>
-              <div class="col-sm-10">
-                <input id="slider" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{peso}}
-                }" class="slider slider-horizontal form-control" type="text"> {{peso}}
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 2</label>
-              <div class="col-sm-10">
-                <input id="slider2" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{peso2}}
-                }" class="slider slider-horizontal form-control" type="text"> {{peso2}}
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 3</label>
-              <div class="col-sm-10">
-                <input id="slider3" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{peso3}}
-                }" class="slider slider-horizontal form-control" type="text"> {{peso3}}
-              </div>
-            </div>
+            
 
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button type="submit" class="btn btn-sm btn-success" ng-click="addModulo()" ng-disabled='form.$invalid'>Registrar</button>
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="addModulo()" >Registrar</button>
                    <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
                 </div>
                 
@@ -270,28 +224,33 @@
                 Las siglas del módulo solo pueden ser a lo mas dos caracteres!</span>
                 </div>
               </div>
-              
-               <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 1 </label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="modulofocus.mod_var1" placeholder="Var1" required>
-                  
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Variable 1</label>
+                  <div class="col-sm-10">
+                    <select data-placeholder="..." ng-model="modulofocus.mod_var1">
+                      <option ng-repeat="variable in listavariables" value="{{variable.var_id}}" ng-select="variable.var_id == modulofocus.mod_var1">{{variable.var_nombre}}</option>
+                      
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 2</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="modulofocus.mod_var2" placeholder="Var2" required>
-                  
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Variable 2</label>
+                  <div class="col-sm-10">
+                    <select data-placeholder="..."  ng-model="modulofocus.mod_var2">
+                      <option ng-repeat="variable in listavariables" value="{{variable.var_id}}" ng-select="variable.var_id == modulofocus.mod_var2">{{variable.var_nombre}}</option>
+                      
+                    </select>
+                  </div>
                 </div>
-              </div>
-                 <div class="form-group">
-                <label class="col-lg-2 control-label ">Variable 3</label>
-                <div class="col-lg-10">
-                  <input type="text" class="form-control" ng-model="modulofocus.mod_var3" placeholder="Var3" required>
-                  
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Variable 3</label>
+                  <div class="col-sm-10">
+                    <select data-placeholder="..."  ng-model="modulofocus.mod_var3">
+                      <option ng-repeat="variable in listavariables" value="{{variable.var_id}}" ng-select="variable.var_id == modulofocus.mod_var3">{{variable.var_nombre}}</option>
+                      
+                    </select>
+                  </div>
                 </div>
-              </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
                 <div class="col-lg-10">
@@ -363,42 +322,7 @@
                       </div>
                 </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 1</label>
-              <div class="col-sm-10">
-                <input id="sliderFocus" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{modulofocus.mod_peso}}
-                }" class="slider slider-horizontal form-control" type="text"> {{modulofocus.mod_peso}}
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 2</label>
-              <div class="col-sm-10">
-                <input id="slider2Focus" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{modulofocus.mod_peso2}}
-                }" class="slider slider-horizontal form-control" type="text"> {{modulofocus.mod_peso2}}
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Peso 3</label>
-              <div class="col-sm-10">
-                <input id="slider3Focus" ui-jq="slider" ui-options="{
-                  min: 0,
-                  max: 1,
-                  step: 0.1,
-                  value: {{modulofocus.mod_peso3}}
-                }" class="slider slider-horizontal form-control" type="text"> {{modulofocus.mod_peso3}}
-              </div>
-            </div>
+            
 
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">

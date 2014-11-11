@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('ModuloCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory) {
+  .controller('ModuloCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory, listavariables) {
     console.log(toaster);
     console.log(listamodulos);
-    console.log(modulosFactory);
+    console.log(listavariables);
+    $scope.listavariables = listavariables.data;
     $scope.listamodulos = listamodulos.data;
     $scope.registro = false;
     $scope.toaster = {
@@ -29,6 +30,7 @@ angular.module('app.controllers')
     /*
     Funcion para registrar un modulo
     */
+    /*
     $scope.peso =0.3;
     $scope.peso2 =0.3;
     $scope.peso3 =0.3;
@@ -123,9 +125,14 @@ angular.module('app.controllers')
     angular.element("#slider3Focus").on('slideStop', function(data){
       updateModelFocus3(data.value);
     });
-
+  */
+  var variablesArrayFocus = [];
     $scope.addModulo = function() {
-       console.log($scope);
+
+       var variablesArray = angular.element("#chosen1").val();
+      $scope.var1 = variablesArray[0];
+      $scope.var2 = variablesArray[1];
+      $scope.var3 = variablesArray[2];
           console.log($scope.peso);
       $http.post('/api/modulos', { var1: $scope.var1 , var2 : $scope.var2 , var3 : $scope.var3, peso : $scope.peso, peso2 : $scope.peso2, peso3 : $scope.peso3,nombre: $scope.nombre, descripcioncorta:$scope.descripcioncorta , sigla:$scope.sigla , descripcionlarga:$scope.descripcionlarga }).success(function(data, status) {
           $scope.status = status;
@@ -170,8 +177,13 @@ angular.module('app.controllers')
     $scope.notshowEdit = function () {
       $scope.formEdit.$setPristine();
       $scope.editando = false;
+      //angular.element("#chosen2").trigger("chosen:updated");
     }
-
+    
+    $scope.updateChosen = function () {
+      //angular.element("#chosen2").trigger("chosen:updated");
+      console.log('Cambio!!!!!!!')
+    }
     $scope.borrar = function (modulo) {
       console.log(modulo);
       $http.delete('/api/modulos/'+modulo.mod_id).success(function(data, status) {
@@ -209,14 +221,31 @@ angular.module('app.controllers')
       })
     }
 
+    $scope.selectFocus = function (modulo) {
+       $scope.modulofocus = modulo;
+       $scope.editar();
+      console.log($scope.modulofocus);
+    }
+
     $scope.editar = function(modulo) {
+      $scope.formEdit.$setPristine();
       $scope.modulofocus = modulo;
       $scope.editando = true;
-      console.log($scope.modulofocus);
+      $scope.variablesArrayFocus = [];
+      angular.element("#chosen2").chosen("destroy").chosen();
+      //angular.element("#chosen2").trigger("chosen:updated");
+      //angular.element("#chosen2").trigger("chosen:updated");
+      //updateModelFocus(modulo.mod_peso);
+      //updateModelFocus2(modulo.mod_peso2);
+      //updateModelFocus3(modulo.mod_peso3);
+     
 
     }
 
     $scope.editModulo = function() {
+     
+      console.log($scope.modulofocus);
+     
       $http.put('/api/modulos/'+$scope.modulofocus.mod_id, { var1: $scope.modulofocus.mod_var1 , var2 : $scope.modulofocus.mod_var2, var3 :$scope.modulofocus.mod_var3, peso:$scope.modulofocus.mod_peso, peso2:$scope.modulofocus.mod_peso2, peso3:$scope.modulofocus.mod_peso3, nombre:$scope.modulofocus.mod_nombre, sigla:$scope.modulofocus.mod_sigla, descripcioncorta:$scope.modulofocus.mod_descripcioncorta, descripcionlarga:$scope.modulofocus.mod_descripcionlarga}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;

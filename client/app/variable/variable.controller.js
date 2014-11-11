@@ -33,7 +33,8 @@ angular.module('app.controllers')
     */
     $scope.addVariable = function() {
       console.log($scope);
-      $http.post('/api/variables', { nombre: $scope.nombre , sigla : $scope.sigla , descripcioncorta : $scope.descripcioncorta, descripcionlarga : $scope.descripcionlarga}).success(function(data, status) {
+      console.log($scope.tipoFuncion);
+      $http.post('/api/variables', { nombre: $scope.nombre , sigla : $scope.sigla , descripcioncorta : $scope.descripcioncorta, descripcionlarga : $scope.descripcionlarga, funcion: $scope.funcion, sujeto: $scope.sujeto, vervo: $scope.vervo, predicado: $scope.predicado, v1: $scope.v1 , v2: $scope.v2 , v3: $scope.v3, v4: $scope.v4,v5: $scope.v5,v6: $scope.v6,v7: $scope.v7,v8: $scope.v8,v9: $scope.v9, com1: $scope.com1 , com2: $scope.com2 , com3: $scope.com3, com4: $scope.com4,com5: $scope.com5,com6: $scope.com6,com7: $scope.com7,com8: $scope.com8,com9: $scope.com9}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -71,11 +72,15 @@ angular.module('app.controllers')
     }
 
     $scope.notshowregistro = function () {
+      console.log($scope.form);
       $scope.form.$setPristine();
+      console.log($scope.form);
+      console.log($scope.form.$setPristine());
       $scope.registro = false;
     }
     $scope.notshowEdit = function () {
       $scope.formEdit.$setPristine();
+      console.log($scope.formEdit.$setPristine());
       $scope.editando = false;
     }
 
@@ -123,7 +128,7 @@ angular.module('app.controllers')
     }
 
     $scope.editVariable = function() {
-      $http.put('/api/variables/'+$scope.variablefocus.var_id, { nombre: $scope.variablefocus.var_nombre , sigla : $scope.variablefocus.var_sigla , descripcioncorta : $scope.variablefocus.var_descripcioncorta, descripcionlarga : $scope.variablefocus.var_descripcionlarga}).success(function(data, status) {
+      $http.put('/api/variables/'+$scope.variablefocus.var_id, { nombre: $scope.variablefocus.var_nombre , sigla : $scope.variablefocus.var_sigla , descripcioncorta : $scope.variablefocus.var_descripcioncorta, descripcionlarga : $scope.variablefocus.var_descripcionlarga, sujeto: $scope.variablefocus.var_sujeto, vervo: $scope.variablefocus.var_vervo, predicado: $scope.variablefocus.var_predicado,funcion: $scope.variablefocus.var_funcion, v1: $scope.variablefocus.var_val1 , v2: $scope.variablefocus.var_val2 , v3: $scope.variablefocus.var_val3, v4: $scope.variablefocus.var_val4,v5: $scope.variablefocus.var_val5,v6: $scope.variablefocus.var_val6,v7: $scope.variablefocus.var_val7,v8: $scope.variablefocus.var_val8,v9: $scope.variablefocus.var_val9, com1: $scope.variablefocus.var_com1 , com2: $scope.variablefocus.var_com2 , com3: $scope.variablefocus.var_com3, com4: $scope.variablefocus.var_com4,com5: $scope.variablefocus.var_com5,com6: $scope.variablefocus.var_com6,com7: $scope.variablefocus.var_com7,com8: $scope.variablefocus.var_com8,com9: $scope.variablefocus.var_com9}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
