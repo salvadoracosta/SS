@@ -58,7 +58,12 @@ exports.registro = function(req, res) {
 	var data = {
 		sub_nombre: input.nombre,
 		sub_sigla: input.sigla,
-		sub_valor: input.valor
+		sub_valor: input.valor,
+		sub_descripcioncorta: input.descripcioncorta,
+		sub_descripcionlarga: input.descripcionlarga,
+		sub_modulo1: input.modulo1,
+		sub_modulo2: input.modulo2,
+		sub_modulo3: input.modulo3
 	};
 	var query = connection.query('INSERT INTO subsistema SET ?', data, function(err, result) {
 
@@ -147,9 +152,14 @@ exports.update = function(req, res) {
 		sub_id: req.params.id,
 		sub_nombre: input.nombre,
 		sub_sigla: input.sigla,
-		sub_valor: input.valor
+		sub_valor: input.valor,
+		sub_descripcioncorta: input.descripcioncorta,
+		sub_descripcionlarga: input.descripcionlarga,
+		sub_modulo1: input.modulo1,
+		sub_modulo2: input.modulo2,
+		sub_modulo3: input.modulo3
 	};
-	var queryString = 'UPDATE subsistema SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+' WHERE sub_id=' + connection.escape(data.sub_id) ;
+	var queryString = 'UPDATE subsistema SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+', sub_descripcioncorta= '+connection.escape(data.sub_descripcioncorta)+', sub_descripcionlarga= '+connection.escape(data.sub_descripcionlarga)+', sub_modulo1= '+connection.escape(data.sub_modulo1)+', sub_modulo2= '+connection.escape(data.sub_modulo2)+', sub_modulo3= '+connection.escape(data.sub_modulo3)+' WHERE sub_id=' + connection.escape(data.sub_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

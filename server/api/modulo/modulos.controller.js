@@ -105,7 +105,9 @@ exports.registro = function(req, res) {
 		mod_peso2: input.peso2,
 		mod_peso3: input.peso3,
 		mod_nombre: input.nombre,
-		mod_sigla: input.sigla
+		mod_sigla: input.sigla,
+		mod_descripcioncorta: input.descripcioncorta,
+		mod_descripcionlarga: input.descripcionlarga
 
 	};
 	var query = connection.query('INSERT INTO modulo SET ?', data, function(err, result) {
@@ -153,9 +155,11 @@ exports.update = function(req, res) {
 		mod_peso2: input.peso2,
 		mod_peso3: input.peso3,
 		mod_nombre: input.nombre,
-		mod_sigla: input.sigla
+		mod_sigla: input.sigla,
+		mod_descripcioncorta: input.descripcioncorta,
+		mod_descripcionlarga: input.descripcionlarga
 	};
-	var queryString = 'UPDATE modulo SET mod_var1 = ' + connection.escape(data.mod_var1) + ', mod_var2= ' + connection.escape(data.mod_var2) + ', mod_var3= ' + connection.escape(data.mod_var3) + ', mod_peso= ' + connection.escape(data.mod_peso) + ', mod_peso2= ' + connection.escape(data.mod_peso2) + ', mod_peso3= ' + connection.escape(data.mod_peso3) + ',mod_nombre=' + connection.escape(data.mod_nombre) + ',mod_sigla=' + connection.escape(data.mod_sigla) + ' WHERE mod_id=' + connection.escape(data.mod_id);
+	var queryString = 'UPDATE modulo SET mod_var1 = ' + connection.escape(data.mod_var1) + ', mod_var2= ' + connection.escape(data.mod_var2) + ', mod_var3= ' + connection.escape(data.mod_var3) + ', mod_peso= ' + connection.escape(data.mod_peso) + ', mod_peso2= ' + connection.escape(data.mod_peso2) + ', mod_peso3= ' + connection.escape(data.mod_peso3) + ',mod_nombre=' + connection.escape(data.mod_nombre) + ',mod_sigla=' + connection.escape(data.mod_sigla)+ ',mod_descripcioncorta=' + connection.escape(data.mod_descripcioncorta)+ ',mod_descripcionlarga=' + connection.escape(data.mod_descripcionlarga) + ' WHERE mod_id=' + connection.escape(data.mod_id);
 	var query = connection.query(queryString, function(err, result) {
 		if (err) {
 			throw err;

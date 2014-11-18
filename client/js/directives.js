@@ -264,6 +264,16 @@ angular.module('app.directives', ['ui.load'])
         });
       }
     };
+  })
+  
+  .directive('myPostRepeatDirective', function() {
+  return function(scope, element, attrs) {
+      if (scope.$last){
+        // iteration is complete, do whatever post-processing
+        // is necessary
+        element.parent().trigger("chosen:updated");
+        console.log('mehhh');
+      }
+    };
   });
-
 ;
