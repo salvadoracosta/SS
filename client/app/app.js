@@ -17,7 +17,8 @@ var app = angular.module('app', [
     'app.services',
     'app.directives',
     'app.controllers',
-    'toaster'
+    'toaster',
+    'angularBootstrapNavTree'
   ])
 .run(
   [          '$rootScope', '$state', '$stateParams',
@@ -73,7 +74,13 @@ var app = angular.module('app', [
             .state('app', {
                 abstract: true,
                 url: '/app',
-                templateUrl: 'app/home/app.html'
+                templateUrl: 'app/home/app.html',
+                controller: 'HomeCtrl',
+                resolve: {
+                    tree: function(treeFactory) {
+                        return treeFactory.getTree();
+                    }
+                }
             })
             .state('app.dashboard-v1', {
                 url: '/',
