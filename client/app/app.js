@@ -142,6 +142,12 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.pesos',{
+                url:'/pesos',
+                controller: 'PesoCtrl',
+                templateUrl: 'app/peso/peso.html',
+            })
+
     }
   ]
 )
