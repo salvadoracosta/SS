@@ -147,6 +147,29 @@ var app = angular.module('app', [
                 controller: 'PesoCtrl',
                 templateUrl: 'app/peso/peso.html',
             })
+            .state('app.proyectoDesc',{
+                url:'/proyecto',
+                controller: 'proyectoDescCtrl',
+                templateUrl: 'app/proyectoDesc/proyecto.html',
+                 resolve: {
+                    listaproyectos: function(proyectosFactory) {
+                        return proyectosFactory.getListaProyectos();
+                    }
+                }
+            })
+            .state('app.subsistemaDesc',{
+                url:'/proyecto/:idproyecto/subsistema',
+                controller: 'SubsistemaDescCtrl',
+                templateUrl: 'app/subsistemaDesc/subsistema.html',
+                 resolve: {
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
+            })
 
     }
   ]

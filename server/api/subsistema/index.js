@@ -6,7 +6,9 @@ var controller = require('./subsistema.controller');
 var router = express.Router();
 
 router.get('/', controller.index); 
+router.get('/:id', controller.getSubsistemasById);
 router.post('/', controller.registro);
+router.post('/:id', controller.registroById);
 router.delete('/:id', controller.delete);
 router.put('/:id', controller.update);
 

@@ -33,6 +33,40 @@ exports.index = function(req, res) {
 	    });
   }
 
+  exports.getSubsistemasById = function(req, res) {
+  	var data = {
+    	pro_id    : req.params.id
+  	};
+  	var mysql = require('mysql');
+	var connection = mysql.createConnection({
+		host: 'localhost',
+	    user: 'root',
+	    password: 'admin'
+	});
+		connection.connect(function(err) {
+	    if (err) {
+	      console.error('error connecting: ' + err.stack);
+	      return;
+	    }
+	    //console.log('connected as id ' + connection.threadId);
+	 	});
+
+	connection.query("use mydb");
+  	var queryString = 'SELECT * FROM subsistema WHERE sub_idproyecto =' + connection.escape(data.pro_id) ;
+	var query = connection.query(queryString, function(err, result) {
+	if (err) {
+		throw err;
+		debug
+		return res.send(409);
+		connection.end();
+	} else {
+		res.json(result);
+		//console.log( 'success' );
+		connection.end();
+	}
+	});
+  }
+
 exports.registro = function(req, res) {
 
 	var input = JSON.parse(JSON.stringify(req.body));
@@ -64,6 +98,58 @@ exports.registro = function(req, res) {
 		sub_modulo1: input.modulo1,
 		sub_modulo2: input.modulo2,
 		sub_modulo3: input.modulo3
+	};
+	var query = connection.query('INSERT INTO subsistema SET ?', data, function(err, result) {
+
+			if (err) {
+				throw err; debug
+				return res.send(500);
+				connection.end();
+			} else {
+				res.json([{
+					msj: 'Registro del subsistema exitoso',
+				}]);
+				console.log('success');
+				connection.end();
+			}
+
+			console.log(query.sql); // debug
+		});
+
+	};
+
+	exports.registroById = function(req, res) {
+
+	var input = JSON.parse(JSON.stringify(req.body));
+
+	var mysql = require('mysql');
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'admin'
+	});
+
+	connection.connect(function(err) {
+		if (err) {
+			console.error('error connecting: ' + err.stack);
+			return;
+		}
+		console.log('connected as id ' + connection.threadId);
+	});
+
+	connection.query("use mydb");
+	console.log(input);
+
+	var data = {
+		sub_nombre: input.nombre,
+		sub_sigla: input.sigla,
+		sub_valor: input.valor,
+		sub_descripcioncorta: input.descripcioncorta,
+		sub_descripcionlarga: input.descripcionlarga,
+		sub_modulo1: input.modulo1,
+		sub_modulo2: input.modulo2,
+		sub_modulo3: input.modulo3,
+		sub_idproyecto: req.params.id
 	};
 	var query = connection.query('INSERT INTO subsistema SET ?', data, function(err, result) {
 

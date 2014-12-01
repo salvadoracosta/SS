@@ -81,6 +81,19 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+    getListaSubsistemasById: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/subsistemas/'+id).success(function(data, status) {
+                
+                listasubsistemas = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
