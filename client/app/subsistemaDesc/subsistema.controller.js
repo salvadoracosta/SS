@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto) {
+  .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto,$state) {
     $scope.listasubsistemas = listasubsistemas.data;
     
     console.log(listasubsistemas);
@@ -26,6 +26,9 @@ angular.module('app.controllers')
     $scope.notshowEdit = function () {
       $scope.formEdit.$setPristine();
       $scope.editando = false;
+    }
+    $scope.modulos = function(subsistema) {
+     $state.go('app.modulosDesc',{idproyecto:subsistema.sub_idproyecto,idsubsistema:subsistema.sub_id});
     }
 
  $scope.addSubsistema = function() {
