@@ -122,8 +122,8 @@ var app = angular.module('app', [
                     }
                 }
             })
-            .state('app.variablesindependientes',{
-                url:'/variablesindependientes',
+            .state('app.variableindependientes',{
+                url:'/variableindependientes',
                 controller: 'VariableIndependienteCtrl',
                 templateUrl: 'app/variableindependiente/variableindependiente.html',
                 resolve: {
