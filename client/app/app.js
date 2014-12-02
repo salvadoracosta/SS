@@ -17,7 +17,8 @@ var app = angular.module('app', [
     'app.services',
     'app.directives',
     'app.controllers',
-    'toaster'
+    'toaster',
+    'angularBootstrapNavTree'
   ])
 .run(
   [          '$rootScope', '$state', '$stateParams',
@@ -73,7 +74,13 @@ var app = angular.module('app', [
             .state('app', {
                 abstract: true,
                 url: '/app',
-                templateUrl: 'app/home/app.html'
+                templateUrl: 'app/home/app.html',
+                controller: 'HomeCtrl',
+                resolve: {
+                    tree: function(treeFactory) {
+                        return treeFactory.getTree();
+                    }
+                }
             })
             .state('app.dashboard-v1', {
                 url: '/',
@@ -149,6 +156,29 @@ var app = angular.module('app', [
                 url:'/pesos',
                 controller: 'PesoCtrl',
                 templateUrl: 'app/peso/peso.html',
+            })
+            .state('app.proyectoDesc',{
+                url:'/proyecto',
+                controller: 'proyectoDescCtrl',
+                templateUrl: 'app/proyectoDesc/proyecto.html',
+                 resolve: {
+                    listaproyectos: function(proyectosFactory) {
+                        return proyectosFactory.getListaProyectos();
+                    }
+                }
+            })
+            .state('app.subsistemaDesc',{
+                url:'/proyecto/:idproyecto/subsistema',
+                controller: 'SubsistemaDescCtrl',
+                templateUrl: 'app/subsistemaDesc/subsistema.html',
+                 resolve: {
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
             })
 
     }

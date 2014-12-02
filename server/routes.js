@@ -18,8 +18,12 @@ module.exports = function(app) {
   app.use('/api/usuarios', require('./api/usuarios'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/funciones', require('./api/funcion'));
+<<<<<<< HEAD
   app.use('/api/funciones', require('./api/peso'));
   app.use('/api/variableindependientes', require('./api/variableindependiente'));
+=======
+  app.use('/api/tree', require('./api/tree'));
+>>>>>>> origin/salvadordev
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

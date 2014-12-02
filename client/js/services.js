@@ -101,6 +101,19 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+    getListaSubsistemasById: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/subsistemas/'+id).success(function(data, status) {
+                
+                listasubsistemas = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
@@ -119,6 +132,26 @@ angular.module('app.services', [])
             error(function(data, status, headers, config) {
                 
                 //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
+.factory('treeFactory', ['$http', function($http) {
+    console.log('Factory Tree');
+    var tree;
+    
+   var sdo = {
+    getTree: function () {
+        var promise = $http.get('/api/tree').success(function(data, status) {
+                
+                tree = data;
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
             });
         return promise;
       }
