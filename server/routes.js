@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.use('/api/usuarios', require('./api/usuarios'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/funciones', require('./api/funcion'));
-  app.use('/api/funciones', require('./api/peso'));
+  app.use('/api/pesos', require('./api/peso'));
   app.use('/api/variableindependientes', require('./api/variableindependiente'));
   app.use('/api/tree', require('./api/tree'));
 

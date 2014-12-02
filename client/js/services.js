@@ -51,7 +51,7 @@ angular.module('app.services', [])
     
    var sdo = {
     getListaVariables: function () {
-        var promise = $http.get('/api/variablesindependientes').success(function(data, status) {
+        var promise = $http.get('/api/variableindependientes').success(function(data, status) {
                 
                 listavariables = data;
                 //console.log(listavariables);
