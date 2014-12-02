@@ -180,6 +180,22 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.modulosDesc',{
+                url:'/proyecto/:idproyecto/subsistema/:idsubsistema/modulos',
+                controller: 'ModuloDescCtrl',
+                templateUrl: 'app/moduloDesc/modulo.html',
+                 resolve: {
+                    listamodulos: function($stateParams,modulosFactory) {
+                        return modulosFactory.getListaModulosById($stateParams.idsubsistema);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    },
+                    idsubsistema: function($stateParams) {
+                        return $stateParams.idsubsistema;
+                    }
+                }
+            })
 
     }
   ]
