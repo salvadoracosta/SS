@@ -4,47 +4,82 @@ angular.module('app.controllers')
     .controller('HomeCtrl', function($scope, $http, $state,tree) {
         var treeArray = tree.data;
     console.log(treeArray.length);
-    /*
-    var treeArray = [];
-    var children = ['Igneous', 'Sedimentary', 'Metamorphic'];
-    var lvl3 = 
-    treeArray[0]={label: 'Proyectos',children: proyectos}
-    var modulos = 
 
-    var label = "";
-    for (var i = 0; i < tree.length; i++) {
-        label = tree[i].lev1;
-        for (var i = 0; i < tree.length; i++) {
-            tree[i]
+    $scope.arrayContains = function (arr,str) {
+        for (var k = 0; k < arr.length; k++) {
+            if(arr[k] == str){
+                return k;
+            }else{
+                console.log(arr[k]);
+                if (typeof arr[k].label != 'undefined'){
+                    if(arr[k].label == str){
+                        return k;
+                    }
+                }
+            }
+           
         };
-        tree[i]
-    };fruits.splice(0,1);  
-    */
-    
-    var map = {}, node, roots = [];
-    for (var i = 0; i < treeArray.length; i += 1) {
-    node = treeArray[i];
-    node.label = "";
-    node.children = [];
-    //map[node.lev2] = i; // use map to look-up the parents
-    console.log(map);
-    console.log(node);
-    console.log(roots);
-    if (node.lev3 !== "null") {
-        //treeArray[map[node.lev1]].lvl3 = [];
-        //treeArray[map[node.lev1]].lev3.push(node);
-       console.log(node.lev3);
-    } else {
-        roots.push(node);
-    }
-    }
-    console.log(roots); // <-- there's your tree
+         return -1;
+    };
 
+    var tree = [];
+    $scope.fillTree = function (steps) {
+        var lvl1 = steps[0];
+        var lvl2 = steps[1];
+        var lvl3 = steps[2];
+       var current = null;
+       var nivelMeter='';
+       var existing = null;
+       if(lvl2 == null){
+        tree.push(lvl1+'');
+        console.log("NIVEEEEEEEEEL1 --"+ lvl1)
+       }else{
+            var pos = $scope.arrayContains(tree,lvl1);
+            if(pos>-1){
+                if(typeof tree[pos].children == null){
+                    tree[pos] = {label: lvl1, children:[]};
+                    current = tree[pos].children;
+                }
+                current = tree[pos].children;
+                if(lvl3 == null){
+                    current.push(lvl2);
+                }else{
+                    var pos2 = $scope.arrayContains(current,lvl2);
+                    if(typeof current[pos2].children == null){
+                        current[pos2] = {label: lvl2, children:[]};
+                        current = current[pos2].children;
+                    }
+                    current = current[pos2].children;
+                    current.push(lvl3);
+                }
+            }else{
+                tree.push({label: lvl1, children:[]});
+                var pos = $scope.arrayContains(tree,lvl1);
+                current = tree[pos].children;
+                if(lvl3 == null){
+                    current.push(lvl2);
+                }else{
+                    current.push({label: lvl2, children:[lvl3]});
+                }
+            }
+       }
+}
+
+    for (var x=0; x < treeArray.length; x++) {
+      var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3];
+      console.log(steps);
+      $scope.fillTree(steps);
+    }
+    tree.push('Hola');
+    console.log(tree);
+    
+    //$scope.my_data = tree;
+    
       $scope.my_data = [{
-          label: 'Languages',
-          children: [{
-            label: 'Rock',
-            children: ['Igneous', 'Sedimentary', 'Metamorphic']
-          },'Less','Coffeescript']
+          label: 'Proyectos',
+          children: tree
         }];
+    //console.log($scope.my_data2);
+    //$scope.my_data = $scope.my_data2;
+      
     });
