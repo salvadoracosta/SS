@@ -129,16 +129,7 @@ var app = angular.module('app', [
                     }
                 }
             })
-            .state('app.variableindependientes',{
-                url:'/variableindependientes',
-                controller: 'VariableIndependienteCtrl',
-                templateUrl: 'app/variableindependiente/variableindependiente.html',
-                resolve: {
-                    listavariables: function(variablesIndependientesFactory) {
-                        return variablesIndependientesFactory.getListaVariables();
-                    }
-                }
-            })
+
             .state('app.modulos',{
                 url:'/modulos',
                 controller: 'ModuloCtrl',
