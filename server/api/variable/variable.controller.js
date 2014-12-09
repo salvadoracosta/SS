@@ -37,6 +37,42 @@ exports.index = function(req, res) {
 	    // res.json([]);
 };
 
+exports.getVariablesById = function(req, res) {
+	  var mysql = require('mysql');
+	  var connection = mysql.createConnection({
+	    host: 'localhost',
+	    user: 'root',
+	    password: 'admin'
+	  });
+	  var data = {
+	    mod_id    : req.params.id
+	  };
+	  connection.connect(function(err) {
+	    if (err) {
+	      console.error('error connecting: ' + err.stack);
+	      return;
+	    }
+	    //console.log('connected as id ' + connection.threadId);
+	  });
+
+	  connection.query("use mydb");
+
+	  var query = connection.query('SELECT * FROM variable WHERE var_idmodulo ='+ connection.escape(data.mod_id) , function(err, result) {
+	      if (err) {
+	        throw err;
+	        debug
+	        return res.send(409);
+	        connection.end();
+	      } else {
+	        res.json(result);
+	        //console.log( 'success' );
+	        connection.end();
+	      }
+	    });
+
+	    // res.json([]);
+};
+
 exports.delete = function(req, res) {
 
 	//var input = JSON.parse(JSON.stringify(req.body));

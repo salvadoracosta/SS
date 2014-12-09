@@ -13,6 +13,10 @@ angular.module('app.controllers')
   };
   
   var variablesArrayFocus = [];
+$scope.variables = function (modulo) {
+  $state.go('app.variablesDesc',{idproyecto:idproyecto,idsubsistema:idsubsistema,idmodulo:modulo.mod_id});
+}
+
   $scope.addModulo = function() {
 
    

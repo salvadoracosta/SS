@@ -41,6 +41,17 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getListaVariablesById: function (id) {
+        var promise = $http.get('/api/variables/'+id).success(function(data, status) {
+                listavariables = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
