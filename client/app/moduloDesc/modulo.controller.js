@@ -102,7 +102,7 @@ $scope.notshowEdit = function () {
     }
 
     $scope.reloadModulos = function() {
-      modulosFactory.getListaModulos().then(function(response) {
+      modulosFactory.getListaModulosById(idsubsistema).then(function(response) {
         console.log(response);
         $scope.listamodulos = response.data;
       })

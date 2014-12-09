@@ -88,7 +88,7 @@ angular.module('app.controllers')
     }
     
     $scope.reloadSubsistemas = function() {
-      subsistemasFactory.getListaSubsistemas().then(function(response) {
+      subsistemasFactory.getListaSubsistemasById(idproyecto).then(function(response) {
         console.log(response);
         $scope.listasubsistemas = response.data;
       })

@@ -27,6 +27,7 @@ angular.module('app.controllers')
         var lvl1 = steps[0];
         var lvl2 = steps[1];
         var lvl3 = steps[2];
+        var lvl4 = steps[3];
        var current = null;
        var nivelMeter='';
        var existing = null;
@@ -44,6 +45,7 @@ angular.module('app.controllers')
                 if(lvl3 == null){
                     current.push(lvl2);
                 }else{
+                    
                     var pos2 = $scope.arrayContains(current,lvl2);
                     if(typeof current[pos2].children == null){
                         current[pos2] = {label: lvl2, children:[]};
@@ -59,18 +61,22 @@ angular.module('app.controllers')
                 if(lvl3 == null){
                     current.push(lvl2);
                 }else{
-                    current.push({label: lvl2, children:[lvl3]});
+                    if(lvl4 ==null){
+                        current.push({label: lvl2, children:[lvl3]});
+                    }else{
+                        current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
+                    }
                 }
             }
        }
 }
 
     for (var x=0; x < treeArray.length; x++) {
-      var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3];
+      var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
       console.log(steps);
       $scope.fillTree(steps);
     }
-    tree.push('Hola');
+    
     console.log(tree);
     
     //$scope.my_data = tree;
