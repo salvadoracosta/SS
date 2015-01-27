@@ -187,6 +187,25 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.variablesDesc',{
+                url:'/proyecto/:idproyecto/subsistema/:idsubsistema/modulos/:idmodulo/variables',
+                controller: 'VariableDescCtrl',
+                templateUrl: 'app/variableDesc/variable.html',
+                 resolve: {
+                    listavariables: function($stateParams,variablesFactory) {
+                        return variablesFactory.getListaVariablesById($stateParams.idmodulo);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    },
+                    idsubsistema: function($stateParams) {
+                        return $stateParams.idsubsistema;
+                    },
+                    idmodulo: function($stateParams) {
+                        return $stateParams.idmodulo;
+                    }
+                }
+            })
 
     }
   ]

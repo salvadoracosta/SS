@@ -21,7 +21,7 @@ exports.index = function(req, res) {
 
     connection.query("use mydb");
 
-    var query = connection.query('SELECT p.pro_nombre AS lev1, s.sub_nombre as lev2, m.mod_nombre as lev3 FROM proyecto AS p LEFT JOIN subsistema AS s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo AS m ON m.mod_idsubsistema = s.sub_id', function(err, result) {
+    var query = connection.query('SELECT p.pro_nombre AS lev1, s.sub_nombre as lev2, m.mod_nombre as lev3, v.var_nombre as lev4 FROM proyecto AS p LEFT JOIN subsistema AS s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo AS m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable AS v ON v.var_idmodulo = m.mod_id ', function(err, result) {
         if (err) {
           throw err;
           debug

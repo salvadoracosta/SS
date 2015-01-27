@@ -13,6 +13,10 @@ angular.module('app.controllers')
   };
   
   var variablesArrayFocus = [];
+$scope.variables = function (modulo) {
+  $state.go('app.variablesDesc',{idproyecto:idproyecto,idsubsistema:idsubsistema,idmodulo:modulo.mod_id});
+}
+
   $scope.addModulo = function() {
 
    
@@ -98,7 +102,7 @@ $scope.notshowEdit = function () {
     }
 
     $scope.reloadModulos = function() {
-      modulosFactory.getListaModulos().then(function(response) {
+      modulosFactory.getListaModulosById(idsubsistema).then(function(response) {
         console.log(response);
         $scope.listamodulos = response.data;
       })
