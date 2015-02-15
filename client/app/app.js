@@ -304,7 +304,7 @@ var app = angular.module('app', [
 }])
 .config(['$httpProvider', function($httpProvider) {
     // We configure ocLazyLoad to use the lib script.js as the async loader
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+    $httpProvider.interceptors.push(['$q', '$location', '$localStorage','$rootScope', function($q, $location, $localStorage) {
             return {
                 'request': function (config) {
                     config.headers = config.headers || {};
@@ -315,7 +315,7 @@ var app = angular.module('app', [
                 },
                 'responseError': function(response) {
                     if(response.status === 401 || response.status === 403) {
-                        $location.path('/signin');
+                        $location.path('/access/signin');
                     }
                     return $q.reject(response);
                 }
