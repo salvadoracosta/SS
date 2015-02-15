@@ -162,3 +162,15 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('sessionInjector', ['SessionService', function(SessionService) {  
+    var sessionInjector = {
+        request: function(config) {
+            if (!SessionService.isAnonymus) {
+                config.headers['x-access-token'] = SessionService.token;
+            }
+            return config;
+        }
+    };
+    return sessionInjector;
+}]);
+
