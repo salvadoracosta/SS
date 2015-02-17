@@ -1,17 +1,21 @@
 'use strict';
 
 angular.module('app.controllers')
-    .controller('SigninCtrl', function($scope, $http, $state) {
+    .controller('SigninCtrl', function($scope, $http, $state,$localStorage) {
         $scope.tryLogIn = function() {
-            $http.post('/api/login', {
+            $http.post('/login', {
                 correo: $scope.user.email,
                 password: $scope.user.password
             }).success(function(data, status) {
                 $scope.status = status;
                 $scope.data = data;
                 console.log($scope);
-                if ($scope.data[0].msj !== 'error') {
+                console.log($scope.data.token);
+                if ($scope.data.msj !== 'error') {
                     //aqui te manda al home, por que el log in esta bien 
+                    $localStorage.token = $scope.data.token;
+                    $localStorage.user = $scope.data.user;
+                    //window.localStorage.setItem('token', $scope.data.token);
                     $state.go('app.dashboard-v1');
                 } else {
                     $scope.authError = 'Nombre de usuario y/o contraseña incorrecta';
