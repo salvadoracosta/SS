@@ -148,6 +148,11 @@ var app = angular.module('app', [
                 controller: 'PesoCtrl',
                 templateUrl: 'app/peso/peso.html',
             })
+             .state('app.vindependientes',{
+                url:'/vindependientes',
+                controller: 'VIndpendienteCtrl',
+                templateUrl: 'app/vindependiente/vindependiente.html',
+            })
             .state('app.proyectoDesc',{
                 url:'/proyecto',
                 controller: 'proyectoDescCtrl',
