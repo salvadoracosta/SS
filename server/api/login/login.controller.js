@@ -1,10 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var moment = require('moment');
-var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
-var jwtTokenSecret = 'YOUR_SECRET_STRING';
 
 // Get list of logins
 exports.index = function(req, res) {
@@ -48,22 +45,12 @@ exports.checkLogIn = function(req, res) {
 		}else{
 			//sin error en la consulta, ahora verficamos si existe alguien con ese correo
 	      	if(result[0]){
-            var user = result[0];
-	      		console.log(user);
-		    	  bcrypt.compare(data.password, user.per_hash, function(err, answer) {
+	      		console.log(result[0].per_hash);
+		    	bcrypt.compare(data.password, result[0].per_hash, function(err, answer) {
 				   if(answer){
-				   		var expires = moment().add(7,'days').valueOf();
-              var token = jwt.encode({
-                iss: user.per_id,
-                exp: expires
-              }, jwtTokenSecret);
-               
-              res.json({
-                msj : 'success',
-                token : token,
-                expires: expires,
-                user: user
-              });
+				   		res.json([{
+				          msj : 'success',
+				        }]);
 				   }else{
 				   		res.json([{
 				          msj : 'error',

@@ -39,44 +39,6 @@ exports.index = function(req, res) {
 
   };
 
-exports.findOne = function(req, res) {
-  var mysql = require('mysql');
-  var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'admin'
-  });
-
-  connection.connect(function(err) {
-    if (err) {
-      console.error('error connecting: ' + err.stack);
-      return;
-    }
-    //console.log('connected as id ' + connection.threadId);
-  });
-
-  connection.query("use mydb");
-  var data = {
-        per_id: req.params.id
-      };
-
-  var query = connection.query('SELECT * FROM usuario WHERE per_id='+ connection.escape(data.per_id), function(err, result) {
-      if (err) {
-       // throw err;
-        debug
-        return res.send(409);
-        connection.end();
-      } else {
-        res.json(result);
-        //console.log( 'success' );
-        connection.end();
-      }
-    });
-
-    // res.json([]);
-
-  };
-
 
 
   exports.incert = function(req, res) {
