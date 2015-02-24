@@ -22,6 +22,8 @@ module.exports = function(app) {
  // app.use('/api/vindependientes',require('./api/vindependiente'));
   app.use('/api/tree', require('./api/tree'));
 
+  app.use('/registro', require('./api/registro'));
+
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

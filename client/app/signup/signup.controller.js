@@ -13,7 +13,7 @@ angular.module('app.controllers')
     Funcion para registrar a un usuario
     */
     $scope.addUsuario = function() {
-      $http.post('/api/usuarios', {
+      $http.post('/registro', {
         nombre: $scope.name,
         correo: $scope.email,
         password: $scope.password,
