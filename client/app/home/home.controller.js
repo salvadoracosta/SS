@@ -4,7 +4,6 @@ angular.module('app.controllers')
     .controller('HomeCtrl', function($scope, $http, $state,tree) {
         var treeArray = tree.data;
     console.log(treeArray.length);
-
     $scope.arrayContains = function (arr,str) {
         for (var k = 0; k < arr.length; k++) {
             if(arr[k] == str){

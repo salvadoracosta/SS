@@ -1,0 +1,122 @@
+<div class="bg-light lter b-b wrapper-md">
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <h1 class="m-n font-thin h3 text-black">Pesos</h1>
+    </div>
+  </div>
+</div>
+<div class ="wrapper-md ng-scope" ng-scope="PesoDescCtrl">
+  <div class ="col" >
+    <div class ="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default"  >
+          <div class="panel-heading font-bold">Registro de Pesos</div>
+          <div class="panel-body">
+            <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
+              <div class="form-group">
+                <label class="col-lg-2 control-label font-bold ">{{sub1}}</label>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label font-bold ">{{mod1}}</label>
+                <div class="col-sm-10 ng-binding">
+                  <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider" ui-jq="slider" ui-options="{
+                  min: 0,
+                  max: 1,
+                  step: 0.1,
+                  value:  m1
+                }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{m1}}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label font-bold ">{{mod2}}</label>
+              <div class="col-sm-10 ng-binding">
+                <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider2" ui-jq="slider" ui-options="{
+                min: 0,
+                max: 1,
+                step: 0.1,
+                value:  m2
+              }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{m2}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label font-bold ">{{mod3}}</label>
+            <div class="col-sm-10 ng-binding">
+              <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider3" ui-jq="slider" ui-options="{
+              min: 0,
+              max: 1,
+              step: 0.1,
+              value:  m3
+            }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{m3}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label font-bold ">MÓDULOS</label>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label font-bold ">{{mod1}}</label>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label font-bold ">{{var1}}</label>
+          <div class="col-sm-10 ng-binding">
+           <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider3" ui-jq="slider" ui-options="{
+           min: 0,
+           max: 1,
+           step: 0.1,
+           value:  v1
+         }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{v1}}
+       </div>
+     </div>  
+     <div class="form-group">
+      <label class="col-lg-2 control-label font-bold ">{{var2}}</label>
+      <div class="col-sm-10 ng-binding">
+       <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider3" ui-jq="slider" ui-options="{
+       min: 0,
+       max: 1,
+       step: 0.1,
+       value:  v2
+     }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{v2}}
+   </div>
+ </div>
+ <div class="form-group">
+  <label class="col-lg-2 control-label font-bold ">{{var3}}</label>
+  <div class="col-sm-10 ng-binding">
+   <div class="slider slider-horizontal"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 15%;"></div><div class="slider-handle min-slider-handle round" style="left: 15%;" tabindex="0"></div><div class="slider-handle max-slider-handle round hide" tabindex="0" style="left: 0%;"></div></div><div id="tooltip" class="tooltip top" style="top: -30px; left: 15%; margin-left: -10.5px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3</div></div><div id="tooltip_min" class="tooltip top" style="top: -30px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div id="tooltip_max" class="tooltip bottom" style="top: 18px;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><input id="slider3" ui-jq="slider" ui-options="{
+   min: 0,
+   max: 1,
+   step: 0.1,
+   value:  v3
+ }" class="slider slider-horizontal form-control" type="text" style="display: none;"></div>  {{v3}}
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+  <label class="col-lg-2 control-label font-bold ">{{sub2}}</label>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-2 control-label font-bold ">{{sub3}}</label>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-offset-2 col-lg-10">
+    <button type="submit" class="btn btn-sm btn-success" ng-click="addProyecto()" ng-disabled='form.$invalid'>Registrar</button>
+    <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
+  </div>
+
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

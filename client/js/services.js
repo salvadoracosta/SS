@@ -163,3 +163,23 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('pesosFactory', ['$http', function($http) {
+    console.log('Factory Pesos');
+    var tree;
+       var sdo = {
+    getPesos: function () {
+        var promise = $http.get('/api/pesos').success(function(data, status) {
+                
+                tree = data;
+           
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo
+    
+  }])

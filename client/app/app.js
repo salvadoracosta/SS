@@ -146,12 +146,22 @@ var app = angular.module('app', [
             .state('app.pesos',{
                 url:'/pesos',
                 controller: 'PesoCtrl',
-                templateUrl: 'app/peso/peso.html',
+                templateUrl: 'app/peso/peso.html'
             })
-             .state('app.vindependientes',{
+            .state('app.pesoDesc',{
+                url:'/proyecto/:idproyecto/peso',
+                controller: 'PesoDescCtrl',
+                templateUrl: 'app/pesoDesc/peso.html',
+                resolve:{
+                    pesos: function(pesosFactory){
+                        return pesosFactory.getPesos();
+                    }
+                }
+            })
+            .state('app.vindependientes',{
                 url:'/vindependientes',
                 controller: 'VIndpendienteCtrl',
-                templateUrl: 'app/vindependiente/vindependiente.html',
+                templateUrl: 'app/vindependiente/vindependiente.html'
             })
             .state('app.proyectoDesc',{
                 url:'/proyecto',
@@ -176,6 +186,7 @@ var app = angular.module('app', [
                     }
                 }
             })
+         
             .state('app.modulosDesc',{
                 url:'/proyecto/:idproyecto/subsistema/:idsubsistema/modulos',
                 controller: 'ModuloDescCtrl',
