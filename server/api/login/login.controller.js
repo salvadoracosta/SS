@@ -73,7 +73,7 @@ exports.checkLogIn = function(req, res) {
 	      	}else{
 	      		//No existe nadie con ese correo
 	      		res.json([{
-		          msj : 'error',
+		          msj : 'error No usuario',
 		        }]);
 	      	}
         connection.end();
