@@ -232,6 +232,42 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Subsistema` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `mydb`.`unidad_informacion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `unidad_informacion`;
+CREATE TABLE `unidad_informacion` (
+  `un_id` int(11) NOT NULL AUTO_INCREMENT,
+  `un_idproyecto` int(11) unsigned DEFAULT NULL,
+  `un_s1m1v1` int(11) DEFAULT NULL,
+  `un_s1m1v2` int(11) DEFAULT NULL,
+  `un_s1m1v3` int(11) DEFAULT NULL,
+  `un_s1m2v1` int(11) DEFAULT NULL,
+  `un_s1m2v2` int(11) DEFAULT NULL,
+  `un_s1m2v3` int(11) DEFAULT NULL,
+  `un_s1m3v1` int(11) DEFAULT NULL,
+  `un_s1m3v2` int(11) DEFAULT NULL,
+  `un_s1m3v3` int(11) DEFAULT NULL,
+  `un_s2m1v1` int(11) DEFAULT NULL,
+  `un_s2m1v2` int(11) DEFAULT NULL,
+  `un_s2m1v3` int(11) DEFAULT NULL,
+  `un_s2m2v1` int(11) DEFAULT NULL,
+  `un_s2m2v2` int(11) DEFAULT NULL,
+  `un_s2m2v3` int(11) DEFAULT NULL,
+  `un_s2m3v1` int(11) DEFAULT NULL,
+  `un_s2m3v2` int(11) DEFAULT NULL,
+  `un_s2m3v3` int(11) DEFAULT NULL,
+  `un_s3m1v1` int(11) DEFAULT NULL,
+  `un_s3m1v2` int(11) DEFAULT NULL,
+  `un_s3m1v3` int(11) DEFAULT NULL,
+  `un_s3m2v1` int(11) DEFAULT NULL,
+  `un_s3m2v2` int(11) DEFAULT NULL,
+  `un_s3m2v3` int(11) DEFAULT NULL,
+  `un_s3m3v1` int(11) DEFAULT NULL,
+  `un_s3m3v2` int(11) DEFAULT NULL,
+  `un_s3m3v3` int(11) DEFAULT NULL,
+  PRIMARY KEY (`un_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

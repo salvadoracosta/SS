@@ -109,6 +109,24 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('unidadesFactory', ['$http', function($http) {
+  var listaunidades;
+   var sdo = {
+    getListaUnidades: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/unidad/'+id).success(function(data, status) {
+                listaunidades = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
 .factory('modulosFactory', ['$http', function($http) {
     console.log('Factory Modulos');
     var listamodulos;
