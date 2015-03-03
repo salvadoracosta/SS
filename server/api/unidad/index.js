@@ -7,4 +7,5 @@ var router = express.Router();
 
 router.get('/:id', controller.getByProyecto);
 router.post('/:id', controller.registroById);
+router.delete('/:id', controller.delete);
 module.exports = router;

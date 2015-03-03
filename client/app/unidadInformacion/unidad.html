@@ -84,7 +84,11 @@
         <div class="panel panel-default" ng-show="registro">
           <div class="panel-heading font-bold">Registro de la Unidad de informacion</div>
           <div class="panel-body">
-            <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
+          <!-- tab -->
+          <div>
+          <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
+            <tabset class="tab-container">
+              <tab heading="Sistema 1" >
               <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 1 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
@@ -139,10 +143,9 @@
                   <input type="text" class="form-control" ng-model="unidad.un_s1m3v3" >
                 </div>
               </div>
-
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-
-              <div class="form-group">
+              </tab>
+              <tab heading="Sistema 2" >
+                <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 2 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
                   <input type="text" class="form-control" ng-model="unidad.un_s2m1v1" >
@@ -196,10 +199,9 @@
                   <input type="text" class="form-control" ng-model="unidad.un_s2m3v3" >
                 </div>
               </div>
-
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-
-              <div class="form-group">
+              </tab>
+              <tab heading="Sistema 3" >
+                 <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 3 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
                   <input type="text" class="form-control" ng-model="unidad.un_s3m1v1" >
@@ -253,18 +255,20 @@
                   <input type="text" class="form-control" ng-model="unidad.un_s3m3v3" >
                 </div>
               </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-            <div class="form-group">
+              </tab>
+
+            </tabset>
+          </div>
+          <div class="form-group">
               <div class="col-lg-offset-2 col-lg-10">
                 <button type="submit" class="btn btn-sm btn-success" ng-click="addUnidadInformacion()" ng-disabled='form.$invalid'>Registrar</button>
                 <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
               </div>
 
             </div>
-
-
-
           </form>
+          <!-- / tab -->
+            
         </div>
       </div>
 
@@ -272,7 +276,9 @@
         <div class="panel-heading font-bold">Editar Unidad de Informacion</div>
         <div class="panel-body">
           <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
-            <div class="form-group">
+         <tabset class="tab-container">
+              <tab heading="Sistema 1" >
+              <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 1 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s1m1v1" >
@@ -326,10 +332,9 @@
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s1m3v3" >
                 </div>
               </div>
-
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-
-              <div class="form-group">
+              </tab>
+              <tab heading="Sistema 2" >
+                <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 2 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s2m1v1" >
@@ -383,10 +388,9 @@
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s2m3v3" >
                 </div>
               </div>
-
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-
-              <div class="form-group">
+              </tab>
+              <tab heading="Sistema 3" >
+                 <div class="form-group">
                 <label class="col-lg-2 control-label ">Subsistema 3 Modulo 1 Variable 1</label>
                 <div class="col-lg-3">
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s3m1v1" >
@@ -440,18 +444,19 @@
                   <input type="text" class="form-control" ng-model="unidadfocus.un_s3m3v3" >
                 </div>
               </div>
-            
+              </tab>
+
+            </tabset>
+          
           <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
               <button type="submit" class="btn btn-sm btn-success" ng-click="editProyecto()" ng-disabled='form2.$invalid'>Editar</button>
               <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
             </div>
+          </form>
+        </div>
 
           </div>
-
-
-
-        </form>
       </div>
     </div>
   </div>

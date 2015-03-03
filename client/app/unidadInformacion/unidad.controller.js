@@ -9,6 +9,20 @@ angular.module('app.controllers')
         title: 'Titulo',
         text: 'Message'
     };
+    $scope.unidad = {};
+    /*
+    $scope.unidad.un_s1m1v1=5;
+    var updateModel = function(val){
+      $scope.$apply(function(){
+        $scope.unidad.un_s1m1v1 = val;
+      });
+    };
+    
+    angular.element("#slider").on('slideStop', function(data){
+      console.log('ENTRA EN EL SLIDER!!!!')
+      updateModel(data.value);
+    });
+    */
     /*
     $scope.pop = function(){
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
@@ -28,6 +42,7 @@ angular.module('app.controllers')
     */
     $scope.addUnidadInformacion = function() {
       $http.post('/api/unidad/'+idproyecto, { unidad: $scope.unidad}).success(function(data, status) {
+
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -72,9 +87,9 @@ angular.module('app.controllers')
       $scope.editando = false;
     }
 
-    $scope.borrar = function (proyecto) {
-      console.log(proyecto);
-      $http.delete('/api/proyectos/'+proyecto.pro_id).success(function(data, status) {
+    $scope.borrar = function (unidad) {
+      console.log(unidad);
+      $http.delete('/api/unidad/'+unidad.un_id).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -88,7 +103,7 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadUnidades();
           //$state.go($state.current, {}, {reload: true});
         }).
         error(function(data, status, headers, config) {
@@ -103,7 +118,7 @@ angular.module('app.controllers')
     }
 
     $scope.reloadUnidades = function() {
-      unidadesFactory.getListaUnidades().then(function(response) {
+      unidadesFactory.getListaUnidades(idproyecto).then(function(response) {
         console.log(response);
         $scope.listaunidadesdeinformacion = response.data;
       })
@@ -116,7 +131,7 @@ angular.module('app.controllers')
     }
 
     $scope.editProyecto = function() {
-      $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { nombre: $scope.proyectofocus.pro_nombre , modulos : $scope.proyectofocus.pro_modulos}).success(function(data, status) {
+      $http.put('/api/unidad/'+idproyecto, { unidad: unidadfocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
