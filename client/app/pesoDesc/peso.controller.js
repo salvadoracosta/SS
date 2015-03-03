@@ -40,7 +40,7 @@ angular.module('app.controllers')
 
   if($scope.sub1 == null  && $scope.sub2 == null && $scope.sub3 == null){
     $scope.sub1 = $scope.sub2 = $scope.sub3 = "No definido";
-    $scope.s1 = 0;
+    $scope.s1 = 0;        
     $scope.s2 = 0;
     $scope.s3 = 0;
   }else if($scope.sub1 != null && $scope.sub2 == null && $scope.sub3 == null){
@@ -152,6 +152,7 @@ angular.module('app.controllers')
   if(pos_sub2 ==null){
     $scope.mod21 = $scope.mod22 = $scope.mod23 = "No definido";
     $scope.m21 = $scope.m22 = $scope.m23 = 0;
+
   }else{
     /* modulo 1 segundo subsistema*/
     $scope.mod21 = a_pesos[pos_sub2].mn;
@@ -247,7 +248,7 @@ angular.module('app.controllers')
 
   $scope.addPesos = function() {
     console.log("SCOPPEEEEEEEEEEE", $scope);
-     $http.put('/api/pesos/'+idproyecto, { id_proyecto: idproyecto}).success(function(data, status) {      
+     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto}).success(function(data, status) {      
      });
   };
 
