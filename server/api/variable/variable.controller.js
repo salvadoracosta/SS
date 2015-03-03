@@ -143,7 +143,7 @@ exports.registro = function(req, res) {
 		var_descripcioncorta: input.descripcioncorta,
 		var_descripcionlarga: input.descripcionlarga,
 		var_sujeto: input.sujeto,
-		var_verbo: input.verbo,
+		var_vervo: input.vervo,
 		var_predicado: input.predicado,
 		var_funcion: input.funcion,
 		var_val1: input.v1,
@@ -212,7 +212,7 @@ exports.registroById = function(req, res) {
 		var_descripcioncorta: input.descripcioncorta,
 		var_descripcionlarga: input.descripcionlarga,
 		var_sujeto: input.sujeto,
-		var_verbo: input.verbo,
+		var_vervo: input.vervo,
 		var_predicado: input.predicado,
 		var_funcion: input.funcion,
 		var_val1: input.v1,
@@ -283,7 +283,7 @@ exports.update = function(req, res) {
 		var_descripcioncorta: input.descripcioncorta,
 		var_descripcionlarga: input.descripcionlarga,
 		var_sujeto: input.sujeto,
-		var_verbo: input.verbo,
+		var_vervo: input.vervo,
 		var_predicado: input.predicado,
 		var_funcion: input.funcion,
 		var_val1: input.v1,
@@ -306,7 +306,7 @@ exports.update = function(req, res) {
 		var_com9: input.com9
 	};
 
-	var queryString = 'UPDATE variable SET var_nombre = '+connection.escape(data.var_nombre)+', var_sigla= '+connection.escape(data.var_sigla)+', var_descripcioncorta= '+connection.escape(data.var_descripcioncorta)+', var_descripcionlarga= '+connection.escape(data.var_descripcionlarga)+', var_funcion ='+connection.escape(data.var_funcion)+', var_val1 = '+connection.escape(data.var_val1)+', var_val2= '+connection.escape(data.var_val2)+', var_val3= '+connection.escape(data.var_val3)+', var_val4= '+connection.escape(data.var_val4)+', var_val5= '+connection.escape(data.var_val5)+', var_val6= '+connection.escape(data.var_val6)+', var_val7= '+connection.escape(data.var_val7)+', var_val8= '+connection.escape(data.var_val8)+', var_val9= '+connection.escape(data.var_val9)+', var_com1= '+connection.escape(data.var_com1)+', var_com2= '+connection.escape(data.var_com2)+', var_com3= '+connection.escape(data.var_com3)+', var_com4= '+connection.escape(data.var_com4)+', var_com5= '+connection.escape(data.var_com5)+', var_com6= '+connection.escape(data.var_com6)+', var_com7= '+connection.escape(data.var_com7)+', var_com8= '+connection.escape(data.var_com8)+', var_com9= '+connection.escape(data.var_com9)+', var_sujeto= '+connection.escape(data.var_sujeto)+', var_verbo= '+connection.escape(data.var_verbo)+', var_predicado= '+connection.escape(data.var_predicado)+' WHERE var_id=' + connection.escape(data.var_id) ;
+	var queryString = 'UPDATE variable SET var_nombre = '+connection.escape(data.var_nombre)+', var_sigla= '+connection.escape(data.var_sigla)+', var_descripcioncorta= '+connection.escape(data.var_descripcioncorta)+', var_descripcionlarga= '+connection.escape(data.var_descripcionlarga)+', var_funcion ='+connection.escape(data.var_funcion)+', var_val1 = '+connection.escape(data.var_val1)+', var_val2= '+connection.escape(data.var_val2)+', var_val3= '+connection.escape(data.var_val3)+', var_val4= '+connection.escape(data.var_val4)+', var_val5= '+connection.escape(data.var_val5)+', var_val6= '+connection.escape(data.var_val6)+', var_val7= '+connection.escape(data.var_val7)+', var_val8= '+connection.escape(data.var_val8)+', var_val9= '+connection.escape(data.var_val9)+', var_com1= '+connection.escape(data.var_com1)+', var_com2= '+connection.escape(data.var_com2)+', var_com3= '+connection.escape(data.var_com3)+', var_com4= '+connection.escape(data.var_com4)+', var_com5= '+connection.escape(data.var_com5)+', var_com6= '+connection.escape(data.var_com6)+', var_com7= '+connection.escape(data.var_com7)+', var_com8= '+connection.escape(data.var_com8)+', var_com9= '+connection.escape(data.var_com9)+', var_sujeto= '+connection.escape(data.var_sujeto)+', var_vervo= '+connection.escape(data.var_vervo)+', var_predicado= '+connection.escape(data.var_predicado)+' WHERE var_id=' + connection.escape(data.var_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

@@ -118,11 +118,6 @@ angular.module('app.controllers')
       console.log($scope.proyectofocus);
     }
 
-    $scope.pesos= function(proyecto){
-       $state.go('app.pesoDesc',{idproyecto:proyecto.pro_id});
-    }
-
-
     $scope.subsistemas = function(proyecto) {
      $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
     }
