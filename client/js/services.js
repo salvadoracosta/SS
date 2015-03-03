@@ -167,8 +167,9 @@ angular.module('app.services', [])
     console.log('Factory Pesos');
     var tree;
        var sdo = {
-    getPesos: function () {
-        var promise = $http.get('/api/pesos').success(function(data, status) {
+    getPesos: function (id) {
+        console.log("id de proyectooooooo", id);
+        var promise = $http.get('/api/pesos/'+id).success(function(data, status) {
                 
                 tree = data;
            

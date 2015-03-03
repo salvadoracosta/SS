@@ -153,9 +153,12 @@ var app = angular.module('app', [
                 controller: 'PesoDescCtrl',
                 templateUrl: 'app/pesoDesc/peso.html',
                 resolve:{
-                    pesos: function(pesosFactory){
-                        return pesosFactory.getPesos();
-                    }
+                    pesos: function($stateParams, pesosFactory){
+                        return pesosFactory.getPesos($stateParams.idproyecto);
+                    },
+                    idproyecto:function($stateParams){
+                        return $stateParams.idproyecto;
+                    } 
                 }
             })
             .state('app.vindependientes',{
