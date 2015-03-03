@@ -129,6 +129,7 @@ var app = angular.module('app', [
                     }
                 }
             })
+
             .state('app.modulos',{
                 url:'/modulos',
                 controller: 'ModuloCtrl',
@@ -145,7 +146,25 @@ var app = angular.module('app', [
             .state('app.pesos',{
                 url:'/pesos',
                 controller: 'PesoCtrl',
-                templateUrl: 'app/peso/peso.html',
+                templateUrl: 'app/peso/peso.html'
+            })
+            .state('app.pesoDesc',{
+                url:'/proyecto/:idproyecto/peso',
+                controller: 'PesoDescCtrl',
+                templateUrl: 'app/pesoDesc/peso.html',
+                resolve:{
+                    pesos: function($stateParams, pesosFactory){
+                        return pesosFactory.getPesos($stateParams.idproyecto);
+                    },
+                    idproyecto:function($stateParams){
+                        return $stateParams.idproyecto;
+                    } 
+                }
+            })
+            .state('app.vindependientes',{
+                url:'/vindependientes',
+                controller: 'VIndpendienteCtrl',
+                templateUrl: 'app/vindependiente/vindependiente.html'
             })
             .state('app.proyectoDesc',{
                 url:'/proyecto',
@@ -183,6 +202,7 @@ var app = angular.module('app', [
                     }
                 }
             })
+         
             .state('app.modulosDesc',{
                 url:'/proyecto/:idproyecto/subsistema/:idsubsistema/modulos',
                 controller: 'ModuloDescCtrl',
@@ -314,25 +334,5 @@ var app = angular.module('app', [
             }
         ]
     });
-}])
-.config(['$httpProvider', function($httpProvider) {
-    // We configure ocLazyLoad to use the lib script.js as the async loader
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage','$rootScope', function($q, $location, $localStorage) {
-            return {
-                'request': function (config) {
-                    config.headers = config.headers || {};
-                    if ($localStorage.token) {
-                        config.headers.Authorization = $localStorage.token;
-                    }
-                    return config;
-                },
-                'responseError': function(response) {
-                    if(response.status === 401 || response.status === 403) {
-                        $location.path('/access/signin');
-                    }
-                    return $q.reject(response);
-                }
-            };
-        }]);
 }])
 ;

@@ -9,13 +9,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var config = require('./config/environment');
-var jwt = require('jwt-simple');
-var moment = require('moment');
-moment().format();
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
-app.set('jwtTokenSecret', 'YOUR_SECRET_STRING');
 require('./config/express')(app);
 require('./routes')(app);
 /*
