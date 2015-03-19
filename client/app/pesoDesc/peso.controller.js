@@ -252,6 +252,13 @@ angular.module('app.controllers')
      });
   };
 
+
+  $scope.notshow = function(){ 
+
+       $state.go('app.proyectoDesc');
+    };
+  
+
   var updateModel = function(val){
     $scope.$apply(function(){
       $scope.s1 = val;
