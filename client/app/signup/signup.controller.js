@@ -18,7 +18,8 @@ angular.module('app.controllers')
         correo: $scope.email,
         password: $scope.password,
         telefono: $scope.tel,
-        institucion: $scope.institucion
+        institucion: $scope.institucion,
+        tipo: $scope.tipo
       }).success(function(data, status) {
         $scope.status = status;
         $scope.data = data;

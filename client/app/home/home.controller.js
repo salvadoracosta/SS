@@ -1,9 +1,16 @@
 'use strict';
 
 angular.module('app.controllers')
-    .controller('HomeCtrl', function($scope, $http, $state,tree) {
+    .controller('HomeCtrl', function($scope, $http, $state,tree, $localStorage) {
         var treeArray = tree.data;
     console.log(treeArray.length);
+    $scope.user = $localStorage.user;
+    $scope.logout = function() {
+        delete $localStorage.user;
+        delete $localStorage.token;
+        $state.go('access.signin');
+    }
+
     $scope.arrayContains = function (arr,str) {
         for (var k = 0; k < arr.length; k++) {
             if(arr[k] == str){
@@ -23,25 +30,6 @@ angular.module('app.controllers')
 
     var tree = [];
     $scope.fillTree = function (steps) {
-/*        console.log("STEPPPPPS", steps);
-        console.log("lvl1", steps[0]);
-        var lvl1 = steps[0];
-        var lvl2 = steps[1];
-        var contiene = $scope.arrayContains(tree,lvl1);
-        var contiene2 = $scope.arrayContains(tree,lvl2);
-        console.log("contiene", contiene);
-        if(lvl1!=null && contiene == -1){
-            console.log("Agregando al arbol")
-           
-            if(lvl2!=null && contiene2 == -1){
-                console.log("tenemos subsistemas");
-                tree.push({label: lvl1, children:[]});
-            }else{
-                tree.push(lvl1+'');
-            }
-        }*/
-        console.log("STEPPPPPS", steps);
-        console.log("lvl1", steps[0]);
         var lvl1 = steps[0];
         var lvl2 = steps[1];
         var lvl3 = steps[2];
@@ -100,7 +88,7 @@ angular.module('app.controllers')
     //$scope.my_data = tree;
     
       $scope.my_data = [{
-          label: 'Los proyectos registrados son:',
+          label: 'Proyectos',
           children: tree
         }];
     //console.log($scope.my_data2);

@@ -23,49 +23,39 @@
           <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
             <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
           </a>
-<!--           <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+          <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
             <i class="icon-user fa-fw"></i>
-          </a> -->
+          </a>
         </div>
         <!-- / buttons -->
 
         <!-- link and dropdown -->
         <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i> 
-              <span >Datos/Observables</span><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" >Registrar</a></li>
-              <li><a ui-sref="app.proyectoDesc">Importar</a></li>
-            </ul>
-          </li>
-          <li class="dropdown" >
-            <a href="#"  class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span>Proyectos</span> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-            <li><a ui-sref="app.proyectoDesc({edit:'nuevo'})" >Nuevo</a></li>
-              <li><a ui-sref="app.proyectoDesc({edit:'actualizar'})" >Actualizar</a></li>
-            </ul>
+          <li class="active">
+            <a href><i class="fa fa-cloud-upload fa-fw"></i> <span >Importar</span></a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span>Consulta</span> <span class="caret"></span>
+              <span>Nuevo</span> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#" >Resultados</a></li>
-              <li><a href="#" >Documentos</a></li>
+              <li><a href="#" >Proyecto</a></li>
+              <li>
+                <a href="#">
+                  <span>Subsistema</span>
+                  <span class="label bg-warning pull-right">próx.</span>
+                </a>
+              </li>
+              
+
             </ul>
           </li>
         </ul>
         <!-- / link and dropdown -->
 
         <!-- search form -->
-<!--         <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
           <div class="form-group">
             <div class="input-group">
               <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Buscar en proyectos...">
@@ -75,7 +65,7 @@
             </div>
 
           </div>
-        </form> -->
+        </form>
         <!-- / search form -->
 
         <!-- nabar right -->
@@ -128,7 +118,7 @@
                 <img src="img/a0.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
               </span>
-              <span class="hidden-sm hidden-md">Test.test</span> <b class="caret"></b>
+              <span class="hidden-sm hidden-md" ng-bind='user.per_nombre'></span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -145,7 +135,7 @@
               
               <li class="divider"></li>
               <li>
-                <a ui-sref="access.signin">Salir <span class="label bg-warning pull-right">próx.</span></a>
+                <a ng-click="logout()">Salir </a>
               </li>
             </ul>
             <!-- / dropdown -->

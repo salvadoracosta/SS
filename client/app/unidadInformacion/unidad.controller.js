@@ -1,14 +1,28 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('PesoCtrl', function ($scope,$http,toaster) {
-    console.log(toaster);
+  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, unidadesFactory) {
+    $scope.listaunidadesdeinformacion = listaunidadesdeinformacion.data;
     $scope.registro = false;
     $scope.toaster = {
         type: 'success',
         title: 'Titulo',
         text: 'Message'
     };
+    $scope.unidad = {};
+    /*
+    $scope.unidad.un_s1m1v1=5;
+    var updateModel = function(val){
+      $scope.$apply(function(){
+        $scope.unidad.un_s1m1v1 = val;
+      });
+    };
+    
+    angular.element("#slider").on('slideStop', function(data){
+      console.log('ENTRA EN EL SLIDER!!!!')
+      updateModel(data.value);
+    });
+    */
     /*
     $scope.pop = function(){
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
@@ -26,8 +40,9 @@ angular.module('app.controllers')
     /*
     Funcion para registrar a un proyecto
     */
-    $scope.addProyecto = function() {
-      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos}).success(function(data, status) {
+    $scope.addUnidadInformacion = function() {
+      $http.post('/api/unidad/'+idproyecto, { unidad: $scope.unidad}).success(function(data, status) {
+
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -43,7 +58,7 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadUnidades();
           $scope.registro = false;
           
         }).
@@ -72,9 +87,9 @@ angular.module('app.controllers')
       $scope.editando = false;
     }
 
-    $scope.borrar = function (proyecto) {
-      console.log(proyecto);
-      $http.delete('/api/proyectos/'+proyecto.pro_id).success(function(data, status) {
+    $scope.borrar = function (unidad) {
+      console.log(unidad);
+      $http.delete('/api/unidad/'+unidad.un_id).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -88,7 +103,7 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadUnidades();
           //$state.go($state.current, {}, {reload: true});
         }).
         error(function(data, status, headers, config) {
@@ -102,21 +117,21 @@ angular.module('app.controllers')
         });
     }
 
-    $scope.reloadProyectos = function() {
-      proyectosFactory.getListaProyectos().then(function(response) {
+    $scope.reloadUnidades = function() {
+      unidadesFactory.getListaUnidades(idproyecto).then(function(response) {
         console.log(response);
-        $scope.listaproyectos = response.data;
+        $scope.listaunidadesdeinformacion = response.data;
       })
     }
 
-    $scope.editar = function(proyecto) {
-      $scope.proyectofocus = proyecto;
+    $scope.editar = function(unidad) {
+      $scope.unidadfocus = unidad;
       $scope.editando = true;
-      console.log($scope.proyectofocus);
+      console.log($scope.unidadfocus);
     }
 
     $scope.editProyecto = function() {
-      $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { nombre: $scope.proyectofocus.pro_nombre , modulos : $scope.proyectofocus.pro_modulos}).success(function(data, status) {
+      $http.put('/api/unidad/'+idproyecto, { unidad: unidadfocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);

@@ -93,15 +93,15 @@
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
                 <label class="col-lg-2 control-label ">Nombre</label>
-                <div class="col-md-6">
+                <div class="col-lg-10">
                   <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. subsistema uno" required>
                   
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label">Sigla</label>
-                <div class="col-xs-1">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" maxlength="2" placeholder="S1" required>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. S1" required>
                   <span class="error" ng-show="form.siglas.$error.maxlength">
                 Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                 </div>
@@ -111,8 +111,8 @@
                
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
-                <div class="col-md-3">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="siglas" maxlength="15" required>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="siglas" required>
                 </div>
               </div>  
               <div class="form-group">
@@ -196,14 +196,14 @@
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
               <div class="form-group">
                 <label class="col-lg-2 control-label ">Nombre</label>
-                <div class="col-md-6">
+                <div class="col-lg-10">
                   <input type="text" class="form-control" ng-model="subsistemafocus.sub_nombre" placeholder="Ejem. Mi subsistema" required>
                   
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label">Sigla</label>
-                <div class="col-xs-1">
+                <div class="col-lg-10">
                   <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
                   <span class="error" ng-show="form.siglas.$error.maxlength">
                 Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
@@ -212,7 +212,7 @@
               
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
-                <div class="col-md-3">
+                <div class="col-lg-10">
                   <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_descripcioncorta" name="siglas" required>
                 </div>
               </div>  
