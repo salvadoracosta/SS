@@ -23,6 +23,25 @@ angular.module('app.controllers')
 
     var tree = [];
     $scope.fillTree = function (steps) {
+/*        console.log("STEPPPPPS", steps);
+        console.log("lvl1", steps[0]);
+        var lvl1 = steps[0];
+        var lvl2 = steps[1];
+        var contiene = $scope.arrayContains(tree,lvl1);
+        var contiene2 = $scope.arrayContains(tree,lvl2);
+        console.log("contiene", contiene);
+        if(lvl1!=null && contiene == -1){
+            console.log("Agregando al arbol")
+           
+            if(lvl2!=null && contiene2 == -1){
+                console.log("tenemos subsistemas");
+                tree.push({label: lvl1, children:[]});
+            }else{
+                tree.push(lvl1+'');
+            }
+        }*/
+        console.log("STEPPPPPS", steps);
+        console.log("lvl1", steps[0]);
         var lvl1 = steps[0];
         var lvl2 = steps[1];
         var lvl3 = steps[2];
@@ -81,7 +100,7 @@ angular.module('app.controllers')
     //$scope.my_data = tree;
     
       $scope.my_data = [{
-          label: 'Proyectos',
+          label: 'Los proyectos registrados son:',
           children: tree
         }];
     //console.log($scope.my_data2);
