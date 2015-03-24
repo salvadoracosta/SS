@@ -56,6 +56,7 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+
 .factory('funcionesFactory', ['$http', function($http) {
     console.log('Factory');
     var listafunciones;
@@ -180,15 +181,24 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
-.factory('sessionInjector', ['SessionService', function(SessionService) {  
-    var sessionInjector = {
-        request: function(config) {
-            if (!SessionService.isAnonymus) {
-                config.headers['x-access-token'] = SessionService.token;
-            }
-            return config;
-        }
-    };
-    return sessionInjector;
-}]);
-
+.factory('pesosFactory', ['$http', function($http) {
+    console.log('Factory Pesos');
+    var tree;
+       var sdo = {
+    getPesos: function (id) {
+        console.log("id de proyectooooooo", id);
+        var promise = $http.get('/api/pesos/'+id).success(function(data, status) {
+                
+                tree = data;
+           
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo
+    
+  }])
