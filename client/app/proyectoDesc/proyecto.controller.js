@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory) {
+  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams) {
     console.log(toaster);
     console.log(listaproyectos);
     console.log(proyectosFactory);
+    console.log($stateParams.edit);
+    
     $scope.listaproyectos = listaproyectos.data;
     $scope.registro = false;
     $scope.toaster = {
@@ -12,6 +14,13 @@ angular.module('app.controllers')
         title: 'Titulo',
         text: 'Message'
     };
+
+    if($stateParams.edit == 'nuevo'){
+      $scope.registro = true;
+    }
+    if($stateParams.edit == 'actualizar'){
+      $scope.registro = false;
+    }
     /*
     $scope.pop = function(){
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);

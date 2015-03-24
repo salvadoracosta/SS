@@ -167,13 +167,14 @@ var app = angular.module('app', [
                 templateUrl: 'app/vindependiente/vindependiente.html'
             })
             .state('app.proyectoDesc',{
-                url:'/proyecto',
+                url:'/proyecto/:edit',
                 controller: 'proyectoDescCtrl',
                 templateUrl: 'app/proyectoDesc/proyecto.html',
                  resolve: {
                     listaproyectos: function(proyectosFactory) {
                         return proyectosFactory.getListaProyectos();
                     }
+                    
                 }
             })
             .state('app.subsistemaDesc',{
