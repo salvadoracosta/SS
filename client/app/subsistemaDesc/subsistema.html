@@ -22,24 +22,7 @@
     <div class="panel-heading">
       Lista Subsistema
     </div>
-    <!--
-    <div class="row wrapper">
-      <div class="col-sm-3 m-b-xs">
-              <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Buscar">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Ir!</button>
-          </span>
-        </div>          
-      </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-5">
-        
-      </div>
 
-    </div>
-    -->
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">
         <thead>
@@ -101,19 +84,21 @@
               <div class="form-group">
                 <label class="col-lg-2 control-label">Sigla</label>
                 <div class="col-xs-1">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" maxlength="2" placeholder="S1" required>
-                  <span class="error" ng-show="form.siglas.$error.maxlength">
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength="2" placeholder="S1" required>
+                 
+              </div>
+               <span style="color:red;"class="error" ng-show="form.siglas.$error.maxlength">
                 Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                 </div>
-              </div>
-              
                 
                
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
                 <div class="col-md-3">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="siglas" maxlength="15" required>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="descripcionCorta" ng-maxlength="15" required>
                 </div>
+                <span style="color:red;" class="error" ng-show="form.descripcionCorta.$error.maxlength">
+                La descripción corta debe de ser de 15 caracteres</span>
               </div>  
               <div class="form-group">
                       <label class="col-sm-2 control-label">Descripcion Larga</label>
@@ -204,17 +189,20 @@
               <div class="form-group">
                 <label class="col-lg-2 control-label">Sigla</label>
                 <div class="col-xs-1">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_sigla" name="siglas" ng-maxlength=2 placeholder="Ejem. P1" required>
-                  <span class="error" ng-show="form.siglas.$error.maxlength">
-                Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_sigla" name="siglas" ng-maxlength="2" placeholder="Ejem. P1" required>
+                 
                 </div>
+                 <span style="color:red;"class="error" ng-show="formEdit.siglas.$error.maxlength">
+                Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
               </div>
               
               <div class="form-group">
                 <label class="col-lg-2 control-label">Descripcion Corta</label>
                 <div class="col-md-3">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_descripcioncorta" name="siglas" required>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_descripcioncorta"ng-maxlength="15" name="descripcionCorta" required>
                 </div>
+                  <span style="color:red;" class="error" ng-show="formEdit.descripcionCorta.$error.maxlength">
+                La descripción corta debe de ser de 15 caracteres</span>
               </div>  
               <div class="form-group">
                       <label class="col-sm-2 control-label">Descripcion Larga</label>
@@ -282,14 +270,10 @@
                 </div>
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button type="submit" class="btn btn-sm btn-success" ng-click="editSubsistema()" ng-disabled='form2.$invalid'>Editar</button>
+                  <button type="submit" class="btn btn-sm btn-success" ng-click="editSubsistema()" ng-disabled='form2.$invalid'>Actualizar</button>
                    <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
                 </div>
-                
               </div>
-              
-               
-             
             </form>
           </div>
         </div>
