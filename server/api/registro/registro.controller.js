@@ -38,8 +38,9 @@ exports.incert = function(req, res) {
       if (err) {
         throw err;
         debug
-        return res.send(409);
         connection.end();
+        return res.send(409);
+        
       } else {
         res.json([{
           msj: 'Registro exitoso, ahora puedes entrar al sistema',
