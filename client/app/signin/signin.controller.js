@@ -14,6 +14,7 @@ angular.module('app.controllers')
                 if ($scope.data.msj !== 'error') {
                     //aqui te manda al home, por que el log in esta bien 
                     $localStorage.token = $scope.data.token;
+
                     $localStorage.user = $scope.data.user;
                     //window.localStorage.setItem('token', $scope.data.token);
                     $state.go('app.dashboard-v1');
