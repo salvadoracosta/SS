@@ -68,32 +68,32 @@ angular.module('app.controllers')
         $scope.v9 = val;
       });
     };
-    angular.element('#slider').on('slideStop', function(data){
+    angular.element("#slider").on('slideStop', function(data){
       updateModel(data.value);
     });
 
-    angular.element('#slider2').on('slideStop', function(data){
+    angular.element("#slider2").on('slideStop', function(data){
       updateModel2(data.value);
     });
-    angular.element('#slider3').on('slideStop', function(data){
+    angular.element("#slider3").on('slideStop', function(data){
       updateModel3(data.value);
     });
-    angular.element('#slider4').on('slideStop', function(data){
+    angular.element("#slider4").on('slideStop', function(data){
       updateModel4(data.value);
     });
-    angular.element('#slider5').on('slideStop', function(data){
+    angular.element("#slider5").on('slideStop', function(data){
       updateModel5(data.value);
     });
-    angular.element('#slider6').on('slideStop', function(data){
+    angular.element("#slider6").on('slideStop', function(data){
       updateModel6(data.value);
     });
-    angular.element('#slider7').on('slideStop', function(data){
+    angular.element("#slider7").on('slideStop', function(data){
       updateModel7(data.value);
     });
-    angular.element('#slider8').on('slideStop', function(data){
+    angular.element("#slider8").on('slideStop', function(data){
       updateModel8(data.value);
     });
-    angular.element('#slider9').on('slideStop', function(data){
+    angular.element("#slider9").on('slideStop', function(data){
       updateModel9(data.value);
     });
 
@@ -107,9 +107,9 @@ angular.module('app.controllers')
 
         $scope.authError = '';
         $scope.authSuccess = data[0].msj;
-        $scope.toaster.title = 'Funcion creada';
+        $scope.toaster.title = "Funcion creada";
         $scope.toaster.text = data[0].msj;
-        $scope.toaster.type = 'success';
+        $scope.toaster.type = "success"
           //$scope.nombre ='';
           //$scope.sigla = '';
           //$scope.modulos = '';
@@ -122,9 +122,9 @@ angular.module('app.controllers')
         }).
       error(function(data, status, headers, config) {
         $scope.status = status;
-        $scope.toaster.title = 'Error';
-        $scope.toaster.text = 'No se pudo registrar la funcion, posiblemente es porblema de nosotros y no de usted';
-        $scope.toaster.type = 'error';
+        $scope.toaster.title = "Error";
+        $scope.toaster.text = "No se pudo registrar la funcion, posiblemente es porblema de nosotros y no de usted";
+        $scope.toaster.type = "error";
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
         $scope.authSuccess = '';
         console.log($scope);
@@ -134,33 +134,33 @@ angular.module('app.controllers')
 
     $scope.showregistro = function () {
       $scope.registro = true;
-    };
+    }
 
     $scope.getTipo = function (tipo) {
       console.log(tipo);
       switch(tipo) {
         case 0:
         return 'Pesimista';
-        
+        break;
         case 1:
         return 'Lineal';
-        
+        break;
         case 2:
         return 'Optimista';
-           
+        break;    
         default:
         return 'No Definida';
       }
-    };
+    }
 
     $scope.notshowregistro = function () {
       $scope.form.$setPristine();
       $scope.registro = false;
-    };
+    }
     $scope.notshowEdit = function () {
       $scope.formEdit.$setPristine();
       $scope.editando = false;
-    };
+    }
 
     $scope.borrar = function (funcion) {
       console.log(funcion);
@@ -169,9 +169,9 @@ angular.module('app.controllers')
         $scope.data = data;
         console.log($scope);
 
-        $scope.toaster.title = 'Funcion Eliminada';
+        $scope.toaster.title = "Funcion Eliminada";
         $scope.toaster.text = data[0].msj;
-        $scope.toaster.type = 'success';
+        $scope.toaster.type = "success"
           //$scope.nombre ='';
           //$scope.sigla = '';
           //$scope.modulos = '';
@@ -183,21 +183,21 @@ angular.module('app.controllers')
         }).
       error(function(data, status, headers, config) {
         $scope.status = status;
-        $scope.toaster.title = 'Error';
-        $scope.toaster.text = 'No se pudo borrar la Funcion, posiblemente es porblema de nosotros y no de usted';
-        $scope.toaster.type = 'error';
+        $scope.toaster.title = "Error";
+        $scope.toaster.text = "No se pudo borrar la Funcion, posiblemente es porblema de nosotros y no de usted";
+        $scope.toaster.type = "error";
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
         $scope.authSuccess = '';
         console.log($scope);
       });
-    };
+    }
     
     $scope.reloadFunciones = function() {
       funcionesFactory.getListaFunciones().then(function(response) {
         console.log(response);
         $scope.listafunciones = response.data;
       })
-    };
+    }
 
     $scope.editar = function(funcion) {
       $scope.funcionfocus = funcion;
@@ -213,9 +213,9 @@ angular.module('app.controllers')
 
         $scope.authError = '';
         $scope.authSuccess = data[0].msj;
-        $scope.toaster.title = 'Funcion editada';
+        $scope.toaster.title = "Funcion editada";
         $scope.toaster.text = data[0].msj;
-        $scope.toaster.type = 'success';
+        $scope.toaster.type = "success"
           //$scope.nombre ='';
           //$scope.sigla = '';
           //$scope.modulos = '';
@@ -228,9 +228,9 @@ angular.module('app.controllers')
         }).
       error(function(data, status, headers, config) {
         $scope.status = status;
-        $scope.toaster.title = 'Error';
-        $scope.toaster.text = 'No se pudo editar la funcion, posiblemente es porblema de nosotros y no de usted';
-        $scope.toaster.type = 'error';
+        $scope.toaster.title = "Error";
+        $scope.toaster.text = "No se pudo editar la funcion, posiblemente es porblema de nosotros y no de usted";
+        $scope.toaster.type = "error";
         toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
         $scope.authSuccess = '';
         console.log($scope);

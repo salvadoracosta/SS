@@ -217,7 +217,7 @@ var app = angular.module('app', [
                         return $stateParams.idmodulo;
                     }
                 }
-            });
+            })
 
     }
   ]
