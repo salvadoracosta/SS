@@ -129,6 +129,7 @@ var app = angular.module('app', [
                     }
                 }
             })
+
             .state('app.modulos',{
                 url:'/modulos',
                 controller: 'ModuloCtrl',
@@ -145,29 +146,35 @@ var app = angular.module('app', [
             .state('app.pesos',{
                 url:'/pesos',
                 controller: 'PesoCtrl',
-                templateUrl: 'app/peso/peso.html',
+                templateUrl: 'app/peso/peso.html'
+            })
+            .state('app.pesoDesc',{
+                url:'/proyecto/:idproyecto/peso',
+                controller: 'PesoDescCtrl',
+                templateUrl: 'app/pesoDesc/peso.html',
+                resolve:{
+                    pesos: function($stateParams, pesosFactory){
+                        return pesosFactory.getPesos($stateParams.idproyecto);
+                    },
+                    idproyecto:function($stateParams){
+                        return $stateParams.idproyecto;
+                    } 
+                }
+            })
+            .state('app.vindependientes',{
+                url:'/vindependientes',
+                controller: 'VIndpendienteCtrl',
+                templateUrl: 'app/vindependiente/vindependiente.html'
             })
             .state('app.proyectoDesc',{
-                url:'/proyecto',
+                url:'/proyecto/:edit',
                 controller: 'proyectoDescCtrl',
                 templateUrl: 'app/proyectoDesc/proyecto.html',
                  resolve: {
                     listaproyectos: function(proyectosFactory) {
                         return proyectosFactory.getListaProyectos();
                     }
-                }
-            })
-            .state('app.unidadInformacion',{
-                url:'/proyecto/:idproyecto/unidad',
-                controller: 'unidadInformacionCtrl',
-                templateUrl: 'app/unidadInformacion/unidad.html',
-                 resolve: {
-                    listaunidadesdeinformacion: function($stateParams,unidadesFactory) {
-                        return unidadesFactory.getListaUnidades($stateParams.idproyecto);
-                    },
-                    idproyecto: function($stateParams) {
-                        return $stateParams.idproyecto;
-                    }
+                    
                 }
             })
             .state('app.subsistemaDesc',{
@@ -183,6 +190,7 @@ var app = angular.module('app', [
                     }
                 }
             })
+         
             .state('app.modulosDesc',{
                 url:'/proyecto/:idproyecto/subsistema/:idsubsistema/modulos',
                 controller: 'ModuloDescCtrl',

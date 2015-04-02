@@ -31,16 +31,16 @@ exports.incert = function(req, res) {
       per_correo: input.correo,
       per_hash: hash,
       per_telefono: input.telefono,
-      per_institucion: input.institucion,
-      per_tipo: input.tipo
+      per_institucion: input.institucion
     };
     var query = connection.query('INSERT INTO usuario SET ?', data, function(err, result) {
       console.log(query);
       if (err) {
         throw err;
         debug
-        return res.send(409);
         connection.end();
+        return res.send(409);
+        
       } else {
         res.json([{
           msj: 'Registro exitoso, ahora puedes entrar al sistema',
