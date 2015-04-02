@@ -265,7 +265,24 @@ angular.module('app.directives', ['ui.load'])
       }
     };
   })
-  
+.directives('textEditor', function () {
+ return {
+   require: 'ngModel',
+   link: function(scope, element, attributes, controller) {
+     $(element).wysiwyg();
+   scope.$watch(attributes.ngModel, function(value) {
+        $(element).html(value);
+      });
+      element.bind('blur', function(){
+          controller.$setViewValue(element.html());
+              if (!scope.$$phase) {
+                scope.$apply();
+              }
+      });
+      
+   }
+ };
+})
   .directive('myPostRepeatDirective', function() {
   return function(scope, element, attrs) {
       if (scope.$last){

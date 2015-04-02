@@ -18,6 +18,8 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
+  "sub" : true,
+  "camelcase": true,
   "globals": {
     "jQuery": true,
     "angular": true,
@@ -34,5 +36,6 @@
     "browser": true,
     "element": true,
     "by": true
+    
   }
 }
