@@ -110,6 +110,24 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('unidadesFactory', ['$http', function($http) {
+  var listaunidades;
+   var sdo = {
+    getListaUnidades: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/unidad/'+id).success(function(data, status) {
+                listaunidades = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
 .factory('modulosFactory', ['$http', function($http) {
     console.log('Factory Modulos');
     var listamodulos;
@@ -163,6 +181,17 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('sessionInjector', ['SessionService', function(SessionService) {  
+    var sessionInjector = {
+        request: function(config) {
+            if (!SessionService.isAnonymus) {
+                config.headers['x-access-token'] = SessionService.token;
+            }
+            return config;
+        }
+    };
+    return sessionInjector;
+}])
 .factory('pesosFactory', ['$http', function($http) {
     console.log('Factory Pesos');
     var tree;

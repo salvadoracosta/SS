@@ -2,6 +2,9 @@
 
 var _ = require('lodash');
 var bcrypt = require('bcrypt');
+var moment = require('moment');
+var jwt = require('jwt-simple');
+var jwtTokenSecret = 'YOUR_SECRET_STRING';
 
 // Get list of logins
 exports.index = function(req, res) {
@@ -38,31 +41,41 @@ exports.checkLogIn = function(req, res) {
     var queryString = 'SELECT * FROM usuario WHERE per_correo =' + connection.escape(data.correo) ;
     var query = connection.query(queryString, function(err, result) {
 
-		if(err) {
-			throw err;
-			return res.send(409);
-			connection.end();
-		}else{
-			//sin error en la consulta, ahora verficamos si existe alguien con ese correo
-	      	if(result[0]){
-	      		console.log(result[0].per_hash);
-		    	bcrypt.compare(data.password, result[0].per_hash, function(err, answer) {
-				   if(answer){
-				   		res.json([{
-				          msj : 'success',
-				        }]);
-				   }else{
-				   		res.json([{
-				          msj : 'error',
-				        }]);
-				   }
-				});
-	      	}else{
-	      		//No existe nadie con ese correo
-	      		res.json([{
-		          msj : 'error',
-		        }]);
-	      	}
+    if(err) {
+      throw err;
+      return res.send(409);
+      connection.end();
+    }else{
+      //sin error en la consulta, ahora verficamos si existe alguien con ese correo
+      var user = result[0];
+          if(result[0]){
+            console.log(result[0].per_hash);
+          bcrypt.compare(data.password, result[0].per_hash, function(err, answer) {
+           if(answer){
+              var expires = moment().add(7,'days').valueOf();
+              var token = jwt.encode({
+                iss: user.per_id,
+                exp: expires
+              }, jwtTokenSecret);
+               
+              res.json({
+                msj : 'success',
+                token : token,
+                expires: expires,
+                user: user
+              });
+           }else{
+              res.json([{
+                  msj : 'error',
+                }]);
+           }
+        });
+          }else{
+            //No existe nadie con ese correo
+            res.json([{
+              msj : 'error',
+            }]);
+          }
         connection.end();
       }
     });

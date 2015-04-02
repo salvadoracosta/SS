@@ -161,6 +161,19 @@ var app = angular.module('app', [
                     } 
                 }
             })
+            .state('app.unidadInformacion',{
+                url:'/proyecto/:idproyecto/unidad',
+                controller: 'unidadInformacionCtrl',
+                templateUrl: 'app/unidadInformacion/unidad.html',
+                 resolve: {
+                    listaunidadesdeinformacion: function($stateParams,unidadesFactory) {
+                        return unidadesFactory.getListaUnidades($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
+            })
             .state('app.vindependientes',{
                 url:'/vindependientes',
                 controller: 'VIndpendienteCtrl',
@@ -226,7 +239,6 @@ var app = angular.module('app', [
                     }
                 }
             })
-
     }
   ]
 )
