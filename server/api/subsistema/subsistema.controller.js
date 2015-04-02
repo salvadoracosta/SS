@@ -37,6 +37,8 @@ exports.index = function(req, res) {
   	var data = {
     	pro_id    : req.params.id
   	};
+
+  	console.log("data de subsistemas", data);
   	var mysql = require('mysql');
 	var connection = mysql.createConnection({
 		host: 'localhost',
