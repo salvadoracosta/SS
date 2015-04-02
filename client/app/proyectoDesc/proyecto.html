@@ -8,16 +8,37 @@
     <div class="col-sm-9 col-xs-12">
       <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Proyecto</button>
     </div>
+
   </div>
 </div>
 <div class ="wrapper-md ng-scope" ng-scope="proyectoDescCtrl">
+
   <div class ="col" >
+
+
     <div class ="row">
       <div class="col-sm-12">
         <div class="panel panel-default" ng-show="!registro && !editando">
           <div class="panel-heading">
             Lista Proyectos
           </div>
+          <!--
+          <div class="row wrapper">
+            <div class="col-sm-3 m-b-xs">
+              <div class="input-group">
+                <input type="text" class="input-sm form-control" placeholder="Buscar">
+                <span class="input-group-btn">
+                  <button class="btn btn-sm btn-default" type="button">Ir!</button>
+                </span>
+              </div>          
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+  
+            </div>
+          </div>
+          -->
           <div class="table-responsive">
             <table class="table table-striped b-t b-light">
               <thead>
@@ -27,6 +48,7 @@
                   </th>
                   <th>Nombre</th>
                   <th>Número de módulos</th>
+                  <th></th>
                   <th></th>
                   <th style="width:30px;"></th>
                 </tr>
@@ -50,13 +72,19 @@
                   </td>
                   <td>{{ proyecto.pro_nombre }}</td>
                   <td>{{ proyecto.pro_modulos }}</td>
+                  
                   <td><button class="btn btn-primary btn-addon" ng-click="subsistemas(proyecto)"><i class="fa fa-tasks"></i>Subsistemas</button></td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="unidades(proyecto)"><i class="fa fa-tasks"></i>Unidades de informacion</button></td>
+                  
                 </tr>
               </tbody>
             </table>
           </div>
           <footer class="panel-footer">
             <div class="row">
+
+
+
             </div>
           </footer>
         </div>
@@ -66,8 +94,9 @@
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
                 <label class="col-lg-2 control-label ">Nombre</label>
-                <div class="col-lg-5">
-                  <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Mi proyecto" required>  
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Mi proyecto" required>
+                  
                 </div>
               </div>
               <div class="form-group">
@@ -101,18 +130,24 @@
                 <button type="submit" class="btn btn-sm btn-success" ng-click="addProyecto()" ng-disabled='form.$invalid'>Registrar</button>
                 <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
               </div>
+
             </div>
+
+
+
           </form>
         </div>
       </div>
+
       <div class="panel panel-default" ng-show="editando">
         <div class="panel-heading font-bold">Editar Proyecto</div>
         <div class="panel-body">
           <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
             <div class="form-group">
               <label class="col-lg-2 control-label ">Nombre</label>
-              <div class="col-lg-5">
+              <div class="col-lg-10">
                 <input type="text" class="form-control" ng-model="proyectofocus.pro_nombre" placeholder="Ejem. Mi proyecto" required>
+
               </div>
             </div>
             <div class="form-group">
@@ -146,7 +181,11 @@
               <button type="submit" class="btn btn-sm btn-success" ng-click="editProyecto()" ng-disabled='form2.$invalid'>Editar</button>
               <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowEdit()">Cancelar</button>
             </div>
+
           </div>
+
+
+
         </form>
       </div>
     </div>
