@@ -1,4 +1,4 @@
-use strict';
+'use strict';
 
 var _ = require('lodash');
 
@@ -202,7 +202,7 @@ exports.update = function(req, res) {
 		un_idproyecto: req.params.id
 	};
 
-	var queryString = 'UPDATE unidad_informacion SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+', sub_descripcioncorta= '+connection.escape(data.sub_descripcioncorta)+', sub_descripcionlarga= '+connection.escape(data.sub_descripcionlarga)+', sub_modulo1= '+connection.escape(data.sub_modulo1)+', sub_modulo2= '+connection.escape(data.sub_modulo2)+', sub_modulo3= '+connection.escape(data.sub_modulo3)+' WHER...(line truncated)...
+	var queryString = 'UPDATE unidad_informacion SET sub_nombre = '+connection.escape(data.sub_nombre)+', sub_sigla= '+connection.escape(data.sub_sigla)+', sub_valor= '+connection.escape(data.sub_valor)+', sub_descripcioncorta= '+connection.escape(data.sub_descripcioncorta)+', sub_descripcionlarga= '+connection.escape(data.sub_descripcionlarga)+', sub_modulo1= '+connection.escape(data.sub_modulo1)+', sub_modulo2= '+connection.escape(data.sub_modulo2)+', sub_modulo3= '+connection.escape(data.sub_modulo3)+' WHER un_idproyecto ='+connection.escape(data.un_idproyecto);
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

@@ -135,7 +135,9 @@ angular.module('app.controllers')
     $scope.subsistemas = function(proyecto) {
      $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
     }
-
+    $scope.unidades = function(proyecto) {
+     $state.go('app.unidadInformacion',{idproyecto:proyecto.pro_id});
+    }
     $scope.editProyecto = function() {
       $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { nombre: $scope.proyectofocus.pro_nombre , modulos : $scope.proyectofocus.pro_modulos}).success(function(data, status) {
           $scope.status = status;

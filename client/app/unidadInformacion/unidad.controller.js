@@ -131,7 +131,7 @@ angular.module('app.controllers')
     }
 
     $scope.editProyecto = function() {
-      $http.put('/api/unidad/'+idproyecto, { unidad: unidadfocus}).success(function(data, status) {
+      $http.put('/api/unidad/'+idproyecto, { unidad: $scope.unidadfocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);

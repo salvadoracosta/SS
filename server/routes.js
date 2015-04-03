@@ -22,7 +22,7 @@ module.exports = function(app) {
   app.use('/api/pesos', require('./api/peso'));
  // app.use('/api/vindependientes',require('./api/vindependiente'));
   app.use('/api/tree', require('./api/tree'));
-
+  app.use('/api/unidad', require('./api/unidad'));
   app.use('/registro', require('./api/registro'));
 
   
