@@ -1,49 +1,19 @@
 <!-- first -->
 <ul class="nav">
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show='user.per_tipo == 1 || user.per_tipo == 0'>
     <span >Menú de Registros</span>
   </li>
-  <li>
-    <a ui-sref="app.proyectos" class="auto">      
-
-      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-      <span class="font-bold" >Proyectos</span>
-    </a>    
-  </li>
+  <div ng-if='user.per_tipo == 0'>
     <li>
-      <a ui-sref="app.variables" class="auto">      
-
-        <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-        <span class="font-bold" >Variables</span>
-      </a>      
-    </li> 
-  <li>
-    <a ui-sref="app.modulos" class="auto">
-
+    <a ui-sref="app.funciones" class="auto">      
       <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-      <span class="font-bold"> Módulos</span>
+      <span class="font-bold" >Registro de Funciones</span>
     </a>
   </li>
-  <li>
-    <a ui-sref="app.subsistemas" class="auto">      
-      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-      <span class="font-bold" >Subsistemas</span>
-    </a>
-  </li>
-   <li>
-    <a ui-sref="app.pesos" class="auto">      
-      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-      <span class="font-bold" >Pesos</span>
-    </a>
-  </li>
-
-<li>
-  <a ui-sref="app.funciones" class="auto">      
-    <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-    <span class="font-bold" >Registro de Funciones</span>
-  </a>
-</li>
-<li>
+  </div>
+  <div ng-if='user.per_tipo == 1 || user.per_tipo == 0'>
+    <li>
   <a ui-sref="app.vindependientes" class="auto">      
     <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
     <span class="font-bold" >Variables Independientes</span>
@@ -60,5 +30,22 @@
     <span class="font-bold" >Proyectos</span>
   </a>
 </li>
+
+  </div>
+
+<div ng-if='user.per_tipo == 2 || user.per_tipo == 0'>
+  <li class="line dk hidden-folded" ng-show='user.per_tipo == 0'></li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+    <span >Consulta</span>
+  </li>  
+
+<li>
+  <a ui-sref="app.consultaProyectos" class="auto">      
+    <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+    <span class="font-bold" >Consulta Proyectos</span>
+  </a>
+</li>
+</div>
+
 </ul>
 <!-- / third -->
