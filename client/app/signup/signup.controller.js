@@ -24,16 +24,20 @@ angular.module('app.controllers')
         $scope.status = status;
         $scope.data = data;
         console.log($scope);
-
-        $scope.authError = '';
-        $scope.authSuccess = data[0].msj;
-        $scope.name = '';
-        $scope.email = '';
-        $scope.password = '';
-        $scope.tel = '';
-        $scope.institucion = '';
-        $scope.agree = false;
-        $scope.form.$setPristine();
+        if(data[0].msj =='El correo ya esta registrado, por favor haver login'){
+          $scope.authError = data[0].msj;
+        }else{
+          $scope.authError = '';
+          $scope.authSuccess = data[0].msj;
+          $scope.name = '';
+          $scope.email = '';
+          $scope.password = '';
+          $scope.tel = '';
+          $scope.institucion = '';
+          $scope.agree = false;
+          $scope.form.$setPristine();
+        }
+        
 
       }).
       error(function(data, status, headers, config) {
