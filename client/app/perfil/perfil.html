@@ -1,0 +1,86 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="col">
+    <div style="background:url(img/c4.jpg) center center; background-size:cover">
+      <div class="wrapper-lg bg-white-opacity">
+        <div class="row m-t">
+          <div class="col-sm-7">
+            <a href class="thumb-lg pull-left m-r">
+              <img src="img/a0.jpg" class="img-circle">
+            </a>
+            <div class="clear m-b">
+              <div class="m-b m-t-sm">
+                <span class="h3 text-black" ng-bind='user.per_nombre'></span>
+                <small class="m-l" ng-bind='user.per_institucion'></small>
+              </div>
+              <span class="h4 text-black m-l" ng-bind='user.per_correo'></span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="wrapper bg-white b-b">
+      <ul class="nav nav-pills nav-sm">
+        <li class="active"><a href>Datos Personales</a></li>
+        <li><a href>Cambiar Foto</a></li>
+      </ul>
+    </div>
+    <div class="wrapper-md" >
+    <div class="row" >      
+      <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Informacion</div>
+        <div class="panel-body">
+          <form class="bs-example form-horizontal" name="form">
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Nombre</label>
+              <div class="col-lg-10">
+                <input class="form-control" placeholder="Nombre" ng-model="user.per_nombre">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Correo</label>
+              <div class="col-lg-10">
+                <input type="email" class="form-control" placeholder="Correo" ng-model="user.per_correo">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Telefono</label>
+              <div class="col-lg-10">
+                <input class="form-control" placeholder="Telefono" ng-model="user.per_telefono">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Institucion</label>
+              <div class="col-lg-10">
+                <input class="form-control" placeholder="Institucione" ng-model="user.per_institucion">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" name="password" ng-model='user.per_password' placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label"></label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==user.per_password' " ui-validate-watch=" 'password' ">
+                <span ng-show='form.confirm_password.$error.validator'>Los Passwords no son iguales!</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-sm btn-info" ng-click="editPerfil()" ng-disabled="form.$invalid">Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+</div>

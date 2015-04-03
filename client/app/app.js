@@ -96,6 +96,16 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.perfil', {
+                url: '/perfil',
+                templateUrl: 'app/perfil/perfil.html',
+                controller: 'PerfilCtrl',
+                resolve: {
+                    listaproyectos: function(proyectosFactory) {
+                        return proyectosFactory.getListaProyectos();
+                    }
+                }
+            })
             .state('app.subsistemas',{
                 url:'/subsistemas',
                 controller: 'SubsistemaCtrl',
