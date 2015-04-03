@@ -69,7 +69,8 @@ exports.index = function(req, res) {
         per_correo: input.correo,
         per_hash: hash,
         per_telefono: input.telefono,
-        per_institucion: input.institucion
+        per_institucion: input.institucion,
+        per_tipo: input.tipo
       };
       var query = connection.query('INSERT INTO usuario SET ?', data, function(err, result) {
         console.log(query);

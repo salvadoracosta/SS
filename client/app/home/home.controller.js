@@ -4,8 +4,9 @@ angular.module('app.controllers')
     .controller('HomeCtrl', function($scope, $http, $state,tree, $localStorage) {
         var treeArray = tree.data;
     console.log(treeArray.length);
-
+    
     $scope.user = $localStorage.user;
+    console.log($scope.user);
     $scope.logout = function() {
         delete $localStorage.user;
         delete $localStorage.token;

@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var bcrypt = require('bcrypt');
+var moment = require('moment');
 
 exports.incert = function(req, res) {
 
@@ -26,12 +27,15 @@ exports.incert = function(req, res) {
   console.log(input);
   bcrypt.hash(input.password, 8, function(err, hash) {
     console.log(hash);
+    var myDate =  moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
     var data = {
       per_nombre: input.nombre,
       per_correo: input.correo,
       per_hash: hash,
       per_telefono: input.telefono,
-      per_institucion: input.institucion
+      per_institucion: input.institucion,
+      per_tipo: input.tipo,
+      per_fecha: myDate
     };
     var query = connection.query('INSERT INTO usuario SET ?', data, function(err, result) {
       console.log(query);
