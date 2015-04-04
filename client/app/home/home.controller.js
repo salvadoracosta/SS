@@ -79,7 +79,18 @@ angular.module('app.controllers')
                         current = current[pos2].children;
                     }
                     current = current[pos2].children;
-                    current.push(lvl3);
+                    if(lvl4 == null){
+                       current.push(lvl3); 
+                   }else{
+                        var pos3 = $scope.arrayContains(current,lvl3);
+                        if(typeof current[pos3].children == null){
+                            current[pos3] = {label: lvl3, children:[]};
+                            current = current[pos3].children;
+                        }
+                        current = current[pos3].children;
+                        current.push(lvl4);
+                   }
+                    
                 }
             }else{
                 tree.push({label: lvl1, children:[]});
