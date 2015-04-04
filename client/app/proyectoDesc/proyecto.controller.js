@@ -118,7 +118,7 @@ angular.module('app.controllers')
       proyectosFactory.getListaProyectosByAutor($localStorage.user.per_id).then(function(response) {
         console.log(response);
         $scope.listaproyectos = response.data;
-      })
+      });
     }
 
     $scope.editar = function(proyecto) {

@@ -19,7 +19,10 @@ angular.module('app.controllers')
         "Noviermbre", "Diciembre"
     ];
 
-    
+    $scope.cerrar = function() {
+		$scope.consultando = false;
+    }
+
     $scope.consulta = function(proyecto) {
     	usuariosFactory.getNameById(proyecto.pro_autor).then(function(response) {
 	       var d = new Date(proyecto.pro_fecha);

@@ -89,6 +89,24 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('usuariosFactory', ['$http', function($http) {
+    var usuarioNombre;   
+   var sdo = {
+    getNameById: function (idusuario) {
+        var promise = $http.get('/api/usuarios/'+idusuario).success(function(data, status) {
+                
+                usuarioNombre = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
 .factory('subsistemasFactory', ['$http', function($http) {
     console.log('Factory SUbsistemas');
     var listasubsistemas;
