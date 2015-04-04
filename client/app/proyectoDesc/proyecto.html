@@ -1,3 +1,4 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
 <div class="bg-light lter b-b wrapper-md">
   <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
   <div class="row">
@@ -9,9 +10,10 @@
       <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Proyecto</button>
     </div>
   </div>
+
 </div>
 <div class ="wrapper-md ng-scope" ng-scope="proyectoDescCtrl">
-  <div class ="col" >
+  <div class ="col-sm-12" >
     <div class ="row">
       <div class="col-sm-12">
         <div class="panel panel-default" ng-show="!registro && !editando">
@@ -154,5 +156,23 @@
     </div>
   </div>
 </div>
+
 </div>
+
+</div>
+<div class="col w-md bg-white-only b-l bg-auto no-border-xs">
+    <tabset class="nav-tabs-alt" justified="true">
+      
+      <tab>
+        <tab-heading>
+          <i class="icon-share text-md text-muted wrapper-sm"></i>
+        </tab-heading>
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md">Estructura</div>
+        </div>
+        <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
+      </tab>
+      
+    </tabset>
+  </div>
 </div>

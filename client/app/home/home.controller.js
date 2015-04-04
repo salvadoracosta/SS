@@ -12,6 +12,7 @@ angular.module('app.controllers')
         delete $localStorage.token;
         $state.go('access.signin');
     }
+    console.log($scope);
     
     $scope.arrayContains = function (arr,str) {
         for (var k = 0; k < arr.length; k++) {
@@ -59,13 +60,13 @@ angular.module('app.controllers')
        var nivelMeter='';
        var existing = null;
        if(lvl2 == null){
-        tree.push(lvl1+'');
+        tree.push({label: lvl1,onSelect: function(branch){console.log(branch.data);}, data:{id:2}});
         console.log("NIVEEEEEEEEEL1 --"+ lvl1)
        }else{
             var pos = $scope.arrayContains(tree,lvl1);
             if(pos>-1){
                 if(typeof tree[pos].children == null){
-                    tree[pos] = {label: lvl1, children:[]};
+                    tree[pos] = {label: lvl1,onSelect: function(branch){console.log(branch);}, children:[]};
                     current = tree[pos].children;
                 }
                 current = tree[pos].children;
@@ -84,7 +85,7 @@ angular.module('app.controllers')
                    }else{
                         var pos3 = $scope.arrayContains(current,lvl3);
                         if(typeof current[pos3].children == null){
-                            current[pos3] = {label: lvl3, children:[]};
+                            current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
                             current = current[pos3].children;
                         }
                         current = current[pos3].children;
@@ -113,8 +114,9 @@ angular.module('app.controllers')
       var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
       console.log(steps);
       $scope.fillTree(steps);
+      
     }
-    
+    $localStorage.tree = tree;
     console.log(tree);
     
     //$scope.my_data = tree;
