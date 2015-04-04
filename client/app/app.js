@@ -106,6 +106,16 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.consultaProyecto', {
+                url: '/consultaProyecto',
+                templateUrl: 'app/consultaProyecto/consultaProyecto.html',
+                controller: 'ConsultaProyectoCtrl',
+                resolve: {
+                    listaproyectos: function(proyectosFactory) {
+                        return proyectosFactory.getListaProyectos();
+                    }
+                }
+            })
             .state('app.subsistemas',{
                 url:'/subsistemas',
                 controller: 'SubsistemaCtrl',
@@ -194,8 +204,8 @@ var app = angular.module('app', [
                 controller: 'proyectoDescCtrl',
                 templateUrl: 'app/proyectoDesc/proyecto.html',
                  resolve: {
-                    listaproyectos: function(proyectosFactory) {
-                        return proyectosFactory.getListaProyectos();
+                    listaproyectos: function(proyectosFactory,$localStorage) {
+                      return proyectosFactory.getListaProyectosByAutor($localStorage.user.per_id);
                     }
                     
                 }

@@ -6,7 +6,7 @@ angular.module('app.controllers')
     console.log(listaproyectos);
     console.log(proyectosFactory);
     console.log($stateParams.edit);
-    
+    $scope.idusuario = $localStorage.user.per_id;
     $scope.listaproyectos = listaproyectos.data;
     $scope.registro = false;
     $scope.toaster = {
@@ -39,7 +39,7 @@ angular.module('app.controllers')
     Funcion para registrar a un proyecto
     */
     $scope.addProyecto = function() {
-      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos}).success(function(data, status) {
+      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos,autor:$localStorage.user.per_id}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -115,7 +115,7 @@ angular.module('app.controllers')
     }
 
     $scope.reloadProyectos = function() {
-      proyectosFactory.getListaProyectos().then(function(response) {
+      proyectosFactory.getListaProyectosByAutor($localStorage.user.per_id).then(function(response) {
         console.log(response);
         $scope.listaproyectos = response.data;
       })

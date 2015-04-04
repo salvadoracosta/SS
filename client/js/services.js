@@ -21,6 +21,18 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getListaProyectosByAutor: function (idAutor) {
+        var promise = $http.get('/api/proyectos/'+idAutor).success(function(data, status) {
+                
+                listaproyectos = data;
+                //console.log(listaproyectos);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
