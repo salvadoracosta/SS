@@ -14,6 +14,15 @@
   <div class ="col" >
     <div class ="row">
       <div class="col-sm-12">
+      <div>
+        <ul class="breadcrumb bg-white b-a">
+          <li><a ui-sref="app.proyectoDesc()"><i class="fa fa-home"></i> Proyectos</a></li>
+          <li ng-bind='siglasProyecto'></li>
+          <li><a ui-sref="app.subsistemaDesc({idproyecto:idproyecto})"><i class="fa fa-home"></i> Subsistemas</a></li>
+          <li ng-bind='siglasSubsistema'></li>
+          <li class="active">Modulos</li>
+        </ul>
+      </div>
         <div class="panel panel-default" ng-show="!registro && !editando">
           <div class="panel-heading">
             Lista Módulos

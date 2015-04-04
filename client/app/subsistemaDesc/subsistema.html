@@ -2,7 +2,7 @@
   <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
   <div class="row">
     <div class="col-sm-3 col-xs-12">
-      <h1 class="m-n font-thin h3 text-black">Subsistema</h1>
+      <h1 class="m-n font-thin h3 text-black">Subsistemas</h1>
       <small class="text-muted">Registrar</small>
     </div>
     <div class="col-sm-9 col-xs-12">
@@ -10,11 +10,20 @@
     </div>
 
   </div>
+
 </div>
+
 <div class ="wrapper-md ng-scope" ng-scope="SubsistemaDescCtrl">
   <div class ="col" >
     <div class ="row">
       <div class="col-sm-12">
+      <div>
+        <ul class="breadcrumb bg-white b-a">
+          <li><a ui-sref="app.proyectoDesc()"><i class="fa fa-home"></i> Proyectos</a></li>
+          <li ng-bind='siglasProyecto'>Proyecto 1</li>
+          <li class="active">Subsistemas</li>
+        </ul>
+      </div>
         <div class="panel panel-default" ng-show="!registro && !editando">
           <div class="panel-heading">
             Lista Subsistema
@@ -32,7 +41,6 @@
                 </tr>
               </thead>
               <tbody>
-                {{listasubsistemas.length}}
                 <tr ng-repeat="subsistema in listasubsistemas">
                   <td>
                     <div class="btn-group dropdown">

@@ -1,10 +1,13 @@
 'use strict';
 
 angular.module('app.controllers')
-.controller('ModuloDescCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory,idproyecto, idsubsistema,$state) {
+.controller('ModuloDescCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory,idproyecto, idsubsistema,$state,$localStorage) {
   console.log(toaster);
   console.log(listamodulos);
+  $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+  $scope.siglasSubsistema = $localStorage.subsistema.sub_sigla;
   $scope.listamodulos = listamodulos.data;
+  $scope.idproyecto = idproyecto;
   $scope.registro = false;
   $scope.toaster = {
     type: 'success',
@@ -14,6 +17,7 @@ angular.module('app.controllers')
   
   var variablesArrayFocus = [];
 $scope.variables = function (modulo) {
+  $localStorage.modulo = modulo;
   $state.go('app.variablesDesc',{idproyecto:idproyecto,idsubsistema:idsubsistema,idmodulo:modulo.mod_id});
 }
 

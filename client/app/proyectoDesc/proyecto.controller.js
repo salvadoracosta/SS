@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams) {
+  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams,$localStorage) {
     console.log(toaster);
     console.log(listaproyectos);
     console.log(proyectosFactory);
@@ -133,7 +133,8 @@ angular.module('app.controllers')
 
 
     $scope.subsistemas = function(proyecto) {
-     $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
+      $localStorage.proyecto = proyecto;
+      $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
     }
     $scope.unidades = function(proyecto) {
      $state.go('app.unidadInformacion',{idproyecto:proyecto.pro_id});
