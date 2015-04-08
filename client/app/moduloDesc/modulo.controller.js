@@ -14,7 +14,17 @@ angular.module('app.controllers')
     title: 'Titulo',
     text: 'Message'
   };
-  
+
+  if($scope.listamodulos.length == 0){
+      $scope.alerts = [
+      { type: 'warning', msg: 'Usted aun no tiene modulos registrados para este subsistema' }
+      ]; 
+    }
+    
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+
   var variablesArrayFocus = [];
 $scope.variables = function (modulo) {
   $localStorage.modulo = modulo;

@@ -21,6 +21,16 @@ angular.module('app.controllers')
         text: 'Message'
     };
 
+    if($scope.listavariables.length == 0){
+      $scope.alerts = [
+      { type: 'warning', msg: 'Usted aun no tiene variables registradas para este modulo' }
+      ]; 
+    }
+    
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+
     /*
     Funcion para registrar a un proyecto
     */

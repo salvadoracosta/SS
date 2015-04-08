@@ -15,6 +15,16 @@ angular.module('app.controllers')
         text: 'Message'
     };
 
+    if($scope.listaproyectos.length == 0){
+      $scope.alerts = [
+      { type: 'warning', msg: 'Usted aun no tiene proyectos registrados' }
+      ]; 
+    }
+    
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+
     if($stateParams.edit == 'nuevo'){
       $scope.registro = true;
     }

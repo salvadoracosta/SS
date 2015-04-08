@@ -28,12 +28,16 @@
           <li class="active">Variables</li>
         </ul>
       </div>
+      <div class="row" ng-if="listavariables.length == 0">
+        <div class="col-lg-6">
+          <div class="m-b-md">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+          </div>
+        </div>
+      </div>
         <div class="panel panel-default" ng-show="!registro && !editando">
           <div class="panel-heading">
             Lista Variables
-          </div>
-          <div ng-if='listavariables.length == 0'>
-            <span style="color:red;">No hay variables registradas</span>
           </div>
 <!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
