@@ -28,7 +28,7 @@
           <div class="panel-heading">
             Lista Módulos
           </div>
-          <div class="row wrapper">
+<!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
               <div class="input-group">
                 <input type="text" class="input-sm form-control" placeholder="Buscar">
@@ -41,7 +41,7 @@
             </div>
             <div class="col-sm-5">
             </div>
-          </div>
+          </div> -->
           <div class="table-responsive">
             <table class="table table-striped b-t b-light">
               <thead>
@@ -88,24 +88,26 @@
           <div class="panel-body">
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
-                <label class="col-lg-2 control-label ">Nombre</label>
+                <label class="col-lg-2 control-label ">Nombre*</label>
                 <div class="col-md-6">
                   <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. Modulo" required>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-lg-2 control-label">Sigla</label>
+                <label class="col-lg-2 control-label">Sigla*</label>
                 <div class="col-xs-2">
-                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength="2" placeholder="S1" required>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength="2" placeholder="M1" required>
                 </div>
                 <span style="color:red;"class="error" ng-show="form.siglas.$error.maxlength">
                   Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                 </div>
                 <div class="form-group">
-                  <label class="col-lg-2 control-label">Descripcion Corta</label>
+                  <label class="col-lg-2 control-label">Descripcion Corta*</label>
                   <div class="col-md-3">
                     <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="descripcioncortas" ng-maxlength="15" required>
                   </div>
+                  <span style="color:red;"class="error" ng-show="form.descripcioncortas.$error.maxlength">
+                  La descripción es de máximo 15 caracteres</span>
                 </div>  
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Descripcion Larga</label>
@@ -185,13 +187,13 @@
               <div class="panel-body">
                 <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label ">Nombre</label>
+                    <label class="col-lg-2 control-label ">Nombre*</label>
                     <div class="col-md-6">
                       <input type="text" class="form-control" ng-model="modulofocus.mod_nombre" placeholder="Ejem. Módulo" required>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Sigla</label>
+                    <label class="col-lg-2 control-label">Sigla*</label>
                     <div class="col-xs-2">
                      <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="modulofocus.mod_sigla" name="siglas" ng-maxlength="2" placeholder="M1" required>
                      
@@ -200,10 +202,11 @@
                   Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                     </div>
                     <div class="form-group">
-                      <label class="col-lg-2 control-label">Descripcion Corta</label>
+                      <label class="col-lg-2 control-label">Descripcion Corta*</label>
                       <div class="col-md-3">
-                        <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="modulofocus.mod_descripcioncorta" name="descripcioncorta" maxlength="15" required>
+                        <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="modulofocus.mod_descripcioncorta" name="descripcioncorta" ng-maxlength="15" required>
                       </div>
+                      <span style="color:red;"class="error" ng-show="formEdit.descripcioncorta.$error.maxlength">La descripción es de máximo 15 caracteres</span>
                     </div>  
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Descripcion Larga</label>

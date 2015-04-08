@@ -96,22 +96,22 @@
           <div class="panel-body">
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
-                <label class="col-lg-2 control-label ">Nombre</label>
+                <label class="col-lg-2 control-label ">Nombre*</label>
                 <div class="col-md-6">
                   <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. variable uno" required>
                   
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-lg-2 control-label">Sigla</label>
+                <label class="col-lg-2 control-label">Sigla*</label>
                 <div class="col-xs-2">
                   <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength="2" placeholder="V1" required>
                   </div>
-                  <span class="error" ng-show="form.siglas.$error.maxlength">
+                  <span style="color:red;" class="error" ng-show="form.siglas.$error.maxlength">
                     Las siglas de la variable solo pueden ser a lo mas dos caracteres!</span>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Tipo de Funcion</label>
+                  <label class="col-sm-2 control-label">Tipo de Funcion*</label>
                   <div class="col-sm-10">
                     <div class="btn-group m-r ng-scope" >
                       <label class="btn btn-default ng-valid ng-dirty" ng-model="funcion" btn-radio="1" uncheckable="">Pesimista</label>
@@ -121,11 +121,11 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-lg-2 control-label">Descripcion Corta</label>
+                  <label class="col-lg-2 control-label">Descripcion Corta*</label>
                   <div class="col-md-3">
                     <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="descripcioncorta" ng-maxlength="15" required>
                   </div>
-                    <span class="error" ng-show="form.descripcioncorta.$error.maxlength">
+                    <span style="color:red;" class="error" ng-show="form.descripcioncorta.$error.maxlength">
                     Las descripcion corta solo pueden ser a lo mas 15 caracteres!</span>
                 </div>  
                 <div class="form-group">
@@ -198,27 +198,27 @@
                     <h2 class="m-t-none"><a href="">Descripcion de Enunciados valorativos</a></h2>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Sujeto</label>
+                    <label class="col-lg-2 control-label">Sujeto*</label>
                     <div class="col-lg-10">
                       <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sujeto" required>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Verbo</label>
+                    <label class="col-lg-2 control-label">Verbo*</label>
 
                     <div class="col-lg-10">
                       <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="verbo" required>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Predicado</label>
+                    <label class="col-lg-2 control-label">Predicado*</label>
                     <div class="col-lg-10">
                       <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="predicado" required>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 1</label>
+                    <label class="col-sm-2 control-label">Adjetivo 1*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v1" required>
                     </div>
@@ -232,7 +232,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 2 </label>
+                    <label class="col-sm-2 control-label">Adjetivo 2 *</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v2" required>
                     </div>
@@ -245,7 +245,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 3</label>
+                    <label class="col-sm-2 control-label">Adjetivo 3*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v3" required>
                     </div>
@@ -258,7 +258,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 4</label>
+                    <label class="col-sm-2 control-label">Adjetivo 4*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v4" required>
                     </div>
@@ -271,7 +271,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 5</label>
+                    <label class="col-sm-2 control-label">Adjetivo 5*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v5" required>
                     </div>
@@ -284,7 +284,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 6</label>
+                    <label class="col-sm-2 control-label">Adjetivo 6*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v6" required>
                     </div>
@@ -297,7 +297,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 7</label>
+                    <label class="col-sm-2 control-label">Adjetivo 7*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v7" required>
                     </div>
@@ -310,7 +310,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 8</label>
+                    <label class="col-sm-2 control-label">Adjetivo 8*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v8" required>
                     </div>
@@ -323,7 +323,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Adjetivo 9</label>
+                    <label class="col-sm-2 control-label">Adjetivo 9*</label>
                     <div class="col-sm-2">
                       <input type="text" class="form-control" ng-model="v9" required>
                     </div>
@@ -352,23 +352,23 @@
               <div class="panel-body">
                 <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label ">Nombre</label>
+                    <label class="col-lg-2 control-label ">Nombre*</label>
                     <div class="col-md-6">
                       <input type="text" class="form-control" ng-model="variablefocus.var_nombre" placeholder="Ejem. variable uno" required>
 
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-2 control-label">Sigla</label>
+                    <label class="col-lg-2 control-label">Sigla*</label>
                     <div class="col-xs-2">
                       <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="variablefocus.var_sigla" name="siglas" ng-maxlength="2" placeholder="V1" required>
                       
                       </div>
-                      <span class="error" ng-show="formEdit.siglas.$error.maxlength">
+                      <span style="color:red;" class="error" ng-show="formEdit.siglas.$error.maxlength">
                         Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                     </div>
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Tipo de Funcion</label>
+                      <label class="col-sm-2 control-label">Tipo de Funcion*</label>
                       <div class="col-sm-10">
                         <div class="btn-group m-r ng-scope">
                           <label class="btn btn-default ng-valid ng-dirty" ng-model="variablefocus.var_funcion" btn-radio="1" uncheckable="">Pesimista</label>
@@ -378,12 +378,12 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-lg-2 control-label">Descripcion Corta</label>
+                      <label class="col-lg-2 control-label">Descripcion Corta*</label>
                       <div class="col-md-3">
                         <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="variablefocus.var_descripcioncorta" name="descripcioncorta" ng-maxlength="15" required>
 
                       </div>
-                      <span class="error" ng-show="formEdit.descripcioncorta.$error.maxlength">
+                      <span style="color:red;" class="error" ng-show="formEdit.descripcioncorta.$error.maxlength">
                         La descripción corta sólo pueden ser a lo mas 15 caracteres!</span>
                     </div>
                     <div class="form-group">
@@ -456,25 +456,25 @@
                         <h2 class="m-t-none"><a href="">Descripcion de Enunciados valorativos</a></h2>
                       </div>
                       <div class="form-group">
-                        <label class="col-lg-2 control-label">Sujeto</label>
+                        <label class="col-lg-2 control-label">Sujeto*</label>
                         <div class="col-lg-10">
                           <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="variablefocus.var_sujeto" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-lg-2 control-label">Verbo</label>
+                        <label class="col-lg-2 control-label">Verbo*</label>
                         <div class="col-lg-10">
                           <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="variablefocus.var_verbo" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-lg-2 control-label">Predicado</label>
+                        <label class="col-lg-2 control-label">Predicado*</label>
                         <div class="col-lg-10">
                           <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="variablefocus.var_predicado" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v1</label>
+                        <label class="col-sm-2 control-label">Adjetivo 1*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val1" required>
                         </div>
@@ -483,10 +483,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com1" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val1}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v2 </label>
+                        <label class="col-sm-2 control-label">Adjetivo 2* </label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val2" required>
                         </div>
@@ -495,10 +496,13 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com2" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val2}} {{variablefocus.var_predicado}} </label>
+                
                         </div>
                       </div>
+
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v3</label>
+                        <label class="col-sm-2 control-label">Adjetivo 3*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val3" required>
                         </div>
@@ -507,10 +511,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com3" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val3}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v4</label>
+                        <label class="col-sm-2 control-label">Adjetivo 4*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val4" required>
                         </div>
@@ -519,10 +524,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com4" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val4}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v5</label>
+                        <label class="col-sm-2 control-label">Adjetivo 5*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val5" required>
                         </div>
@@ -531,10 +537,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com5">
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val5}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v6</label>
+                        <label class="col-sm-2 control-label">Adjetivo 6*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val6" required>
                         </div>
@@ -543,10 +550,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com6" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val6}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v7</label>
+                        <label class="col-sm-2 control-label">Adjetivo 7*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val7" required>
                         </div>
@@ -555,10 +563,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com7" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val7}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v8</label>
+                        <label class="col-sm-2 control-label">Adjetivo 8*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val8" required>
                         </div>
@@ -567,10 +576,11 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com8" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val8}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Adjetivo v9</label>
+                        <label class="col-sm-2 control-label">Adjetivo 9*</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" ng-model="variablefocus.var_val9" required>
                         </div>
@@ -579,6 +589,7 @@
                           <input type="text" class="form-control" ng-model="variablefocus.var_com9" >
                         </div>
                         <div class="col-sm-12 col-md-offset-1">
+                          <label class="col-md-6 col-md-offset-1"> {{variablefocus.var_sujeto}} {{variablefocus.var_verbo}} {{variablefocus.var_val9}} {{variablefocus.var_predicado}} </label>
                         </div>
                       </div>
                       <div class="form-group">
