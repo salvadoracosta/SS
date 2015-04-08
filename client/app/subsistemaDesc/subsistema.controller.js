@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto,$state) {
+  .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto,$state,$localStorage) {
     $scope.listasubsistemas = listasubsistemas.data;
-    
+    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
     console.log(listasubsistemas);
     console.log(toaster);
     console.log(idproyecto);
@@ -28,6 +28,7 @@ angular.module('app.controllers')
       $scope.editando = false;
     }
     $scope.modulos = function(subsistema) {
+     $localStorage.subsistema = subsistema;
      $state.go('app.modulosDesc',{idproyecto:subsistema.sub_idproyecto,idsubsistema:subsistema.sub_id});
     }
 

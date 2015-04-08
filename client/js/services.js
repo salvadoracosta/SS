@@ -21,6 +21,18 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getListaProyectosByAutor: function (idAutor) {
+        var promise = $http.get('/api/proyectos/'+idAutor).success(function(data, status) {
+                
+                listaproyectos = data;
+                //console.log(listaproyectos);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
@@ -66,6 +78,24 @@ angular.module('app.services', [])
         var promise = $http.get('/api/funciones').success(function(data, status) {
                 
                 listafunciones = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
+.factory('usuariosFactory', ['$http', function($http) {
+    var usuarioNombre;   
+   var sdo = {
+    getNameById: function (idusuario) {
+        var promise = $http.get('/api/usuarios/'+idusuario).success(function(data, status) {
+                
+                usuarioNombre = data;
                 //console.log(listavariables);
             }).
             error(function(data, status, headers, config) {

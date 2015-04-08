@@ -65,16 +65,16 @@ exports.checkLogIn = function(req, res) {
                 user: user
               });
            }else{
-              res.json([{
+              res.json({
                   msj : 'error',
-                }]);
+                });
            }
         });
           }else{
             //No existe nadie con ese correo
-            res.json([{
+            res.json({
               msj : 'error',
-            }]);
+            });
           }
         connection.end();
       }

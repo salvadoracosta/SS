@@ -1,11 +1,17 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('VariableDescCtrl', function ($scope,$http,toaster, listavariables, variablesFactory,idsubsistema,idmodulo,idproyecto) {
+  .controller('VariableDescCtrl', function ($scope,$http,toaster, listavariables, variablesFactory,idsubsistema,idmodulo,idproyecto,$localStorage) {
     console.log(listavariables);
     console.log(toaster);
     $scope.listavariables = listavariables.data;
     $scope.items = [{htmlField:'<p>stuff</p>'},{htmlField:'<p>more stuff</p>'}];
+    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+    $scope.siglasSubsistema = $localStorage.subsistema.sub_sigla;
+    $scope.siglasModulo = $localStorage.modulo.mod_sigla;
+    $scope.idproyecto = idproyecto;
+    $scope.idsubsistema = idsubsistema;
+    $scope.idmodulo = idmodulo;
     //console.log(proyectosFactory);
     //$scope.listaproyectos = listaproyectos.data;
     $scope.registro = false;

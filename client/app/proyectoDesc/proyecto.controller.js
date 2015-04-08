@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams) {
+  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams,$localStorage) {
     console.log(toaster);
     console.log(listaproyectos);
     console.log(proyectosFactory);
     console.log($stateParams.edit);
-    
+    $scope.idusuario = $localStorage.user.per_id;
     $scope.listaproyectos = listaproyectos.data;
     $scope.registro = false;
     $scope.toaster = {
@@ -39,7 +39,7 @@ angular.module('app.controllers')
     Funcion para registrar a un proyecto
     */
     $scope.addProyecto = function() {
-      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos}).success(function(data, status) {
+      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos,autor:$localStorage.user.per_id}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -115,10 +115,10 @@ angular.module('app.controllers')
     }
 
     $scope.reloadProyectos = function() {
-      proyectosFactory.getListaProyectos().then(function(response) {
+      proyectosFactory.getListaProyectosByAutor($localStorage.user.per_id).then(function(response) {
         console.log(response);
         $scope.listaproyectos = response.data;
-      })
+      });
     }
 
     $scope.editar = function(proyecto) {
@@ -133,7 +133,8 @@ angular.module('app.controllers')
 
 
     $scope.subsistemas = function(proyecto) {
-     $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
+      $localStorage.proyecto = proyecto;
+      $state.go('app.subsistemaDesc',{idproyecto:proyecto.pro_id});
     }
     $scope.unidades = function(proyecto) {
      $state.go('app.unidadInformacion',{idproyecto:proyecto.pro_id});

@@ -130,15 +130,15 @@ angular.module('app.controllers')
       console.log($scope.unidadfocus);
     }
 
-    $scope.editProyecto = function() {
-      $http.put('/api/unidad/'+idproyecto, { unidad: $scope.unidadfocus}).success(function(data, status) {
+    $scope.editUnidad = function() {
+      $http.put('/api/unidad/'+$scope.unidadfocus.un_id, { unidad: $scope.unidadfocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
           
           $scope.authError = '';
           $scope.authSuccess = data[0].msj;
-          $scope.toaster.title = "Proyecto editado";
+          $scope.toaster.title = "Unidad de Informacion editada";
           $scope.toaster.text = data[0].msj;
           $scope.toaster.type = "success"
           //$scope.nombre ='';
@@ -147,7 +147,7 @@ angular.module('app.controllers')
           $scope.formEdit.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadUnidades();
           $scope.editando = false;
           
         }).
