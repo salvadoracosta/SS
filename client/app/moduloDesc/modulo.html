@@ -6,8 +6,10 @@
       <h1 class="m-n font-thin h3 text-black">Módulos</h1>
       <small class="text-muted">Lista de módulos, Registrar, Editar y Eliminar</small>
     </div>
-    <div class="col-sm-9 col-xs-12">
-      <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Módulo</button>
+    <div ng-if='listamodulos.length < 3'>
+      <div class="col-sm-9 col-xs-12">
+        <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Módulo</button>
+      </div>
     </div>
   </div>
 </div>

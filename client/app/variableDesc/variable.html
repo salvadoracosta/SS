@@ -6,8 +6,10 @@
       <h1 class="m-n font-thin h3 text-black">Variable</h1>
       <small class="text-muted">Registrar</small>
     </div>
-    <div class="col-sm-9 col-xs-12">
-      <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nueva Variable</button>
+    <div ng-if='listavariables.length < 3'>
+      <div class="col-sm-9 col-xs-12">
+        <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nueva Variable</button>
+      </div>
     </div>
   </div>
 </div>
@@ -30,7 +32,7 @@
           <div class="panel-heading">
             Lista Variables
           </div>
-          <div class="row wrapper">
+<!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
               <div class="input-group">
                 <input type="text" class="input-sm form-control" placeholder="Buscar">
@@ -43,7 +45,7 @@
             </div>
             <div class="col-sm-5">
             </div>
-          </div>
+          </div> -->
           <div class="table-responsive">
             <table class="table table-striped b-t b-light">
               <thead>
