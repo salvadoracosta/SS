@@ -6,10 +6,11 @@
       <h1 class="m-n font-thin h3 text-black">Subsistemas</h1>
       <small class="text-muted">Registrar</small>
     </div>
-    <div class="col-sm-9 col-xs-12">
-      <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Subsistema</button>
+    <div ng-if='listasubsistemas.length < 3'>
+      <div class="col-sm-9 col-xs-12">
+        <button class="btn btn-primary btn-addon btn-lg" ng-click="showregistro()" ><i class="fa fa-plus"></i>Nuevo Subsistema</button>
+      </div>
     </div>
-
   </div>
 
 </div>
@@ -73,21 +74,21 @@
           <div class="panel-body">
             <form class="bs-example form-horizontal ng-pristine ng-valid" name="form" novalidate>
               <div class="form-group">
-                <label class="col-lg-2 control-label ">Nombre</label>
+                <label class="col-lg-2 control-label ">Nombre*</label>
                 <div class="col-md-6">
                   <input type="text" class="form-control" ng-model="nombre" placeholder="Ejem. subsistema uno" required>   
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-lg-2 control-label">Sigla</label>
-                <div class="col-xs-1">
+                <label class="col-lg-2 control-label">Sigla*</label>
+                <div class="col-xs-2">
                   <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="sigla" name="siglas" ng-maxlength="2" placeholder="S1" required>
                 </div>
                 <span style="color:red;"class="error" ng-show="form.siglas.$error.maxlength">
                   Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                 </div>
                 <div class="form-group">
-                  <label class="col-lg-2 control-label">Descripcion Corta</label>
+                  <label class="col-lg-2 control-label">Descripcion Corta*</label>
                   <div class="col-md-3">
                     <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="descripcioncorta" name="descripcionCorta" ng-maxlength="15" required>
                   </div>
@@ -170,21 +171,21 @@
                 <div class="panel-body">
                   <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
                     <div class="form-group">
-                      <label class="col-lg-2 control-label ">Nombre</label>
+                      <label class="col-lg-2 control-label ">Nombre*</label>
                       <div class="col-md-6">
                         <input type="text" class="form-control" ng-model="subsistemafocus.sub_nombre" placeholder="Ejem. Mi subsistema" required>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-lg-2 control-label">Sigla</label>
-                      <div class="col-xs-1">
+                      <label class="col-lg-2 control-label">Sigla*</label>
+                      <div class="col-xs-2">
                         <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_sigla" name="siglas" ng-maxlength="2" placeholder="S1" required>
                       </div>
                       <span style="color:red;"class="error" ng-show="formEdit.siglas.$error.maxlength">
                         Las siglas del subsistema solo pueden ser a lo mas dos caracteres!</span>
                       </div>
                       <div class="form-group">
-                        <label class="col-lg-2 control-label">Descripcion Corta</label>
+                        <label class="col-lg-2 control-label">Descripcion Corta*</label>
                         <div class="col-md-3">
                           <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="subsistemafocus.sub_descripcioncorta"ng-maxlength="15" name="descripcionCorta" required>
                         </div>
