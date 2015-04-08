@@ -32,6 +32,9 @@
           <div class="panel-heading">
             Lista Variables
           </div>
+          <div ng-if='listavariables.length == 0'>
+            <span style="color:red;">No hay variables registradas</span>
+          </div>
 <!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
               <div class="input-group">

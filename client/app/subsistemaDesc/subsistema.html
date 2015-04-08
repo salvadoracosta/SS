@@ -30,6 +30,9 @@
           <div class="panel-heading">
             Lista Subsistema
           </div>
+          <div ng-if='listasubsistemas.length == 0'>
+            <span style="color:red;">No hay subsistemas registrados</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-striped b-t b-light">
               <thead>

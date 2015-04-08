@@ -30,6 +30,9 @@
           <div class="panel-heading">
             Lista Módulos
           </div>
+          <div ng-if='listamodulos.length == 0'>
+            <span style="color:red;">No hay módulos registrados</span>
+          </div>
 <!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
               <div class="input-group">
