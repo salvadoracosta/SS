@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('ConsultaProyectoCtrl', function ($scope,$http,toaster, listaproyectos,usuariosFactory) {
+  .controller('ConsultaProyectoCtrl', function ($scope,$http,toaster, listaproyectos,usuariosFactory, $sce) {
   	$scope.listaproyectos = listaproyectos.data;
   	$scope.consultando = false;
+
+    $scope.getHtml = function(html){
+        return $sce.trustAsHtml(html);
+    };
 
     console.log(toaster);
     $scope.registro = false;
