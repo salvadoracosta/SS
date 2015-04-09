@@ -86,6 +86,8 @@ exports.getByProyecto = function(req, res) {
 		un_s3m3v1: input.unidad.un_s3m3v1,
 		un_s3m3v2: input.unidad.un_s3m3v2,
 		un_s3m3v3: input.unidad.un_s3m3v3,
+		un_vi1: input.unidad.variablesindependientes[0],
+		un_vi2: input.unidad.variablesindependientes[1],
 		un_idproyecto: req.params.id
 	};
 	var query = connection.query('INSERT INTO unidad_informacion SET ?', data, function(err, result) {
@@ -199,9 +201,11 @@ exports.update = function(req, res) {
 		un_s3m3v1: input.unidad.un_s3m3v1,
 		un_s3m3v2: input.unidad.un_s3m3v2,
 		un_s3m3v3: input.unidad.un_s3m3v3,
+		un_vi1: input.unidad.variablesindependientes[0],
+		un_vi2: input.unidad.variablesindependientes[1],
 		un_id: req.params.id
 	};
-	var queryString = 'UPDATE unidad_informacion SET un_s1m1v1 ='+connection.escape(data.un_s1m1v1)+ ',un_s1m1v2 ='+connection.escape(data.un_s1m1v2)+ ',un_s1m1v3 ='+connection.escape(data.un_s1m1v3)+ ',un_s1m2v1 ='+connection.escape(data.un_s1m2v1)+ ',un_s1m2v2 ='+connection.escape(data.un_s1m2v2)+ ',un_s1m2v3 ='+connection.escape(data.un_s1m2v3)+ ',un_s1m3v1 ='+connection.escape(data.un_s1m3v1)+ ',un_s1m3v2 ='+connection.escape(data.un_s1m3v2)+ ',un_s1m3v3 ='+connection.escape(data.un_s1m3v3)+ ',un_s2m1v1 ='+connection.escape(data.un_s2m1v1)+ ',un_s2m1v2 ='+connection.escape(data.un_s2m1v2)+ ',un_s2m1v3 ='+connection.escape(data.un_s2m1v3)+ ',un_s2m2v1 ='+connection.escape(data.un_s2m2v1)+ ',un_s2m2v2 ='+connection.escape(data.un_s2m2v2)+ ',un_s2m2v3 ='+connection.escape(data.un_s2m2v3)+ ',un_s2m3v1 ='+connection.escape(data.un_s2m3v1)+ ',un_s2m3v2 ='+connection.escape(data.un_s2m3v2)+ ',un_s2m3v3 ='+connection.escape(data.un_s2m3v3)+ ',un_s3m1v1 ='+connection.escape(data.un_s3m1v1)+ ',un_s3m1v2 ='+connection.escape(data.un_s3m1v2)+ ',un_s3m1v3 ='+connection.escape(data.un_s3m1v3)+ ',un_s3m2v1 ='+connection.escape(data.un_s3m2v1)+ ',un_s3m2v2 ='+connection.escape(data.un_s3m2v2)+ ',un_s3m2v3 ='+connection.escape(data.un_s3m2v3)+ ',un_s3m3v1 ='+connection.escape(data.un_s3m3v1)+ ',un_s3m3v2 ='+connection.escape(data.un_s3m3v2)+ ', un_s3m3v3 = '+connection.escape(data.un_s3m3v3)+ ' WHERE un_id ='+connection.escape(data.un_id);
+	var queryString = 'UPDATE unidad_informacion SET un_s1m1v1 ='+connection.escape(data.un_s1m1v1)+ ',un_s1m1v2 ='+connection.escape(data.un_s1m1v2)+ ',un_s1m1v3 ='+connection.escape(data.un_s1m1v3)+ ',un_s1m2v1 ='+connection.escape(data.un_s1m2v1)+ ',un_s1m2v2 ='+connection.escape(data.un_s1m2v2)+ ',un_s1m2v3 ='+connection.escape(data.un_s1m2v3)+ ',un_s1m3v1 ='+connection.escape(data.un_s1m3v1)+ ',un_s1m3v2 ='+connection.escape(data.un_s1m3v2)+ ',un_s1m3v3 ='+connection.escape(data.un_s1m3v3)+ ',un_s2m1v1 ='+connection.escape(data.un_s2m1v1)+ ',un_s2m1v2 ='+connection.escape(data.un_s2m1v2)+ ',un_s2m1v3 ='+connection.escape(data.un_s2m1v3)+ ',un_s2m2v1 ='+connection.escape(data.un_s2m2v1)+ ',un_s2m2v2 ='+connection.escape(data.un_s2m2v2)+ ',un_s2m2v3 ='+connection.escape(data.un_s2m2v3)+ ',un_s2m3v1 ='+connection.escape(data.un_s2m3v1)+ ',un_s2m3v2 ='+connection.escape(data.un_s2m3v2)+ ',un_s2m3v3 ='+connection.escape(data.un_s2m3v3)+ ',un_s3m1v1 ='+connection.escape(data.un_s3m1v1)+ ',un_s3m1v2 ='+connection.escape(data.un_s3m1v2)+ ',un_s3m1v3 ='+connection.escape(data.un_s3m1v3)+ ',un_s3m2v1 ='+connection.escape(data.un_s3m2v1)+ ',un_s3m2v2 ='+connection.escape(data.un_s3m2v2)+ ',un_s3m2v3 ='+connection.escape(data.un_s3m2v3)+ ',un_s3m3v1 ='+connection.escape(data.un_s3m3v1)+ ',un_s3m3v2 ='+connection.escape(data.un_s3m3v2)+ ', un_s3m3v3 = '+connection.escape(data.un_s3m3v3)+ ', un_vi1 = '+connection.escape(data.un_vi1)+ ', un_vi2 = '+connection.escape(data.un_vi2)+ ' WHERE un_id ='+connection.escape(data.un_id);
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;
