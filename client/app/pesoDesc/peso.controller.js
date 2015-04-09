@@ -142,9 +142,9 @@ if($scope.mod11 !="no definido" && $scope.mod12 != "no definido" && $scope.mod13
   $scope.m13 = 0;
 }
 
-$scope.var111 = "no definido";
-$scope.var112 = "no definido";
-$scope.var113 = "no definido";
+$scope.var111 = "var 1";
+$scope.var112 = "var 2";
+$scope.var113 = "var 3";
 $scope.v111 = 0;
 $scope.v112 = 0;
 $scope.v113 = 0;
@@ -418,6 +418,13 @@ $scope.v113 = 0;
         angular.element("#slider7").slider('setValue',$scope.v111);
         angular.element("#slider8").slider('setValue',$scope.v112);
         angular.element("#slider9").slider('setValue',$scope.v113);
+      }else if($scope.var111 != "no definido" &&  $scope.var112 != "no definido" && $scope.var113 !="no definido"){
+        $scope.v111 = 0.3;
+        $scope.v112 = 0.3;
+        $scope.v113 = 0.3;
+        angular.element("#slider7").slider('setValue',$scope.v111);
+        angular.element("#slider8").slider('setValue',$scope.v112);
+        angular.element("#slider9").slider('setValue',$scope.v113);
       }
      });
   }
@@ -432,6 +439,13 @@ $scope.v113 = 0;
         angular.element("#slider7").slider('setValue',$scope.v111);
         angular.element("#slider8").slider('setValue',$scope.v112);
         angular.element("#slider9").slider('setValue',$scope.v113);
+      }else if($scope.var111 != "no definido" &&  $scope.var112 != "no definido" && $scope.var113 !="no definido"){
+        $scope.v111 = 0.3;
+        $scope.v112 = 0.3;
+        $scope.v113 = 0.3;
+        angular.element("#slider7").slider('setValue',$scope.v111);
+        angular.element("#slider8").slider('setValue',$scope.v112);
+        angular.element("#slider9").slider('setValue',$scope.v113);
       }
      });
   }
@@ -443,6 +457,13 @@ $scope.v113 = 0;
         $scope.v111 = 0;
         $scope.v112 = 0;
         $scope.v113 = 0;
+        angular.element("#slider7").slider('setValue',$scope.v111);
+        angular.element("#slider8").slider('setValue',$scope.v112);
+        angular.element("#slider9").slider('setValue',$scope.v113);
+      }else if($scope.var111 != "no definido" &&  $scope.var112 != "no definido" && $scope.var113 !="no definido"){
+        $scope.v111 = 0.3;
+        $scope.v112 = 0.3;
+        $scope.v113 = 0.3;
         angular.element("#slider7").slider('setValue',$scope.v111);
         angular.element("#slider8").slider('setValue',$scope.v112);
         angular.element("#slider9").slider('setValue',$scope.v113);
