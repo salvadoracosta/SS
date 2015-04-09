@@ -3,7 +3,7 @@
 angular.module('app.controllers')
   .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto,$state,$localStorage) {
     $scope.listasubsistemas = listasubsistemas.data;
-    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+    $scope.nombreProyecto = $localStorage.proyecto.pro_nombre;
     console.log(listasubsistemas);
     console.log(toaster);
     console.log(idproyecto);
