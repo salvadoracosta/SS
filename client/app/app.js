@@ -199,6 +199,19 @@ var app = angular.module('app', [
                 controller: 'VIndpendienteCtrl',
                 templateUrl: 'app/vindependiente/vindependiente.html'
             })
+            .state('app.variableIndependiente',{
+                url:'/proyecto/:idproyecto/variableIndependiente',
+                controller: 'VariableIndependienteCtrl',
+                templateUrl: 'app/variableIndependiente/variableIndependiente.html',
+                 resolve: {
+                    listavariablesindependientes: function($stateParams,variablesIndependientesFactory) {
+                        return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
+            })
             .state('app.proyectoDesc',{
                 url:'/proyecto/:edit',
                 controller: 'proyectoDescCtrl',

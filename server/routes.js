@@ -16,11 +16,12 @@ module.exports = function(app) {
   app.use('/login', require('./api/login'));
 
   app.use('/api/variables', require('./api/variable'));
+  app.use('/api/variablesIndependientes', require('./api/vindependiente'));
   app.use('/api/usuarios', require('./api/usuarios'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/funciones', require('./api/funcion'));
   app.use('/api/pesos', require('./api/peso'));
- // app.use('/api/vindependientes',require('./api/vindependiente'));
+  app.use('/api/vindependientes',require('./api/vindependiente'));
   app.use('/api/tree', require('./api/tree'));
   app.use('/api/unidad', require('./api/unidad'));
   app.use('/registro', require('./api/registro'));
