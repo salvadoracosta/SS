@@ -12,6 +12,8 @@ angular.module('app.controllers')
     text: 'Message'
   };
   var s1_id;
+  var s2_id;
+  var s3_id;
 
   $scope.proyecto = a_pesos[0].pn;
   /* Subsistemas */
@@ -25,69 +27,53 @@ angular.module('app.controllers')
     $scope.s3 = 0;
   }else{ //hay al menos un subsistema
     $scope.sub1 = a_pesos[0].sn;
-    if(a_pesos[0].sp == null){
-      $scope.s1 = 0;
-    }else{
-      $scope.s1 = a_pesos[0].sp;
-    }
+    $scope.s1 = a_pesos[0].sp;
     s1_id = a_pesos[0].si;
     for(var i = 1; i < a_pesos.length;i++){
       console.log(a_pesos[i]);
-
+      if(a_pesos[i].sn != $scope.sub1){
+        $scope.sub2 = a_pesos[i].sn;
+        $scope.s2 = a_pesos[i].sp;
+        s2_id = a_pesos[i].si;
+        break;
+      }
     }
-    $scope.sub2 = 0;
-    $scope.sub3 = 0;
-    $scope.s2 = 0;
-    $scope.s3 = 0;
+    if($scope.sub2 == null){ //solo hay un subsistema
+      $scope.sub2 = "no definido";
+      $scope.s2 = 0;
+      $scope.sub3 = "no definido";
+      $scope.s3 = 0;
+    }else{
+      for(var i = 1; i < a_pesos.length;i++){
+        console.log(a_pesos[i]);
+        if(a_pesos[i].sn != $scope.sub1 && a_pesos[i].sn != $scope.sub2){
+          $scope.sub3 = a_pesos[i].sn;
+          $scope.s3 = a_pesos[i].sp;
+          s3_id = a_pesos[i].si;
+          break;
+        }
+      }
+      if($scope.sub3 == null){
+        $scope.sub3 = "no definido";
+        $scope.s3 = 0;
+      }
+    }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if($scope.sub1 != "no definido" && $scope.sub2 != "no definido" && $scope.sub3 !="no definido"){
+    $scope.s1 = 0.3;
+    $scope.s2 = 0.3;
+    $scope.s3 = 0.3;
+  }else if($scope.sub1 != "no definido" && $scope.sub2 != "no definido"){
+    $scope.s1 = 0.5;
+    $scope.s2 = 0.5;
+  }else{
+    $scope.s1 = 1;
+  }
 
   $scope.addPesos = function() {
     console.log("SCOPPEEEEEEEEEEE", $scope);
-     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto}).success(function(data, status) {      
+     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,sub1_nombre:$scope.sub1,sub2_nombre:$scope.sub2,sub3_nombre:$scope.sub3}).success(function(data, status) {      
      });
   };
 

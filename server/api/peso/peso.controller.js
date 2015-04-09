@@ -40,5 +40,8 @@ exports.index = function(req, res) {
 exports.update = function(req, res) {
   var input = JSON.parse(JSON.stringify(req.body));
   console.log("inputtt", input.id_proyecto);
+  console.log("subsistema1 ", input.sub1_nombre);
+  console.log("subsistema2 ", input.sub2_nombre);
+  console.log("subsistema3 ", input.sub3_nombre);
   //console.log("reeees", res);
 };
