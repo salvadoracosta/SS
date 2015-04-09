@@ -17,7 +17,7 @@ angular.module('app.controllers')
 
   $scope.proyecto = a_pesos[0].pn;
   /* Subsistemas */
-  if(a_pesos[0].sn ==null){
+  if(a_pesos[0].sn == null){
     console.log("No hay Subsistemas");
     $scope.sub1 = "no definido";
     $scope.sub2 = "no definido";
@@ -59,8 +59,13 @@ angular.module('app.controllers')
       }
     }
   }
-
-  if($scope.sub1 != "no definido" && $scope.sub2 != "no definido" && $scope.sub3 !="no definido"){
+  if($scope.sub1 =="no definido" && $scope.sub2 == "no definido" && $scope.sub3 == "no definido"){
+    $scope.s1 = 0;
+    $scope.s2 = 0;
+    $scope.s3 = 0;
+  }else if($scope.sub1 != "no definido" && $scope.s1 != null && $scope.sub2 != "no definido" && $scope.s2 !=null && $scope.sub3 =="no definido"){
+    $scope.s3 = 0;
+  }else if($scope.sub1 != "no definido" && $scope.sub2 != "no definido" && $scope.sub3 !="no definido"){
     $scope.s1 = 0.3;
     $scope.s2 = 0.3;
     $scope.s3 = 0.3;
