@@ -75,23 +75,26 @@ angular.module('app.controllers')
                 }else{
                     
                     var pos2 = $scope.arrayContains(current,lvl2);
-                    if(typeof current[pos2].children == null){
-                        current[pos2] = {label: lvl2, children:[]};
-                        current = current[pos2].children;
-                    }
-                    current = current[pos2].children;
-                    if(lvl4 == null){
-                       current.push(lvl3); 
-                   }else{
-                        var pos3 = $scope.arrayContains(current,lvl3);
-                        if(typeof current[pos3].children == null){
-                            current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
-                            current = current[pos3].children;
+                    console.log(pos2);
+                    console.log(current[pos2]);
+                    if(pos2>0){
+                        if(typeof current[pos2].children == null){
+                            current[pos2] = {label: lvl2, children:[]};
+                            current = current[pos2].children;
                         }
-                        current = current[pos3].children;
-                        current.push(lvl4);
-                   }
-                    
+                        current = current[pos2].children;
+                        if(lvl4 == null){
+                           current.push(lvl3); 
+                       }else{
+                            var pos3 = $scope.arrayContains(current,lvl3);
+                            if(typeof current[pos3].children == null){
+                                current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
+                                current = current[pos3].children;
+                            }
+                            current = current[pos3].children;
+                            current.push(lvl4);
+                       }
+                    }
                 }
             }else{
                 tree.push({label: lvl1, children:[]});
