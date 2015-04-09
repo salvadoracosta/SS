@@ -141,10 +141,17 @@ exports.registro = function(req, res) {
 	console.log(input);
 	var myDate =  moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 	var data = {
-		pro_nombre: input.nombre,
-		pro_modulos: input.modulos,
-		pro_autor: input.autor,
-		pro_fecha: myDate
+		pro_nombre: input.proyecto.nombre,
+		pro_nombrelargo: input.proyecto.nombrelargo,
+		pro_autor: input.proyecto.autor,
+		pro_fecha: myDate,
+		pro_descripcion: input.proyecto.descripcion,
+		pro_preguntas: input.proyecto.preguntas,
+		pro_problema: input.proyecto.problema,
+		pro_objetodeconocimiento: input.proyecto.objetodeconocimiento,
+		pro_complejocognocitivo: input.proyecto.complejocognocitivo,
+		pro_complejoempirico: input.proyecto.complejoempirico,
+		pro_otrainformacion: input.proyecto.otrainformacion
 	};
 	var query = connection.query('INSERT INTO proyecto SET ?', data, function(err, result) {
 
@@ -189,10 +196,17 @@ exports.update = function(req, res) {
 
 	var data = {
 		pro_id: req.params.id,
-		pro_nombre: input.nombre,
-		pro_modulos: input.modulos
+		pro_nombre: input.proyecto.pro_nombre,
+		pro_nombrelargo: input.proyecto.pro_nombrelargo,
+		pro_descripcion: input.proyecto.pro_descripcion,
+		pro_preguntas: input.proyecto.pro_preguntas,
+		pro_problema: input.proyecto.pro_problema,
+		pro_objetodeconocimiento: input.proyecto.pro_objetodeconocimiento,
+		pro_complejocognocitivo: input.proyecto.pro_complejocognocitivo,
+		pro_complejoempirico: input.proyecto.pro_complejoempirico,
+		pro_otrainformacion: input.proyecto.pro_otrainformacion
 	};
-	var queryString = 'UPDATE proyecto SET pro_nombre = '+connection.escape(data.pro_nombre)+', pro_modulos= '+connection.escape(data.pro_modulos)+' WHERE pro_id=' + connection.escape(data.pro_id) ;
+	var queryString = 'UPDATE proyecto SET pro_nombre = '+connection.escape(data.pro_nombre)+', pro_nombrelargo= '+connection.escape(data.pro_nombrelargo)+', pro_descripcion= '+connection.escape(data.pro_descripcion)+', pro_preguntas= '+connection.escape(data.pro_preguntas)+', pro_problema= '+connection.escape(data.pro_problema)+', pro_objetodeconocimiento= '+connection.escape(data.pro_objetodeconocimiento)+', pro_complejoempirico= '+connection.escape(data.pro_complejoempirico)+', pro_complejocognocitivo= '+connection.escape(data.pro_complejocognocitivo)+', pro_otrainformacion= '+connection.escape(data.pro_otrainformacion)+' WHERE pro_id=' + connection.escape(data.pro_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

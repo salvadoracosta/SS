@@ -153,31 +153,18 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Proyecto` (
   `pro_id` INT NOT NULL AUTO_INCREMENT,
-  `pro_sigla` VARCHAR(2) NULL,
   `pro_nombre` VARCHAR(45) NULL,
+  `pro_nombrelargo` VARCHAR(120) NULL,
   `pro_autor` INT NULL,
-  `pro_modulos` INT NULL,
-  `pro_varind` INT NULL,
-  `pro_var` INT NULL,
-  PRIMARY KEY (`pro_id`),
-  INDEX `autor_idx` (`pro_autor` ASC),
-  INDEX `var_independiente_idx` (`pro_varind` ASC),
-  INDEX `var_idx` (`pro_var` ASC),
-  CONSTRAINT `autor`
-    FOREIGN KEY (`pro_autor`)
-    REFERENCES `mydb`.`Usuario` (`per_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `var_independiente`
-    FOREIGN KEY (`pro_varind`)
-    REFERENCES `mydb`.`Variables Independientes` (`varind_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `var`
-    FOREIGN KEY (`pro_var`)
-    REFERENCES `mydb`.`Variable` (`var_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `pro_fecha` DATE NULL,
+  `pro_descripcion` TEXT NULL,
+  `pro_problema` TEXT NULL,
+  `pro_preguntas` TEXT NULL,
+  `pro_objetodeconocimiento` TEXT NULL,
+  `pro_complejocognocitivo` TEXT NULL,
+  `pro_complejoempirico` TEXT NULL,
+  `pro_otrainformacion` TEXT NULL,
+   PRIMARY KEY (`pro_id`))
 ENGINE = InnoDB;
 
 

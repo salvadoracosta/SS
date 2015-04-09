@@ -49,7 +49,8 @@ angular.module('app.controllers')
     Funcion para registrar a un proyecto
     */
     $scope.addProyecto = function() {
-      $http.post('/api/proyectos', { nombre: $scope.nombre , modulos : $scope.modulos,autor:$localStorage.user.per_id}).success(function(data, status) {
+      $scope.proyecto.autor = $localStorage.user.per_id;
+      $http.post('/api/proyectos', { proyecto: $scope.proyecto}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -156,7 +157,7 @@ angular.module('app.controllers')
     }
 
     $scope.editProyecto = function() {
-      $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { nombre: $scope.proyectofocus.pro_nombre , modulos : $scope.proyectofocus.pro_modulos}).success(function(data, status) {
+      $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { proyecto:$scope.proyectofocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
