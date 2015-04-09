@@ -11,7 +11,7 @@
 
   </div>
 </div>
-<div class ="wrapper-md ng-scope" ng-scope="proyectoDescCtrl">
+<div class ="wrapper-md ng-scope" ng-scope="unidadInformacionCtrl">
 
   <div class ="col" >
 
@@ -256,7 +256,22 @@
                 </div>
               </div>
               </tab>
+              <tab heading="Variables Independientes" >
+                 <div class="form-group" ng-repeat="variable in listavariablesindependientes">
+                    <label class="col-lg-2 control-label ">{{variable.varind_nombre}}</label>
+                    
+                      <div class="col-lg-4">
+                        <select ng-model="variable.valueSelected" class="form-control m-b" >
+                          
+                          <option ng-repeat="var in variable.varind_valores track by $index" 
+                                  value="{{var}}">
+                            {{var}}
+                          </option>
 
+                        </select>
+                      </div>
+                  
+              </tab>
             </tabset>
           </div>
           <div class="form-group">
@@ -265,13 +280,13 @@
                 <button type="submit" class="btn btn-sm btn-danger" ng-click="notshowregistro()">Cancelar</button>
               </div>
 
-            </div>
+          </div>
           </form>
           <!-- / tab -->
             
         </div>
       </div>
-
+      </div>
       <div class="panel panel-default" ng-show="editando">
         <div class="panel-heading font-bold">Editar Unidad de Informacion</div>
         <div class="panel-body">
@@ -445,7 +460,21 @@
                 </div>
               </div>
               </tab>
+              <tab heading="Variables Independientes" >
+                 <div class="form-group" ng-repeat="variable in listavariablesindependientesFocus">
+                    <label class="col-lg-2 control-label ">{{variable.varind_nombre}}</label>
+                    
+                      <div class="col-lg-4">
+                        <select ng-model="variable.valueSelected" class="form-control m-b" >
+                          <option ng-repeat="var in variable.varind_valores track by $index" ng-selected="{{unidadfocus.un_vi1 == var || unidadfocus.un_vi2 == var}}" 
+                                  value="{{var}}">
+                            {{var}}
+                          </option>
 
+                        </select>
+                      </div>
+                  </div>
+              </tab>
             </tabset>
           
           <div class="form-group">

@@ -59,9 +59,15 @@ exports.registroById = function(req, res) {
 	connection.query("use mydb");
 	console.log(input);
 	var myDate =  moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+	var tmp = input.variable.values;
+	var arrayValues = tmp.split(",");
+	var jsonValues = {
+		valores: arrayValues
+	};
+	var myJsonString = JSON.stringify(arrayValues);
 	var data = {
 		varind_nombre: input.variable.nombre,
-		varind_valores: input.variable.values,
+		varind_valores: myJsonString,
 		varind_descripcion: input.variable.descripcionlarga,
 		varind_fecha: myDate,
 		varind_idproyecto    : req.params.id
@@ -69,7 +75,7 @@ exports.registroById = function(req, res) {
 	var query = connection.query('INSERT INTO variable_independiente SET ?', data, function(err, result) {
 
 			if (err) {
-				//throw err; debug
+				throw err; debug
 				return res.send(500);
 				connection.end();
 			} else {

@@ -1,15 +1,27 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, unidadesFactory) {
+  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, unidadesFactory,listavariablesindependientes) {
     $scope.listaunidadesdeinformacion = listaunidadesdeinformacion.data;
+    console.log(listavariablesindependientes.data);
+    $scope.listavariablesindependientes = listavariablesindependientes.data;
+    $scope.variablesjson = JSON.parse($scope.listavariablesindependientes[0].varind_valores);
+    
+    for (var i = 0; i < $scope.listavariablesindependientes.length; i++) {
+      $scope.listavariablesindependientes[i].varind_valores = JSON.parse($scope.listavariablesindependientes[i].varind_valores);
+    };
+
+    console.log($scope.variablesjson);
     $scope.registro = false;
     $scope.toaster = {
         type: 'success',
         title: 'Titulo',
         text: 'Message'
     };
-    $scope.unidad = {};
+    $scope.unidad = {
+      variablesindependientes:[]
+    };
+
     /*
     $scope.unidad.un_s1m1v1=5;
     var updateModel = function(val){
@@ -41,6 +53,12 @@ angular.module('app.controllers')
     Funcion para registrar a un proyecto
     */
     $scope.addUnidadInformacion = function() {
+      var variablesArray = [];
+      for (var i = 0; i < $scope.listavariablesindependientes.length; i++) {
+        variablesArray[i] = $scope.listavariablesindependientes[i].valueSelected;
+        console.log($scope.listavariablesindependientes[i].valueSelected);
+      };
+      $scope.unidad.variablesindependientes = variablesArray;
       $http.post('/api/unidad/'+idproyecto, { unidad: $scope.unidad}).success(function(data, status) {
 
           $scope.status = status;
@@ -121,16 +139,25 @@ angular.module('app.controllers')
       unidadesFactory.getListaUnidades(idproyecto).then(function(response) {
         console.log(response);
         $scope.listaunidadesdeinformacion = response.data;
-      })
+      });
     }
 
     $scope.editar = function(unidad) {
       $scope.unidadfocus = unidad;
       $scope.editando = true;
       console.log($scope.unidadfocus);
+      console.log($scope.editando);
+      $scope.listavariablesindependientesFocus = $scope.listavariablesindependientes;
     }
 
     $scope.editUnidad = function() {
+      var variablesArray = [];
+      for (var i = 0; i < $scope.listavariablesindependientesFocus.length; i++) {
+        variablesArray[i] = $scope.listavariablesindependientesFocus[i].valueSelected;
+        console.log($scope.listavariablesindependientesFocus[i].valueSelected);
+      };
+      console.log($scope.unidadfocus);
+      $scope.unidadfocus.variablesindependientes = variablesArray;
       $http.put('/api/unidad/'+$scope.unidadfocus.un_id, { unidad: $scope.unidadfocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
