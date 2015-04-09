@@ -22,7 +22,7 @@ exports.index = function(req, res) {
     });
     connection.query("use mydb");
     
-    var queryString = 'SELECT pro_nombre as pn , sub_nombre as sn,sub_peso as sp, mod_nombre as mn, mod_peso as mp, var_nombre as vn , var_peso as vp FROM proyecto as p LEFT JOIN subsistema as s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo as m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable as v ON v.var_idmodulo = m.mod_id  WHERE  p.pro_id = ' +connection.escape(data.pro_id) ;
+    var queryString = 'SELECT pro_nombre as pn ,sub_id as si, sub_nombre as sn,sub_peso as sp,mod_id as mi, mod_nombre as mn, mod_peso as mp,var_id as vi, var_nombre as vn , var_peso as vp FROM proyecto as p LEFT JOIN subsistema as s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo as m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable as v ON v.var_idmodulo = m.mod_id  WHERE  p.pro_id = ' +connection.escape(data.pro_id) ;
     var query = connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -31,12 +31,14 @@ exports.index = function(req, res) {
         connection.end();
       } else {
         res.json(result);
-        //console.log( 'success' );
+        //console.log( 'success', result );
         connection.end();
       }
     });
 };
 
 exports.update = function(req, res) {
-  
+  var input = JSON.parse(JSON.stringify(req.body));
+  console.log("inputtt", input.id_proyecto);
+  //console.log("reeees", res);
 };
