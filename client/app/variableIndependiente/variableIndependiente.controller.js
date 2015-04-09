@@ -136,6 +136,16 @@ angular.module('app.controllers')
       $scope.variablefocus = variable;
       $scope.editando = true;
       console.log($scope.variablefocus);
+      var valoresArray = JSON.parse(variable.varind_valores);
+      variable.varind_valores='';
+      for (var i = 0; i < valoresArray.length; i++) {
+        if(i == valoresArray.length-1){
+          variable.varind_valores +=valoresArray[i];
+        }else{
+          variable.varind_valores +=valoresArray[i]+',';
+        }
+        
+      };
     }
 
     $scope.subsistemas = function(proyecto) {

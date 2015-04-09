@@ -193,10 +193,17 @@ exports.update = function(req, res) {
 	connection.query("use mydb");
 	console.log(input);
 
+	var tmp = input.variable.varind_valores;
+	var arrayValues = tmp.split(",");
+	var jsonValues = {
+		valores: arrayValues
+	};
+	var myJsonString = JSON.stringify(arrayValues);
+
 	var data = {
 		varind_id: req.params.id,
 		varind_nombre: input.variable.varind_nombre,
-		varind_valores: input.variable.varind_valores,
+		varind_valores: myJsonString,
 		varind_descripcion: input.variable.varind_descripcion
 	};
 	var queryString = 'UPDATE variable_independiente SET varind_nombre = '+connection.escape(data.varind_nombre)+', varind_valores= '+connection.escape(data.varind_valores)+',varind_descripcion ='+ connection.escape(data.varind_descripcion)+' WHERE varind_id=' + connection.escape(data.varind_id) ;
