@@ -71,16 +71,7 @@ angular.module('app.controllers')
     $scope.s1 = 1;
   }
 
-  $scope.addPesos = function() {
-    console.log("SCOPPEEEEEEEEEEE", $scope);
-     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,sub1_nombre:$scope.sub1,sub2_nombre:$scope.sub2,sub3_nombre:$scope.sub3}).success(function(data, status) {      
-     });
-  };
 
-  $scope.notshow = function(){ 
-    $state.go('app.proyectoDesc');
-  };
-  
   var updateModel = function(val){
     $scope.$apply(function(){
       if($scope.sub1 !="no definido" && $scope.sub2 !="no definido" && $scope.sub3!= "no definido"){
@@ -247,4 +238,30 @@ angular.module('app.controllers')
   angular.element("#slider3").on('slideStop', function(data){
     updateModel3(data.value);
   });
+
+  $scope.addPesos = function() {
+    console.log("SCOPPEEEEEEEEEEE", $scope);
+     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,sub1_id:s1_id,sub1_peso:$scope.s1,sub2_id:s2_id,sub2_peso:$scope.s2,sub3_id:s3_id,sub3_peso:$scope.s3}).success(function(data, status) {      
+      $scope.toaster.title = "Pesos Registrados";
+      $scope.toaster.text = data[0].msj;
+      $scope.toaster.type = "success"
+      toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+     });
+     error(function(data, status, headers, config) {
+
+       $scope.toaster.title = "Error";
+       $scope.toaster.text = "No se pudo registrar los pesos";
+       $scope.toaster.type = "error";
+       toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+     });     
+  };
+
+  $scope.notshow = function(){ 
+    $state.go('app.proyectoDesc');
+  };
+  
+
+
+
+
 });
