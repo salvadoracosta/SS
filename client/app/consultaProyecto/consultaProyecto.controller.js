@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('ConsultaProyectoCtrl', function ($scope,$http,toaster, listaproyectos,usuariosFactory, $sce) {
+  .controller('ConsultaProyectoCtrl', function ($scope,$http,toaster, listaproyectos,usuariosFactory, $sce,$state) {
   	$scope.listaproyectos = listaproyectos.data;
   	$scope.consultando = false;
 
@@ -26,7 +26,9 @@ angular.module('app.controllers')
     $scope.cerrar = function() {
 		$scope.consultando = false;
     }
-
+    $scope.representaciones = function (proyecto){
+        $state.go('app.representaciones',{idproyecto:proyecto.pro_id});
+    }
     $scope.consulta = function(proyecto) {
     	usuariosFactory.getNameById(proyecto.pro_autor).then(function(response) {
 	       var d = new Date(proyecto.pro_fecha);

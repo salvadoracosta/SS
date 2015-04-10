@@ -181,6 +181,19 @@ var app = angular.module('app', [
                     } 
                 }
             })
+            .state('app.representaciones',{
+                url:'/representaciones/:idproyecto',
+                controller: 'RepresentacionesCtrl',
+                templateUrl: 'app/representaciones/representaciones.html',
+                resolve:{
+                    listafunciones: function($stateParams, funcionesFactory){
+                        return funcionesFactory.getListaFuncionesByProyecto($stateParams.idproyecto);
+                    },
+                    listaunidadesdeinformacion: function($stateParams,unidadesFactory) {
+                        return unidadesFactory.getListaUnidades($stateParams.idproyecto);
+                    }
+                }
+            })
             .state('app.unidadInformacion',{
                 url:'/proyecto/:idproyecto/unidad',
                 controller: 'unidadInformacionCtrl',

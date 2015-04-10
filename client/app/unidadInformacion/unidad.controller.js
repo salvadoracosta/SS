@@ -5,7 +5,7 @@ angular.module('app.controllers')
     $scope.listaunidadesdeinformacion = listaunidadesdeinformacion.data;
     console.log(listavariablesindependientes.data);
     $scope.listavariablesindependientes = listavariablesindependientes.data;
-    $scope.variablesjson = JSON.parse($scope.listavariablesindependientes[0].varind_valores);
+    //$scope.variablesjson = JSON.parse($scope.listavariablesindependientes[0].varind_valores);
     
     for (var i = 0; i < $scope.listavariablesindependientes.length; i++) {
       $scope.listavariablesindependientes[i].varind_valores = JSON.parse($scope.listavariablesindependientes[i].varind_valores);

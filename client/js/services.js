@@ -85,6 +85,18 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getListaFuncionesByProyecto: function (idproyecto) {
+        var promise = $http.get('/api/funciones/'+idproyecto).success(function(data, status) {
+                
+                listafunciones = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
