@@ -29,6 +29,10 @@ angular.module('app.controllers')
   var v122_id;
   var v123_id;
 
+  /*Variables subsistema 1 modulo 3*/
+  var v131_id;
+  var v132_id;
+  var v133_id; 
 
   $scope.proyecto = a_pesos[0].pn;
   /* Subsistemas */
@@ -285,11 +289,74 @@ if($scope.var121 =="no definido" && $scope.var122 == "no definido" && $scope.var
   $scope.v123 = 0.3;
 }
 
+/*Variables modulo 3*/
+for(var i = 1; i <a_pesos.length;i++){
+  if(a_pesos[i].sn == $scope.sub1 && a_pesos[i].mn == $scope.mod13){
+    $scope.var131 = a_pesos[i].vn;
+    $scope.v131 = a_pesos[i].vp;
+    v131_id = a_pesos[i].vi;
+  }
+}
+if($scope.var131 == null){ //no hay variables
+  $scope.var131 = "no definido";
+  $scope.var132 = "no definido";
+  $scope.var133 = "no definido";
+  $scope.v131 = 0;
+  $scope.v132 = 0;
+  $scope.v133 = 0;
+}else{
+  for(var i = 1; i <a_pesos.length;i++){
+    if(a_pesos[i].sn == $scope.sub1 && a_pesos[i].mn == $scope.mod13 && a_pesos[i].vn != $scope.var131){
+      $scope.var132 = a_pesos[i].vn;
+      $scope.v132 = a_pesos[i].vp;
+      v132_id = a_pesos[i].vi;
+      break; 
+    }
+  }
+  if($scope.var132 == null){ //no hay segunda ni tercer variables
+    $scope.var132 = "no definido";
+    $scope.var133 = "no definido";
+    $scope.v132 = 0;
+    $scope.v133 = 0;
+  }else{
+    for(var i = 1; i <a_pesos.length;i++){
+      if(a_pesos[i].sn == $scope.sub1 && a_pesos[i].mn == $scope.mod13 && a_pesos[i].vn != $scope.var131 && a_pesos[i].vn != $scope.var132){
+        $scope.var133 = a_pesos[i].vn;
+        $scope.v133 = a_pesos[i].vp;
+        v133_id = a_pesos[i].vi; 
+      }
+    }
+    if($scope.var133 == null){
+      $scope.var133 ="no definido";
+      $scope.v133 = 0;
+    }
+  }
+}
 
 
-
-
-
+if($scope.var131 =="no definido" && $scope.var132 == "no definido" && $scope.var133 == "no definido" ){
+  $scope.v131 = 0;
+  $scope.v132 = 0;
+  $scope.v133 = 0;
+}else if($scope.var131 != "no definido" && $scope.var132 == "no definido" && $scope.var133 =="no definido"){
+  $scope.v131 = 1;
+  $scope.v132 = 0;
+  $scope.v133 = 0;
+}else if($scope.var131 != "no definido" && $scope.v131 != null && $scope.var132 != "no definido" && $scope.v132 != null && $scope.var133 == "no definido"){
+  if($scope.v131 + $scope.v132 != 1){
+    $scope.v131 = 0.5;
+    $scope.v132 = 0.5;
+  }
+  $scope.v133 = 0;
+}else if($scope.var131 != "no definido" && $scope.var132 != "no definido" && $scope.var133 == "no definido"){
+  $scope.v131 = 0.5;
+  $scope.v132 = 0.5;
+  $scope.v133 = 0;
+} else{
+  $scope.v131 = 0.3;
+  $scope.v132 = 0.3;
+  $scope.v133 = 0.3;
+}
 
 
 
@@ -760,6 +827,105 @@ if($scope.var121 =="no definido" && $scope.var122 == "no definido" && $scope.var
     });
   }
 
+  var updateModel13 = function(val){
+    $scope.$apply(function(){
+      if($scope.var131 == "no definido" && $scope.var132 == "no definido" && $scope.var133 == "no definido"){
+        $scope.v131 = 0;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" &&  $scope.var132 != "no definido" && $scope.var133 !="no definido"){
+        $scope.v131 = 0.3;
+        $scope.v132 = 0.3;
+        $scope.v133 = 0.3;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" && $scope.var132 == "no definido" &&  $scope.var133 == "no definido"){
+        $scope.v131 = 1;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" && $scope.var132 != "no definido" &&  $scope.var133 == "no definido"){
+        $scope.v131 = val;
+        $scope.v132 = 1-$scope.v131;
+        $scope.v132 = parseFloat(parseFloat($scope.v132).toFixed(1));
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }
+    });
+  }
+
+  var updateModel14 = function(val){
+    $scope.$apply(function(){
+      if($scope.var131 == "no definido" && $scope.var132 == "no definido" && $scope.var133 == "no definido"){
+        $scope.v131 = 0;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" &&  $scope.var132 != "no definido" && $scope.var133 !="no definido"){
+        $scope.v131 = 0.3;
+        $scope.v132 = 0.3;
+        $scope.v133 = 0.3;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" && $scope.var132 == "no definido" &&  $scope.var133 == "no definido"){
+        $scope.v131 = 1;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" && $scope.var132 != "no definido" &&  $scope.var133 == "no definido"){
+        $scope.v132 = val;
+        $scope.v131 = 1-$scope.v132;
+        $scope.v131 = parseFloat(parseFloat($scope.v131).toFixed(1));
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }
+    });
+  }
+
+  var updateModel15 = function(val){
+    $scope.$apply(function(){
+      if($scope.var131 == "no definido" && $scope.var132 == "no definido" && $scope.var133 == "no definido"){
+        $scope.v131 = 0;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" &&  $scope.var132 != "no definido" && $scope.var133 !="no definido"){
+        $scope.v131 = 0.3;
+        $scope.v132 = 0.3;
+        $scope.v133 = 0.3;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else if($scope.var131 != "no definido" && $scope.var132 == "no definido" &&  $scope.var133 == "no definido"){
+        $scope.v131 = 1;
+        $scope.v132 = 0;
+        $scope.v133 = 0;
+        angular.element("#slider13").slider('setValue',$scope.v131);
+        angular.element("#slider14").slider('setValue',$scope.v132);
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }else{
+        $scope.v133 = 0;        
+        angular.element("#slider15").slider('setValue',$scope.v133);
+      }
+    });
+  }
 
   angular.element("#slider").on('slideStop', function(data){
     updateModel(data.value);
@@ -807,6 +973,18 @@ if($scope.var121 =="no definido" && $scope.var122 == "no definido" && $scope.var
 
   angular.element("#slider12").on('slideStop', function(data){
     updateModel12(data.value);
+  });
+
+  angular.element("#slider13").on('slideStop', function(data){
+    updateModel13(data.value);
+  });
+
+  angular.element("#slider14").on('slideStop', function(data){
+    updateModel14(data.value);
+  });
+
+  angular.element("#slider15").on('slideStop', function(data){
+    updateModel15(data.value);
   });
 
 
