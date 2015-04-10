@@ -358,10 +358,6 @@ if($scope.var131 =="no definido" && $scope.var132 == "no definido" && $scope.var
   $scope.v133 = 0.3;
 }
 
-
-
-
-
   var updateModel = function(val){
     $scope.$apply(function(){
       if($scope.sub1 !="no definido" && $scope.sub2 !="no definido" && $scope.sub3!= "no definido"){
@@ -990,7 +986,7 @@ if($scope.var131 =="no definido" && $scope.var132 == "no definido" && $scope.var
 
   $scope.addPesos = function() {
     console.log("SCOPPEEEEEEEEEEE", $scope);
-     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,sub1_id:s1_id,sub1_peso:$scope.s1,sub2_id:s2_id,sub2_peso:$scope.s2,sub3_id:s3_id,sub3_peso:$scope.s3,mod11_id:m11_id,mod11_peso:$scope.m11,mod12_id:m12_id,mod12_peso:$scope.m12,mod13_id:m13_id, mod13_peso:$scope.m13,var111_id: v111_id,var111_peso: $scope.v111,var112_id:v112_id,var112_peso:$scope.v112,var113_id:v113_id,var113_peso:$scope.v113,var121_id:v121_id,var121_peso: $scope.v121,var122_id:v122_id,var122_peso: $scope.v122, var123_id:v123_id,var123_peso: $scope.v123}).success(function(data, status) {      
+     $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,sub1_id:s1_id,sub1_peso:$scope.s1,sub2_id:s2_id,sub2_peso:$scope.s2,sub3_id:s3_id,sub3_peso:$scope.s3,mod11_id:m11_id,mod11_peso:$scope.m11,mod12_id:m12_id,mod12_peso:$scope.m12,mod13_id:m13_id, mod13_peso:$scope.m13,var111_id: v111_id,var111_peso: $scope.v111,var112_id:v112_id,var112_peso:$scope.v112,var113_id:v113_id,var113_peso:$scope.v113,var121_id:v121_id,var121_peso: $scope.v121,var122_id:v122_id,var122_peso: $scope.v122, var123_id:v123_id,var123_peso: $scope.v123,var131_id:v131_id,var131_peso:$scope.v131,var132_id:v132_id,var132_peso:$scope.v132,var133_id:v133_id,var133_peso:$scope.v133}).success(function(data, status) {      
       $scope.toaster.title = "Pesos Registrados";
       $scope.toaster.text = data[0].msj;
       $scope.toaster.type = "success"
