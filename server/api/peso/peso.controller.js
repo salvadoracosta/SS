@@ -119,7 +119,19 @@ exports.update = function(req, res) {
     var312_id : input.var312_id,
     var312_peso : input.var312_peso,
     var313_id : input.var313_id,
-    var313_peso : input.var313_peso
+    var313_peso : input.var313_peso,
+    var321_id: input.var321_id,
+    var321_peso : input.var321_peso,
+    var322_id : input.var322_id,
+    var322_peso : input.var322_peso,
+    var323_id : input.var323_id,
+    var323_peso : input.var323_peso,
+    var331_id: input.var331_id,
+    var331_peso : input.var331_peso,
+    var332_id : input.var332_id,
+    var332_peso : input.var332_peso,
+    var333_id : input.var333_id,
+    var333_peso : input.var333_peso
   };
 
   var queryString = 'UPDATE subsistema SET sub_peso = ' + connection.escape(data.sub1_peso) + ' WHERE sub_id = ' + connection.escape(data.sub1_id);
@@ -756,7 +768,207 @@ exports.update = function(req, res) {
           msj: 'Peso registrado correctamente',
         }]);
   
+       
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var311_peso) + ' WHERE var_id = ' + connection.escape(data.var311_id);
+  console.log(queryString);
+  if(connection.escape(data.var311_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
         connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var312_peso) + ' WHERE var_id = ' + connection.escape(data.var312_id);
+  console.log(queryString);
+  if(connection.escape(data.var312_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var313_peso) + ' WHERE var_id = ' + connection.escape(data.var313_id);
+  console.log(queryString);
+  if(connection.escape(data.var313_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var321_peso) + ' WHERE var_id = ' + connection.escape(data.var321_id);
+  console.log(queryString);
+  if(connection.escape(data.var321_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var322_peso) + ' WHERE var_id = ' + connection.escape(data.var322_id);
+  console.log(queryString);
+  if(connection.escape(data.var322_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var323_peso) + ' WHERE var_id = ' + connection.escape(data.var323_id);
+  console.log(queryString);
+  if(connection.escape(data.var323_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+     
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var331_peso) + ' WHERE var_id = ' + connection.escape(data.var331_id);
+  console.log(queryString);
+  if(connection.escape(data.var331_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var332_peso) + ' WHERE var_id = ' + connection.escape(data.var332_id);
+  console.log(queryString);
+  if(connection.escape(data.var332_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var333_peso) + ' WHERE var_id = ' + connection.escape(data.var333_id);
+  console.log(queryString);
+  if(connection.escape(data.var333_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      connection.end();
       }
     });
     console.log("agregamos");
