@@ -90,6 +90,36 @@ exports.update = function(req, res) {
     mod22_peso:input.mod22_peso,
     mod23_id: input.mod23_id,
     mod23_peso:input.mod23_peso,
+    var211_id: input.var211_id,
+    var211_peso : input.var211_peso,
+    var212_id : input.var212_id,
+    var212_peso : input.var212_peso,
+    var213_id : input.var213_id,
+    var213_peso : input.var213_peso,
+    var221_id: input.var221_id,
+    var221_peso : input.var221_peso,
+    var222_id : input.var222_id,
+    var222_peso : input.var222_peso,
+    var223_id : input.var223_id,
+    var223_peso : input.var223_peso,
+    var231_id: input.var231_id,
+    var231_peso : input.var231_peso,
+    var232_id : input.var232_id,
+    var232_peso : input.var232_peso,
+    var233_id : input.var233_id,
+    var233_peso : input.var233_peso,
+    mod31_id: input.mod31_id,
+    mod31_peso:input.mod31_peso,
+    mod32_id: input.mod32_id,
+    mod32_peso:input.mod32_peso,
+    mod33_id: input.mod33_id,
+    mod33_peso:input.mod33_peso,
+    var311_id: input.var311_id,
+    var311_peso : input.var311_peso,
+    var312_id : input.var312_id,
+    var312_peso : input.var312_peso,
+    var313_id : input.var313_id,
+    var313_peso : input.var313_peso
   };
 
   var queryString = 'UPDATE subsistema SET sub_peso = ' + connection.escape(data.sub1_peso) + ' WHERE sub_id = ' + connection.escape(data.sub1_id);
@@ -110,6 +140,7 @@ exports.update = function(req, res) {
   }else{
     console.log("No se ejecuto el update");
   }
+
   var queryString = 'UPDATE subsistema SET sub_peso = ' + connection.escape(data.sub2_peso) + ' WHERE sub_id = ' + connection.escape(data.sub2_id);
   console.log(queryString);
   if(connection.escape(data.sub2_id) !='NULL'){
@@ -129,6 +160,7 @@ exports.update = function(req, res) {
   }else{
     console.log("es null");
   }
+  
   var queryString = 'UPDATE subsistema SET sub_peso = ' + connection.escape(data.sub3_peso) + ' WHERE sub_id = ' + connection.escape(data.sub3_id);
   console.log(queryString);
   if(connection.escape(data.sub3_id) !='NULL'){
@@ -459,7 +491,48 @@ exports.update = function(req, res) {
         res.json([{
           msj: 'Peso registrado correctamente',
         }]);
-       connection.end();
+       
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var211_peso) + ' WHERE var_id = ' + connection.escape(data.var211_id);
+  console.log(queryString);
+  if(connection.escape(data.var211_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var212_peso) + ' WHERE var_id = ' + connection.escape(data.var212_id);
+  console.log(queryString);
+  if(connection.escape(data.var212_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
       }
     });
     console.log("agregamos");
@@ -468,5 +541,227 @@ exports.update = function(req, res) {
   }
 
 
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var213_peso) + ' WHERE var_id = ' + connection.escape(data.var213_id);
+  console.log(queryString);
+  if(connection.escape(data.var213_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+  console.log("variables modulo 2 subs2 ");
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var221_peso) + ' WHERE var_id = ' + connection.escape(data.var221_id);
+  console.log(queryString);
+  if(connection.escape(data.var221_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+       //connection.end();
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var222_peso) + ' WHERE var_id = ' + connection.escape(data.var222_id);
+  console.log(queryString);
+  if(connection.escape(data.var222_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+     
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var223_peso) + ' WHERE var_id = ' + connection.escape(data.var223_id);
+  console.log(queryString);
+  if(connection.escape(data.var223_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+       
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var231_peso) + ' WHERE var_id = ' + connection.escape(data.var231_id);
+  console.log(queryString);
+  if(connection.escape(data.var231_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var232_peso) + ' WHERE var_id = ' + connection.escape(data.var232_id);
+  console.log(queryString);
+  if(connection.escape(data.var232_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+      
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE variable SET var_peso = ' + connection.escape(data.var233_peso) + ' WHERE var_id = ' + connection.escape(data.var233_id);
+  console.log(queryString);
+  if(connection.escape(data.var233_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+       
+       
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+  var queryString = 'UPDATE modulo SET mod_peso = ' + connection.escape(data.mod31_peso) + ' WHERE mod_id = ' + connection.escape(data.mod31_id);
+  console.log(queryString);
+  if(connection.escape(data.mod31_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+  
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+  var queryString = 'UPDATE modulo SET mod_peso = ' + connection.escape(data.mod32_peso) + ' WHERE mod_id = ' + connection.escape(data.mod32_id);
+  console.log(queryString);
+  if(connection.escape(data.mod32_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+  
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
+
+
+
+  var queryString = 'UPDATE modulo SET mod_peso = ' + connection.escape(data.mod33_peso) + ' WHERE mod_id = ' + connection.escape(data.mod33_id);
+  console.log(queryString);
+  if(connection.escape(data.mod33_id) !='NULL'){
+    var query = connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+        debug
+        return res.send(409);
+        connection.end();
+      } else {
+        res.json([{
+          msj: 'Peso registrado correctamente',
+        }]);
+  
+        connection.end();
+      }
+    });
+    console.log("agregamos");
+  }else{
+    console.log("es null");
+  }
 
 };
