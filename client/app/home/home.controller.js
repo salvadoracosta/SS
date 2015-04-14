@@ -61,7 +61,6 @@ angular.module('app.controllers')
        var existing = null;
        if(lvl2 == null){
         tree.push({label: lvl1,onSelect: function(branch){console.log(branch.data);}, data:{id:2}});
-        console.log("NIVEEEEEEEEEL1 --"+ lvl1)
        }else{
             var pos = $scope.arrayContains(tree,lvl1);
             if(pos>-1){
@@ -75,23 +74,38 @@ angular.module('app.controllers')
                 }else{
                     
                     var pos2 = $scope.arrayContains(current,lvl2);
-                    if(typeof current[pos2].children == null){
-                        current[pos2] = {label: lvl2, children:[]};
-                        current = current[pos2].children;
-                    }
-                    current = current[pos2].children;
-                    if(lvl4 == null){
-                       current.push(lvl3); 
-                   }else{
-                        var pos3 = $scope.arrayContains(current,lvl3);
-                        if(typeof current[pos3].children == null){
-                            current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
-                            current = current[pos3].children;
+                    if(pos2>-1){
+                        if(typeof current[pos2].children == null){
+                            current[pos2] = {label: lvl2, children:[]};
+                            current = current[pos2].children;
                         }
-                        current = current[pos3].children;
-                        current.push(lvl4);
-                   }
-                    
+                        current = current[pos2].children;
+                        if(lvl4 == null){
+                           current.push(lvl3); 
+                        }else{
+                            var pos3 = $scope.arrayContains(current,lvl3);
+                            if(typeof current[pos3].children == null){
+                                current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
+                                current = current[pos3].children;
+                            }
+                            current = current[pos3].children;
+                            current.push(lvl4);
+                       }
+                    }else{
+                        console.log(lvl1);
+                        console.log(lvl2);
+                        console.log(lvl3);
+                        console.log(lvl4);
+                        if(lvl3 == null){
+                            current.push(lvl2);
+                        }else{
+                            if(lvl4 ==null){
+                                current.push({label: lvl2, children:[lvl3]});
+                            }else{
+                                current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
+                            }
+                        }
+                    }
                 }
             }else{
                 tree.push({label: lvl1, children:[]});
