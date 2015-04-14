@@ -58,7 +58,7 @@ exports.getTreeById = function(req, res) {
     });
 
     connection.query("use mydb");
-    var queryString = 'SELECT p.pro_nombre AS lev1, s.sub_sigla as lev2, m.mod_sigla as lev3, v.var_sigla as lev4 FROM proyecto AS p LEFT JOIN subsistema AS s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo AS m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable AS v ON v.var_idmodulo = m.mod_id WHERE pro_id =' + connection.escape(data.pro_id) ;
+    var queryString = 'SELECT p.pro_nombre AS lev1, s.sub_sigla as lev2, m.mod_sigla as lev3, v.var_sigla as lev4 FROM proyecto AS p LEFT JOIN subsistema AS s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo AS m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable AS v ON v.var_idmodulo = m.mod_id WHERE pro_autor =' + connection.escape(data.pro_id) ;
     var query = connection.query(queryString, function(err, result) {
         if (err) {
           throw err;
