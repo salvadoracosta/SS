@@ -1,27 +1,55 @@
-<div class="col-md-6">
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Consulta de Datos</h1>
+</div>
+<div class="wrapper-md" ng-controller="FormDemoCtrl">
+  <div class="row">
+  <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading font-bold">Spline</div>
+          <div class="panel-heading font-bold">Grafica de barras</div>
           <div class="panel-body">
             <div ui-jq="plot" ui-options="
               [
-                { data: {{d}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
-              ], 
+                { data: {{d}}, label: 'Valor', color: '{{app.color.info}}' }
+              ],
               {
-                colors: ['{{app.color.info}}'],
-                series: { shadowSize: 3 },
-                xaxis:{ 
-                  font: { color: '#ccc' },
-                  position: 'bottom',
-                  ticks: [
-                    [ 1, 's1m1v1' ], [ 2, 's1m1v2' ], [ 3, 's1m1v3' ], [ 4, 's1m2v1' ], [ 5, 's1m2v2' ], [ 6, 's1m2v3' ], [ 7, 's1m3v1' ], [ 8, 's1m3v2' ], [ 9, 's1m3v3' ]
-                  ]
-                },
-                yaxis:{ font: { color: '#ccc' } },
+                bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.5 }, { opacity: 0.9}] }  },
+                xaxis: { font: { color: '#ccc' } },
+                yaxis: { font: { color: '#ccc' }, min: 0, max: 1 },
                 grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                series: { shadowSize: 1 },
                 tooltip: true,
-                tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                tooltipOpts: { content: '%x is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
               }
-            " style="height:240px" >
+            " style="height:240px"></div>
+          </div>
+        </div>
+      </div>
+    <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">Grafica de unidad de informacion</div>
+              <div class="panel-body">
+                <div ui-jq="plot" ui-options="
+                  [
+                    { data: {{d}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+                  ], 
+                  {
+                    colors: ['{{app.color.info}}'],
+                    series: { shadowSize: 3 },
+                    xaxis:{ 
+                      font: { color: '#ccc' },
+                      position: 'bottom',
+                      ticks: [
+                        [ 1, 's1m1v1' ], [ 2, 's1m1v2' ], [ 3, 's1m1v3' ], [ 4, 's1m2v1' ], [ 5, 's1m2v2' ], [ 6, 's1m2v3' ], [ 7, 's1m3v1' ], [ 8, 's1m3v2' ], [ 9, 's1m3v3' ]
+                      ]
+                    },
+                    yaxis:{ font: { color: '#ccc' } },
+                    grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                    tooltip: true,
+                    tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                  }
+                " style="height:240px" >
+                </div>
+              </div>
             </div>
           </div>
         </div>
