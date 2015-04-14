@@ -75,6 +75,7 @@ angular.module('app.controllers')
                     
                     var pos2 = $scope.arrayContains(current,lvl2);
                     if(pos2>-1){
+
                         if(typeof current[pos2].children == null){
                             current[pos2] = {label: lvl2, children:[]};
                             current = current[pos2].children;
@@ -83,6 +84,7 @@ angular.module('app.controllers')
                         if(lvl4 == null){
                            current.push(lvl3); 
                         }else{
+
                             var pos3 = $scope.arrayContains(current,lvl3);
                             if(typeof current[pos3].children == null){
                                 current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
