@@ -125,7 +125,13 @@ angular.module('app.controllers')
 }
 
     for (var x=0; x < treeArray.length; x++) {
-      var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
+        try{
+            var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
+        }catch(err){
+            console.log(err);
+            var steps = [{label: 'Error al cargar la estructura de tus proyectos', children:[]}];
+        }
+      
       console.log(steps);
       $scope.fillTree(steps);
       
