@@ -77,8 +77,8 @@ var app = angular.module('app', [
                 templateUrl: 'app/home/app.html',
                 controller: 'HomeCtrl',
                 resolve: {
-                    tree: function(treeFactory) {
-                        return treeFactory.getTree();
+                    tree: function(treeFactory,$localStorage) {
+                        return treeFactory.getTreeById($localStorage.user.per_id);
                     }
                 }
             })

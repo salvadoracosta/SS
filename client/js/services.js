@@ -224,12 +224,25 @@ angular.module('app.services', [])
 .factory('treeFactory', ['$http', function($http) {
     console.log('Factory Tree');
     var tree;
-    
+    var treeProyecto;
    var sdo = {
     getTree: function () {
         var promise = $http.get('/api/tree').success(function(data, status) {
                 
                 tree = data;
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
+            });
+        return promise;
+      },
+      getTreeById: function (idproyecto) {
+        console.log('Factory Tree');
+        var promise = $http.get('/api/tree/'+idproyecto).success(function(data, status) {
+                
+                treeProyecto = data;
                 console.log(data);
             }).
             error(function(data, status, headers, config) {

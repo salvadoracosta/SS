@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, unidadesFactory,listavariablesindependientes) {
+  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, unidadesFactory,listavariablesindependientes,tree) {
+    console.log(tree.data);
     $scope.listaunidadesdeinformacion = listaunidadesdeinformacion.data;
     console.log(listavariablesindependientes.data);
     $scope.listavariablesindependientes = listavariablesindependientes.data;
@@ -10,7 +11,8 @@ angular.module('app.controllers')
     for (var i = 0; i < $scope.listavariablesindependientes.length; i++) {
       $scope.listavariablesindependientes[i].varind_valores = JSON.parse($scope.listavariablesindependientes[i].varind_valores);
     };
-
+    var struct = tree.data;
+    
     console.log($scope.variablesjson);
     $scope.registro = false;
     $scope.toaster = {
