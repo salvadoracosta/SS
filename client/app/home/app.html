@@ -21,16 +21,19 @@
     <div class="vbox">
       <!-- right col -->
   <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
+  
     <tabset class="nav-tabs-alt" justified="true">
       
       <tab>
         <tab-heading>
           <i class="icon-share text-md text-muted wrapper-sm"></i>
         </tab-heading>
-        <div class="wrapper-md">
-          <div class="m-b-sm text-md">Estructura</div>
-        </div>
-        <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
+        
+          <div class="wrapper-md">
+            <div class="m-b-sm text-md">Estructura</div>
+            <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
+          </div>
+        
       </tab>
       
     </tabset>
@@ -42,7 +45,7 @@
 
 
   <!-- footer -->
-  <div class="app-footer wrapper b-t bg-light">
+  <div class="app-footer wrapper b-t bg-light" style="margin-right: 240px;">
     <span class="pull-right">{{app.version}} <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
     Lab. Complex <br> &copy; CEIICH UNAM
   </div>

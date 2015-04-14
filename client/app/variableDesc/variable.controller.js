@@ -6,7 +6,7 @@ angular.module('app.controllers')
     console.log(toaster);
     $scope.listavariables = listavariables.data;
     $scope.items = [{htmlField:'<p>stuff</p>'},{htmlField:'<p>more stuff</p>'}];
-    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+   $scope.nombreProyecto = $localStorage.proyecto.pro_nombre;
     $scope.siglasSubsistema = $localStorage.subsistema.sub_sigla;
     $scope.siglasModulo = $localStorage.modulo.mod_sigla;
     $scope.idproyecto = idproyecto;

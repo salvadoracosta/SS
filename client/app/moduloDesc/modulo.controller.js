@@ -4,7 +4,7 @@ angular.module('app.controllers')
 .controller('ModuloDescCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory,idproyecto, idsubsistema,$state,$localStorage) {
   console.log(toaster);
   console.log(listamodulos);
-  $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+  $scope.nombreProyecto = $localStorage.proyecto.pro_nombre;
   $scope.siglasSubsistema = $localStorage.subsistema.sub_sigla;
   $scope.listamodulos = listamodulos.data;
   $scope.idproyecto = idproyecto;
