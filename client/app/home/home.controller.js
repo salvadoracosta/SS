@@ -84,20 +84,20 @@ angular.module('app.controllers')
                         if(lvl4 == null){
                            current.push(lvl3); 
                         }else{
-
                             var pos3 = $scope.arrayContains(current,lvl3);
-                            if(typeof current[pos3].children == null){
-                                current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
+                            if(pos3>-1){
+                                if(typeof current[pos3].children == null){
+                                    current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
+                                    current = current[pos3].children;
+                                }
                                 current = current[pos3].children;
+                                current.push(lvl4);
+                            }else{
+                                    current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
                             }
-                            current = current[pos3].children;
-                            current.push(lvl4);
+                            
                        }
                     }else{
-                        console.log(lvl1);
-                        console.log(lvl2);
-                        console.log(lvl3);
-                        console.log(lvl4);
                         if(lvl3 == null){
                             current.push(lvl2);
                         }else{
