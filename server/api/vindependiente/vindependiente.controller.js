@@ -61,6 +61,9 @@ exports.registroById = function(req, res) {
 	var myDate =  moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
 	var tmp = input.variable.values;
 	var arrayValues = tmp.split(",");
+	for (var i = 0; i < arrayValues.length; i++) {
+		arrayValues[i] = arrayValues[i].trim();
+	};
 	var jsonValues = {
 		valores: arrayValues
 	};

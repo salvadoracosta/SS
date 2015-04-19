@@ -207,6 +207,15 @@ var app = angular.module('app', [
                     },
                     listavariablesindependientes: function ($stateParams,variablesIndependientesFactory) {
                         return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
+                    },
+                    listavariablesdefinidas: function ($stateParams,structFactory) {
+                        return structFactory.getListaVariablesDefinidas($stateParams.idproyecto);
+                    },
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
+                    },
+                    listavaloresvariablesindependientes: function($stateParams,unidadesFactory) {
+                        return unidadesFactory.getVariablesIndependientes($stateParams.idproyecto);
                     }
                 }
             })

@@ -149,6 +149,7 @@ angular.module('app.controllers')
     }
     $scope.unidades = function(proyecto) {
      $state.go('app.unidadInformacion',{idproyecto:proyecto.pro_id});
+     localStorage.proyecto = proyecto;
     }
 
     $scope.variables = function(proyecto) {
