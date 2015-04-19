@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, listavaloresvariablesindependientes,unidadesFactory,listavariablesindependientes,listavariablesdefinidas,$localStorage,listasubsistemas) {
+  .controller('unidadInformacionCtrl', function ($scope, $http, $state, toaster, idproyecto,listaunidadesdeinformacion, listavaloresvariablesindependientes,unidadesFactory,variablesIndependientesFactory,listavariablesindependientes,listavariablesdefinidas,$localStorage,listasubsistemas) {
     console.log(listavariablesdefinidas.data);
     $scope.listaunidadesdeinformacion = listaunidadesdeinformacion.data;
     console.log(listasubsistemas.data);
@@ -230,6 +230,9 @@ angular.module('app.controllers')
           }
         };
         $scope.listaunidades = listaunidades;
+      });
+      unidadesFactory.getVariablesIndependientes(idproyecto).then(function(response) {
+         $scope.listavaloresvariablesindependientes = response.data;
       });
     }
 

@@ -17,7 +17,6 @@ angular.module('app.controllers')
             if(arr[k] == str){
                 return k;
             }else{
-                console.log(arr[k]);
                 if (typeof arr[k].label != 'undefined'){
                     if(arr[k].label == str){
                         return k;
@@ -29,8 +28,43 @@ angular.module('app.controllers')
          return -1;
     };
 
+    $scope.arrayContainsUnidad = function (arr,str) {
+        for (var k = 0; k < arr.length; k++) {
+            if(arr[k].idunidad == str){
+                return k;
+            }else{
+                if (typeof arr[k].label != 'undefined'){
+                    if(arr[k].label == str){
+                        return k;
+                    }
+                }
+            }
+           
+        };
+         return -1;
+    };
+
+    var listaunidades = [];
+    for (var i = 0; i < unidades.length; i++) {
+      var pos = $scope.arrayContainsUnidad(listaunidades, unidades[i].un_id);
+      if(pos>-1){
+        var unidad = listaunidades[pos];
+        unidad.data.push({var_id:unidades[i].variable_id, value:unidades[i].valor});
+      }else{
+        var unidad = {idunidad: unidades[i].un_id, data:[]};
+        unidad.data.push({var_id:unidades[i].variable_id, value:unidades[i].valor});
+        listaunidades.push(unidad);
+      }
+    };
+
     console.log(listafuncionesArray);
     var valoresGraficar=[];
+    console.log(unidades);
+    for (var i = 0; i < unidades.length; i++) {
+      valoresGraficar.push({idunidad: unidades[i].un_id,idvariable:unidades[i].variable_id, valor: unidades[i].valor});
+    };
+    console.log(listaunidades);
+    /*
     for (var i = 0; i < unidades.length; i++) {
       $scope.arrayContains(listafuncionesArray,1);
       var valor = [[1,listafuncionesArray[0][unidades[i].un_s1m1v1-1]],[2,listafuncionesArray[1][unidades[i].un_s1m1v2-1]],[3,listafuncionesArray[2][unidades[i].un_s1m1v3-1]],[4,listafuncionesArray[0][unidades[i].un_s1m2v1-1]],[5,listafuncionesArray[1][unidades[i].un_s1m2v2-1]],[6,listafuncionesArray[2][unidades[i].un_s1m2v3-1]],[7,listafuncionesArray[0][unidades[i].un_s1m3v1-1]],[8,listafuncionesArray[1][unidades[i].un_s1m3v2-1]],[9,listafuncionesArray[2][unidades[i].un_s1m3v3-1]]];
@@ -38,6 +72,7 @@ angular.module('app.controllers')
     };
     console.log(valor);
     console.log(valor);
-    $scope.d = valor;
+    */
+    $scope.d = [];
 
   });
