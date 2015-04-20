@@ -200,12 +200,16 @@ angular.module('app.controllers')
                 var valorModulo = 0;
                 for (var k = 0; k < subsistemasArray[l].modulos[j].variables.length; k++) {
                     valorModulo += subsistemasArray[l].modulos[j].variables[k].valor; // tomar en cuenta peso
-                    valoresGraficar.push([contador,subsistemasArray[l].modulos[j].variables[k].valor]);
-                    contador++;
+                    if(subsistemasArray[l].modulos[j].variables[k].valor != null){
+                        valoresGraficar.push([contador,subsistemasArray[l].modulos[j].variables[k].valor]);
+                        contador++;
+                    }
                 };
                 valorSubsistema += valorModulo;
-                valoresGraficar.push([contador,valorModulo]);
-                contador ++;
+                if(valorModulo != 0){
+                    valoresGraficar.push([contador,valorModulo]);
+                    contador ++;
+                }
             };
             valoresGraficar.push([contador,valorSubsistema]);
             contador ++;

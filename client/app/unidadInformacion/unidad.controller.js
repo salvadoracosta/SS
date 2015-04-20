@@ -15,7 +15,7 @@ angular.module('app.controllers')
     for (var i = 0; i < listasubsistemasArray.length; i++) {
       $scope.arraysSubsistemas[i] = {idsubsistema: listasubsistemasArray[i].sub_id,nombre:listasubsistemasArray[i].sub_nombre, data:[]}
     };
-
+    console.log($scope.arraysSubsistemas);
     
       $scope.alerts = [
       { type: 'danger', msg: 'Los valores solo pueden ser numericos y de 0-9' }

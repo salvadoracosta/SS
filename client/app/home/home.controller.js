@@ -19,7 +19,7 @@ angular.module('app.controllers')
             if(arr[k] == str){
                 return k;
             }else{
-                console.log(arr[k]);
+                //console.log(arr[k]);
                 if (typeof arr[k].label != 'undefined'){
                     if(arr[k].label == str){
                         return k;
@@ -67,45 +67,40 @@ angular.module('app.controllers')
                 if(typeof tree[pos].children == null){
                     tree[pos] = {label: lvl1,onSelect: function(branch){console.log(branch);}, children:[]};
                     current = tree[pos].children;
+                }else{
+                    current = tree[pos].children;
                 }
-                current = tree[pos].children;
                 if(lvl3 == null){
                     current.push(lvl2);
                 }else{
-                    
                     var pos2 = $scope.arrayContains(current,lvl2);
                     if(pos2>-1){
-
+                        console.log(current[pos2]);
                         if(typeof current[pos2].children == null){
-                            current[pos2] = {label: lvl2, children:[]};
+                            current[pos2].children = [];
+                            //current[pos2] = {label: lvl2, children:[]};
+                            current = current[pos2].children;
+                        }else{
                             current = current[pos2].children;
                         }
-                        current = current[pos2].children;
                         if(lvl4 == null){
                            current.push(lvl3); 
                         }else{
                             var pos3 = $scope.arrayContains(current,lvl3);
                             if(pos3>-1){
-                                if(typeof current[pos3].children == null){
-                                    current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
-                                    current = current[pos3].children;
-                                }
                                 current = current[pos3].children;
                                 current.push(lvl4);
                             }else{
-                                    current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
+                                    current.push({label: lvl3, children:[lvl4]});
                             }
                             
                        }
                     }else{
-                        if(lvl3 == null){
-                            current.push(lvl2);
+                        
+                        if(lvl4 ==null){
+                            current.push({label: lvl2, children:[lvl3]});
                         }else{
-                            if(lvl4 ==null){
-                                current.push({label: lvl2, children:[lvl3]});
-                            }else{
-                                current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
-                            }
+                            current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
                         }
                     }
                 }
