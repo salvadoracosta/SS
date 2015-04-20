@@ -63,7 +63,7 @@ angular.module('app.controllers')
     for (var i = 0; i < unidades.length; i++) {
       valoresGraficar.push({idunidad: unidades[i].un_id,idvariable:unidades[i].variable_id, valor: unidades[i].valor});
     };
-    console.log(listaunidades);
+    console.log(valoresGraficar);
     /*
     for (var i = 0; i < unidades.length; i++) {
       $scope.arrayContains(listafuncionesArray,1);
