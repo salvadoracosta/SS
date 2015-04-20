@@ -43,7 +43,7 @@ angular.module('app.controllers')
         };
          return -1;
     };
-
+    /*
     var listaunidades = [];
     for (var i = 0; i < unidades.length; i++) {
       var pos = $scope.arrayContainsUnidad(listaunidades, unidades[i].un_id);
@@ -56,7 +56,34 @@ angular.module('app.controllers')
         listaunidades.push(unidad);
       }
     };
-
+    */
+    $scope.arrayContainsVariable = function (arr,str) {
+        for (var k = 0; k < arr.length; k++) {
+            if(arr[k].idvariable == str){
+                return k;
+            }else{
+                if (typeof arr[k].label != 'undefined'){
+                    if(arr[k].label == str){
+                        return k;
+                    }
+                }
+            }
+           
+        };
+         return -1;
+    };
+    var arrayVariables = [];
+    for (var i = 0; i < unidades.length; i++) {
+        var pos = $scope.arrayContainsVariable(arrayVariables, unidades[i].variable_id);
+        if(pos>-1){
+            arrayVariables[pos].sumavalores += unidades[i].valor; //aplicarle la funcion antes de sumar i guess
+        }else{
+            arrayVariables.push({idvariable: unidades[i].variable_id, sumavalores:unidades[i].valor}); // igual aca
+        }
+        
+    };
+    console.log(arrayVariables);
+    /*
     console.log(listafuncionesArray);
     var valoresGraficar=[];
     console.log(unidades);
@@ -64,6 +91,12 @@ angular.module('app.controllers')
       valoresGraficar.push({idunidad: unidades[i].un_id,idvariable:unidades[i].variable_id, valor: unidades[i].valor});
     };
     console.log(valoresGraficar);
+    */
+    var valoresGraficar=[];
+
+    for (var i = 0; i < arrayVariables.length; i++) {
+        valoresGraficar.push([i,arrayVariables[i].sumavalores]);
+    };
     /*
     for (var i = 0; i < unidades.length; i++) {
       $scope.arrayContains(listafuncionesArray,1);
@@ -73,6 +106,6 @@ angular.module('app.controllers')
     console.log(valor);
     console.log(valor);
     */
-    $scope.d = [];
+    $scope.d = valoresGraficar;
 
   });
