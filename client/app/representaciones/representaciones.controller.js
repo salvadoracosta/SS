@@ -77,6 +77,21 @@ angular.module('app.controllers')
       }
     };
     */
+    $scope.arrayContainsSubsistema = function (arr,str) {
+        for (var k = 0; k < arr.length; k++) {
+            if(arr[k].idsubsistema == str){
+                return k;
+            }else{
+                if (typeof arr[k].label != 'undefined'){
+                    if(arr[k].label == str){
+                        return k;
+                    }
+                }
+            }
+           
+        };
+         return -1;
+    };
     $scope.arrayContainsVariable = function (arr,str) {
         for (var k = 0; k < arr.length; k++) {
             if(arr[k].idvariable == str){
@@ -115,6 +130,7 @@ angular.module('app.controllers')
     };
     console.log(valoresGraficar);
     */
+    //llenar la estructura con modulos y variables
     var modulosArray = [];
     for (var i = 0; i < struct.length; i++) {
         if(struct[i].lev4 != null && struct[i].lev3 != null){
@@ -126,6 +142,28 @@ angular.module('app.controllers')
             }
         }
     };
+
+
+    //llenar todo!
+    var subsistemasArray = [];
+    for (var i = 0; i < struct.length; i++) {
+        if(struct[i].lev4 != null && struct[i].lev3 != null){
+            var pos = $scope.arrayContainsSubsistema(subsistemasArray, struct[i].subsistemaid);
+            console.log(pos);
+            console.log(subsistemasArray);
+            if(pos>-1){
+                var pos2 = $scope.arrayContainsModulo(subsistemasArray[pos].modulos, struct[i].moduloid);
+                if(pos2>-1){
+                    subsistemasArray[pos].modulos[pos2].variables.push({idvariable:struct[i].var_id,valor:null});
+                }else{
+                    subsistemasArray[pos].modulos.push({idmodulo: struct[i].moduloid, valor:null, variables:[{idvariable:struct[i].var_id,valor:null}]}); 
+                }
+            }else{
+                subsistemasArray.push({idsubsistema: struct[i].subsistemaid, valor:null, modulos:[{idmodulo: struct[i].moduloid, valor:null, variables:[{idvariable:struct[i].var_id,valor:null}]}]});
+            }
+        }
+    };
+    console.log(subsistemasArray);
     //modulos array ya tiene la estructura, faltan los valores;
     for (var i = 0; i < arrayVariables.length; i++) {
         arrayVariables[i]
@@ -142,18 +180,40 @@ angular.module('app.controllers')
         valoresGraficar.push([i,arrayVariables[i].sumavalores/arrayVariables[i].sumandos]);
     };
     */
-    //llenar valores en las variables
+    //llenar valores en las variables, me muero por dentro de ver 4 fors anidados ....
     for (var i = 0; i < arrayVariables.length; i++) {
-        for (var j = 0; j < modulosArray.length; j++) {
-            for (var k = 0; k < modulosArray[j].variables.length; k++) {
-                if(modulosArray[j].variables[k].idvariable == arrayVariables[i].idvariable){
-                    modulosArray[j].variables[k].valor = arrayVariables[i].sumavalores/arrayVariables[i].sumandos;
-                }
-                
+        for (var l = 0; l < subsistemasArray.length; l++) {
+            for (var j = 0; j < subsistemasArray[l].modulos.length; j++) {
+                for (var k = 0; k < subsistemasArray[l].modulos[j].variables.length; k++) {
+                    if(subsistemasArray[l].modulos[j].variables[k].idvariable == arrayVariables[i].idvariable){
+                        subsistemasArray[l].modulos[j].variables[k].valor = arrayVariables[i].sumavalores/arrayVariables[i].sumandos;
+                    }
+                    
+                };
             };
         };
     }; 
+    var contador = 0;
+        for (var l = 0; l < subsistemasArray.length; l++) {
+            var valorSubsistema = 0;
+            for (var j = 0; j < subsistemasArray[l].modulos.length; j++) {
+                var valorModulo = 0;
+                for (var k = 0; k < subsistemasArray[l].modulos[j].variables.length; k++) {
+                    valorModulo += subsistemasArray[l].modulos[j].variables[k].valor; // tomar en cuenta peso
+                    valoresGraficar.push([contador,subsistemasArray[l].modulos[j].variables[k].valor]);
+                    contador++;
+                };
+                valorSubsistema += valorModulo;
+                valoresGraficar.push([contador,valorModulo]);
+                contador ++;
+            };
+            valoresGraficar.push([contador,valorSubsistema]);
+            contador ++;
+        };
+
     //formar los valores a graficar agrupados
+    console.log(subsistemasArray);
+    /*
     var contador = 0;
     for (var j = 0; j < modulosArray.length; j++) {
         var valorModulo = 0;
@@ -166,6 +226,7 @@ angular.module('app.controllers')
         contador ++;
     };
     console.log(modulosArray);
+    */
     /*
     for (var i = 0; i < unidades.length; i++) {
       $scope.arrayContains(listafuncionesArray,1);
