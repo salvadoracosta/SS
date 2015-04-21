@@ -748,30 +748,210 @@ if($scope.mod31 =="no definido" && $scope.mod32 == "no definido" && $scope.mod33
 
 
 /* Variables modulo1 subsistema 3*/
-$scope.var311 = "no ";
-$scope.var312 = "no definido";
-$scope.var313 = "no definido";
-$scope.v311 = 0;
-$scope.v312 = 0;
-$scope.v313 = 0;
+for (var i = 1; i <a_pesos.length;i++){
+  if(a_pesos[i].mn == $scope.mod31){
+    $scope.var311 = a_pesos[i].vn;
+    $scope.v311 = a_pesos[i].vp;
+    v311_id = a_pesos[i].vi;
+    break;
+  }
+}
+if($scope.var311 == null){
+  $scope.var311 = "no definido";
+  $scope.var312 = "no definido";
+  $scope.var313 = "no definido";
+  $scope.v311 = 0;
+  $scope.v312 = 0;
+  $scope.v313 = 0;
+} else{
+  for (var i = 1; i < a_pesos.length;i++){
+    if(a_pesos[i].mn == $scope.mod31 && a_pesos[i].vn != $scope.var311){
+      $scope.var312 = a_pesos[i].vn;
+      $scope.v312 = a_pesos[i].vp;
+      v312_id = a_pesos[i].vi;
+      break; 
+    }
+  }
+  if($scope.var312==null){
+    $scope.var312 = "no definido";
+    $scope.var313 = "no definido";
+    $scope.v312 = 0;
+    $scope.v313 = 0;
+  }else{
+    for (var i = 1; i < a_pesos.length;i++){
+      if(a_pesos[i].mn == $scope.mod31 && a_pesos[i].vn != $scope.var311 && a_pesos[i].vn != $scope.var312){
+        $scope.var313 = a_pesos[i].vn;
+        $scope.v313 = a_pesos[i].vp;
+        v313_id = a_pesos[i].vi;
+      }
+    }
+    if($scope.var313 ==null){
+      $scope.var313 = "no definido";
+      $scope.v313 = 0;
+    }      
+  }
+}
+if($scope.var311 == "no definido" && $scope.var312 == "no definido" && $scope.var313 == "no definido"){
+  $scope.v311 = 0;
+  $scope.v312 = 0;
+  $scope.v313 = 0;
+}else if($scope.var311 != "no definido" && $scope.var312 == "no definido" && $scope.var313 == "no definido"){
+  $scope.v311 = 1;
+  $scope.v312 = 0;
+  $scope.v313 = 0;
+}else if($scope.var311 != "no definido" && $scope.v311 == null && $scope.var312 != "no definido" && $scope.v312 == null && $scope.var313 == "no definido"){
+  $scope.v311 = 0.5;
+  $scope.v312 = 0.5;
+  $scope.v313 = 0;
+}else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido" && $scope.v311 == null  && $scope.v312 == null && $scope.v313 == null){
+  $scope.v311 = 0.3;
+  $scope.v312 = 0.3;
+  $scope.v313 = 0.3;
+}else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido"){
+  if($scope.v311 + $scope.v312 + $scope.v313 != 1){
+    $scope.v311 = 0.3;
+    $scope.v312 = 0.3;
+    $scope.v313 = 0.3;
+  }
+}
 
 
 
 /* Variables modulo2 subsistema 3*/
-$scope.var321 = "no ";
-$scope.var322 = "no definido";
-$scope.var323 = "no definido";
-$scope.v321 = 0;
-$scope.v322 = 0;
-$scope.v323 = 0;
+for (var i = 1; i <a_pesos.length;i++){
+  if(a_pesos[i].mn == $scope.mod32){
+    $scope.var321 = a_pesos[i].vn;
+    $scope.v321 = a_pesos[i].vp;
+    v321_id = a_pesos[i].vi;
+    break;
+  }
+}
+if($scope.var321 == null){
+  $scope.var321 = "no definido";
+  $scope.var322 = "no definido";
+  $scope.var323 = "no definido";
+  $scope.v321 = 0;
+  $scope.v322 = 0;
+  $scope.v323 = 0;
+} else{
+  for (var i = 1; i < a_pesos.length;i++){
+    if(a_pesos[i].mn == $scope.mod32 && a_pesos[i].vn != $scope.var321){
+      $scope.var322 = a_pesos[i].vn;
+      $scope.v322 = a_pesos[i].vp;
+      v322_id = a_pesos[i].vi;
+      break; 
+    }
+  }
+  if($scope.var322==null){
+    $scope.var322 = "no definido";
+    $scope.var323 = "no definido";
+    $scope.v322 = 0;
+    $scope.v323 = 0;
+  }else{
+    for (var i = 1; i < a_pesos.length;i++){
+      if(a_pesos[i].mn == $scope.mod32 && a_pesos[i].vn != $scope.var321 && a_pesos[i].vn != $scope.var322){
+        $scope.var323 = a_pesos[i].vn;
+        $scope.v323 = a_pesos[i].vp;
+        v323_id = a_pesos[i].vi;
+      }
+    }
+    if($scope.var323 ==null){
+      $scope.var323 = "no definido";
+      $scope.v323 = 0;
+    }      
+  }
+}
+if($scope.var321 == "no definido" && $scope.var322 == "no definido" && $scope.var323 == "no definido"){
+  $scope.v321 = 0;
+  $scope.v322 = 0;
+  $scope.v323 = 0;
+}else if($scope.var321 != "no definido" && $scope.var322 == "no definido" && $scope.var323 == "no definido"){
+  $scope.v321 = 1;
+  $scope.v322 = 0;
+  $scope.v323 = 0;
+}else if($scope.var321 != "no definido" && $scope.v321 == null && $scope.var322 != "no definido" && $scope.v322 == null && $scope.var323 == "no definido"){
+  $scope.v321 = 0.5;
+  $scope.v322 = 0.5;
+  $scope.v323 = 0;
+}else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido" && $scope.v321 == null  && $scope.v322 == null && $scope.v323 == null){
+  $scope.v321 = 0.3;
+  $scope.v322 = 0.3;
+  $scope.v323 = 0.3;
+}else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido"){
+  if($scope.v321 + $scope.v322 + $scope.v323 != 1){
+    $scope.v321 = 0.3;
+    $scope.v322 = 0.3;
+    $scope.v323 = 0.3;
+  }
+}
 
 /* Variables modulo3 subsistema 3*/
-$scope.var331 = "no ";
-$scope.var332 = "no definido";
-$scope.var333 = "no definido";
-$scope.v331 = 0;
-$scope.v332 = 0;
-$scope.v333 = 0;
+for (var i = 1; i <a_pesos.length;i++){
+  if(a_pesos[i].mn == $scope.mod33){
+    $scope.var331 = a_pesos[i].vn;
+    $scope.v331 = a_pesos[i].vp;
+    v331_id = a_pesos[i].vi;
+    break;
+  }
+}
+if($scope.var331 == null){
+  $scope.var331 = "no definido";
+  $scope.var332 = "no definido";
+  $scope.var333 = "no definido";
+  $scope.v331 = 0;
+  $scope.v332 = 0;
+  $scope.v333 = 0;
+} else{
+  for (var i = 1; i < a_pesos.length;i++){
+    if(a_pesos[i].mn == $scope.mod33 && a_pesos[i].vn != $scope.var331){
+      $scope.var332 = a_pesos[i].vn;
+      $scope.v332 = a_pesos[i].vp;
+      v332_id = a_pesos[i].vi;
+      break; 
+    }
+  }
+  if($scope.var332==null){
+    $scope.var332 = "no definido";
+    $scope.var333 = "no definido";
+    $scope.v332 = 0;
+    $scope.v333 = 0;
+  }else{
+    for (var i = 1; i < a_pesos.length;i++){
+      if(a_pesos[i].mn == $scope.mod33 && a_pesos[i].vn != $scope.var331 && a_pesos[i].vn != $scope.var332){
+        $scope.var333 = a_pesos[i].vn;
+        $scope.v333 = a_pesos[i].vp;
+        v333_id = a_pesos[i].vi;
+      }
+    }
+    if($scope.var333 ==null){
+      $scope.var333 = "no definido";
+      $scope.v333 = 0;
+    }      
+  }
+}
+if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.var333 == "no definido"){
+  $scope.v331 = 0;
+  $scope.v332 = 0;
+  $scope.v333 = 0;
+}else if($scope.var331 != "no definido" && $scope.var332 == "no definido" && $scope.var333 == "no definido"){
+  $scope.v331 = 1;
+  $scope.v332 = 0;
+  $scope.v333 = 0;
+}else if($scope.var331 != "no definido" && $scope.v331 == null && $scope.var332 != "no definido" && $scope.v332 == null && $scope.var333 == "no definido"){
+  $scope.v331 = 0.5;
+  $scope.v332 = 0.5;
+  $scope.v333 = 0;
+}else if($scope.var331 != "no definido" && $scope.var332 != "no definido" && $scope.var333 != "no definido" && $scope.v331 == null  && $scope.v332 == null && $scope.v333 == null){
+  $scope.v331 = 0.3;
+  $scope.v332 = 0.3;
+  $scope.v333 = 0.3;
+}else if($scope.var331 != "no definido" && $scope.var332 != "no definido" && $scope.var333 != "no definido"){
+  if($scope.v331 + $scope.v332 + $scope.v333 != 1){
+    $scope.v331 = 0.3;
+    $scope.v332 = 0.3;
+    $scope.v333 = 0.3;
+  }
+}
 
 
 
@@ -1840,6 +2020,14 @@ $scope.v333 = 0;
         angular.element("#slider31").slider('setValue',$scope.v311);
         angular.element("#slider32").slider('setValue',$scope.v312);
         angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.v312 != "no definido" && $scope.var313 == "no definido"){
+        $scope.v311 = val;
+        $scope.v312 = 1 - $scope.v311;
+        $scope.v312 =  parseFloat(parseFloat($scope.v312).toFixed(1));
+        $scope.v313 = 0;
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
       }
    });
  }
@@ -1858,6 +2046,14 @@ $scope.v333 = 0;
     }else if($scope.var311 != "no definido" && $scope.var312 == "no definido" && $scope.var313 == "no definido"){
         $scope.v311 = 1;
         $scope.v312 = 0;
+        $scope.v313 = 0;
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.v312 != "no definido" && $scope.var313 == "no definido"){
+        $scope.v312 = val;
+        $scope.v311 = 1 - $scope.v312;
+        $scope.v311 =  parseFloat(parseFloat($scope.v311).toFixed(1));
         $scope.v313 = 0;
         angular.element("#slider31").slider('setValue',$scope.v311);
         angular.element("#slider32").slider('setValue',$scope.v312);
@@ -1884,7 +2080,10 @@ $scope.v333 = 0;
       angular.element("#slider31").slider('setValue',$scope.v311);
       angular.element("#slider32").slider('setValue',$scope.v312);
       angular.element("#slider33").slider('setValue',$scope.v313);
-    }
+    }else if($scope.var311 != "no definido" && $scope.v312 != "no definido" && $scope.var313 == "no definido"){
+        $scope.v313 = 0;
+        angular.element("#slider33").slider('setValue',$scope.v313);
+      }
    });
  }
 
@@ -1906,6 +2105,14 @@ $scope.v333 = 0;
     }else if($scope.var321 != "no definido" && $scope.var322 == "no definido" && $scope.var323 == "no definido"){
         $scope.v321 = 1;
         $scope.v322 = 0;
+        $scope.v323 = 0;
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v322 != "no definido" && $scope.var323 == "no definido"){
+        $scope.v321 = val;
+        $scope.v322 = 1 - $scope.v321;
+        $scope.v322 =  parseFloat(parseFloat($scope.v322).toFixed(1));
         $scope.v323 = 0;
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
@@ -1932,6 +2139,14 @@ $scope.v333 = 0;
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v322 != "no definido" && $scope.var323 == "no definido"){
+        $scope.v322 = val;
+        $scope.v321 = 1 - $scope.v322;
+        $scope.v321 =  parseFloat(parseFloat($scope.v321).toFixed(1));
+        $scope.v323 = 0;
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
       }
    });
  }
@@ -1954,6 +2169,9 @@ $scope.v333 = 0;
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v322 != "no definido" && $scope.var323 == "no definido"){
+        $scope.v323 = 0;
+        angular.element("#slider36").slider('setValue',$scope.v323);
       }
    });
  }
@@ -1971,6 +2189,14 @@ $scope.v333 = 0;
     }else if($scope.var331 != "no definido" && $scope.var332 == "no definido" && $scope.var333 == "no definido"){
         $scope.v331 = 1;
         $scope.v332 = 0;
+        $scope.v333 = 0;
+        angular.element("#slider37").slider('setValue',$scope.v331);
+        angular.element("#slider38").slider('setValue',$scope.v332);
+        angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido" && $scope.v332 != "no definido" && $scope.var333 == "no definido"){
+        $scope.v331 = val;
+        $scope.v332 = 1 - $scope.v331;
+        $scope.v332 =  parseFloat(parseFloat($scope.v332).toFixed(1));
         $scope.v333 = 0;
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
@@ -1997,6 +2223,14 @@ $scope.v333 = 0;
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
         angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido" && $scope.v332 != "no definido" && $scope.var333 == "no definido"){
+        $scope.v332 = val;
+        $scope.v331 = 1 - $scope.v332;
+        $scope.v331 =  parseFloat(parseFloat($scope.v331).toFixed(1));
+        $scope.v333 = 0;
+        angular.element("#slider37").slider('setValue',$scope.v331);
+        angular.element("#slider38").slider('setValue',$scope.v332);
+        angular.element("#slider39").slider('setValue',$scope.v333);
       }
    });
  }
@@ -2018,6 +2252,9 @@ $scope.v333 = 0;
         $scope.v333 = 0;
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
+        angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido" && $scope.v332 != "no definido" && $scope.var333 == "no definido"){
+        $scope.v333 = 0;
         angular.element("#slider39").slider('setValue',$scope.v333);
       }
    });
