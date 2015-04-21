@@ -2,55 +2,149 @@
   <h1 class="m-n font-thin h3">Consulta de Datos</h1>
 </div>
 <div class="wrapper-md" ng-controller="FormDemoCtrl">
-  <div class="row">
-  <div class="col-md-6">
+<div class="panel panel-default" ng-show="!registro && !editando">
+    <div class="panel-heading">
+      Modulo de consulta
+    </div>
+    <div class="row wrapper">
+      <div class="col-md-8">
         <div class="panel panel-default">
-          <div class="panel-heading font-bold">Grafica de barras</div>
-          <div class="panel-body">
-            <div ui-jq="plot" ui-options="
-              [
-                { data: {{d}}, label: 'Valor', color: '{{app.color.info}}' }
-              ],
-              {
-                bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.5 }, { opacity: 0.9}] }  },
-                xaxis: { font: { color: '#ccc' } },
-                yaxis: { font: { color: '#ccc' }, min: 0, max: 50 },
-                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
-                series: { shadowSize: 1 },
-                tooltip: true,
-                tooltipOpts: { content: '%x is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
-              }
-            " style="height:240px"></div>
-          </div>
-        </div>
-      </div>
-    <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading font-bold">Grafica de unidad de informacion</div>
-              <div class="panel-body">
-                <div ui-jq="plot" ui-options="
-                  [
-                    { data: {{d}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
-                  ], 
-                  {
-                    colors: ['{{app.color.info}}'],
-                    series: { shadowSize: 3 },
-                    xaxis:{ 
-                      font: { color: '#ccc' },
-                      position: 'bottom',
-                      ticks: [
-                        [ 1, 's1m1v1' ], [ 2, 's1m1v2' ], [ 3, 's1m1v3' ], [ 4, 's1m2v1' ], [ 5, 's1m2v2' ], [ 6, 's1m2v3' ], [ 7, 's1m3v1' ], [ 8, 's1m3v2' ], [ 9, 's1m3v3' ]
-                      ]
-                    },
-                    yaxis:{ font: { color: '#ccc' } },
-                    grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
-                    tooltip: true,
-                    tooltipOpts: { content: '%x.1 is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
-                  }
-                " style="height:240px" >
-                </div>
-              </div>
+          <div class="panel-heading font-bold">Grafica de todo el sistema</div>
+            <div class="panel-body">
+              <div ui-jq="plot" ui-options="
+                {{d}},
+                {
+                  bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.5 }, { opacity: 0.9}] }  },
+                  xaxis: { font: { color: '#ccc' } },
+                  yaxis: { font: { color: '#ccc' }, min: 0, max: 30 },
+                  grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                  series: {shadowSize: 1},
+                  tooltip: true,
+                  tooltipOpts: { content: '%x is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                }
+              " style="height:240px"></div>
             </div>
-          </div>
         </div>
       </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Consulta sobre variables independientes
+    </div>
+    <div class="row wrapper">
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading font-bold">Grafica del sistema</div>
+            <div class="panel-body">
+              <div ui-jq="plot" ui-options="
+                {{d2}},
+                {
+                  bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.5 }, { opacity: 0.9}] }  },
+                  xaxis: { font: { color: '#ccc' } },
+                  yaxis: { font: { color: '#ccc' }, min: 0, max: 30 },
+                  grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                  series: {shadowSize: 1},
+                  tooltip: true,
+                  tooltipOpts: { content: '%x is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                }
+              " ui-refresh="d2" style="height:240px"></div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
+        <div class="form-group" ng-repeat="variable in listavariablesindependientes">
+        <div class="row">
+          <div class="col-md-10">
+          <label class="col-lg-4 control-label ">{{variable.varind_nombre}}</label>
+          <div class="col-lg-8">
+            <select ng-model="variable.valueSelected" class="form-control m-b" >
+              <option ng-repeat="var in variable.varind_valores track by $index" ng-selected="{{variable.value == var}}" 
+                      value="{{var}}">
+                {{var}}
+              </option>
+            </select>
+          </div>
+          </div>
+          <div class="col-lg-2">
+          </div>
+        </div>
+            
+      </div>
+      <div class="form-group">
+      <div class="row">
+            <div class="col-md-10">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8">
+              <button type="submit" class="btn btn-sm btn-success" ng-click="conultarPorUnidadesIndependientes()">Consultar</button>
+            </div>
+            </div>
+            <div class="col-lg-2">
+            </div>
+      </div>      
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      Consulta por unidad de informacion
+    </div>
+    <div class="row wrapper">
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading font-bold">Grafica de la unidad</div>
+            <div class="panel-body">
+              <div ui-jq="plot" ui-options="
+                {{d3}},
+                {
+                  bars: { show: true, barWidth: 0.6, fillColor: { colors: [{ opacity: 0.5 }, { opacity: 0.9}] }  },
+                  xaxis: { font: { color: '#ccc' } },
+                  yaxis: { font: { color: '#ccc' }, min: 0, max: 30 },
+                  grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                  series: {shadowSize: 1},
+                  tooltip: true,
+                  tooltipOpts: { content: '%x is %y.4',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+                }
+              " ui-refresh="d3" style="height:240px"></div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <form class="bs-example form-horizontal ng-pristine ng-valid" name="formEdit" novalidate>
+        <div class="form-group">
+        <div class="row">
+          <div class="col-md-10">
+          <label class="col-lg-4 control-label ">Unidad de informacion</label>
+          <div class="col-lg-8">
+            <select ng-model="consulta.unidadSeleccionada" class="form-control m-b" ng-options="unidad.idunidad as (unidad.idunidad) for unidad in listaunidades">
+              <option></option>
+            </select>
+          </div>
+          </div>
+          <div class="col-lg-2">
+          </div>
+        </div>
+            
+      </div>
+      <div class="form-group">
+      <div class="row">
+            <div class="col-md-10">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8">
+              <button type="submit" class="btn btn-sm btn-success" ng-click="consultarPorUnidad()">Consultar</button>
+            </div>
+            </div>
+            <div class="col-lg-2">
+            </div>
+      </div>      
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

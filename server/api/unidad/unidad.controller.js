@@ -320,3 +320,51 @@ exports.update = function(req, res) {
 	    });
 
 	};
+
+	exports.getUniddadesByVariablesIndependientes = function(req, res) {
+		var input = JSON.parse(JSON.stringify(req.body));
+	/*	
+  	var data = {
+    	pro_id    : req.params.id
+  	};
+  	*/
+  	var mysql = require('mysql');
+	var connection = mysql.createConnection({
+		host: 'localhost',
+	    user: 'root',
+	    password: 'admin'
+	});
+		connection.connect(function(err) {
+	    if (err) {
+	      console.error('error connecting: ' + err.stack);
+	      return;
+	    }
+	    //console.log('connected as id ' + connection.threadId);
+	 	});
+	 	var queryString = 'SELECT u.unidad_id,u.variable_id,u.valor,uv.value FROM unidad_variable AS u INNER JOIN unidad_variableindependiente AS uv ON u.unidad_id = uv.unidad_id ' ; //+ connection.escape(data.pro_id) 
+	 	if(input.variables.length>0){
+	 		queryString += 'WHERE';
+	 	}
+		for (var i = 0; i < input.variables.length; i++) {
+			if(i == input.variables.length-1){
+				queryString += ' uv.value =' +connection.escape(input.variables[i]) ;
+			}else{
+				queryString += ' uv.value =' +connection.escape(input.variables[i])+' AND ';
+			}
+		};
+		console.log(queryString);
+	connection.query("use mydb");
+  	//var queryString = 'SELECT * FROM unidad_informacion AS u INNER JOIN unidad_variable AS uv ON u.un_id = uv.unidad_id  WHERE u.un_idproyecto =' + connection.escape(data.pro_id) ;
+	var query = connection.query(queryString, function(err, result) {
+	if (err) {
+		throw err;
+		debug
+		return res.send(409);
+		connection.end();
+	} else {
+		res.json(result);
+		//console.log( 'success' );
+		connection.end();
+	}
+	});
+  }

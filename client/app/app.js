@@ -194,6 +194,9 @@ var app = angular.module('app', [
                     },
                     listavariablesdefinidas: function ($stateParams,structFactory) {
                         return structFactory.getListaVariablesDefinidas($stateParams.idproyecto);
+                    },
+                    listavariablesindependientes: function ($stateParams,variablesIndependientesFactory) {
+                        return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
                     }
                 }
             })
