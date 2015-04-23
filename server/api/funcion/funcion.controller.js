@@ -196,3 +196,44 @@ exports.update = function(req, res) {
 	    });
 
 	};
+
+exports.funionesByIdProyecto = function(req, res) {
+	var data = {
+    	pro_id    : req.params.id
+  	};
+
+	  var mysql = require('mysql');
+	  var connection = mysql.createConnection({
+	    host: 'localhost',
+	    user: 'root',
+	    password: 'admin'
+	  });
+
+	  connection.connect(function(err) {
+	    if (err) {
+	      console.error('error connecting: ' + err.stack);
+	      return;
+	    }
+	    //console.log('connected as id ' + connection.threadId);
+	  });
+
+	  connection.query("use mydb");
+
+	  
+	  var queryString = 'SELECT f.*,v.var_id FROM proyecto AS p LEFT JOIN subsistema AS s ON s.sub_idproyecto = p.pro_id LEFT JOIN modulo AS m ON m.mod_idsubsistema = s.sub_id LEFT JOIN variable AS v ON v.var_idmodulo = m.mod_id LEFT JOIN funcion AS f ON v.var_funcion = f.fun_id WHERE p.pro_id = ' + connection.escape(data.pro_id) ;
+	console.log(queryString);
+	var query = connection.query(queryString, function(err, result) {
+	if (err) {
+		throw err;
+		debug
+		return res.send(409);
+		connection.end();
+	} else {
+		res.json(result);
+		//console.log( 'success' );
+		connection.end();
+	}
+	});
+
+	    // res.json([]);
+};

@@ -22,8 +22,9 @@
                   <th style="width:20px;">
 
                   </th>
-                  <th>Nombre</th>
-                  <th>Número de módulos</th>
+                  <th>Titulo</th>
+                  <th>Titulo Largo</th>
+                  <th></th>
                   <th></th>
                   <th></th>
                   <th style="width:30px;"></th>
@@ -35,9 +36,10 @@
                    
                   </td>
                   <td>{{ proyecto.pro_nombre }}</td>
-                  <td>{{ proyecto.pro_modulos }}</td>
+                  <td>{{ proyecto.pro_nombrelargo }}</td>
                   <td><button class="btn btn-primary btn-addon" ng-click="subsistemas(proyecto)"><i class="fa fa-tasks"></i>Subsistemas</button></td>
                   <td><button class="btn btn-primary btn-addon" ng-click="consulta(proyecto)"><i class="fa fa-tasks"></i>Consultar Informacion</button></td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="representaciones(proyecto)"><i class="fa fa-tasks"></i>Representaciones</button></td>
                 </tr>
               </tbody>
             </table>
@@ -51,12 +53,29 @@
       <div class="panel" ng-show="consultando">
           <div class="wrapper-lg">
             <h2 class="m-t-none" ng-bind='proyectoFocus.pro_nombre'></h2>
+            <small class="m-l-xxl" ng-bind='proyectoFocus.pro_nombrelargo'></small>
             <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. 
+              <h3 ng-if="proyectoFocus.pro_descripcion != null">Descripcion</h3>
+              <p ng-if="proyectoFocus.pro_descripcion != null" ng-bind-html="getHtml(proyectoFocus.pro_descripcion)">
               </p>
-              <h3>Html5 and CSS3</h3>
-              <p>
-              Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
+              <h3 ng-if="proyectoFocus.pro_problema != null">Problema</h3>
+              <p ng-if="proyectoFocus.pro_problema != null" ng-bind-html="getHtml(proyectoFocus.pro_problema)">
+              </p>
+              <h3 ng-if="proyectoFocus.pro_preguntas != null">Preguntas</h3>
+              <p ng-if="proyectoFocus.pro_preguntas != null" ng-bind-html="getHtml(proyectoFocus.pro_preguntas)">
+              </p>
+              <h3 ng-if="proyectoFocus.pro_objetodeconocimiento != null">Objeto de conocimiento</h3>
+              <p ng-if="proyectoFocus.pro_objetodeconocimiento != null" ng-bind-html="getHtml(proyectoFocus.pro_objetodeconocimiento)">
+              </p>
+              <h3 ng-if="proyectoFocus.pro_complejoempirico != null">Complejo Empirico</h3>
+              <p ng-if="proyectoFocus.pro_complejoempirico != null" ng-bind-html="getHtml(proyectoFocus.pro_complejoempirico)">
+              </p>
+              <h3 ng-if="proyectoFocus.pro_complejocognocitivo != null">Complejo Cognocitivo</h3>
+              <p ng-if="proyectoFocus.pro_complejocognocitivo != null" ng-bind-html="getHtml(proyectoFocus.pro_complejocognocitivo)">
+              </p>
+              <h3 ng-if="proyectoFocus.pro_otrainformacion != null">Otra Informacion</h3>
+              <p ng-if="proyectoFocus.pro_otrainformacion != null" ng-bind-html="getHtml(proyectoFocus.pro_otrainformacion)">
+              </p>
             </div>
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">

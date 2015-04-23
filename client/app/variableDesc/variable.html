@@ -20,7 +20,7 @@
       <div>
         <ul class="breadcrumb bg-white b-a">
           <li><a ui-sref="app.proyectoDesc()"><i class="fa fa-home"></i> Proyectos</a></li>
-          <li ng-bind='siglasProyecto'></li>
+          <li ng-bind='nombreProyecto'></li>
           <li><a ui-sref="app.subsistemaDesc({idproyecto:idproyecto})"><i class="fa fa-home"></i> Subsistemas</a></li>
           <li ng-bind='siglasSubsistema'></li>
           <li><a ui-sref="app.modulosDesc({idproyecto:idproyecto, idsubsistema:idsubsistema})"><i class="fa fa-home"></i> Modulos</a></li>
@@ -28,12 +28,16 @@
           <li class="active">Variables</li>
         </ul>
       </div>
+      <div class="row" ng-if="listavariables.length == 0">
+        <div class="col-lg-6">
+          <div class="m-b-md">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+          </div>
+        </div>
+      </div>
         <div class="panel panel-default" ng-show="!registro && !editando">
           <div class="panel-heading">
             Lista Variables
-          </div>
-          <div ng-if='listavariables.length == 0'>
-            <span style="color:red;">No hay variables registradas</span>
           </div>
 <!--           <div class="row wrapper">
             <div class="col-sm-3 m-b-xs">
@@ -611,20 +615,5 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
-          <tabset class="nav-tabs-alt" justified="true">
-            
-            <tab>
-              <tab-heading>
-                <i class="icon-share text-md text-muted wrapper-sm"></i>
-              </tab-heading>
-              <div class="wrapper-md">
-                <div class="m-b-sm text-md">Estructura</div>
-              </div>
-              <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
-            </tab>
-            
-          </tabset>
         </div>
       </div>

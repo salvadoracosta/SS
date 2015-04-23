@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('proyectoDescCtrl', function ($scope, $http, $state, toaster, listaproyectos, proyectosFactory, $stateParams,$localStorage) {
+  .controller('VariableIndependienteCtrl', function ($scope, $http, $state, toaster, listavariablesindependientes, variablesIndependientesFactory, $stateParams,$localStorage,idproyecto) {
     console.log(toaster);
-    console.log(listaproyectos);
-    console.log(proyectosFactory);
+    console.log(listavariablesindependientes);
     console.log($stateParams.edit);
     $scope.idusuario = $localStorage.user.per_id;
-    $scope.listaproyectos = listaproyectos.data;
+    $scope.listavariablesindependientes = listavariablesindependientes.data;
+    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
     $scope.registro = false;
     $scope.toaster = {
         type: 'success',
@@ -15,9 +15,9 @@ angular.module('app.controllers')
         text: 'Message'
     };
 
-    if($scope.listaproyectos.length == 0){
+    if($scope.listavariablesindependientes.length == 0){
       $scope.alerts = [
-      { type: 'warning', msg: 'Usted aun no tiene proyectos registrados' }
+      { type: 'warning', msg: 'Usted aun no tiene variables independientes registradas para este proyecto' }
       ]; 
     }
     
@@ -48,16 +48,15 @@ angular.module('app.controllers')
     /*
     Funcion para registrar a un proyecto
     */
-    $scope.addProyecto = function() {
-      $scope.proyecto.autor = $localStorage.user.per_id;
-      $http.post('/api/proyectos', { proyecto: $scope.proyecto}).success(function(data, status) {
+    $scope.addVariable = function() {
+      $http.post('/api/variablesIndependientes/'+idproyecto, { variable:$scope.variable}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
           
           $scope.authError = '';
           $scope.authSuccess = data[0].msj;
-          $scope.toaster.title = "Proyecto creado";
+          $scope.toaster.title = "Variable Independiente creada";
           $scope.toaster.text = data[0].msj;
           $scope.toaster.type = "success"
           //$scope.nombre ='';
@@ -66,14 +65,14 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadVariablesIndependientes();
           $scope.registro = false;
           
         }).
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo registrar el nuevo proyecto, posiblemente es porblema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo registrar la nueva Variable Independiente, posiblemente es porblema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';
@@ -84,6 +83,7 @@ angular.module('app.controllers')
 
     $scope.showregistro = function () {
       $scope.registro = true;
+       $scope.editando = false;
     }
 
     $scope.notshowregistro = function () {
@@ -95,14 +95,14 @@ angular.module('app.controllers')
       $scope.editando = false;
     }
 
-    $scope.borrar = function (proyecto) {
-      console.log(proyecto);
-      $http.delete('/api/proyectos/'+proyecto.pro_id).success(function(data, status) {
+    $scope.borrar = function (variable) {
+      console.log(variable);
+      $http.delete('/api/variablesIndependientes/'+variable.varind_id).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
           
-          $scope.toaster.title = "Proyecto Eliminado";
+          $scope.toaster.title = "Variable Eliminada";
           $scope.toaster.text = data[0].msj;
           $scope.toaster.type = "success"
           //$scope.nombre ='';
@@ -111,13 +111,13 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
+          $scope.reloadVariablesIndependientes();
           //$state.go($state.current, {}, {reload: true});
         }).
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo borrar el proyecto, posiblemente es porblema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo borrar la variable, posiblemente es porblema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';
@@ -125,23 +125,28 @@ angular.module('app.controllers')
         });
     }
 
-    $scope.reloadProyectos = function() {
-      proyectosFactory.getListaProyectosByAutor($localStorage.user.per_id).then(function(response) {
+    $scope.reloadVariablesIndependientes = function() {
+      variablesIndependientesFactory.getListaVariablesIndependientes(idproyecto).then(function(response) {
         console.log(response);
-        $scope.listaproyectos = response.data;
+        $scope.listavariablesindependientes = response.data;
       });
     }
 
-    $scope.editar = function(proyecto) {
-      $scope.proyectofocus = proyecto;
+    $scope.editar = function(variable) {
+      $scope.variablefocus = variable;
       $scope.editando = true;
-      console.log($scope.proyectofocus);
+      console.log($scope.variablefocus);
+      var valoresArray = JSON.parse(variable.varind_valores);
+      variable.varind_valores='';
+      for (var i = 0; i < valoresArray.length; i++) {
+        if(i == valoresArray.length-1){
+          variable.varind_valores +=valoresArray[i];
+        }else{
+          variable.varind_valores +=valoresArray[i]+',';
+        }
+        
+      };
     }
-
-    $scope.pesos= function(proyecto){
-       $state.go('app.pesoDesc',{idproyecto:proyecto.pro_id});
-    }
-
 
     $scope.subsistemas = function(proyecto) {
       $localStorage.proyecto = proyecto;
@@ -149,23 +154,21 @@ angular.module('app.controllers')
     }
     $scope.unidades = function(proyecto) {
      $state.go('app.unidadInformacion',{idproyecto:proyecto.pro_id});
-     localStorage.proyecto = proyecto;
     }
 
     $scope.variables = function(proyecto) {
-      $localStorage.proyecto = proyecto;
-      $state.go('app.variableIndependiente',{idproyecto:proyecto.pro_id});
+     $state.go('app.variableIndependiente',{idproyecto:proyecto.pro_id});
     }
 
-    $scope.editProyecto = function() {
-      $http.put('/api/proyectos/'+$scope.proyectofocus.pro_id, { proyecto:$scope.proyectofocus}).success(function(data, status) {
+    $scope.editVariable = function() {
+      $http.put('/api/variablesIndependientes/'+$scope.variablefocus.varind_id, { variable:$scope.variablefocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
           
           $scope.authError = '';
           $scope.authSuccess = data[0].msj;
-          $scope.toaster.title = "Proyecto editado";
+          $scope.toaster.title = "Variable editada";
           $scope.toaster.text = data[0].msj;
           $scope.toaster.type = "success"
           //$scope.nombre ='';
@@ -174,14 +177,14 @@ angular.module('app.controllers')
           $scope.formEdit.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadProyectos();
-          $scope.editando = false;
+          $scope.reloadVariablesIndependientes();
+          $scope.notshowEdit();
           
         }).
         error(function(data, status, headers, config) {
           $scope.status = status;
           $scope.toaster.title = "Error";
-          $scope.toaster.text = "No se pudo editar el proyecto, posiblemente es problema de nosotros y no de usted";
+          $scope.toaster.text = "No se pudo editar la variable, posiblemente es problema de nosotros y no de usted";
           $scope.toaster.type = "error";
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           $scope.authSuccess = '';

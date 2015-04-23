@@ -85,6 +85,18 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getListaFuncionesByProyecto: function (idproyecto) {
+        var promise = $http.get('/api/funciones/'+idproyecto).success(function(data, status) {
+                
+                listafunciones = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
@@ -154,6 +166,35 @@ angular.module('app.services', [])
                 //console.log(status);
             });
         return promise;
+      },
+      getVariablesIndependientes: function (id) {
+        var promise = $http.get('/api/unidad/'+id+'/unidadesindependeientes').success(function(data, status) {
+                listaunidades = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
+.factory('variablesIndependientesFactory', ['$http', function($http) {
+  var listavariablesindependientes;
+   var sdo = {
+    getListaVariablesIndependientes: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/variablesIndependientes/'+id).success(function(data, status) {
+                listavariablesindependientes = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
       }
   }
   return sdo;
@@ -194,12 +235,46 @@ angular.module('app.services', [])
 .factory('treeFactory', ['$http', function($http) {
     console.log('Factory Tree');
     var tree;
-    
+    var treeProyecto;
    var sdo = {
     getTree: function () {
         var promise = $http.get('/api/tree').success(function(data, status) {
                 
                 tree = data;
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
+            });
+        return promise;
+      },
+      getTreeById: function (idproyecto) {
+        console.log('Factory Tree');
+        var promise = $http.get('/api/tree/'+idproyecto).success(function(data, status) {
+                
+                treeProyecto = data;
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                
+                console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
+.factory('structFactory', ['$http', function($http) {
+    console.log('Factory Tree');
+    var tree;
+    var treeProyecto;
+   var sdo = {
+      getListaVariablesDefinidas: function (idproyecto) {
+        console.log('Factory Tree');
+        var promise = $http.get('/api/struct/'+idproyecto).success(function(data, status) {
+                
+                treeProyecto = data;
                 console.log(data);
             }).
             error(function(data, status, headers, config) {

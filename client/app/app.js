@@ -77,8 +77,8 @@ var app = angular.module('app', [
                 templateUrl: 'app/home/app.html',
                 controller: 'HomeCtrl',
                 resolve: {
-                    tree: function(treeFactory) {
-                        return treeFactory.getTree();
+                    tree: function(treeFactory,$localStorage) {
+                        return treeFactory.getTreeById($localStorage.user.per_id);
                     }
                 }
             })
@@ -181,6 +181,25 @@ var app = angular.module('app', [
                     } 
                 }
             })
+            .state('app.representaciones',{
+                url:'/representaciones/:idproyecto',
+                controller: 'RepresentacionesCtrl',
+                templateUrl: 'app/representaciones/representaciones.html',
+                resolve:{
+                    listafunciones: function($stateParams, funcionesFactory){
+                        return funcionesFactory.getListaFuncionesByProyecto($stateParams.idproyecto);
+                    },
+                    listaunidadesdeinformacion: function($stateParams,unidadesFactory) {
+                        return unidadesFactory.getListaUnidades($stateParams.idproyecto);
+                    },
+                    listavariablesdefinidas: function ($stateParams,structFactory) {
+                        return structFactory.getListaVariablesDefinidas($stateParams.idproyecto);
+                    },
+                    listavariablesindependientes: function ($stateParams,variablesIndependientesFactory) {
+                        return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
+                    }
+                }
+            })
             .state('app.unidadInformacion',{
                 url:'/proyecto/:idproyecto/unidad',
                 controller: 'unidadInformacionCtrl',
@@ -191,6 +210,18 @@ var app = angular.module('app', [
                     },
                     idproyecto: function($stateParams) {
                         return $stateParams.idproyecto;
+                    },
+                    listavariablesindependientes: function ($stateParams,variablesIndependientesFactory) {
+                        return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
+                    },
+                    listavariablesdefinidas: function ($stateParams,structFactory) {
+                        return structFactory.getListaVariablesDefinidas($stateParams.idproyecto);
+                    },
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
+                    },
+                    listavaloresvariablesindependientes: function($stateParams,unidadesFactory) {
+                        return unidadesFactory.getVariablesIndependientes($stateParams.idproyecto);
                     }
                 }
             })
@@ -198,6 +229,19 @@ var app = angular.module('app', [
                 url:'/vindependientes',
                 controller: 'VIndpendienteCtrl',
                 templateUrl: 'app/vindependiente/vindependiente.html'
+            })
+            .state('app.variableIndependiente',{
+                url:'/proyecto/:idproyecto/variableIndependiente',
+                controller: 'VariableIndependienteCtrl',
+                templateUrl: 'app/variableIndependiente/variableIndependiente.html',
+                 resolve: {
+                    listavariablesindependientes: function($stateParams,variablesIndependientesFactory) {
+                        return variablesIndependientesFactory.getListaVariablesIndependientes($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
             })
             .state('app.proyectoDesc',{
                 url:'/proyecto/:edit',

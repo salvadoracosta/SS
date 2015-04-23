@@ -5,7 +5,10 @@ var controller = require('./vindependiente.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index); 
+router.post('/:id', controller.registroById); 
+router.get('/:id', controller.variablesById);
+router.delete('/:id', controller.delete);
+router.put('/:id', controller.update);
 /*
 router.get('/:id', controller.getSubsistemasById);
 router.post('/', controller.registro);

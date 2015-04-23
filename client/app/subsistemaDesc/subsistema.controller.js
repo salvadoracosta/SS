@@ -3,7 +3,7 @@
 angular.module('app.controllers')
   .controller('SubsistemaDescCtrl', function ($scope,$http,toaster,listasubsistemas, subsistemasFactory, idproyecto,$state,$localStorage) {
     $scope.listasubsistemas = listasubsistemas.data;
-    $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+    $scope.nombreProyecto = $localStorage.proyecto.pro_nombre;
     console.log(listasubsistemas);
     console.log(toaster);
     console.log(idproyecto);
@@ -100,6 +100,15 @@ angular.module('app.controllers')
       $scope.editando = true;
       console.log($scope.subsistemafocus);
     }
+    if($scope.listasubsistemas.length == 0){
+      $scope.alerts = [
+      { type: 'warning', msg: 'Usted aun no tiene subsistemas registrados para este proyecto' }
+      ]; 
+    }
+    
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
 
     $scope.editSubsistema = function() {
       $http.put('/api/subsistemas/'+$scope.subsistemafocus.sub_id, { nombre: $scope.subsistemafocus.sub_nombre , sigla : $scope.subsistemafocus.sub_sigla ,valor: $scope.subsistemafocus.sub_valor,descripcioncorta: $scope.subsistemafocus.sub_descripcioncorta,descripcionlarga: $scope.subsistemafocus.sub_descripcionlarga,modulo1: $scope.subsistemafocus.sub_modulo1,modulo2: $scope.subsistemafocus.sub_modulo2,modulo3: $scope.subsistemafocus.sub_modulo3}).success(function(data, status) {

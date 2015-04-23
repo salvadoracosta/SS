@@ -1,10 +1,10 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./tree.controller');
+var controller = require('./struct.controller');
 
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.getTreeById);
+router.get('/:id', controller.getStructById);
 module.exports = router;

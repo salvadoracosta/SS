@@ -19,7 +19,7 @@ angular.module('app.controllers')
             if(arr[k] == str){
                 return k;
             }else{
-                console.log(arr[k]);
+                //console.log(arr[k]);
                 if (typeof arr[k].label != 'undefined'){
                     if(arr[k].label == str){
                         return k;
@@ -61,39 +61,47 @@ angular.module('app.controllers')
        var existing = null;
        if(lvl2 == null){
         tree.push({label: lvl1,onSelect: function(branch){console.log(branch.data);}, data:{id:2}});
-        console.log("NIVEEEEEEEEEL1 --"+ lvl1)
        }else{
             var pos = $scope.arrayContains(tree,lvl1);
             if(pos>-1){
                 if(typeof tree[pos].children == null){
                     tree[pos] = {label: lvl1,onSelect: function(branch){console.log(branch);}, children:[]};
                     current = tree[pos].children;
+                }else{
+                    current = tree[pos].children;
                 }
-                current = tree[pos].children;
                 if(lvl3 == null){
                     current.push(lvl2);
                 }else{
-                    
                     var pos2 = $scope.arrayContains(current,lvl2);
-                    console.log(pos2);
-                    console.log(current[pos2]);
-                    if(pos2>0){
+                    if(pos2>-1){
+                        console.log(current[pos2]);
                         if(typeof current[pos2].children == null){
-                            current[pos2] = {label: lvl2, children:[]};
+                            current[pos2].children = [];
+                            //current[pos2] = {label: lvl2, children:[]};
+                            current = current[pos2].children;
+                        }else{
                             current = current[pos2].children;
                         }
-                        current = current[pos2].children;
                         if(lvl4 == null){
                            current.push(lvl3); 
-                       }else{
+                        }else{
                             var pos3 = $scope.arrayContains(current,lvl3);
-                            if(typeof current[pos3].children == null){
-                                current[pos3] = {label: lvl3,onSelect: function(branch){console.log(branch);}, children:[]};
+                            if(pos3>-1){
                                 current = current[pos3].children;
+                                current.push(lvl4);
+                            }else{
+                                    current.push({label: lvl3, children:[lvl4]});
                             }
-                            current = current[pos3].children;
-                            current.push(lvl4);
+                            
                        }
+                    }else{
+                        
+                        if(lvl4 ==null){
+                            current.push({label: lvl2, children:[lvl3]});
+                        }else{
+                            current.push({label: lvl2, children:[{label: lvl3, children:[lvl4]}]});
+                        }
                     }
                 }
             }else{
@@ -114,7 +122,13 @@ angular.module('app.controllers')
 }
 
     for (var x=0; x < treeArray.length; x++) {
-      var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
+        try{
+            var steps = [treeArray[x].lev1,treeArray[x].lev2,treeArray[x].lev3,treeArray[x].lev4];
+        }catch(err){
+            console.log(err);
+            var steps = [{label: 'Error al cargar la estructura de tus proyectos', children:[]}];
+        }
+      
       console.log(steps);
       $scope.fillTree(steps);
       

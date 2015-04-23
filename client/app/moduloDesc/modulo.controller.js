@@ -4,7 +4,7 @@ angular.module('app.controllers')
 .controller('ModuloDescCtrl', function ($scope,$http,toaster, listamodulos, modulosFactory,idproyecto, idsubsistema,$state,$localStorage) {
   console.log(toaster);
   console.log(listamodulos);
-  $scope.siglasProyecto = $localStorage.proyecto.pro_sigla;
+  $scope.nombreProyecto = $localStorage.proyecto.pro_nombre;
   $scope.siglasSubsistema = $localStorage.subsistema.sub_sigla;
   $scope.listamodulos = listamodulos.data;
   $scope.idproyecto = idproyecto;
@@ -14,7 +14,17 @@ angular.module('app.controllers')
     title: 'Titulo',
     text: 'Message'
   };
-  
+
+  if($scope.listamodulos.length == 0){
+      $scope.alerts = [
+      { type: 'warning', msg: 'Usted aun no tiene modulos registrados para este subsistema' }
+      ]; 
+    }
+    
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+
   var variablesArrayFocus = [];
 $scope.variables = function (modulo) {
   $localStorage.modulo = modulo;

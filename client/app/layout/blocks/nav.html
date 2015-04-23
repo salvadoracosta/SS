@@ -1,7 +1,7 @@
 <!-- first -->
 <ul class="nav">
 
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show='user.per_tipo == 1 || user.per_tipo == 0'>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show='user.per_tipo == 0'>
     <span >Menú de Registros</span>
   </li>
   <div ng-if='user.per_tipo == 0'>
@@ -13,13 +13,8 @@
   </li>
   </div>
   <div ng-if='user.per_tipo == 1 || user.per_tipo == 0'>
-    <li>
-  <a ui-sref="app.vindependientes" class="auto">      
-    <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-    <span class="font-bold" >Variables Independientes</span>
-  </a>
-</li>
-<li class="line dk hidden-folded"></li>
+    
+<li class="line dk hidden-folded" ng-show='user.per_tipo == 0'></li>
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
     <span >Registro Descendente</span>
   </li>  

@@ -29,13 +29,51 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Variables Independientes`
+-- Table `mydb`.`unidad informacion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Variables Independientes` (
-  `varind_id` INT NOT NULL AUTO_INCREMENT,
-  `varind_descripcion JSON` VARCHAR(45) NULL,
-  `varind_fecha` DATETIME NULL,
-  PRIMARY KEY (`varind_id`))
+CREATE TABLE IF NOT EXISTS `mydb`.`unidad_informacion` (
+  `un_id` INT NOT NULL AUTO_INCREMENT,
+  `un_idproyecto` INT NULL,
+  `un_nombre` VARCHAR(120) NULL,
+  `un_descripcion` TEXT NULL,
+  `un_fecha` DATETIME NULL,
+  `un_s1m1v1` INT NULL,
+  `un_s1m1v2` INT NULL,
+  `un_s1m1v3` INT NULL,
+  `un_s1m2v1` INT NULL,
+  `un_s1m2v2` INT NULL,
+  `un_s1m2v3` INT NULL,
+  `un_s1m3v1` INT NULL,
+  `un_s1m3v2` INT NULL,
+  `un_s1m3v3` INT NULL,
+  `un_s2m1v1` INT NULL,
+  `un_s2m1v2` INT NULL,
+  `un_s2m1v3` INT NULL,
+  `un_s2m2v1` INT NULL,
+  `un_s2m2v2` INT NULL,
+  `un_s2m2v3` INT NULL,
+  `un_s2m3v1` INT NULL,
+  `un_s2m3v2` INT NULL,
+  `un_s2m3v3` INT NULL,
+  `un_s3m1v1` INT NULL,
+  `un_s3m1v2` INT NULL,
+  `un_s3m1v3` INT NULL,
+  `un_s3m2v1` INT NULL,
+  `un_s3m2v2` INT NULL,
+  `un_s3m2v3` INT NULL,
+  `un_s3m3v1` INT NULL,
+  `un_s3m3v2` INT NULL,
+  `un_s3m3v3` INT NULL,
+  `un_vi1` TEXT NULL,
+  `un_vi2` TEXT NULL,
+  `un_vi3` TEXT NULL,
+  `un_vi4` TEXT NULL,
+  `un_vi5` TEXT NULL,
+  `un_vi6` TEXT NULL,
+  `un_vi7` TEXT NULL,
+  `un_vi8` TEXT NULL,
+  `un_vi9` TEXT NULL,
+  PRIMARY KEY (`un_id`))
 ENGINE = InnoDB;
 
 
@@ -115,31 +153,18 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Proyecto` (
   `pro_id` INT NOT NULL AUTO_INCREMENT,
-  `pro_sigla` VARCHAR(2) NULL,
   `pro_nombre` VARCHAR(45) NULL,
+  `pro_nombrelargo` VARCHAR(120) NULL,
   `pro_autor` INT NULL,
-  `pro_modulos` INT NULL,
-  `pro_varind` INT NULL,
-  `pro_var` INT NULL,
-  PRIMARY KEY (`pro_id`),
-  INDEX `autor_idx` (`pro_autor` ASC),
-  INDEX `var_independiente_idx` (`pro_varind` ASC),
-  INDEX `var_idx` (`pro_var` ASC),
-  CONSTRAINT `autor`
-    FOREIGN KEY (`pro_autor`)
-    REFERENCES `mydb`.`Usuario` (`per_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `var_independiente`
-    FOREIGN KEY (`pro_varind`)
-    REFERENCES `mydb`.`Variables Independientes` (`varind_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `var`
-    FOREIGN KEY (`pro_var`)
-    REFERENCES `mydb`.`Variable` (`var_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `pro_fecha` DATE NULL,
+  `pro_descripcion` TEXT NULL,
+  `pro_problema` TEXT NULL,
+  `pro_preguntas` TEXT NULL,
+  `pro_objetodeconocimiento` TEXT NULL,
+  `pro_complejocognocitivo` TEXT NULL,
+  `pro_complejoempirico` TEXT NULL,
+  `pro_otrainformacion` TEXT NULL,
+   PRIMARY KEY (`pro_id`))
 ENGINE = InnoDB;
 
 
@@ -163,7 +188,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Peso` (
   PRIMARY KEY (`peso_id`))
 ENGINE = InnoDB;
 
-
+-- -----------------------------------------------------
+-- Table `mydb`.`Variable Independiente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`variable_independiente` (
+  `varind_id` INT NOT NULL AUTO_INCREMENT,
+  `varind_nombre` VARCHAR(120) NULL,
+  `varind_valores` TEXT NULL,
+  `varind_descripcion` TEXT NULL,
+  `varind_fecha` DATE NULL,
+  `varind_idproyecto` INT NULL,
+  PRIMARY KEY (`varind_id`))
+ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Modulo`
 -- -----------------------------------------------------
