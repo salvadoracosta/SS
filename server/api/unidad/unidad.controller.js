@@ -341,7 +341,7 @@ exports.update = function(req, res) {
 	    }
 	    //console.log('connected as id ' + connection.threadId);
 	 	});
-	 	var queryString = 'SELECT u.unidad_id,u.variable_id,u.valor,uv.value FROM unidad_variable AS u' ; //+ connection.escape(data.pro_id) 
+	 	var queryString = 'SELECT u.unidad_id,u.variable_id,u.valor FROM unidad_variable AS u' ; //+ connection.escape(data.pro_id) 
 	 	
 
 	 	for (var i = 0; i < input.variables.length; i++) {
