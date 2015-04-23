@@ -135,7 +135,7 @@ angular.module('app.controllers')
         var pos = $scope.arrayContainsVariable(arrayVariables, unidades[i].variable_id);
         var posFun = $scope.arrayContainsVariable(listafuncionesArray, unidades[i].variable_id);
         if(pos>-1){
-            arrayVariables[pos].sumavalores += listafuncionesArray[posFun].valores[unidades[i].valor]; //aplicarle la funcion antes de sumar i guess
+            arrayVariables[pos].sumavalores += listafuncionesArray[posFun].valores[unidades[i].valor]; //aplicarle la funcion antes de sumar i guess, *listafuncionesArray[posFun].peso
             arrayVariables[pos].sumandos++; 
         }else{
             arrayVariables.push({idvariable: unidades[i].variable_id, sumavalores:unidades[i].valor, sumandos: 1}); // igual aca
@@ -272,8 +272,8 @@ angular.module('app.controllers')
     */
     /*
     for (var i = 0; i < unidades.length; i++) {
-      $scope.arrayContains(listafuncionesArray,1);
-      var valor = [[1,listafuncionesArray[0][unidades[i].un_s1m1v1-1]],[2,listafuncionesArray[1][unidades[i].un_s1m1v2-1]],[3,listafuncionesArray[2][unidades[i].un_s1m1v3-1]],[4,listafuncionesArray[0][unidades[i].un_s1m2v1-1]],[5,listafuncionesArray[1][unidades[i].un_s1m2v2-1]],[6,listafuncionesArray[2][unidades[i].un_s1m2v3-1]],[7,listafuncionesArray[0][unidades[i].un_s1m3v1-1]],[8,listafuncionesArray[1][unidades[i].un_s1m3v2-1]],[9,listafuncionesArray[2][unidades[i].un_s1m3v3-1]]];
+    $scope.arrayContains(listafuncionesArray,1);
+      var valor = [[1,listafuncionesArray[0][unidades[i].un_s1m1v1-1]],[2,listafuncionesArray[0][unidades[i].un_s1m1v2-1]],[3,listafuncionesArray[0][unidades[i].un_s1m1v3-1]],[4,listafuncionesArray[0][unidades[i].un_s1m2v1-1]],[5,listafuncionesArray[0][unidades[i].un_s1m2v2-1]],[6,listafuncionesArray[0][unidades[i].un_s1m2v3-1]],[7,listafuncionesArray[0][unidades[i].un_s1m3v1-1]],[8,listafuncionesArray[0][unidades[i].un_s1m3v2-1]],[9,listafuncionesArray[0][unidades[i].un_s1m3v3-1]]];
       
     };
     console.log(valor);
