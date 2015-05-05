@@ -1,0 +1,71 @@
+<div class="bg-light lter b-b wrapper-md">
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <h1 class="m-n font-thin h3 text-black">Subsistemas</h1>
+      <small class="text-muted">Lista de subsistemas en SiAs</small>
+    </div>
+  </div>
+</div>
+<div class ="wrapper-md ng-scope" ng-scope="consultaSubsistemaCtrl">
+  <div class ="col" >
+    <div class ="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default" ng-show="!consultando">
+          <div class="panel-heading">
+            Lista subsistemas
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+              <thead>
+                <tr>
+                  <th style="width:20px;">
+
+                  </th>
+                  <th>Nombre</th>
+                  <th>Sigla</th>
+                  <th></th>
+                  <th></th>                
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="subsistema in listasubsistemas">
+                  <td>
+                   
+                  </td>
+                  <td>{{ subsistema.sub_nombre }}</td>
+                  <td>{{ subsistema.sub_sigla }}</td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="modulos(subsistema)"><i class="fa fa-tasks"></i>Modulos</button></td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="consulta(subsistema)"><i class="fa fa-tasks"></i>Consultar Informacion</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <footer class="panel-footer">
+            <div class="row">
+            </div>
+          </footer>
+        </div>
+        
+        <div class="panel" ng-show="consultando">
+          <div class="wrapper-lg">
+              <h2 class="m-t-none" ng-bind='subsistemafocus.sub_nombre'></h2>
+              <p> Sigla: <small class="m-l-xxl" ng-bind='subsistemafocus.sub_sigla'></small></p>
+              <div>
+                <h3 ng-if="subsistemafocus.sub_descripcioncorta != null">Descripción Corta:</h3>
+                <p ng-if="subsistemafocus.sub_descripcioncorta != null" ng-bind-html="getHtml(subsistemafocus.sub_descripcioncorta)">
+                </p>
+                <h3 ng-if="subsistemafocus.sub_descripcionlarga != null">Descripción Larga:</h3>
+                <p ng-if="subsistemafocus.sub_descripcionlarga != null" ng-bind-html="getHtml(subsistemafocus.sub_descripcionlarga)">
+                </p>
+              </div>
+              <div style="margin-top: 20px;">
+                <button class="btn m-b-xs w-xs btn-dark" ng-click='cerrar()'>Cerrar</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

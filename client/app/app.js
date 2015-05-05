@@ -129,6 +129,19 @@ var app = angular.module('app', [
                     }
                 }
             })
+
+            .state('app.consultaSubsistema', {
+                url: '/consultaSubsistema',
+                templateUrl: 'app/consultaSubsistema/consultaSubsistema.html',
+                controller: 'ConsultaSubsistemaCtrl',
+                resolve: {
+                    listasubsistemas: function(subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemas();
+                    }
+                }
+            })
+
+
             .state('app.funciones',{
                 url:'/funciones',
                 controller: 'FuncionesCtrl',

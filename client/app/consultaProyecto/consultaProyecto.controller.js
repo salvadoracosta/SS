@@ -30,6 +30,7 @@ angular.module('app.controllers')
         $state.go('app.representaciones',{idproyecto:proyecto.pro_id});
     }
     $scope.consulta = function(proyecto) {
+        console.log("CONSULTAAAAA");
     	usuariosFactory.getNameById(proyecto.pro_autor).then(function(response) {
 	       var d = new Date(proyecto.pro_fecha);
 	    	$scope.fecha = d.getDay()+' de '+monthNames[d.getMonth()]+', '+d.getFullYear();
@@ -39,4 +40,9 @@ angular.module('app.controllers')
 	    });
     }
 
+    $scope.subsistemas =function(proyecto){
+        console.log("consultar subsistema" ,proyecto);
+        
+        $state.go('app.consultaSubsistema',{idproyecto:proyecto.pro_id})   
+    }
   });
