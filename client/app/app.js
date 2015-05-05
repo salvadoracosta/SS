@@ -176,6 +176,20 @@ var app = angular.module('app', [
                     }
                 }
             })
+
+            .state('app.consultaModulo', {
+                url: '/consultaModulo',
+                templateUrl: 'app/consultaModulo/consultaModulo.html',
+                controller: 'ConsultaModuloCtrl',
+                resolve: {
+                    listamodulos: function(modulosFactory) {
+                        return modulosFactory.getListaModulos();
+                    }
+                }
+            })
+
+
+
             .state('app.pesos',{
                 url:'/pesos',
                 controller: 'PesoCtrl',
