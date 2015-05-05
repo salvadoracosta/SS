@@ -12,7 +12,7 @@ angular.module('app.controllers')
     var listafuncionesArray = [];
     var nombreVariables = ['s1m1v1','s1m1v2','s1m1v3','s1m2v1','s1m2v2','s1m2v3','s1m3v1','s1m3v2','s1m3v3'];
     console.log(struct);
-
+    $scope.d5 = [ [1,6.5],[2,6.5],[3,7],[4,8],[5,7.5],[6,7],[7,6.8],[8,7],[9,7.2],[10,7],[11,6.8],[12,7] ];
     for (var i = 0; i < funciones.length; i++) {
       var valoresfuncion = [funciones[i].fun_val1,funciones[i].fun_val2,funciones[i].fun_val3,funciones[i].fun_val4,funciones[i].fun_val4,funciones[i].fun_val6,funciones[i].fun_val7,funciones[i].fun_val8,funciones[i].fun_val9,funciones[i].fun_id]
       //listafuncionesArray[i] = valoresfuncion;
@@ -131,19 +131,29 @@ angular.module('app.controllers')
     console.log($scope.listaunidades);
 
     var arrayVariables = [];
+    $scope.arrayVariablesSeparadas = [];
     for (var i = 0; i < unidades.length; i++) {
         var pos = $scope.arrayContainsVariable(arrayVariables, unidades[i].variable_id);
         var posFun = $scope.arrayContainsVariable(listafuncionesArray, unidades[i].variable_id);
         if(pos>-1){
-            arrayVariables[pos].sumavalores += listafuncionesArray[posFun].valores[unidades[i].valor]; //aplicarle la funcion antes de sumar i guess
+            arrayVariables[pos].sumavalores += listafuncionesArray[posFun].valores[unidades[i].valor]; //aplicarle la funcion antes de sumar i guess, *listafuncionesArray[posFun].peso
             arrayVariables[pos].sumandos++; 
+            $scope.arrayVariablesSeparadas[pos].valores.push(unidades[i].valor);
         }else{
             arrayVariables.push({idvariable: unidades[i].variable_id, sumavalores:unidades[i].valor, sumandos: 1}); // igual aca
+            $scope.arrayVariablesSeparadas.push({idvariable: unidades[i].variable_id,valores:[unidades[i].valor],valoresGraficar:[]});
         }
         
     };
     console.log(arrayVariables);
+    console.log($scope.arrayVariablesSeparadas);
     console.log(funciones);
+
+    for (var i = 0; i < $scope.arrayVariablesSeparadas.length; i++) {
+        for (var j = 0; j < $scope.arrayVariablesSeparadas[i].valores.length; j++) {
+            $scope.arrayVariablesSeparadas[i].valoresGraficar.push([j,$scope.arrayVariablesSeparadas[i].valores[j]]);
+        };
+    };
     /*
     console.log(listafuncionesArray);
     var valoresGraficar=[];
@@ -205,6 +215,7 @@ angular.module('app.controllers')
     };
     */
     //llenar valores en las variables, me muero por dentro de ver 4 fors anidados ....
+
     for (var i = 0; i < arrayVariables.length; i++) {
         for (var l = 0; l < subsistemasArray.length; l++) {
             for (var j = 0; j < subsistemasArray[l].modulos.length; j++) {
@@ -272,8 +283,8 @@ angular.module('app.controllers')
     */
     /*
     for (var i = 0; i < unidades.length; i++) {
-      $scope.arrayContains(listafuncionesArray,1);
-      var valor = [[1,listafuncionesArray[0][unidades[i].un_s1m1v1-1]],[2,listafuncionesArray[1][unidades[i].un_s1m1v2-1]],[3,listafuncionesArray[2][unidades[i].un_s1m1v3-1]],[4,listafuncionesArray[0][unidades[i].un_s1m2v1-1]],[5,listafuncionesArray[1][unidades[i].un_s1m2v2-1]],[6,listafuncionesArray[2][unidades[i].un_s1m2v3-1]],[7,listafuncionesArray[0][unidades[i].un_s1m3v1-1]],[8,listafuncionesArray[1][unidades[i].un_s1m3v2-1]],[9,listafuncionesArray[2][unidades[i].un_s1m3v3-1]]];
+    $scope.arrayContains(listafuncionesArray,1);
+      var valor = [[1,listafuncionesArray[0][unidades[i].un_s1m1v1-1]],[2,listafuncionesArray[0][unidades[i].un_s1m1v2-1]],[3,listafuncionesArray[0][unidades[i].un_s1m1v3-1]],[4,listafuncionesArray[0][unidades[i].un_s1m2v1-1]],[5,listafuncionesArray[0][unidades[i].un_s1m2v2-1]],[6,listafuncionesArray[0][unidades[i].un_s1m2v3-1]],[7,listafuncionesArray[0][unidades[i].un_s1m3v1-1]],[8,listafuncionesArray[0][unidades[i].un_s1m3v2-1]],[9,listafuncionesArray[0][unidades[i].un_s1m3v3-1]]];
       
     };
     console.log(valor);
@@ -283,6 +294,13 @@ angular.module('app.controllers')
     $scope.d = valoresGraficar;
     $scope.d3 = $scope.d;
     $scope.d2 = $scope.d;
+    $scope.consultarPorVariable = function () {
+        console.log($scope.consulta.variableSeleccionada);
+        var pos = $scope.arrayContainsVariable($scope.arrayVariablesSeparadas,$scope.consulta.variableSeleccionada);
+        if(pos>-1){
+            $scope.d5 = $scope.arrayVariablesSeparadas[pos].valoresGraficar;
+        }
+    }
     $scope.consultarPorUnidad = function () {
         var subsistemasPorUnidad = angular.copy(subsistemasPorUnidadOriginal);
         var valoresGraficarPorUnidad=[];
