@@ -1,0 +1,93 @@
+<div class="bg-light lter b-b wrapper-md">
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <h1 class="m-n font-thin h3 text-black">Módulos</h1>
+      <small class="text-muted">Lista de módulos en SiAs</small>
+    </div>
+  </div>
+</div>
+<div class ="wrapper-md ng-scope" ng-scope="consultaModuloCtrl">
+  <div class ="col" >
+    <div class ="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default" ng-show="!consultando">
+          <div class="panel-heading">
+            Lista Modulos
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+              <thead>
+                <tr>
+                  <th style="width:20px;">
+
+                  </th>
+                  <th>Nombre</th>
+                  <th>Sigla </th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="modulo in listamodulos">
+                  <td>
+                   
+                  </td>
+                  <td>{{ modulo.mod_nombre }}</td>
+                  <td>{{ modulo.mod_nombrelargo }}</td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="variables(modulo)"><i class="fa fa-tasks"></i>variables</button></td>
+                  <td><button class="btn btn-primary btn-addon" ng-click="consulta(modulo)"><i class="fa fa-tasks"></i>Consultar Informacion</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <footer class="panel-footer">
+            <div class="row">
+            </div>
+          </footer>
+        </div>
+        
+      <div class="panel" ng-show="consultando">
+          <div class="wrapper-lg">
+            <h2 class="m-t-none" ng-bind='moduloFocus.mod_nombre'></h2>
+            <small class="m-l-xxl" ng-bind='moduloFocus.mod_nombrelargo'></small>
+            <div>
+              <h3 ng-if="moduloFocus.mod_descripcion != null">Descripcion</h3>
+              <p ng-if="moduloFocus.mod_descripcion != null" ng-bind-html="getHtml(moduloFocus.mod_descripcion)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_modblema != null">modblema</h3>
+              <p ng-if="moduloFocus.mod_modblema != null" ng-bind-html="getHtml(moduloFocus.mod_modblema)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_preguntas != null">Preguntas</h3>
+              <p ng-if="moduloFocus.mod_preguntas != null" ng-bind-html="getHtml(moduloFocus.mod_preguntas)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_objetodeconocimiento != null">Objeto de conocimiento</h3>
+              <p ng-if="moduloFocus.mod_objetodeconocimiento != null" ng-bind-html="getHtml(moduloFocus.mod_objetodeconocimiento)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_complejoempirico != null">Complejo Empirico</h3>
+              <p ng-if="moduloFocus.mod_complejoempirico != null" ng-bind-html="getHtml(moduloFocus.mod_complejoempirico)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_complejocognocitivo != null">Complejo Cognocitivo</h3>
+              <p ng-if="moduloFocus.mod_complejocognocitivo != null" ng-bind-html="getHtml(moduloFocus.mod_complejocognocitivo)">
+              </p>
+              <h3 ng-if="moduloFocus.mod_otrainformacion != null">Otra Informacion</h3>
+              <p ng-if="moduloFocus.mod_otrainformacion != null" ng-bind-html="getHtml(moduloFocus.mod_otrainformacion)">
+              </p>
+            </div>
+            <div class="line line-lg b-b b-light"></div>
+            <div class="text-muted">
+              <i class="fa fa-user text-muted"></i> por <a href class="m-r-sm">{{autor}}</a>
+              <i class="fa fa-clock-o text-muted"></i> {{fecha}}
+              
+            </div>
+            <div style="margin-top: 20px;">
+              <button class="btn m-b-xs w-xs btn-dark" ng-click='cerrar()'>Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
