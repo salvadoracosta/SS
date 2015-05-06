@@ -131,12 +131,12 @@ var app = angular.module('app', [
             })
 
             .state('app.consultaSubsistema', {
-                url: '/consultaSubsistema',
+                url: '/consultaSubsistema/:idproyecto',
                 templateUrl: 'app/consultaSubsistema/consultaSubsistema.html',
                 controller: 'ConsultaSubsistemaCtrl',
                 resolve: {
-                    listasubsistemas: function(subsistemasFactory) {
-                        return subsistemasFactory.getListaSubsistemas();
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
                     }
                 }
             })
@@ -178,12 +178,18 @@ var app = angular.module('app', [
             })
 
             .state('app.consultaModulo', {
-                url: '/consultaModulo',
+                url: '/consultaModulo/:idproyecto/subsistema/:idsubsistema',
                 templateUrl: 'app/consultaModulo/consultaModulo.html',
                 controller: 'ConsultaModuloCtrl',
                 resolve: {
-                    listamodulos: function(modulosFactory) {
-                        return modulosFactory.getListaModulos();
+                    listamodulos: function($stateParams,modulosFactory) {
+                        return modulosFactory.getListaModulosById($stateParams.idsubsistema);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    },
+                    idsubsistema: function($stateParams) {
+                        return $stateParams.idsubsistema;
                     }
                 }
             })

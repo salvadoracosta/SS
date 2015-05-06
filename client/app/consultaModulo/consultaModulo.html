@@ -36,7 +36,7 @@
                    
                   </td>
                   <td>{{ modulo.mod_nombre }}</td>
-                  <td>{{ modulo.mod_nombrelargo }}</td>
+                  <td>{{ modulo.mod_sigla }}</td>
                   <td><button class="btn btn-primary btn-addon" ng-click="variables(modulo)"><i class="fa fa-tasks"></i>variables</button></td>
                   <td><button class="btn btn-primary btn-addon" ng-click="consulta(modulo)"><i class="fa fa-tasks"></i>Consultar Informacion</button></td>
                 </tr>
@@ -51,36 +51,15 @@
         
       <div class="panel" ng-show="consultando">
           <div class="wrapper-lg">
-            <h2 class="m-t-none" ng-bind='moduloFocus.mod_nombre'></h2>
-            <small class="m-l-xxl" ng-bind='moduloFocus.mod_nombrelargo'></small>
+            <h2 class="m-t-none" ng-bind='modulofocus.mod_nombre'></h2> 
+            <p>Sigla: <small class="m-l-xxl" ng-bind='modulofocus.mod_sigla'></small></p>
             <div>
-              <h3 ng-if="moduloFocus.mod_descripcion != null">Descripcion</h3>
-              <p ng-if="moduloFocus.mod_descripcion != null" ng-bind-html="getHtml(moduloFocus.mod_descripcion)">
+              <h3 ng-if="modulofocus.mod_descripcioncorta != null">Descripción Corta:</h3>
+              <p ng-if="modulofocus.mod_descripcioncorta != null" ng-bind-html="getHtml(modulofocus.mod_descripcioncorta)">
               </p>
-              <h3 ng-if="moduloFocus.mod_modblema != null">modblema</h3>
-              <p ng-if="moduloFocus.mod_modblema != null" ng-bind-html="getHtml(moduloFocus.mod_modblema)">
+              <h3 ng-if="modulofocus.mod_descripcionlarga != null">Descripción Larga:</h3>
+              <p ng-if="modulofocus.mod_descripcionlarga != null" ng-bind-html="getHtml(modulofocus.mod_descripcionlarga)">
               </p>
-              <h3 ng-if="moduloFocus.mod_preguntas != null">Preguntas</h3>
-              <p ng-if="moduloFocus.mod_preguntas != null" ng-bind-html="getHtml(moduloFocus.mod_preguntas)">
-              </p>
-              <h3 ng-if="moduloFocus.mod_objetodeconocimiento != null">Objeto de conocimiento</h3>
-              <p ng-if="moduloFocus.mod_objetodeconocimiento != null" ng-bind-html="getHtml(moduloFocus.mod_objetodeconocimiento)">
-              </p>
-              <h3 ng-if="moduloFocus.mod_complejoempirico != null">Complejo Empirico</h3>
-              <p ng-if="moduloFocus.mod_complejoempirico != null" ng-bind-html="getHtml(moduloFocus.mod_complejoempirico)">
-              </p>
-              <h3 ng-if="moduloFocus.mod_complejocognocitivo != null">Complejo Cognocitivo</h3>
-              <p ng-if="moduloFocus.mod_complejocognocitivo != null" ng-bind-html="getHtml(moduloFocus.mod_complejocognocitivo)">
-              </p>
-              <h3 ng-if="moduloFocus.mod_otrainformacion != null">Otra Informacion</h3>
-              <p ng-if="moduloFocus.mod_otrainformacion != null" ng-bind-html="getHtml(moduloFocus.mod_otrainformacion)">
-              </p>
-            </div>
-            <div class="line line-lg b-b b-light"></div>
-            <div class="text-muted">
-              <i class="fa fa-user text-muted"></i> por <a href class="m-r-sm">{{autor}}</a>
-              <i class="fa fa-clock-o text-muted"></i> {{fecha}}
-              
             </div>
             <div style="margin-top: 20px;">
               <button class="btn m-b-xs w-xs btn-dark" ng-click='cerrar()'>Cerrar</button>
