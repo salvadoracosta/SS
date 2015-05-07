@@ -33,7 +33,7 @@ angular.module('app.controllers')
     $scope.variables = function(modulo){
     	console.log("consultar modulos" ,modulo);
     	
-    //	$state.go('app.consultaVariable',{idmodulo:.mod_id})   
+    	$state.go('app.consultaVariable',{idmodulo:modulo.mod_id})  
     }
    
  });

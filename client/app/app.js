@@ -194,6 +194,17 @@ var app = angular.module('app', [
                 }
             })
 
+            .state('app.consultaVariable',{
+                url:'/consultaVariable/modulos/:idmodulo/variables',
+                templateUrl: 'app/consultaVariable/consultaVariable.html',
+                controller: 'ConsultaVariableCtrl',
+                 resolve: {
+                    listavariables: function($stateParams,variablesFactory) {
+                        return variablesFactory.getListaVariablesById($stateParams.idmodulo);
+                    }
+                }
+            })
+
 
 
             .state('app.pesos',{
