@@ -345,7 +345,13 @@ if($scope.var121 =="no definido" && $scope.var122 == "no definido" && $scope.var
   $scope.v121 = 0.5;
   $scope.v122 = 0.5;
   $scope.v123 = 0;
-} else{
+}else if($scope.var121 != "no definido" && $scope.v121 != null && $scope.var122 != "no definido" && $scope.v122 != null && $scope.var123 != "no definido" && $scope.v123 != null){
+  if ($scope.v121 + $scope.v122 + $scope.v123 < 0.9 || $scope.v121 + $scope.v122 + $scope.v123 >1){
+    $scope.v121 = 0.3;
+    $scope.v122 = 0.3;
+    $scope.v123 = 0.3; 
+  }
+}else{
   $scope.v121 = 0.3;
   $scope.v122 = 0.3;
   $scope.v123 = 0.3;
@@ -414,6 +420,12 @@ if($scope.var131 =="no definido" && $scope.var132 == "no definido" && $scope.var
   $scope.v131 = 0.5;
   $scope.v132 = 0.5;
   $scope.v133 = 0;
+}else if($scope.var131 != "no definido" && $scope.v131 != null && $scope.var132 != "no definido"  && $scope.v132 != null && $scope.var133 != "no definido" && $scope.v133 != null){
+  if($scope.v131+ $scope.v132 + $scope.v133 < 0.9 || $scope.v131+ $scope.v132 + $scope.v133 >1 ){
+    $scope.v131 = 0.3;
+    $scope.v132 = 0.3;
+    $scope.v133 = 0.3;
+  }
 } else{
   $scope.v131 = 0.3;
   $scope.v132 = 0.3;
@@ -467,7 +479,13 @@ if($scope.mod21 == null){ //no hay modulos
   }
 }
 
-if($scope.mod21 !="no definido" && $scope.mod22 != "no definido" && $scope.mod23 != "no definido"){
+if($scope.mod21 !="no definido" && $scope.m21 != null && $scope.mod22 != "no definido" && $scope.m22 != null && $scope.mod23 != "no definido" && $scope.m23 != null){
+  if($scope.m21 + $scope.m22 + $scope.m23 < 0.9 || $scope.m21 + $scope.m22 + $scope.m23 >1 ){ 
+    $scope.m21 = 0.3;
+    $scope.m22 = 0.3;
+    $scope.m23 = 0.3;
+  }
+}else if($scope.mod21 !="no definido" && $scope.mod22 != "no definido" && $scope.mod23 != "no definido"){
   $scope.m21 = 0.3;
   $scope.m22 = 0.3;
   $scope.m23 = 0.3; 
@@ -747,6 +765,12 @@ if($scope.mod31 =="no definido" && $scope.mod32 == "no definido" && $scope.mod33
   $scope.m31 = 0;
   $scope.m32 = 0;
   $scope.m33 = 0; 
+}else if($scope.mod31 !="no definido" && $scope.m31  != null && $scope.mod32 != "no definido" && $scope.m32 != null && $scope.mod33 != "no definido" && $scope.m33 != null){
+  if($scope.m31 + $scope.m32 + $scope.m33 < 0.9 || $scope.m31 + $scope.m32 + $scope.m33 >1){
+    $scope.m31 = 0.3;
+    $scope.m32 = 0.3;
+    $scope.m33 = 0.3;
+  }
 }else if($scope.mod31 !="no definido" && $scope.mod32 != "no definido" && $scope.mod33 != "no definido"){
   $scope.m31 = 0.3;
   $scope.m32 = 0.3;
@@ -829,7 +853,7 @@ if($scope.var311 == "no definido" && $scope.var312 == "no definido" && $scope.va
   $scope.v312 = 0.3;
   $scope.v313 = 0.3;
 }else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido"){
-  if($scope.v311 + $scope.v312 + $scope.v313 != 1){
+  if($scope.v311 + $scope.v312 + $scope.v313< 0.9 || $scope.v311 + $scope.v312 + $scope.v313 >1){
     $scope.v311 = 0.3;
     $scope.v312 = 0.3;
     $scope.v313 = 0.3;
@@ -898,8 +922,8 @@ if($scope.var321 == "no definido" && $scope.var322 == "no definido" && $scope.va
   $scope.v321 = 0.3;
   $scope.v322 = 0.3;
   $scope.v323 = 0.3;
-}else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido"){
-  if($scope.v321 + $scope.v322 + $scope.v323 != 1){
+}else if($scope.var321 != "no definido" && $scope.v321 != null && $scope.var322 != "no definido" && $scope.v322 != null && $scope.var323 != "no definido" && $scope.v323 != null){
+  if($scope.v321 + $scope.v322 + $scope.v323 <0.9 ||$scope.v321 + $scope.v322 + $scope.v323 >1){
     $scope.v321 = 0.3;
     $scope.v322 = 0.3;
     $scope.v323 = 0.3;
