@@ -1548,33 +1548,6 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /*Variable 1 modulo 3 subsistema 1*/
   var updateModel13 = function(val){
     $scope.$apply(function(){
@@ -1691,46 +1664,6 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /* Modulo 1 subsistema 2 */
   var updateModel16 = function(val){
     $scope.$apply(function(){
@@ -1738,6 +1671,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         $scope.m21 = 0;
         $scope.m22 = 0;
         $scope.m23 = 0;
+        angular.element("#slider16").slider('setValue',$scope.m21);
+        angular.element("#slider17").slider('setValue',$scope.m22);
+        angular.element("#slider18").slider('setValue',$scope.m23);
+      }else if($scope.mod21 != "no definido" && $scope.m21 !=null &&  $scope.mod22 != "no definido" && $scope.m22 !=null && $scope.mod23 !="no definido" && $scope.m23 != null){
+        $scope.m21 = val;
+        if($scope.m21 + $scope.m22 == 1){
+          $scope.m23 = 0;
+        }else if($scope.m21 + $scope.m22 > 1){
+          $scope.m22 = 1- $scope.m21;
+          $scope.m23 = 0;
+        }else if($scope.m21 + $scope.m22 < 1){
+          $scope.m23 = 1 - $scope.m21 - $scope.m22;
+          $scope.m23 = parseFloat(parseFloat($scope.m23).toFixed(1));
+        }
         angular.element("#slider16").slider('setValue',$scope.m21);
         angular.element("#slider17").slider('setValue',$scope.m22);
         angular.element("#slider18").slider('setValue',$scope.m23);
@@ -1777,6 +1724,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider16").slider('setValue',$scope.m21);
         angular.element("#slider17").slider('setValue',$scope.m22);
         angular.element("#slider18").slider('setValue',$scope.m23);
+      }else if($scope.mod21 != "no definido" && $scope.m21 !=null &&  $scope.mod22 != "no definido" && $scope.m22 !=null && $scope.mod23 !="no definido" && $scope.m23 != null){
+        $scope.m22 = val;
+        if($scope.m21 + $scope.m22 == 1){
+          $scope.m23 = 0;
+        }else if($scope.m21 + $scope.m22 > 1){
+          $scope.m21 = 1- $scope.m22;
+          $scope.m23 = 0;
+        }else if($scope.m21 + $scope.m22 < 1){
+          $scope.m23 = 1 - $scope.m21 - $scope.m22;
+          $scope.m23 = parseFloat(parseFloat($scope.m23).toFixed(1));
+        }
+        angular.element("#slider16").slider('setValue',$scope.m21);
+        angular.element("#slider17").slider('setValue',$scope.m22);
+        angular.element("#slider18").slider('setValue',$scope.m23);
       }else if($scope.mod21 != "no definido" &&  $scope.mod22 != "no definido" && $scope.mod23 !="no definido"){
         $scope.m21 = 0.3;
         $scope.m22 = 0.3;
@@ -1813,6 +1774,10 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider16").slider('setValue',$scope.m21);
         angular.element("#slider17").slider('setValue',$scope.m22);
         angular.element("#slider18").slider('setValue',$scope.m23);
+      }else if($scope.mod21 != "no definido" && $scope.m21 !=null &&  $scope.mod22 != "no definido" && $scope.m22 !=null && $scope.mod23 !="no definido" && $scope.m23 != null){
+        $scope.m23 = 1 - $scope.m21 - $scope.m22;
+        $scope.m23 = parseFloat(parseFloat($scope.m23).toFixed(1));  
+        angular.element("#slider18").slider('setValue',$scope.m23);
       }else if($scope.mod21 != "no definido" &&  $scope.mod22 != "no definido" && $scope.mod23 !="no definido"){
         $scope.m21 = 0.3;
         $scope.m22 = 0.3;
@@ -1833,65 +1798,6 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /*Variable 1 modulo 1 subsistema 2*/
   var updateModel19 =function(val){
      $scope.$apply(function(){
@@ -1899,6 +1805,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         $scope.v211 = 0;
         $scope.v212 = 0;
         $scope.v213 = 0;
+        angular.element("#slider19").slider('setValue',$scope.v211);
+        angular.element("#slider20").slider('setValue',$scope.v212);
+        angular.element("#slider21").slider('setValue',$scope.v213);
+      }else if($scope.var211 != "no definido" && $scope.v211 !=null &&  $scope.var212 != "no definido" && $scope.v212 !=null && $scope.var213 !="no definido" && $scope.v213 != null){
+        $scope.v211 = val;
+        if($scope.v211 + $scope.v212 == 1){
+          $scope.v213 = 0;
+        }else if($scope.v211 + $scope.v212 > 1){
+          $scope.v212 = 1- $scope.v211;
+          $scope.v213 = 0;
+        }else if($scope.v211 + $scope.v212 < 1){
+          $scope.v213 = 1 - $scope.v211 - $scope.v212;
+          $scope.v213 = parseFloat(parseFloat($scope.v213).toFixed(1));
+        }
         angular.element("#slider19").slider('setValue',$scope.v211);
         angular.element("#slider20").slider('setValue',$scope.v212);
         angular.element("#slider21").slider('setValue',$scope.v213);
@@ -1938,6 +1858,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider19").slider('setValue',$scope.v211);
         angular.element("#slider20").slider('setValue',$scope.v212);
         angular.element("#slider21").slider('setValue',$scope.v213);
+      }else if($scope.var211 != "no definido" && $scope.v211 !=null &&  $scope.var212 != "no definido" && $scope.v212 !=null && $scope.var213 !="no definido" && $scope.v213 != null){
+        $scope.v212 = val;
+        if($scope.v211 + $scope.v212 == 1){
+          $scope.v213 = 0;
+        }else if($scope.v211 + $scope.v212 > 1){
+          $scope.v211 = 1- $scope.v212;
+          $scope.v213 = 0;
+        }else if($scope.v211 + $scope.v212 < 1){
+          $scope.v213 = 1 - $scope.v211 - $scope.v212;
+          $scope.v213 = parseFloat(parseFloat($scope.v213).toFixed(1));
+        }
+        angular.element("#slider19").slider('setValue',$scope.v211);
+        angular.element("#slider20").slider('setValue',$scope.v212);
+        angular.element("#slider21").slider('setValue',$scope.v213);
       }else if($scope.var211 != "no definido" &&  $scope.var212 != "no definido" && $scope.var213 !="no definido"){
         $scope.v211 = 0.3;
         $scope.v212 = 0.3;
@@ -1974,6 +1908,10 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider19").slider('setValue',$scope.v211);
         angular.element("#slider20").slider('setValue',$scope.v212);
         angular.element("#slider21").slider('setValue',$scope.v213);
+      }else if($scope.var211 != "no definido" && $scope.v211 !=null &&  $scope.var212 != "no definido" && $scope.v212 !=null && $scope.var213 !="no definido" && $scope.v213 != null){
+        $scope.v213 = 1 - $scope.v211 - $scope.v212;
+        $scope.v213 = parseFloat(parseFloat($scope.v213).toFixed(1));
+        angular.element("#slider21").slider('setValue',$scope.v213);
       }else if($scope.var211 != "no definido" &&  $scope.var212 != "no definido" && $scope.var213 !="no definido"){
         $scope.v211 = 0.3;
         $scope.v212 = 0.3;
@@ -1994,62 +1932,6 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
       }
      });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /* Variable 1 modulo 2 subsistema 2*/
   var updateModel22 = function(val){
@@ -2076,6 +1958,28 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider22").slider('setValue',$scope.v221);
         angular.element("#slider23").slider('setValue',$scope.v222);
         angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.v221 !=null && $scope.var222 != "no definido" && $scope.v222  !=null && $scope.var223 != "no definido" && $scope.v223 !=null){
+        $scope.v221 = val;
+        if($scope.v221 + $scope.v222 == 1 ){
+          $scope.v223  = 0;
+        }else if($scope.v221 + $scope.v222 >1 ){
+          $scope.v222 = 1 - $scope.v221 ;
+          $scope.v223 = 0;
+        }else if($scope.v221 + $scope.v222 <1 ){
+          $scope.v223 = 1 - $scope.v221 - $scope.v222;
+          $scope.v223 = parseFloat(parseFloat($scope.v223).toFixed(1));
+        }
+
+        angular.element("#slider22").slider('setValue',$scope.v221);
+        angular.element("#slider23").slider('setValue',$scope.v222);
+        angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.var222 != "no definido" && $scope.var223 != "no definido"){
+        $scope.v222 = 0.3;
+        $scope.v221 = 0.3;
+        $scope.v223 = 0.3;
+        angular.element("#slider22").slider('setValue',$scope.v221);
+        angular.element("#slider23").slider('setValue',$scope.v222);
+        angular.element("#slider24").slider('setValue',$scope.v223);
       }
     });
   }
@@ -2097,11 +2001,33 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider22").slider('setValue',$scope.v221);
         angular.element("#slider23").slider('setValue',$scope.v222);
         angular.element("#slider24").slider('setValue',$scope.v223);
-      }else if($scope.var221 != "no definido" && $scope.v222 != "no definido" && $scope.var223 == "no definido"){
+      }else if($scope.var221 != "no definido" && $scope.var222 != "no definido" && $scope.var223 == "no definido"){
         $scope.v222 = val;
         $scope.v221 = 1 - $scope.v222;
         $scope.v221 =  parseFloat(parseFloat($scope.v221).toFixed(1));
         $scope.v223 = 0;
+        angular.element("#slider22").slider('setValue',$scope.v221);
+        angular.element("#slider23").slider('setValue',$scope.v222);
+        angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.v221 !=null && $scope.var222 != "no definido" && $scope.v222  !=null && $scope.var223 != "no definido" && $scope.v223 !=null){
+        $scope.v222 = val;
+        if($scope.v221 + $scope.v222 == 1 ){
+          $scope.v223  = 0;
+        }else if($scope.v221 + $scope.v222 >1 ){
+          $scope.v221 = 1 - $scope.v222;
+          $scope.v223 = 0;
+        }else if($scope.v221 + $scope.v222 <1 ){
+          $scope.v223 = 1 - $scope.v221 - $scope.v222;
+          $scope.v223 = parseFloat(parseFloat($scope.v223).toFixed(1));
+        }
+
+        angular.element("#slider22").slider('setValue',$scope.v221);
+        angular.element("#slider23").slider('setValue',$scope.v222);
+        angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.var222 != "no definido" && $scope.var223 != "no definido"){
+        $scope.v222 = 0.3;
+        $scope.v221 = 0.3;
+        $scope.v223 = 0.3;
         angular.element("#slider22").slider('setValue',$scope.v221);
         angular.element("#slider23").slider('setValue',$scope.v222);
         angular.element("#slider24").slider('setValue',$scope.v223);
@@ -2129,66 +2055,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
       }else if($scope.var221 != "no definido" && $scope.v222 != "no definido" && $scope.var223 == "no definido"){
         $scope.v223 = 0;
         angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.v221 !=null && $scope.var222 != "no definido" && $scope.v222  !=null && $scope.var223 != "no definido" && $scope.v223 !=null){
+        $scope.v223 = 1 - $scope.v221 - $scope.v222;
+        $scope.v223 = parseFloat(parseFloat($scope.v223).toFixed(1));
+        angular.element("#slider24").slider('setValue',$scope.v223);
+      }else if($scope.var221 != "no definido" && $scope.var222 != "no definido" && $scope.var223 != "no definido"){
+        $scope.v222 = 0.3;
+        $scope.v221 = 0.3;
+        $scope.v223 = 0.3;
+        angular.element("#slider22").slider('setValue',$scope.v221);
+        angular.element("#slider23").slider('setValue',$scope.v222);
+        angular.element("#slider24").slider('setValue',$scope.v223);
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /* Variable 1 modulo 3 subsistema 2*/
   var updateModel25 = function(val){
@@ -2207,11 +2087,33 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider25").slider('setValue',$scope.v231);
         angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
-      }else if($scope.var231 != "no definido" && $scope.v232 != "no definido" && $scope.var233 == "no definido"){
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 == "no definido"){
         $scope.v231 = val;
         $scope.v232 = 1 - $scope.v231;
         $scope.v232 =  parseFloat(parseFloat($scope.v232).toFixed(1));
         $scope.v233 = 0;
+        angular.element("#slider25").slider('setValue',$scope.v231);
+        angular.element("#slider26").slider('setValue',$scope.v232);
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.v231 != null && $scope.var232 != "no definido" && $scope.v232 != null  && $scope.var233 != "no definido" && $scope.v233 != null ){
+        $scope.v231 = val;
+        if($scope.v231 + $scope.v232 == 1){
+          $scope.v233 = 0;
+        }else if($scope.v231 + $scope.v232 > 1){
+          $scope.v232 = 1 - $scope.v231;
+          $scope.v233 = 0;
+        }else if($scope.v231 + $scope.v232 < 1){
+          $scope.v233 = 1 - $scope.v231 - $scope.v232;
+          $scope.v233 = parseFloat(parseFloat($scope.v233).toFixed(1));
+        }
+        angular.element("#slider25").slider('setValue',$scope.v231);
+        angular.element("#slider26").slider('setValue',$scope.v232);
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 != "no definido"){
+        $scope.v231 = val;
+        $scope.v232 = 0.3;
+        $scope.v232 = 0.3;
+        $scope.v233 = 0.3;
         angular.element("#slider25").slider('setValue',$scope.v231);
         angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
@@ -2236,11 +2138,33 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider25").slider('setValue',$scope.v231);
         angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
-      }else if($scope.var231 != "no definido" && $scope.v232 != "no definido" && $scope.var233 == "no definido"){
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 == "no definido"){
         $scope.v232 = val;
         $scope.v231 = 1 - $scope.v232;
         $scope.v231 =  parseFloat(parseFloat($scope.v231).toFixed(1));
         $scope.v233 = 0;
+        angular.element("#slider25").slider('setValue',$scope.v231);
+        angular.element("#slider26").slider('setValue',$scope.v232);
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.v231 != null && $scope.var232 != "no definido" && $scope.v232 != null  && $scope.var233 != "no definido" && $scope.v233 != null ){
+        $scope.v232 = val;
+        if($scope.v231 + $scope.v232 == 1){
+          $scope.v233 = 0;
+        }else if($scope.v231 + $scope.v232 > 1){
+          $scope.v231 = 1 - $scope.v232;
+          $scope.v233 = 0;
+        }else if($scope.v231 + $scope.v232 < 1){
+          $scope.v233 = 1 - $scope.v231 - $scope.v232;
+          $scope.v233 = parseFloat(parseFloat($scope.v233).toFixed(1));
+        }
+        angular.element("#slider25").slider('setValue',$scope.v231);
+        angular.element("#slider26").slider('setValue',$scope.v232);
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 != "no definido"){
+        $scope.v231 = val;
+        $scope.v232 = 0.3;
+        $scope.v232 = 0.3;
+        $scope.v233 = 0.3;
         angular.element("#slider25").slider('setValue',$scope.v231);
         angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
@@ -2265,59 +2189,24 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider25").slider('setValue',$scope.v231);
         angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
-      }else if($scope.var231 != "no definido" && $scope.v232 != "no definido" && $scope.var233 == "no definido"){
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 == "no definido"){
         $scope.v233 = 0;
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.v231 != null && $scope.var232 != "no definido" && $scope.v232 != null  && $scope.var233 != "no definido" && $scope.v233 != null ){
+        $scope.v233 = 1 - $scope.v231 - $scope.v232;
+        $scope.v233 = parseFloat(parseFloat($scope.v233).toFixed(1));
+        angular.element("#slider27").slider('setValue',$scope.v233);
+      }else if($scope.var231 != "no definido" && $scope.var232 != "no definido" && $scope.var233 != "no definido"){
+        $scope.v231 = val;
+        $scope.v232 = 0.3;
+        $scope.v232 = 0.3;
+        $scope.v233 = 0.3;
+        angular.element("#slider25").slider('setValue',$scope.v231);
+        angular.element("#slider26").slider('setValue',$scope.v232);
         angular.element("#slider27").slider('setValue',$scope.v233);
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /*Modulo 1 subsistema 3*/
   var updateModel28 = function(val){
@@ -2326,6 +2215,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         $scope.m31 = 0;
         $scope.m32 = 0;
         $scope.m33 = 0;
+        angular.element("#slider28").slider('setValue',$scope.m31);
+        angular.element("#slider29").slider('setValue',$scope.m32);
+        angular.element("#slider30").slider('setValue',$scope.m33);
+      }else if($scope.mod31 != "no definido" && $scope.m31 != null && $scope.mod32 !="no definido" && $scope.m32 != null && $scope.mod33 != "no definido" && $scope.m33 != null){
+        $scope.m31 = val;
+        if($scope.m31 + $scope.m32 == 1){
+          $scope.m33 = 0;
+        } else if($scope.m31 + $scope.m32 > 1){
+          $scope.m32 = 1- $scope.m31;
+          $scope.m33 = 0;
+        } else if($scope.m31 + $scope.m32 < 1){
+          $scope.m33 = 1-$scope.m31 - $scope.m32;
+          $scope.m33 = parseFloat(parseFloat($scope.m33).toFixed(1));
+        }
         angular.element("#slider28").slider('setValue',$scope.m31);
         angular.element("#slider29").slider('setValue',$scope.m32);
         angular.element("#slider30").slider('setValue',$scope.m33);
@@ -2366,6 +2269,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider28").slider('setValue',$scope.m31);
         angular.element("#slider29").slider('setValue',$scope.m32);
         angular.element("#slider30").slider('setValue',$scope.m33);
+      }else if($scope.mod31 != "no definido" && $scope.m31 != null && $scope.mod32 !="no definido" && $scope.m32 != null && $scope.mod33 != "no definido" && $scope.m33 != null){
+        $scope.m32 = val;
+        if($scope.m31 + $scope.m32 == 1){
+          $scope.m33 = 0;
+        } else if($scope.m31 + $scope.m32 > 1){
+          $scope.m31 = 1- $scope.m32;
+          $scope.m33 = 0;
+        } else if($scope.m31 + $scope.m32 < 1){
+          $scope.m33 = 1-$scope.m31 - $scope.m32;
+          $scope.m33 = parseFloat(parseFloat($scope.m33).toFixed(1));
+        }
+        angular.element("#slider28").slider('setValue',$scope.m31);
+        angular.element("#slider29").slider('setValue',$scope.m32);
+        angular.element("#slider30").slider('setValue',$scope.m33);
       }else if($scope.mod31 != "no definido" && $scope.mod32 !="no definido" && $scope.mod33 != "no definido"){
         $scope.m31 = 0.3;
         $scope.m32 = 0.3;
@@ -2402,6 +2319,12 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         $scope.m33 = 0;
         angular.element("#slider28").slider('setValue',$scope.m31);
         angular.element("#slider29").slider('setValue',$scope.m32);
+        angular.element("#slider30").slider('setValue',$scope.m33);
+      }else if($scope.mod31 != "no definido" && $scope.m31 != null && $scope.mod32 !="no definido" && $scope.m32 != null && $scope.mod33 != "no definido" && $scope.m33 != null){
+
+        $scope.m33 = 1-$scope.m31 - $scope.m32;
+        $scope.m33 = parseFloat(parseFloat($scope.m33).toFixed(1));
+  
         angular.element("#slider30").slider('setValue',$scope.m33);
       }else if($scope.mod31 != "no definido" &&  $scope.mod32 != "no definido" && $scope.mod33 !="no definido"){
         $scope.m31 = 0.3;
@@ -2449,10 +2372,30 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider31").slider('setValue',$scope.v311);
         angular.element("#slider32").slider('setValue',$scope.v312);
         angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.v311 !=null && $scope.var312 != "no definido" && $scope.v312 !=null && $scope.var313 != "no definido" && $scope.v313 !=null){
+        $scope.v311 = val;
+        if($scope.v311 + $scope.v312 == 1){
+          $scope.v313 = 0;
+        }else if($scope.v311 + $scope.v312 > 1){
+          $scope.v312 = 1 - $scope.v311;
+          $scope.v313 = 0;
+        }else if($scope.v311 + $scope.v312 < 1){
+          $scope.v313 = 1 - $scope.v311 - $scope.v312;
+          $scope.v313 = parseFloat(parseFloat($scope.v313).toFixed(1));
+        }
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido"){
+        $scope.v311 = 0.3;
+        $scope.v312 = 0.3;
+        $scope.v313 = 0.3;
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
       }
    });
  }
-
 
  /* Variable 2 modulo 1 subsistema 3*/
  var updateModel32 = function(val){
@@ -2479,10 +2422,30 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider31").slider('setValue',$scope.v311);
         angular.element("#slider32").slider('setValue',$scope.v312);
         angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.v311 !=null && $scope.var312 != "no definido" && $scope.v312 !=null && $scope.var313 != "no definido" && $scope.v313 !=null){
+        $scope.v312 = val;
+        if($scope.v311 + $scope.v312 == 1){
+          $scope.v313 = 0;
+        }else if($scope.v311 + $scope.v312 > 1){
+          $scope.v311 = 1 - $scope.v312;
+          $scope.v313 = 0;
+        }else if($scope.v311 + $scope.v312 < 1){
+          $scope.v313 = 1 - $scope.v311 - $scope.v312;
+          $scope.v313 = parseFloat(parseFloat($scope.v313).toFixed(1));
+        }
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido"){
+        $scope.v311 = 0.3;
+        $scope.v312 = 0.3;
+        $scope.v313 = 0.3;
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
+        angular.element("#slider33").slider('setValue',$scope.v313);
       }
    });
  }
-
 
  /* Variable 3 modulo 1 subsistema 3*/
  var updateModel33 = function(val){
@@ -2501,8 +2464,19 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
       angular.element("#slider31").slider('setValue',$scope.v311);
       angular.element("#slider32").slider('setValue',$scope.v312);
       angular.element("#slider33").slider('setValue',$scope.v313);
-    }else if($scope.var311 != "no definido" && $scope.v312 != "no definido" && $scope.var313 == "no definido"){
+    }else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 == "no definido"){
         $scope.v313 = 0;
+        angular.element("#slider33").slider('setValue',$scope.v313);
+    }else if($scope.var311 != "no definido" && $scope.v311 !=null && $scope.var312 != "no definido" && $scope.v312 !=null && $scope.var313 != "no definido" && $scope.v313 !=null){    
+        $scope.v313 = 1 - $scope.v311 - $scope.v312;
+        $scope.v313 = parseFloat(parseFloat($scope.v313).toFixed(1));
+        angular.element("#slider33").slider('setValue',$scope.v313);
+      }else if($scope.var311 != "no definido" && $scope.var312 != "no definido" && $scope.var313 != "no definido"){
+        $scope.v311 = 0.3;
+        $scope.v312 = 0.3;
+        $scope.v313 = 0.3;
+        angular.element("#slider31").slider('setValue',$scope.v311);
+        angular.element("#slider32").slider('setValue',$scope.v312);
         angular.element("#slider33").slider('setValue',$scope.v313);
       }
    });
@@ -2525,7 +2499,7 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
-      }else if($scope.var321 != "no definido" && $scope.v322 != "no definido" && $scope.var323 == "no definido"){
+      }else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 == "no definido"){
         $scope.v321 = val;
         $scope.v322 = 1 - $scope.v321;
         $scope.v322 =  parseFloat(parseFloat($scope.v322).toFixed(1));
@@ -2533,10 +2507,30 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v321 != null && $scope.var322 != "no definido" && $scope.v322 != null && $scope.var323 != "no definido" && $scope.v323 != null){
+        $scope.v321 = val;
+        if($scope.v321 + $scope.v322 ==1){
+          $scope.v323 = 0;
+        }else if($scope.v321 + $scope.v322> 1){
+          $scope.v322 = 1 - $scope.v321;
+          $scope.v323 = 0;
+        }else if($scope.v321 + $scope.v322 <1){
+          $scope.v323 = 1 - $scope.v321 - $scope.v322;
+          $scope.v323 = parseFloat(parseFloat($scope.v323).toFixed(1));
+        }
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido"){
+        $scope.v321 = 0.3;
+        $scope.v322 = 0.3;
+        $scope.v323 = 0.3;
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
       }
    });
  }
-
 
  /* Variable 2 modulo 2 subsistema 3*/
  var updateModel35 = function(val){
@@ -2563,10 +2557,30 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider34").slider('setValue',$scope.v321);
         angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v321 != null && $scope.var322 != "no definido" && $scope.v322 != null && $scope.var323 != "no definido" && $scope.v323 != null){
+        $scope.v322 = val;
+        if($scope.v321 + $scope.v322 ==1){
+          $scope.v323 = 0;
+        }else if($scope.v321 + $scope.v322> 1){
+          $scope.v321 = 1 - $scope.v322;
+          $scope.v323 = 0;
+        }else if($scope.v321 + $scope.v322 <1){
+          $scope.v323 = 1 - $scope.v321 - $scope.v322;
+          $scope.v323 = parseFloat(parseFloat($scope.v323).toFixed(1));
+        }
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido"){
+        $scope.v321 = 0.3;
+        $scope.v322 = 0.3;
+        $scope.v323 = 0.3;
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
+        angular.element("#slider36").slider('setValue',$scope.v323);
       }
    });
  }
-
 
  /* Variable 3 modulo 2 subsistema 3*/
  var updateModel36 = function(val){
@@ -2587,6 +2601,18 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider36").slider('setValue',$scope.v323);
       }else if($scope.var321 != "no definido" && $scope.v322 != "no definido" && $scope.var323 == "no definido"){
         $scope.v323 = 0;
+        angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.v321 != null && $scope.var322 != "no definido" && $scope.v322 != null && $scope.var323 != "no definido" && $scope.v323 != null){
+
+        $scope.v323 = 1 - $scope.v321 - $scope.v322;
+        $scope.v323 = parseFloat(parseFloat($scope.v323).toFixed(1));
+        angular.element("#slider36").slider('setValue',$scope.v323);
+      }else if($scope.var321 != "no definido" && $scope.var322 != "no definido" && $scope.var323 != "no definido"){
+        $scope.v321 = 0.3;
+        $scope.v322 = 0.3;
+        $scope.v323 = 0.3;
+        angular.element("#slider34").slider('setValue',$scope.v321);
+        angular.element("#slider35").slider('setValue',$scope.v322);
         angular.element("#slider36").slider('setValue',$scope.v323);
       }
    });
@@ -2609,11 +2635,25 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
         angular.element("#slider39").slider('setValue',$scope.v333);
-      }else if($scope.var331 != "no definido" && $scope.v332 != "no definido" && $scope.var333 == "no definido"){
+      }else if($scope.var331 != "no definido" && $scope.var332 != "no definido" && $scope.var333 == "no definido"){
         $scope.v331 = val;
         $scope.v332 = 1 - $scope.v331;
         $scope.v332 =  parseFloat(parseFloat($scope.v332).toFixed(1));
         $scope.v333 = 0;
+        angular.element("#slider37").slider('setValue',$scope.v331);
+        angular.element("#slider38").slider('setValue',$scope.v332);
+        angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido"  && $scope.var332 != "no definido" && $scope.var333 != "no definido"){
+        $scope.v331 = val;
+        if($scope.v331 + $scope.v332  == 1){
+          $scope.v333 = 0;
+        }else if($scope.v331 + $scope.v332 > 1){
+          $scope.v332 = 1 - $scope.v331;
+          $scope.v333 = 0;
+        }else if($scope.v331 + $scope.v332 < 1){
+          $scope.v333 = 1 - $scope.v331 - $scope.v332 ;
+          $scope.v333 = parseFloat(parseFloat($scope.v333).toFixed(1));
+        }
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
         angular.element("#slider39").slider('setValue',$scope.v333);
@@ -2647,6 +2687,20 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider37").slider('setValue',$scope.v331);
         angular.element("#slider38").slider('setValue',$scope.v332);
         angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido" &&  $scope.var332 != "no definido" && $scope.var333 != "no definido"){
+        $scope.v332 = val;
+        if($scope.v331 + $scope.v332  == 1){
+          $scope.v333 = 0;
+        }else if($scope.v331 + $scope.v332> 1){
+          $scope.v331 = 1 - $scope.v332;
+          $scope.v333 = 0;
+        }else if($scope.v331 + $scope.v332 <1){
+          $scope.v333 = 1 - $scope.v331 - $scope.v332 ;
+          $scope.v333 = parseFloat(parseFloat($scope.v333).toFixed(1));
+        }
+        angular.element("#slider37").slider('setValue',$scope.v331);
+        angular.element("#slider38").slider('setValue',$scope.v332);
+        angular.element("#slider39").slider('setValue',$scope.v333);
       }
    });
  }
@@ -2671,6 +2725,10 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
         angular.element("#slider39").slider('setValue',$scope.v333);
       }else if($scope.var331 != "no definido" && $scope.v332 != "no definido" && $scope.var333 == "no definido"){
         $scope.v333 = 0;
+        angular.element("#slider39").slider('setValue',$scope.v333);
+      }else if($scope.var331 != "no definido" && $scope.var332 != "no definido" && $scope.var333 != "no definido"){
+        $scope.v333 = 1 - $scope.v331 - $scope.v332 ;
+        $scope.v333 = parseFloat(parseFloat($scope.v333).toFixed(1));
         angular.element("#slider39").slider('setValue',$scope.v333);
       }
    });
