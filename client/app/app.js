@@ -106,6 +106,26 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.documentacion', {
+                url: '/documentacion',
+                templateUrl: 'app/documentacion/documentacion.html',
+                controller: 'DocumentacionCtrl',
+                resolve: {
+                    listadocumentos: function(documentacionFactory) {
+                        return documentacionFactory.getListaDocumentos();
+                    }
+                }
+            })
+            .state('app.registroDocumentacion', {
+                url: '/registroDocumentacion',
+                templateUrl: 'app/registroDocumentacion/registroDocumentacion.html',
+                controller: 'RegistroDocumentacionCtrl',
+                resolve: {
+                    listadocumentos: function(documentacionFactory) {
+                        return documentacionFactory.getListaDocumentos();
+                    }
+                }
+            })
             .state('app.consultaProyecto', {
                 url: '/consultaProyecto',
                 templateUrl: 'app/consultaProyecto/consultaProyecto.html',

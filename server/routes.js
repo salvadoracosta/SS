@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.use('/api/variablesIndependientes', require('./api/vindependiente'));
   app.use('/api/usuarios', require('./api/usuarios'));
   app.use('/api/things', require('./api/thing'));
+  app.use('/api/documentos', require('./api/documentos'));
   app.use('/api/funciones', require('./api/funcion'));
   app.use('/api/struct', require('./api/struct'));
   app.use('/api/pesos', require('./api/peso'));
