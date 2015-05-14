@@ -149,6 +149,19 @@ var app = angular.module('app', [
                     }
                 }
             })
+
+            .state('app.consultaSubsistema', {
+                url: '/consultaSubsistema/:idproyecto',
+                templateUrl: 'app/consultaSubsistema/consultaSubsistema.html',
+                controller: 'ConsultaSubsistemaCtrl',
+                resolve: {
+                    listasubsistemas: function($stateParams,subsistemasFactory) {
+                        return subsistemasFactory.getListaSubsistemasById($stateParams.idproyecto);
+                    }
+                }
+            })
+
+
             .state('app.funciones',{
                 url:'/funciones',
                 controller: 'FuncionesCtrl',
@@ -183,6 +196,37 @@ var app = angular.module('app', [
                     }
                 }
             })
+
+            .state('app.consultaModulo', {
+                url: '/consultaModulo/:idproyecto/subsistema/:idsubsistema',
+                templateUrl: 'app/consultaModulo/consultaModulo.html',
+                controller: 'ConsultaModuloCtrl',
+                resolve: {
+                    listamodulos: function($stateParams,modulosFactory) {
+                        return modulosFactory.getListaModulosById($stateParams.idsubsistema);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    },
+                    idsubsistema: function($stateParams) {
+                        return $stateParams.idsubsistema;
+                    }
+                }
+            })
+
+            .state('app.consultaVariable',{
+                url:'/consultaVariable/modulos/:idmodulo/variables',
+                templateUrl: 'app/consultaVariable/consultaVariable.html',
+                controller: 'ConsultaVariableCtrl',
+                 resolve: {
+                    listavariables: function($stateParams,variablesFactory) {
+                        return variablesFactory.getListaVariablesById($stateParams.idmodulo);
+                    }
+                }
+            })
+
+
+
             .state('app.pesos',{
                 url:'/pesos',
                 controller: 'PesoCtrl',
