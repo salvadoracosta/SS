@@ -26,8 +26,6 @@ exports.registroById = function(req, res) {
 	connection.query("use mydb");
 	console.log(input);
 	var myDate =  moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-	var tmp = input.variable.values;
-	var myJsonString = JSON.stringify(arrayValues);
 	var data = {
 		variableaux_nombre: input.variable.nombre,
 		variableaux_fecha: myDate,
@@ -113,7 +111,7 @@ exports.delete = function(req, res) {
 	  });
 
 	  connection.query("use mydb");
-	  var queryString = 'DELETE FROM variableaux_idproyecto WHERE variableaux_id =' + connection.escape(data.varind_id) ;
+	  var queryString = 'DELETE FROM variable_auxiliar WHERE variableaux_id =' + connection.escape(data.varind_id) ;
 	  var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;
@@ -155,10 +153,10 @@ exports.update = function(req, res) {
 	console.log(input);
 	
 	var data = {
-		varind_id: req.params.id,
-		varind_nombre: input.variable.varind_nombre
+		varaux_id: req.params.id,
+		varaux_nombre: input.variable.variableaux_nombre
 	};
-	var queryString = 'UPDATE variable_independiente SET varind_nombre = '+connection.escape(data.varind_nombre)+', varind_valores= '+connection.escape(data.varind_valores)+',varind_descripcion ='+ connection.escape(data.varind_descripcion)+' WHERE varind_id=' + connection.escape(data.varind_id) ;
+	var queryString = 'UPDATE variable_auxiliar SET variableaux_nombre = '+connection.escape(data.varaux_nombre)+' WHERE variableaux_id=' + connection.escape(data.varaux_id) ;
 	var query = connection.query(queryString, function(err, result) {
 	      if (err) {
 	        throw err;

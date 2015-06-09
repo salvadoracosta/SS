@@ -217,6 +217,24 @@ angular.module('app.services', [])
   }
   return sdo;
   }])
+.factory('variablesAuxiliaresFactory', ['$http', function($http) {
+  var listavariablesauxiliares;
+   var sdo = {
+    getListaVariablesAuxiliares: function (id) {
+      console.log(id);
+        var promise = $http.get('/api/vauxiliares/'+id).success(function(data, status) {
+                listavariablesauxiliares = data;
+                //console.log(listavariables);
+            }).
+            error(function(data, status, headers, config) {
+                
+                //console.log(status);
+            });
+        return promise;
+      }
+  }
+  return sdo;
+  }])
 .factory('modulosFactory', ['$http', function($http) {
     console.log('Factory Modulos');
     var listamodulos;

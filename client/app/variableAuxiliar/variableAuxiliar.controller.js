@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers')
-  .controller('VariableIndependienteCtrl', function ($scope, $http, $state, toaster, listavariablesauxiliares, variablesAuxiliaresFactory, $stateParams,$localStorage,idproyecto) {
+  .controller('VariableAuxiliarCtrl', function ($scope, $http, $state, toaster, listavariablesauxiliares, variablesAuxiliaresFactory, $stateParams,$localStorage,idproyecto) {
     console.log(toaster);
     console.log(listavariablesauxiliares);
     console.log($stateParams.edit);
@@ -49,7 +49,7 @@ angular.module('app.controllers')
     Funcion para registrar a un proyecto
     */
     $scope.addVariable = function() {
-      $http.post('/api/variablesAuxiliares/'+idproyecto, { variable:$scope.variable}).success(function(data, status) {
+      $http.post('/api/vauxiliares/'+idproyecto, { variable:$scope.variable}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -65,7 +65,7 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadVariablesIndependientes();
+          $scope.reloadVariables();
           $scope.registro = false;
           
         }).
@@ -97,7 +97,7 @@ angular.module('app.controllers')
 
     $scope.borrar = function (variable) {
       console.log(variable);
-      $http.delete('/api/variablesIndependientes/'+variable.varind_id).success(function(data, status) {
+      $http.delete('/api/vauxiliares/'+variable.variableaux_id).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -111,7 +111,7 @@ angular.module('app.controllers')
           $scope.form.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadVariablesIndependientes();
+          $scope.reloadVariables();
           //$state.go($state.current, {}, {reload: true});
         }).
         error(function(data, status, headers, config) {
@@ -125,27 +125,16 @@ angular.module('app.controllers')
         });
     }
 
-    $scope.reloadVariablesIndependientes = function() {
-      variablesIndependientesFactory.getListaVariablesIndependientes(idproyecto).then(function(response) {
+    $scope.reloadVariables = function() {
+      variablesAuxiliaresFactory.getListaVariablesAuxiliares(idproyecto).then(function(response) {
         console.log(response);
-        $scope.listavariablesindependientes = response.data;
+        $scope.listavariablesauxiliares = response.data;
       });
     }
 
     $scope.editar = function(variable) {
       $scope.variablefocus = variable;
       $scope.editando = true;
-      console.log($scope.variablefocus);
-      var valoresArray = JSON.parse(variable.varind_valores);
-      variable.varind_valores='';
-      for (var i = 0; i < valoresArray.length; i++) {
-        if(i == valoresArray.length-1){
-          variable.varind_valores +=valoresArray[i];
-        }else{
-          variable.varind_valores +=valoresArray[i]+',';
-        }
-        
-      };
     }
 
     $scope.subsistemas = function(proyecto) {
@@ -161,7 +150,7 @@ angular.module('app.controllers')
     }
 
     $scope.editVariable = function() {
-      $http.put('/api/variablesIndependientes/'+$scope.variablefocus.varind_id, { variable:$scope.variablefocus}).success(function(data, status) {
+      $http.put('/api/vauxiliares/'+$scope.variablefocus.variableaux_id, { variable:$scope.variablefocus}).success(function(data, status) {
           $scope.status = status;
           $scope.data = data;
           console.log($scope);
@@ -177,7 +166,7 @@ angular.module('app.controllers')
           $scope.formEdit.$setPristine();
           toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
           console.log('pop');
-          $scope.reloadVariablesIndependientes();
+          $scope.reloadVariables();
           $scope.notshowEdit();
           
         }).
