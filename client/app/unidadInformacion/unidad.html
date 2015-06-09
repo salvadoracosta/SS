@@ -117,6 +117,14 @@
                       </div>
                   </div>
               </tab>
+              <tab heading="Variables Auxiliares" >
+                 <div class="form-group" ng-repeat="variable in listavariablesauxiliares">
+                    <label class="col-lg-2 control-label ">{{variable.variableaux_nombre}}</label>
+                      <div class="col-lg-3">
+                        <input class="form-control" ng-model="variable.valor" />
+                      </div>
+                  </div>
+              </tab>
             </tabset>
           </div>
           <div class="form-group">
