@@ -307,6 +307,19 @@ var app = angular.module('app', [
                     }
                 }
             })
+            .state('app.variableAuxiliar',{
+                url:'/proyecto/:idproyecto/variableAuxiliar',
+                controller: 'VariableAuxiliarCtrl',
+                templateUrl: 'app/variableAuxiliar/variableAuxiliar.html',
+                 resolve: {
+                    listavariablesauxiliares: function($stateParams,variablesAuxiliaresFactory) {
+                        return variablesAuxiliaresFactory.getListaVariablesAuxiliares($stateParams.idproyecto);
+                    },
+                    idproyecto: function($stateParams) {
+                        return $stateParams.idproyecto;
+                    }
+                }
+            })
             .state('app.proyectoDesc',{
                 url:'/proyecto/:edit',
                 controller: 'proyectoDescCtrl',
