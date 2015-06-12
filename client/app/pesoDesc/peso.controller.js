@@ -226,11 +226,13 @@ if($scope.var111 == null){
   $scope.v113 = 0;
 }else{ //hay al menos una variable
   $scope.v111 = a_pesos[0].vp;
+  console.log("valor de la variable " + $scope.v111);
   v111_id = a_pesos[0].vi;
   for(var i = 1; i < a_pesos.length;i++){
     if($scope.var111 != a_pesos[i].vn && a_pesos[i].mn == $scope.mod11 && a_pesos[i].sn == $scope.sub1){
       $scope.var112 = a_pesos[i].vn;
       $scope.v112 = a_pesos[i].vp;
+      console.log("le asigne" + $scope.v112); 
       v112_id = a_pesos[i].vi;
       console.log("v112_id" + v112_id);
     }
@@ -264,15 +266,19 @@ if($scope.var111 =="no definido" && $scope.var112 == "no definido" && $scope.var
   $scope.v112 = 0;
   $scope.v113 = 0;
 }else if($scope.var111 != "no definido" && $scope.v111 != null && $scope.var112 != "no definido" && $scope.v112 !=null && $scope.var113 == "no definido"){
+  console.log($scope.v112 );
+  console.log($scope.v111);
   if($scope.v111 + $scope.v112 != 1){
     $scope.v111 = 0.5;
     $scope.v112 = 0.5;
   }
   $scope.v113 = 0;
+  console.log("en este caso");
 } else if($scope.var111 != "no definido" && $scope.var112 != "no definido" && $scope.var113 == "no definido"){
   $scope.v111 = 0.5;
   $scope.v112 = 0.5;
   $scope.v113 = 0;
+  console.log("pero tambien entre a este");
 } else if($scope.var111 != "no definido" && $scope.v111 != null && $scope.var112 != "no definido" && $scope.v112  != null && $scope.var113 != "no definido" && $scope.v113 != null){
   if($scope.v111 + $scope.v112 + $scope.v113 < 0.9  || $scope.v111 + $scope.v112 + $scope.v113 >1){
     $scope.v111 = 0.3;
@@ -512,7 +518,7 @@ if($scope.mod21 !="no definido" && $scope.m21 != null && $scope.mod22 != "no def
 
 /*Variables modulo 1 subsistema 2*/
 for (var i = 1; i <a_pesos.length;i++){
-  if(a_pesos[i].mn == $scope.mod21){
+  if(a_pesos[i].mn == $scope.mod21 && a_pesos[i].sn == $scope.sub2){
     $scope.var211 = a_pesos[i].vn;
     $scope.v211 = a_pesos[i].vp;
     v211_id = a_pesos[i].vi;
@@ -811,7 +817,7 @@ if($scope.mod31 =="no definido" && $scope.mod32 == "no definido" && $scope.mod33
 
 /* Variables modulo1 subsistema 3*/
 for (var i = 1; i <a_pesos.length;i++){
-  if(a_pesos[i].mn == $scope.mod31){
+  if(a_pesos[i].mn == $scope.mod31 && a_pesos[i].sn == $scope.sub3){
     $scope.var311 = a_pesos[i].vn;
     $scope.v311 = a_pesos[i].vp;
     v311_id = a_pesos[i].vi;
@@ -2903,6 +2909,8 @@ if($scope.var331 == "no definido" && $scope.var332 == "no definido" && $scope.va
   });
 
   $scope.addPesos = function() {
+    console.log("scope asdasd" + $scope.v112);
+    console.log("scope asd1" + $scope.v111);
     console.log("SCOPPEEEEEEEEEEE", $scope);
      $http.put('/api/pesos/'+idproyecto, {id_proyecto: idproyecto,
       sub1_id:s1_id,

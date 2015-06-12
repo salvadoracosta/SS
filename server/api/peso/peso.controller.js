@@ -46,6 +46,9 @@ exports.update = function(req, res) {
     password: 'admin'
   });
 
+  console.log("inputt vaaar1" + input.var111_peso);
+  console.log("inputt vaaar2" + input.var112_peso);
+
   connection.connect(function(err) {
     if (err) {
       console.error('error connecting: ' + err.stack);

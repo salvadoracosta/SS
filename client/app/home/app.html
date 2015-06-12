@@ -19,32 +19,24 @@
   <!-- aside right -->
   <div class="app-aside-right pos-fix w-md w-auto-xs bg-white b-l animated fadeInRight">
     <div class="vbox">
-      <!-- right col -->
-  <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
-  
-    <tabset class="nav-tabs-alt" justified="true">
-      
-      <tab>
-        <tab-heading>
-          <i class="icon-share text-md text-muted wrapper-sm"></i>
-        </tab-heading>
-        
-          <div class="wrapper-md">
-            <div class="m-b-sm text-md">Estructura</div>
-            <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
-          </div>
-        
-      </tab>
-      
-    </tabset>
-  </div>
+        <!-- right col -->
+      <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
+        <tabset class="nav-tabs-alt" justified="true">
+          <tab>
+            <tab-heading>
+              <i class="icon-share text-md text-muted wrapper-sm"></i>
+            </tab-heading>
+            <div class="wrapper-md" >
+              <div class="m-b-sm text-md">Estructura</div>
+              <abn-tree tree-data="my_data" tree-control="my_tree" style="overflow-y:auto;" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Jade"></abn-tree>
+            </div>
+          </tab>
+        </tabset>
+      </div>
   <!-- / right col -->
     </div>
   </div>
   <!-- / aside right -->
-
-
-
 
   <!-- footer -->
   <div class="app-footer wrapper b-t bg-light" style="margin-right: 240px;">
@@ -53,5 +45,5 @@
   </div>
   <!-- / footer -->
 
-  <div data-ng-include=" 'app/layout/blocks/settings.html' " class="settings panel panel-default">
-  </div>
+<!--   <div data-ng-include=" 'app/layout/blocks/settings.html' " class="settings panel panel-default">
+  </div> -->
